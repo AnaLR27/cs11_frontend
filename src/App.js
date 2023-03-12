@@ -1,12 +1,7 @@
 import './App.css';
-import CandidateProfile from './views/CandidateProfile.component';
 
 function App() {
-	return (
-		<>
-			<CandidateProfile />
-		</>
-	);
+	return <></>;
 }
 
 export default App;
