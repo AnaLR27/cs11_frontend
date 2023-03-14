@@ -1,60 +1,49 @@
-@media (min-width: 390px ) {
-  .header {
-    background-color: #f5f5fa;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-   
-  }
-  .logo {
-    display: flex;
-    align-items: center;
-    margin-left: 4em;
-    width: 100px;
-  }
-  .links {
-    border: 1px solid transparent;
-    border-radius: 10px;
-    display: flex;
-    padding: 0 20px;
-    height: 60px;
-    margin-right: 5em;
-    font-size: 0.9rem;
-  }
-  .btns {
-    display: none;
-  }
-  .icon {
-    display: flex;
-    align-items: center;
-    font-size: 1rem;
-  }
+.header {
+  background-color: var(--green);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  height: var(--header-height);
+  padding: 1rem 1.65rem;
+  width: 100vw;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1;
 }
+.logo {
+  display: flex;
+  align-items: center;
+
+  width: 100px;
+}
+
+.btn {
+  display: none;
+}
+.icon {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
 @media (min-width: 820px) {
   .header {
-    background-color: #f5f5fa;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    height: var(--header-height-tablet);
   }
   .logo {
     display: flex;
     align-items: center;
-    margin-left: 4em;
+    margin-left: 2rem;
     width: 180px;
   }
-  .links {
-    border: 1px solid transparent;
-    border-radius: 10px;
-    display: flex;
-    padding: 0 20px;
-    height: 60px;
-    margin-right: 5em;
-    font-size: 0.9rem;
-  }
-  .btns {
+
+  .btn {
     display: none;
   }
   .icon {
@@ -66,7 +55,6 @@
 }
 @media (min-width: 1280px) {
   .header {
-    background-color: #f5f5fa;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -77,21 +65,30 @@
     align-items: center;
     margin-left: 4em;
   }
-  .links {
-    border: 1px solid transparent;
-    border-radius: 10px;
-    background-color: #47d7ac;
-    display: flex;
-    padding: 0 20px;
-    height: 60px;
-    margin-right: 5em;
-    font-size: 0.9rem;
-  }
+
   .btns {
     display: flex;
     align-items: center;
     text-decoration: none;
     color: black;
+  }
+  .btn {
+    font-size: 14px;
+    line-height: 25px;
+    padding: 10px 30px;
+    border-radius: 8px;
+    color: var(--white);
+    background: var(--dark-green);
+    white-space: nowrap;
+    transition: 0.3s;
+    cursor: pointer;
+    display: block;
+  }
+  .btn:hover {
+    background-color: #8ec9ca;
+    color: var(--dark-green);
+    font-weight: 500;
+    box-shadow: -2px -2px 5px 0px #3a3939bf;
   }
   .icon {
     display: none;
