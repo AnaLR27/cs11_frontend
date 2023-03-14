@@ -7,12 +7,9 @@ function Footer() {
   return (
     <div className={classes.footer}>
       <p>
-        <FontAwesomeIcon icon={faCopyright} /> 2023Made wiht{" "}
-        <FontAwesomeIcon className={classes.heart} icon={faHeart} /> by{" "}
-        <a href="https://github.com/cod3spac3Academy/Team-Edition-11">
-          FULL STACK WEB DEVELOPMENT, 11 EDITION.
-        </a>{" "}
-        All rights reserved.
+        <FontAwesomeIcon icon={faCopyright} /> 2023 Made with 
+        <FontAwesomeIcon className={classes.heart} icon={faHeart} /> by FULL
+        STACK WEB DEVELOPMENT, 11 EDITION. All rights reserved.
       </p>
     </div>
   );

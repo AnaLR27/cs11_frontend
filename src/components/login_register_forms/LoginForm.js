@@ -6,7 +6,7 @@
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import InfoAlert from "../UI/InfoAlert";
-import classes from "./forms_modules/LoginForm.module.css";
+import classes from "../../styles/LoginForm.module.css";
 import { useContext, useState, useEffect, useRef } from "react";
 import { LoginModalContext } from "../../providers/LoginModalProvider";
 import ApiRequest from "../../services/apiRequest";

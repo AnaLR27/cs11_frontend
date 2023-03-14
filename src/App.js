@@ -4,6 +4,8 @@ import HomePage from "./views/HomePage";
 import { useEffect } from "react";
 import ApiRequest from "./services/apiRequest";
 import LoginModalProvider from "./providers/LoginModalProvider";
+import Header from "./components/HeaderFooter/Header";
+import Footer from "./components/HeaderFooter/Footer";
 
 function App() {
   //ckeck if there is a remembered user and log him in if there is, using refresh token for authentication and recieve new access token
@@ -28,13 +30,12 @@ function App() {
   return (
     <Router>
       <LoginModalProvider>
-        {/* HEADER HERE */}
+        <Header />
       </LoginModalProvider>
       <Routes>
         <Route path='/' element={<HomePage />} />
-
-        
       </Routes>
+      <Footer />
     </Router>
   );
 }

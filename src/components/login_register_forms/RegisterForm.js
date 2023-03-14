@@ -3,7 +3,7 @@
  * @author Alina Dorosh
  * */
 
-import classes from "./forms_modules/RegisterForm.module.css";
+import classes from "../../styles/RegisterForm.module.css";
 import { useState, useEffect, useReducer, useContext } from "react";
 import { LoginModalContext } from "../../providers/LoginModalProvider";
 import {
@@ -402,6 +402,7 @@ const RegisterForm = () => {
                 className={classes.login}
                 onClick={() => {
                   setOnRegister(false);
+                  setOnLogin(true);
                 }}
               >
                 {" "}

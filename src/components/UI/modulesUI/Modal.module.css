@@ -46,7 +46,7 @@
   transition: all 0.5s;
 }
 .md-show.md-effect .md-content {
-  transform: translateY(5%);
+  transform: translateY(3%);
   opacity: 1;
   transition: all 0.5s;
 }

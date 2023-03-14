@@ -1,4 +1,4 @@
-![baner](https://github.com/GhostDevs3/cs11_frontend/banner%20(1).png)
+![baner](https://github.com/GhostDevs3/cs11_frontend/blob/develop/banner%20(1).png)
 
 # **CODE SPACE JOBS PORTAL - FRONTEND**
 

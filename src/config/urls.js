@@ -1,1 +1,1 @@
-export const USERS_API= "http://localhost:8001/auth"
+export const USERS_API= "http://localhost:8000/auth"
