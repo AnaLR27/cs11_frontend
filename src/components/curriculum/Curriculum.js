@@ -95,7 +95,7 @@ function Curriculum() {
         <div className={classes["container-superior"]}>
           <div className={classes["titulo-principal"]}>
             <h3>Gestor de Curriculum!</h3>
-            <div className={classes.texto}>Ready to jump back in?</div>
+            <div className={classes.texto}>Vamos allá!</div>
           </div>
           {/* Aquí va el boton de Menú de Helena */}
         </div>
