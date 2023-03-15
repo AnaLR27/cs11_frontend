@@ -34,6 +34,11 @@ function App() {
         <Header />
       </LoginModalProvider>
       <Routes>
+        {/*Candidates List Routes <Route path="/candidate/all-candidates" element={<CandidateList />} />
+        <Route
+          path="/candidate/:loginId"
+          element={"<DetailCandidate/>QUITAR COMILLAS"}
+        /> */}
         <Route path='/' element={<HomePage />} />
         {/* aqui proteccion de rutas */}
         <Route path='/candidate/:id' element={<CandidateSinglePage />} />
