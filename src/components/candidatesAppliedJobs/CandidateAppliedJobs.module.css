@@ -4,6 +4,7 @@
   background-color: var(--light-green);
   padding: 40px 15px;
   width: 100%;
+  min-height: 100vh;
 }
 
 /* header class containing title and a paragraph */

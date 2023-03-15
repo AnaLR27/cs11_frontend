@@ -50,8 +50,6 @@ const useFetchAppliedJobs = () => {
    * @returns {Promise} the response of the request
    */
   const deleteAppliedJob = async (jobId, candidateId) => {
-    console.log("jobId", jobId);
-    console.log("candidateId", candidateId);
     try {
       setPending(true);
       const response = await fetch(`${URL}${candidateId}/${jobId}`, {
