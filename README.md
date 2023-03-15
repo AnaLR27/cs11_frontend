@@ -1,4 +1,4 @@
-![baner](https://github.com/GhostDevs3/cs11_frontend/blob/develop/banner%20(1).png)
+![baner](<https://github.com/GhostDevs3/cs11_frontend/blob/develop/banner%20(1).png>)
 
 # **CODE SPACE JOBS PORTAL - FRONTEND**
 
@@ -37,6 +37,7 @@ CODE SPACE JOBS PORTAL, its a social website to connect employers with all code 
 |   [@fortawesome/fontawesome-svg-core](https://www.npmjs.com/package/@fortawesome/fontawesome-svg-core)   | SVG framework                                                                                                                                    |
 | [@fortawesome/free-regular-svg-icons](https://www.npmjs.com/package/@fortawesome/free-regular-svg-icons) | SVG framework                                                                                                                                    |
 |   [@fortawesome/free-solid-svg-icons](https://www.npmjs.com/package/@fortawesome/free-solid-svg-icons)   | SVG framework                                                                                                                                    |
+|  [@fortawesome/free-solid-svg-icons](https://www.npmjs.com/package/@fortawesome/free-brands-svg-icons)   | SVG framework                                                                                                                                    |
 |      [@fortawesome/react-fontawesome](https://www.npmjs.com/package/@fortawesome/react-fontawesome)      | Official React component for Font Awesome 5                                                                                                      |
 |                        [react-router](https://www.npmjs.com/package/react-router)                        | Declarative routing for React                                                                                                                    |
 |                    [react-router-dom](https://www.npmjs.com/package/react-router-dom)                    | Declarative routing for React web applications                                                                                                   |
@@ -121,7 +122,6 @@ Home page, fully responsive where animations controlled by states (useState hook
 
 ### **CANDIDATE PROFILE**
 
-
 <a href="#code-space-jobs-portal---frontend"><span> &uArr; Table of contents</span></a>
 
 ---
@@ -169,9 +169,9 @@ Home page, fully responsive where animations controlled by states (useState hook
 ## **CONTRIBUTORS**
 
 | Name             |                      Github                       |                         Linkedin                         |                    Email                    |
-| :--------------- | :-----------------------------------------------: | :------------------------------------------------------: | :-----------------------------------------: |
+| :--------------- | :-----------------------------------------------: | :------------------------------------------------------: | :-----------------------------------------: | -------------- | --------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------- |
 | Rafael Fernandez |    [**&check;**](https://github.com/iRaphiki)     |   [**&check;**](https://www.linkedin.com/in/rafa-fr/)    |  [Contact me](mailto:imraphiki@gmail.com)   |
-| Alina Dorosh     | [**&check;**](https://github.com/AlinaDorosh-dev) | [**&check;**](https://www.linkedin.com/in/alina-dorosh/) | [Contact me](mailto:alina.dorosh@gmail.com) |
+| Alina Dorosh     | [**&check;**](https://github.com/AlinaDorosh-dev) | [**&check;**](https://www.linkedin.com/in/alina-dorosh/) | [Contact me](mailto:alina.dorosh@gmail.com) | Ismael Boumhir | [**&check;**](https://github.com/IsmaelBoule) | [**&check;**](https://www.linkedin.com/in/ismael-boumhir-lendinez/) | [Contact me](mailto:ismaelboulen@gmail.com) |
 
 <a href="#code-space-jobs-portal---frontend"><span> &uArr; Table of contents</span></a>
 
