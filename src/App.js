@@ -33,7 +33,9 @@ function App() {
         <Header />
       </LoginModalProvider>
       <Routes>
-        <Route path='/' element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/job/job-list" element={<JobList />} />
+        <Route path="/job/job-single/:jobId" element={<JobInfo />} />
       </Routes>
       <Footer />
     </Router>
