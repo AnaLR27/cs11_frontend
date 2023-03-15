@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./views/HomePage";
+import CandidateSinglePage from "./views/CandidateSinglePage";
 import { useEffect } from "react";
 import ApiRequest from "./services/apiRequest";
 import LoginModalProvider from "./providers/LoginModalProvider";
@@ -34,6 +35,8 @@ function App() {
       </LoginModalProvider>
       <Routes>
         <Route path='/' element={<HomePage />} />
+        {/* aqui proteccion de rutas */}
+        <Route path='/candidate/:id' element={<CandidateSinglePage />} />
       </Routes>
       <Footer />
     </Router>
