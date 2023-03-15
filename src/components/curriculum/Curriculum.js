@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import jwt_decode from "jwt-decode";
 import classes from "../../styles/Curriculum/Curriculum.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBarsStaggered, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 function Curriculum() {
   const [file, setFile] = useState(null);
@@ -52,9 +52,10 @@ function Curriculum() {
 
   //Obtener el token y extraer del payload el loginId
   const handleFunctions = () => {
-    let token = sessionStorage.getItem("auth-token");
-    let decoded = jwt_decode(token);
-    let loginId = decoded.UserInfo.id;
+    // let token = sessionStorage.getItem("auth-token");
+    // let decoded = jwt_decode(token);
+    // let loginId = decoded.UserInfo.id;
+    let loginId = "63f476530a02e452e18c32ae";
 
     sendHandler(loginId);
   };
@@ -92,13 +93,13 @@ function Curriculum() {
       <div className={classes["contenedor-global"]}>
         <div className={classes["container-superior"]}>
           <div className={classes["titulo-principal"]}>
-            <h3>CV Manager!</h3>
+            <h3>Gestor de Curriculum!</h3>
             <div className={classes.texto}>Ready to jump back in?</div>
           </div>
-        {/* Aquí va el boton de Menú de Helena */}
+          {/* Aquí va el boton de Menú de Helena */}
         </div>
         <div className={classes["contenedor-inferior"]}>
-          <h4>Cv Manager</h4>
+          <h4>Gestor de Curriculum.</h4>
           <form
             className={classes["contenedor-cv"]}
             action="/files"
@@ -114,9 +115,9 @@ function Curriculum() {
               accept=".doc,.docx,application/pdf"
             />
             <label className={classes["cv-uploadButton"]} htmlFor="upload">
-              <p className={classes["p-blue"]}>Drop files here to upload</p>
+              <p className={classes["p-blue"]}>Inserta aquí tu archivo.</p>
               <p className={classes["p2"]}>
-                To upload file size is (Max 5Mb) and allowed file types are
+                Tamaño máximo de archivo: 5MB. Tipos de archivos permitidos:
                 (.doc, .docx, .pdf)
               </p>
               <button
@@ -124,7 +125,7 @@ function Curriculum() {
                 type="button"
                 className={classes["upload-button"]}
               >
-                Upload Resume
+                Subir Archivo
               </button>
               <div ref={RefRedAlert} className={classes["red-alert"]}>
                 {texto}
