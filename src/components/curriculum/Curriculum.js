@@ -52,10 +52,10 @@ function Curriculum() {
 
   //Obtener el token y extraer del payload el loginId
   const handleFunctions = () => {
-    // let token = sessionStorage.getItem("auth-token");
-    // let decoded = jwt_decode(token);
-    // let loginId = decoded.UserInfo.id;
-    let loginId = "63f476530a02e452e18c32ae";
+    let token = sessionStorage.getItem("auth-token");
+    let decoded = jwt_decode(token);
+    let loginId = decoded.UserInfo.id;
+
     sendHandler(loginId);
   };
 
