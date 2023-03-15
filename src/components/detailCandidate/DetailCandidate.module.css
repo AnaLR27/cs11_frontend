@@ -21,6 +21,12 @@
   box-sizing: inherit;
   outline: none 0;
 }
+
+.container{
+  padding: 3rem;
+  margin-top: 2rem;
+
+}
 .col-lg-4 {
   width: 30%;
 }
@@ -274,7 +280,7 @@
     width: 100%;
   }
   .button-cv {
-    width: 90%;
+    width: 100%;
   }
   .content {
     width: 100%;
