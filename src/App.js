@@ -8,6 +8,7 @@ import LoginModalProvider from "./providers/LoginModalProvider";
 import Header from "./components/HeaderFooter/Header";
 import Footer from "./components/HeaderFooter/Footer";
 import ForgottenPasswordPage from "./views/ForgottenPasswordPage";
+import ResetPasswordPage from "./views/ResetPasswordPage";
 
 function App() {
   //ckeck if there is a remembered user and log him in if there is, using refresh token for authentication and recieve new access token
@@ -29,6 +30,8 @@ function App() {
     };
     (async () => handleRememberedUser())();
   }, []);
+
+  
   return (
     <Router>
       <LoginModalProvider>
@@ -36,7 +39,8 @@ function App() {
       </LoginModalProvider>
       <Routes>
         <Route path='/' element={<HomePage />} />
-           <Route path='/forgottenpassword' element={<ForgottenPasswordPage />} />
+        <Route path='/forgottenpassword' element={<ForgottenPasswordPage />} />
+        <Route path='/resetpassword/:token' element={<ResetPasswordPage />} />
         {/* aqui proteccion de rutas */}
         <Route path='/candidate/:id' element={<CandidateSinglePage />} />
       </Routes>

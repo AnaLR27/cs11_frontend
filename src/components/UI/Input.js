@@ -33,13 +33,12 @@ const Input = ({
   ariaDescribedby,
   id,
   reference,
-  
-  autoFocus
+    autoFocus
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   return (
-    <>
+    <div className={classes["input-container"]}>
       <input
         type={showPassword ? "text" : type}
         className={classes[className]}
@@ -63,7 +62,7 @@ const Input = ({
           onClick={handleClickShowPassword}
         />
       )}
-    </>
+    </div>
   );
 };
 

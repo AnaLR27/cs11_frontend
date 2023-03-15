@@ -3,7 +3,7 @@
  * @author Alina Dorosh
  */
 
-import { USERS_API } from "../config/urls";
+import { USERS_API, FORGOTTEN_PASSWORD_API } from "../config/urls";
 
 export default class ApiRequest {
   static async register(body) {
@@ -51,6 +51,41 @@ export default class ApiRequest {
       return data;
     } catch (err) {
       return err;
+    }
+  }
+
+  static async forgottenPassword(body) {
+    try {
+      const response = await fetch(`${FORGOTTEN_PASSWORD_API}/send-mail`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+      let data = await response.json();
+      return data;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  static async resetPassword(body, token) {
+    try {
+      const response = await fetch(
+        `${FORGOTTEN_PASSWORD_API}/reset-password/${token}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }
+      );
+      let data = await response.json();
+      return data;
+    } catch (error) {
+      return error;
     }
   }
 }

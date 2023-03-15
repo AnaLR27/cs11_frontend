@@ -66,17 +66,19 @@ const navigate = useNavigate();
 
     //if email is not valid, show error message, avoid requests to backend
     if (!validEmail) {
-      setErrMsg("Please enter a valid email");
+      setErrMsg("Inroduce por favor un email válido");
       return;
     }
     const response = await ApiRequest.login(loggedUser);
     if (response.message === "Failed to fetch") {
       setErrMsg("Conection error. Please reload the app");
       succesfullLogin(false);
+      return;
     }
     if (response.error === "Wrong email or password") {
       setErrMsg(response.error);
       succesfullLogin(false);
+      return;
     }
     if (response.accessToken) {
       setSuccesfullLogin(true);
