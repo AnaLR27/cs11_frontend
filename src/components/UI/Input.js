@@ -33,6 +33,8 @@ const Input = ({
   ariaDescribedby,
   id,
   reference,
+  
+  autoFocus
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -52,6 +54,7 @@ const Input = ({
         value={value}
         id={id}
         ref={reference}
+        autoFocus={autoFocus}
       />
       {type === "password" && (
         <FontAwesomeIcon
