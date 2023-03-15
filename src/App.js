@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./views/HomePage";
 import CandidateSinglePage from "./views/CandidateSinglePage";
+import ManageJobsPage from "./views/ManageJobsPage";
 import { useEffect } from "react";
 import ApiRequest from "./services/apiRequest";
 import LoginModalProvider from "./providers/LoginModalProvider";
@@ -37,6 +38,8 @@ function App() {
         <Route path='/' element={<HomePage />} />
         {/* aqui proteccion de rutas */}
         <Route path='/candidate/:id' element={<CandidateSinglePage />} />
+        <Route path='/job/employer-jobs' element={<ManageJobsPage />} />
+
       </Routes>
       <Footer />
     </Router>
