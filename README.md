@@ -172,6 +172,7 @@ Home page, fully responsive where animations controlled by states (useState hook
 | :--------------- | :-----------------------------------------------: | :------------------------------------------------------: | :-----------------------------------------: |
 | Rafael Fernandez |    [**&check;**](https://github.com/iRaphiki)     |   [**&check;**](https://www.linkedin.com/in/rafa-fr/)    |  [Contact me](mailto:imraphiki@gmail.com)   |
 | Alina Dorosh     | [**&check;**](https://github.com/AlinaDorosh-dev) | [**&check;**](https://www.linkedin.com/in/alina-dorosh/) | [Contact me](mailto:alina.dorosh@gmail.com) |
+| David Miró       |  [**&check;**](https://github.com/davidbonora)    | [**&check;**](https://www.linkedin.com/in/davidbonora/)  | [Contact me](mailto:davidbonora23@gmail.com)|
 
 <a href="#code-space-jobs-portal---frontend"><span> &uArr; Table of contents</span></a>
 

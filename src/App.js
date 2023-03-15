@@ -6,6 +6,7 @@ import ApiRequest from "./services/apiRequest";
 import LoginModalProvider from "./providers/LoginModalProvider";
 import Header from "./components/HeaderFooter/Header";
 import Footer from "./components/HeaderFooter/Footer";
+import CandidatesDashboard from "./components/CandidatesDashboard/CandidatesDashboard";
 
 function App() {
   //ckeck if there is a remembered user and log him in if there is, using refresh token for authentication and recieve new access token
@@ -33,6 +34,7 @@ function App() {
         <Header />
       </LoginModalProvider>
       <Routes>
+        <Route path='/candidates-dashboard' element={<CandidatesDashboard />} />
         <Route path='/' element={<HomePage />} />
       </Routes>
       <Footer />
