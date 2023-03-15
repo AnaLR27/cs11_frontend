@@ -4,14 +4,14 @@ import fondo from "../../assets/img/not-found.jpg"
 function NotFound() {
   return (
   
-      <div className={classes.notFound}>
+      <section className={classes.notFound}>
         <img className={classes.fondo} src={fondo} alt="" />
         <p className={classes.num}>404</p>
-        <p className={classes.text}>The page you are looking for could not be found</p>
+        <p className={classes.text}>Pagina no encontrada</p>
         <a className={classes.btn} href="/">
-          BACK TO HOME
+          VOLVER A INICIO
         </a>
-      </div>
+      </section>
       
   );
 }
