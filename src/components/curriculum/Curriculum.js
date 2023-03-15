@@ -2,7 +2,8 @@ import React, { useState, useRef } from "react";
 import jwt_decode from "jwt-decode";
 import classes from "../../styles/Curriculum/Curriculum.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import {
+   faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 function Curriculum() {
   const [file, setFile] = useState(null);
