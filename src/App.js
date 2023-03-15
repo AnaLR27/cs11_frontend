@@ -33,7 +33,6 @@ function App() {
         <Header />
       </LoginModalProvider>
       <Routes>
-        <Route path="/" element={<HomePage />} />
         {/*Candidates List Routes <Route path="/candidate/all-candidates" element={<CandidateList />} />
         <Route
           path="/candidate/:loginId"
