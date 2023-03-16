@@ -2,11 +2,13 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./views/HomePage";
 import CandidateSinglePage from "./views/CandidateSinglePage";
+import ManageJobsPage from "./views/ManageJobsPage";
 import { useEffect } from "react";
 import ApiRequest from "./services/apiRequest";
 import LoginModalProvider from "./providers/LoginModalProvider";
 import Header from "./components/HeaderFooter/Header";
 import Footer from "./components/HeaderFooter/Footer";
+import ChangePassword from "./views/ChangePassword";
 
 function App() {
   //ckeck if there is a remembered user and log him in if there is, using refresh token for authentication and recieve new access token
@@ -34,9 +36,16 @@ function App() {
         <Header />
       </LoginModalProvider>
       <Routes>
+        {/*Candidates List Routes <Route path="/candidate/all-candidates" element={<CandidateList />} />
+        <Route
+          path="/candidate/:loginId"
+          element={"<DetailCandidate/>QUITAR COMILLAS"}
+        /> */}
         <Route path='/' element={<HomePage />} />
         {/* aqui proteccion de rutas */}
         <Route path='/candidate/:id' element={<CandidateSinglePage />} />
+        <Route path='/job/employer-jobs' element={<ManageJobsPage />} />
+        <Route path='/auth/change-password' element={<ChangePassword />} />
       </Routes>
       <Footer />
     </Router>

@@ -2,7 +2,7 @@
 
 # **CODE SPACE JOBS PORTAL - FRONTEND**
 
-CODE SPACE JOBS PORTAL, its a social website to connect employers with all code space students.
+CODE SPACE JOBS PORTAL, its a social website to connect employers with all Code Space students.
 
 - [**CODE SPACE JOBS PORTAL - FRONTEND**](#code-space-jobs-portal---frontend)
   - [**DEPENDENCIES**](#dependencies)
@@ -24,6 +24,7 @@ CODE SPACE JOBS PORTAL, its a social website to connect employers with all code 
     - [**Register Form**](#register-form)
     - [**Login Form**](#login-form)
     - [**Reusable components** :](#reusable-components-)
+    - [**Detail Candidate**](#detail-candidate)
   - [**MODELS**](#models)
     - [**CANDIDATE**](#candidate)
   - [**CONTRIBUTORS**](#contributors)
@@ -67,6 +68,9 @@ CODE SPACE JOBS PORTAL, its a social website to connect employers with all code 
  ┃ ┣ Form
  ┃ ┃ ┣ base
  ┃ ┃ ┗ inputs
+ ┃ ┣ detailCandidate
+ ┃ ┃ ┣ DetailCandidate.js
+ ┃ ┃ ┗ DetailCandadite.module.css
  ┃ ┣ UI
  ┃ ┃ ┣ modulesUI
  ┃ ┃ ┃ ┣ Button.module.css
@@ -91,6 +95,8 @@ CODE SPACE JOBS PORTAL, its a social website to connect employers with all code 
  ┃ ┗ registerReducer.js
  ┣ services
  ┃ ┗ apiRequest.js
+ ┃ ┗ ButtonMark.js  
+ ┃ ┗ GetCandidateData.js  
  ┣ styles
  ┃ ┣ Home.module.css
  ┃ ┣ LoginForm.module.css
@@ -155,6 +161,8 @@ Home page, fully responsive where animations controlled by states (useState hook
 
 - Button
 
+### **Detail Candidate**
+
 <a href="#code-space-jobs-portal---frontend"><span> &uArr; Table of contents</span></a>
 
 ---
@@ -173,6 +181,7 @@ Home page, fully responsive where animations controlled by states (useState hook
 | :--------------- | :-----------------------------------------------: | :------------------------------------------------------: | :-----------------------------------------: |
 | Rafael Fernandez |    [**&check;**](https://github.com/iRaphiki)     |   [**&check;**](https://www.linkedin.com/in/rafa-fr/)    |  [Contact me](mailto:imraphiki@gmail.com)   |
 | Alina Dorosh     | [**&check;**](https://github.com/AlinaDorosh-dev) | [**&check;**](https://www.linkedin.com/in/alina-dorosh/) | [Contact me](mailto:alina.dorosh@gmail.com) |
+| Juan Domínguez Ortega     | [**&check;**](https://github.com/JuaniniDO) | [**&check;**](https://www.linkedin.com/in/juan-dominguez-ortega-a2685a1a1/) | [Contact me](mailto:juandominortega92@gmail.com) |
 
 <a href="#code-space-jobs-portal---frontend"><span> &uArr; Table of contents</span></a>
 
