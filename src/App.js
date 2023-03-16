@@ -9,6 +9,10 @@ import ApiRequest from "./services/apiRequest";
 import LoginModalProvider from "./providers/LoginModalProvider";
 import Header from "./components/HeaderFooter/Header";
 import Footer from "./components/HeaderFooter/Footer";
+
+import ForgottenPasswordPage from "./views/ForgottenPasswordPage";
+import ResetPasswordPage from "./views/ResetPasswordPage";
+
 import CandidatesDashboard from "./views/CandidatesDashboard";
 import Allaplicants from "./views/AllAplicants";
 import EmployerSinglePage from "./views/EmployerSinglePage";
@@ -35,6 +39,8 @@ function App() {
     };
     (async () => handleRememberedUser())();
   }, []);
+
+  
   return (
 
     <Router>
@@ -42,7 +48,13 @@ function App() {
         <Header />
       </LoginModalProvider>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+
+        <Route path='/' element={<HomePage />} />
+        <Route path='/forgottenpassword' element={<ForgottenPasswordPage />} />
+        <Route path='/reset-password/:token' element={<ResetPasswordPage />} />
+        {/* aqui proteccion de rutas */}
+        <Route path='/candidate/:id' element={<CandidateSinglePage />} />
+      
         <Route
           path="/candidate/all-candidates"
           element={<CandidatesDashboard />}
@@ -54,10 +66,11 @@ function App() {
         {/*Candidates List Routes <Route path="/candidate/all-candidates" element={<CandidateList />} />
         <Route
           path="/candidate/:loginId"
-          element={"<DetailCandidate/>QUITAR COMILLAS"}
+          element={<DetailCandidate/>}
         /> */}
         <Route path='/job/employer-jobs' element={<ManageJobsPage />} />
         <Route path='/auth/change-password' element={<ChangePassword />} />
+
       </Routes>
       <Footer />
     </Router>

@@ -33,11 +33,12 @@ const Input = ({
   ariaDescribedby,
   id,
   reference,
+    autoFocus
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   return (
-    <>
+    <div className={classes["input-container"]}>
       <input
         type={showPassword ? "text" : type}
         className={classes[className]}
@@ -52,6 +53,7 @@ const Input = ({
         value={value}
         id={id}
         ref={reference}
+        autoFocus={autoFocus}
       />
       {type === "password" && (
         <FontAwesomeIcon
@@ -60,7 +62,7 @@ const Input = ({
           onClick={handleClickShowPassword}
         />
       )}
-    </>
+    </div>
   );
 };
 
