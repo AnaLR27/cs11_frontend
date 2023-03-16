@@ -4,7 +4,7 @@
  */
 
 // classes
-import classes from "./JobList.module.css";
+import classes from "../styles/JobList.module.css";
 
 // hooks
 import React, { useState, useEffect, useMemo } from "react";

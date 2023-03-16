@@ -1,55 +1,50 @@
 :root {
-  box-sizing: border-box;
-  font-size: 0, 785rem;
-  --white: #fdfdfd;
-  --black: #000000;
-  --green: #47d7ac;
-  --dark-green: #2c7a7b;
-  --light-green: #e5f0ed;
-  --darkgrey: #4a4a4a;
-  --lightgrey: #949494;
-  --invalid:#e74d3cdc;
-  --valid: #07bc0db2;
-  --header-height: 3.5rem;
-  --header-height-tablet: 4.5rem;
-  
+	box-sizing: border-box;
+	font-size: 0, 785rem;
+	--white: #fdfdfd;
+	--black: #000000;
+	--green: #47d7ac;
+	--dark-green: #2c7a7b;
+	--light-green: #e5f0ed;
+	--darkgrey: #4a4a4a;
+	--lightgrey: #949494;
+	--invalid: #e74d3cdc;
+	--valid: #07bc0db2;
+	--header-height: 3.5rem;
+	--header-height-tablet: 4.5rem;
+	--x-size: 1.5rem;
+	--y-size: 0;
 }
 
 *,
 ::after,
 ::before {
-  border: 0;
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-  outline: none 0;
+	box-sizing: inherit;
+	margin: 0;
+	border: 0;
+	padding: 0;
+	outline: none 0;
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+	font-family: 'Montserrat', sans-serif;
 }
-
 
 h1 {
-  font-size: 3.5rem;
+	font-size: 3.5rem;
 }
-
 h2 {
-  font-size: 2.25rem;
+	font-size: 2.25rem;
 }
-
 h3 {
-  font-size: 1.5rem;
+	font-size: 1.5rem;
 }
-
 h4 {
-  font-size: 1.1rem;
+	font-size: 1.1rem;
 }
-
 h5 {
-  font-size: 0.9rem;
+	font-size: 0.9rem;
 }
-
 h6 {
-  font-size: 0.7rem;
+	font-size: 0.7rem;
 }
