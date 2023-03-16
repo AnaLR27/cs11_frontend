@@ -1,0 +1,69 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+.modalContent {
+  background-color: #fff;
+  width: 50%;
+  padding: 2rem;
+}
+
+.button{
+ margin-top: 1em;
+ margin-left: 8.5em;
+}
+
+/* Modal Delete */
+
+.success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.error {
+  color: #dc3545;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  padding: 0.75rem 1.25rem;
+  /* margin-bottom: 1rem; */
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+/*Modal GET*/
+.modal-get{
+  border: 1px solid #dc3545;
+  border-radius: .3rem;
+}
+
+.modalContent-get {
+  background-color: #fff;
+  width: 100%;
+  padding: 2rem;
+}
+
+.modal-get p{
+  text-align: center;
+}
+
+@media (min-width: 1270px) {
+  .modal-get{
+    margin-left: 19.5em;
+
+  }
+}

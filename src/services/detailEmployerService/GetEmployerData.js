@@ -1,19 +1,19 @@
 /**
- * @fileoverview GetCandidateData service
+ * @fileoverview GetEmployerData service
  * @author Juan Dominguez
- * @modified 15/03/2022 by Alina Dorosh
+ * @modified By David Calero
  * @param {*} loginId
  * @returns {Promise}
  *
  */
-import { CANDIDATES_API } from "../../config/urls";
+import { EMPLOYERS_API } from "../../config/urls";
 
-async function GetCandidateData() {
+async function GetEmployerData() {
   let token = sessionStorage.getItem("accessToken");
   let loginId = sessionStorage.getItem("userId");
   // Realizamos la petición a la API para que nos devuelva los datos del candidato descargando el pdf
   try {
-    const response = await fetch(` ${CANDIDATES_API}/${loginId}`, {
+    const response = await fetch(` ${EMPLOYERS_API}/${loginId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -28,4 +28,4 @@ async function GetCandidateData() {
   }
 }
 
-export default GetCandidateData;
+export default GetEmployerData;

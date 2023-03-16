@@ -1,3 +1,9 @@
+/**
+ * @fileoverview DetailCandidate component
+ * @author Juan Dominguez
+ * @modified 15/03/2022 by Alina Dorosh
+ * @modified 15/03/2022 by Juan Dominguez
+ */
 import classesDetails from "./DetailCandidate.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,9 +13,9 @@ import {
   faClock,
 } from "@fortawesome/free-regular-svg-icons";
 import { faCoins, faLanguage } from "@fortawesome/free-solid-svg-icons";
-import img from "../../assets/img/candidate-2.png";
-import GetCandidateData from "../../services/GetCandidateData";
-import Like from "../../services/ButtonMark";
+// import img from "../../assets/img/candidate-2.png";
+import GetCandidateData from "../../services/detailCandidateService/GetCandidateData";
+import Like from "../../services/detailCandidateService/ButtonMark";
 import { useEffect, useState } from "react";
 
 
@@ -17,22 +23,22 @@ function DetailCandidate(props) {
   const [infoCandidate, setInfoCandidate] = useState([]);
 
   useEffect(() => {
-    let infoCandidateTmp = GetCandidateData(props.candidate);
+    let infoCandidateTmp = GetCandidateData();
     infoCandidateTmp.then((data) => {
       setInfoCandidate(data);
     });
-  }, [props.candidate]);
+  }, [ ]);
   // console.log(infoCandidate.appliedJobs);
   return (
-    <>
+    <div className={classesDetails.container}>
       <div className={classesDetails["col-lg-8"]}>
         <div className={classesDetails["content-candidate"]}>
           <div>
-            <img
-              src={img}
+             <img
+              src={infoCandidate.photo}
               alt="imagen"
               className={classesDetails["img-candidate"]}
-            />
+            /> 
             <h4 className={classesDetails["name-candidate"]}>
               {infoCandidate.firstName} {infoCandidate.lastName}
             </h4>
@@ -46,7 +52,7 @@ function DetailCandidate(props) {
                     icon={faClock}
                     className={classesDetails["icon-fa-clock"]}
                   />
-                  Member Since, {infoCandidate.registerAt}
+                  Miembro desde, {infoCandidate.registerAt}
                 </span>
               </li>
             </ul>
@@ -63,7 +69,7 @@ function DetailCandidate(props) {
             href={infoCandidate.resume}
             download
           >
-            Download CV
+            Descargar CV
           </a>
           <button
             className={
@@ -104,13 +110,13 @@ function DetailCandidate(props) {
                 icon={faLanguage}
                 className={classesDetails["icons-job"]}
               />
-              <h5>Language:</h5>
+              <h5>Idiomas:</h5>
               <span>{infoCandidate.languages?.join(", ")}</span>
             </li>
           </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
