@@ -9,14 +9,13 @@ import ApiRequest from "./services/apiRequest";
 import LoginModalProvider from "./providers/LoginModalProvider";
 import Header from "./components/HeaderFooter/Header";
 import Footer from "./components/HeaderFooter/Footer";
-
 import ForgottenPasswordPage from "./views/ForgottenPasswordPage";
 import ResetPasswordPage from "./views/ResetPasswordPage";
-
 import CandidatesDashboard from "./views/CandidatesDashboard";
 import Allaplicants from "./views/AllAplicants";
 import EmployerSinglePage from "./views/EmployerSinglePage";
 import ChangePassword from "./views/ChangePassword";
+import JobList from "./views/JobList";
 
 function App() {
   //ckeck if there is a remembered user and log him in if there is, using refresh token for authentication and recieve new access token
