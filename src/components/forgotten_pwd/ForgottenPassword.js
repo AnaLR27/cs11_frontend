@@ -1,3 +1,7 @@
+/**
+ * @fileoverview ForgottenPassword component
+ * @author Alina Dorosh
+ */
 import classes from "../../styles/ForgottenPassword.module.css";
 import Input from "../UI/Input";
 import Button from "../UI/Button";
@@ -12,18 +16,20 @@ import { useNavigate } from "react-router";
 import ApiRequest from "../../services/apiRequest";
 const ForgottenPassword = () => {
   const navigate = useNavigate();
-
+  //state management with useState
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(false);
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
+  //Input validation
   useEffect(() => {
     const result = EMAIL_REGEX.test(email); //email validation with regex
     setValidEmail(result);
     setErrMsg("");
   }, [email]);
 
+  //Submit handler
   const handleSubmit = async () => {
     if (!validEmail) {
       setErrMsg("Introduce por favor un email válido");
@@ -31,7 +37,7 @@ const ForgottenPassword = () => {
     }
     const response = await ApiRequest.forgottenPassword({ email });
     if (response.message === "Failed to fetch") {
-      setErrMsg("Conection error. Please reload the app");
+      setErrMsg("Error de conexión, inténtalo de nuevo más tarde");
       return;
     }
     console.log(response);

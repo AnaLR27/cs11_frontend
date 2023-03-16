@@ -4,12 +4,15 @@
  */
 
 import { useParams } from "react-router";
+import ReactDOM from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import classes from "../../styles/ResetPassword.module.css";
 import Button from "../UI/Button";
+import Modal from "../UI/Modal";
+import ResetPwdSuccess from "./ResetPwdSuccess";
 import { useReducer, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import {
@@ -21,12 +24,14 @@ import ApiRequest from "../../services/apiRequest";
 import { PWD_REGEX } from "../../utils/regExp";
 
 const ResetPassword = () => {
+  //State management with useReducer
   const [state, dispatch] = useReducer(resetPwdReducer, initialResetPwdState);
-
+  // get token from url
   const { token } = useParams();
-  
+
   const navigate = useNavigate();
-  console.log(token);
+
+  //Input validation
   useEffect(() => {
     const result = PWD_REGEX.test(state.newPwd); //Pwd validation returns boolean
     dispatch({ type: RESET_PWD.NEW_PWD_VALIDATION, payload: result });
@@ -39,9 +44,26 @@ const ResetPassword = () => {
   useEffect(() => {
     dispatch({ type: RESET_PWD.ERROR_MSG, payload: "" });
   }, [state.newPwd, state.matchPwd]);
+
+  //State for password visibility
   const [showPassword, setShowPassword] = useState(false);
+
+  //State for password match visibility
+  const [showMatchPassword, setShowMatchPassword] = useState(false);
+
+  //State for successfull password change
+  const [success, setSuccess] = useState(false);
+
+  //Function to toggle password visibility
   const handleClickShowPassword = () => setShowPassword(!showPassword);
+
+  //Function to toggle password match visibility
+  const handleClickShowMatchPassword = () =>
+    setShowMatchPassword(!showMatchPassword);
+
+  //Function to handle submit
   const handleSubmitNewPwd = async () => {
+    console.log(state, "state");
     if (
       !state.newPwd ||
       !state.matchPwd ||
@@ -50,18 +72,44 @@ const ResetPassword = () => {
       !token
     )
       return;
-    const response = await ApiRequest.resetPassword({
-      newPassword: state.newPwd,
-    });
-    if (response.status === 200) {
-      console.log("Contraseña cambiada");
+
+    const response = await ApiRequest.resetPassword(
+      {
+        newPassword: state.newPwd,
+      },
+      token
+    );
+
+    if (response.message === "Password changed successfully") {
+      dispatch({
+        type: RESET_PWD.RESTORE_STATE,
+        payload: initialResetPwdState,
+      });
+      setSuccess(true);
+    } else {
+      dispatch({
+        type: RESET_PWD.ERROR_MSG,
+        payload: "Ha ocurrido un error, intentalo de nuevo mas tarde",
+      });
     }
   };
   return (
     <div className={classes["main-container"]}>
+      {success &&
+        ReactDOM.createPortal(
+          <Modal openModal={success} setOpenModal={setSuccess}>
+            <ResetPwdSuccess setSuccess={setSuccess} />
+          </Modal>,
+          document.querySelector("#modal")
+        )}
       <div className={classes.container}>
         <h3>Restablece tu contraseña</h3>
-        <form>
+        {state.errMsg && (
+          <p className={`${classes.alert} ${classes["alert-red"]} `}>
+            <FontAwesomeIcon icon={faInfoCircle} /> {state.errMsg}
+          </p>
+        )}
+        <form onSubmit={(e) => e.preventDefault()}>
           <label htmlFor='password'>
             Contarseña nueva:
             <span className={state.validPwd ? classes.valid : classes.hide}>
@@ -76,34 +124,35 @@ const ResetPassword = () => {
             </span>
           </label>
           <div className={classes["input-container"]}>
-          <input
-            type={showPassword ? "text" : "password"}
-            id='password'
-            onChange={(e) =>
-              dispatch({
-                type: RESET_PWD.NEW_PWD_INPUT,
-                payload: e.target.value,
-              })
-            }
-            required
-            aria-invalid={state.validPwd ? "false" : "true"}
-            //Accessability(aria described by element with id "pwdnote" for screenreaders)
-            aria-describedby='pwdnote'
-            onFocus={() =>
-              dispatch({ type: RESET_PWD.NEW_PWD_FOCUS, payload: true })
-            }
-            onBlur={() =>
-              dispatch({ type: RESET_PWD.NEW_PWD_FOCUS, payload: false })
-            }
-            value={state.pwd}
-            placeholder='Contraseña nueva'
-            className={classes["reset-password"]}
-          />{" "}
-          <FontAwesomeIcon
-            className={classes["password-visiblity-icon"]}
-            icon={showPassword ? faEye : faEyeSlash}
-            onClick={handleClickShowPassword}
-          /></div>
+            <input
+              type={showPassword ? "text" : "password"}
+              id='password'
+              value={state.newPwd}
+              onChange={(e) =>
+                dispatch({
+                  type: RESET_PWD.NEW_PWD_INPUT,
+                  payload: e.target.value,
+                })
+              }
+              required
+              aria-invalid={state.validPwd ? "false" : "true"}
+              //Accessability(aria described by element with id "pwdnote" for screenreaders)
+              aria-describedby='pwdnote'
+              onFocus={() =>
+                dispatch({ type: RESET_PWD.NEW_PWD_FOCUS, payload: true })
+              }
+              onBlur={() =>
+                dispatch({ type: RESET_PWD.NEW_PWD_FOCUS, payload: false })
+              }
+              placeholder='Contraseña nueva'
+              className={classes["reset-password"]}
+            />{" "}
+            <FontAwesomeIcon
+              className={classes["password-visiblity-icon"]}
+              icon={showPassword ? faEye : faEyeSlash}
+              onClick={handleClickShowPassword}
+            />
+          </div>
           <p
             id='pwdnote'
             className={
@@ -141,33 +190,34 @@ const ResetPassword = () => {
             />
           </label>
           <div className={classes["input-container"]}>
-          <input
-            type={showPassword ? "text" : "password"}
-            id='confirm_pwd'
-            onChange={(e) =>
-              dispatch({
-                type: RESET_PWD.PWD_MATCH_INPUT,
-                payload: e.target.value,
-              })
-            }
-            value={state.matchPwd}
-            required
-            aria-invalid={state.validMatch ? "false" : "true"}
-            aria-describedby='confirmnote'
-            onFocus={() =>
-              dispatch({ type: RESET_PWD.PWD_MATCH_FOCUS, payload: true })
-            }
-            onBlur={() =>
-              dispatch({ type: RESET_PWD.PWD_MATCH_FOCUS, payload: false })
-            }
-            placeholder='Confirma la contraseña'
-            className={classes["reset-password"]}
-          />{" "}
-          <FontAwesomeIcon
-            className={classes["password-visiblity-icon"]}
-            icon={showPassword ? faEye : faEyeSlash}
-            onClick={handleClickShowPassword}
-          /></div>
+            <input
+              type={showMatchPassword ? "text" : "password"}
+              value={state.matchPwd}
+              id='confirm_pwd'
+              onChange={(e) =>
+                dispatch({
+                  type: RESET_PWD.PWD_MATCH_INPUT,
+                  payload: e.target.value,
+                })
+              }
+              required
+              aria-invalid={state.validMatch ? "false" : "true"}
+              aria-describedby='confirmnote'
+              onFocus={() =>
+                dispatch({ type: RESET_PWD.PWD_MATCH_FOCUS, payload: true })
+              }
+              onBlur={() =>
+                dispatch({ type: RESET_PWD.PWD_MATCH_FOCUS, payload: false })
+              }
+              placeholder='Confirma la contraseña'
+              className={classes["reset-password"]}
+            />{" "}
+            <FontAwesomeIcon
+              className={classes["password-visiblity-icon"]}
+              icon={showMatchPassword ? faEye : faEyeSlash}
+              onClick={handleClickShowMatchPassword}
+            />
+          </div>
           <p
             id='confirmnote'
             className={

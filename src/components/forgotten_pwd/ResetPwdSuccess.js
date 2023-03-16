@@ -1,17 +1,14 @@
-/**
- * @fileoverview message to dispay
- * in modal when email was sent
- * @author Alina Dorosh
- */
 import { useNavigate } from "react-router";
 import Button from "../UI/Button";
 import classes from "./ForgottenPwdSuccess.module.css";
-const ForgottenPwdSuccess = ({ setSuccess }) => {
-  const navigate = useNavigate();
 
+const ResetPwdSuccess = ({setSuccess}) => {
+    const navigate = useNavigate();
+    
   return (
     <div className={classes["md-content-container"]}>
-      <h3>Accede a tu coreo para cambiar la contraseña</h3>
+      <h3>La contraseña ha sido camiada</h3>
+      <p>Puedes acceder a la aplicación con tu contraseña nueva</p>
       <Button
         type='submit'
         className='submit'
@@ -22,7 +19,7 @@ const ForgottenPwdSuccess = ({ setSuccess }) => {
         }}
       />
     </div>
-  );
-};
+  )
+}
 
-export default ForgottenPwdSuccess;
+export default ResetPwdSuccess

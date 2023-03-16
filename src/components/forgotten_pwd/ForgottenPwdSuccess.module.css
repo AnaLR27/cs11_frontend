@@ -10,7 +10,7 @@
     text-align: center;
 }
 
-.md-content-container h3{
-       
+.md-content-container h3, .md-content-container p{
+      
     margin-bottom: 30px;
 }

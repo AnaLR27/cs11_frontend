@@ -40,7 +40,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/forgottenpassword' element={<ForgottenPasswordPage />} />
-        <Route path='/resetpassword/:token' element={<ResetPasswordPage />} />
+        <Route path='/reset-password/:token' element={<ResetPasswordPage />} />
         {/* aqui proteccion de rutas */}
         <Route path='/candidate/:id' element={<CandidateSinglePage />} />
       </Routes>
