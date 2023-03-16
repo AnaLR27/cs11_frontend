@@ -1,26 +1,31 @@
+/**
+ * @fileoverview ResetPassword component
+ * @author Alina Dorosh
+ */
+
 import { useParams } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-import classes from "../styles/ResetPassword.module.css";
-import Input from "./UI/Input";
-import Button from "./UI/Button";
-import InfoAlert from "./UI/InfoAlert";
+import classes from "../../styles/ResetPassword.module.css";
+import Button from "../UI/Button";
 import { useReducer, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import {
   RESET_PWD,
   initialResetPwdState,
   resetPwdReducer,
-} from "../reducers/resetPassword.reducer";
-import ApiRequest from "../services/apiRequest";
-import { PWD_REGEX } from "../utils/regExp";
+} from "../../reducers/resetPassword.reducer";
+import ApiRequest from "../../services/apiRequest";
+import { PWD_REGEX } from "../../utils/regExp";
 
 const ResetPassword = () => {
   const [state, dispatch] = useReducer(resetPwdReducer, initialResetPwdState);
 
   const { token } = useParams();
-
+  
+  const navigate = useNavigate();
   console.log(token);
   useEffect(() => {
     const result = PWD_REGEX.test(state.newPwd); //Pwd validation returns boolean
@@ -179,7 +184,7 @@ const ResetPassword = () => {
               type='button'
               className='cancel'
               buttonTxt='Cancelar'
-              // onClick={() => navigate("/")}
+              onClick={() => navigate("/")}
             />
             <Button
               type='submit'

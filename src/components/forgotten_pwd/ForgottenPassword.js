@@ -1,17 +1,22 @@
-import classes from "../styles/ForgottenPassword.module.css";
-import Input from "./UI/Input";
-import Button from "./UI/Button";
-import InfoAlert from "./UI/InfoAlert";
+import classes from "../../styles/ForgottenPassword.module.css";
+import Input from "../UI/Input";
+import Button from "../UI/Button";
+import Modal from "../UI/Modal";
+import ForgottenPwdSuccess from "./ForgottenPwdSuccess";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
-import { EMAIL_REGEX } from "../utils/regExp";
+import ReactDOM from "react-dom";
+import { EMAIL_REGEX } from "../../utils/regExp";
 import { useNavigate } from "react-router";
-import ApiRequest from "../services/apiRequest";
+import ApiRequest from "../../services/apiRequest";
 const ForgottenPassword = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(false);
   const [errMsg, setErrMsg] = useState("");
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     const result = EMAIL_REGEX.test(email); //email validation with regex
@@ -29,19 +34,33 @@ const ForgottenPassword = () => {
       setErrMsg("Conection error. Please reload the app");
       return;
     }
-    if (response.status === 200) {
+    console.log(response);
+    if (response.message === "Email sent successfully") {
       console.log("email enviado");
       setEmail("");
+      setSuccess(true);
     }
   };
+
   return (
     <div className={classes["main-container"]}>
+      {success &&
+        ReactDOM.createPortal(
+          <Modal openModal={success} setOpenModal={setSuccess}>
+            <ForgottenPwdSuccess success={success} setSuccess={setSuccess} />{" "}
+          </Modal>,
+          document.querySelector("#modal")
+        )}
       <div className={classes.container}>
         <h3>Has olvidado tu contraseña?</h3>
         <p>
           Introduce tu email y te enviaremos un enlace para que puedas cambiarla
         </p>
-        {errMsg && <InfoAlert alertTxt={errMsg} className='alert-red' />}
+        {errMsg && (
+          <p className={`${classes.alert} ${classes["alert-red"]} `}>
+            <FontAwesomeIcon icon={faInfoCircle} /> {errMsg}
+          </p>
+        )}
         <form onSubmit={(e) => e.preventDefault()}>
           <label htmlFor='email'>Email</label>
           <Input
