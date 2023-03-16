@@ -7,7 +7,7 @@ import ApiRequest from "./services/apiRequest";
 import LoginModalProvider from "./providers/LoginModalProvider";
 import Header from "./components/HeaderFooter/Header";
 import Footer from "./components/HeaderFooter/Footer";
-
+import EmployerSinglePage from "./views/EmployerSinglePage";
 function App() {
   //ckeck if there is a remembered user and log him in if there is, using refresh token for authentication and recieve new access token
   useEffect(() => {
@@ -34,9 +34,10 @@ function App() {
         <Header />
       </LoginModalProvider>
       <Routes>
-        <Route path='/' element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         {/* aqui proteccion de rutas */}
-        <Route path='/candidate/:id' element={<CandidateSinglePage />} />
+        <Route path="/candidate/:id" element={<CandidateSinglePage />} />
+        <Route path="/employer/:id" element={<EmployerSinglePage />} />
       </Routes>
       <Footer />
     </Router>
