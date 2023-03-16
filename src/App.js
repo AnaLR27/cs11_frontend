@@ -1,3 +1,4 @@
+import Curriculum from "./components/curriculum/Curriculum"
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./views/HomePage";
@@ -33,6 +34,7 @@ function App() {
     (async () => handleRememberedUser())();
   }, []);
   return (
+
     <Router>
       <LoginModalProvider>
         <Header />
@@ -41,6 +43,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         {/* aqui proteccion de rutas */}
         <Route path="/candidate/:id" element={<CandidateSinglePage />} />
+        <Route path="/candidate/curriculum" element={<Curriculum/ >} />
         <Route path="/employer/:id" element={<EmployerSinglePage />} />
         {/*Candidates List Routes <Route path="/candidate/all-candidates" element={<CandidateList />} />
         <Route
