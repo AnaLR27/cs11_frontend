@@ -2,6 +2,7 @@
  * @fileoverview DetailCandidate component
  * @author Juan Dominguez
  * @modified 15/03/2022 by Alina Dorosh
+ * @modified 15/03/2022 by Juan Dominguez
  */
 import classesDetails from "./DetailCandidate.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -51,7 +52,7 @@ function DetailCandidate(props) {
                     icon={faClock}
                     className={classesDetails["icon-fa-clock"]}
                   />
-                  Member Since, {infoCandidate.registerAt}
+                  Miembro desde, {infoCandidate.registerAt}
                 </span>
               </li>
             </ul>
@@ -68,7 +69,7 @@ function DetailCandidate(props) {
             href={infoCandidate.resume}
             download
           >
-            Download CV
+            Descargar CV
           </a>
           <button
             className={
@@ -109,7 +110,7 @@ function DetailCandidate(props) {
                 icon={faLanguage}
                 className={classesDetails["icons-job"]}
               />
-              <h5>Language:</h5>
+              <h5>Idiomas:</h5>
               <span>{infoCandidate.languages?.join(", ")}</span>
             </li>
           </ul>
