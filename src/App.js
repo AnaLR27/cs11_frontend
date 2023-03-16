@@ -9,9 +9,11 @@ import ApiRequest from "./services/apiRequest";
 import LoginModalProvider from "./providers/LoginModalProvider";
 import Header from "./components/HeaderFooter/Header";
 import Footer from "./components/HeaderFooter/Footer";
+import CandidatesDashboard from "./views/CandidatesDashboard";
 import Allaplicants from "./views/AllAplicants";
 import EmployerSinglePage from "./views/EmployerSinglePage";
 import ChangePassword from "./views/ChangePassword";
+
 
 function App() {
   //ckeck if there is a remembered user and log him in if there is, using refresh token for authentication and recieve new access token
@@ -40,7 +42,11 @@ function App() {
         <Header />
       </LoginModalProvider>
       <Routes>
-        <Route path='/' element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/candidate/all-candidates"
+          element={<CandidatesDashboard />}
+        />
         <Route path="/employers-dashboard/all-applicants" element={<Allaplicants to="/employers-dashboard/all-applicants"/>} />
         <Route path="/candidate/:id" element={<CandidateSinglePage />} />
         <Route path="/candidate/curriculum" element={<Curriculum/ >} />
