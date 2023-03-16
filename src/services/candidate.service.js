@@ -2,6 +2,9 @@
  * @author iRaphiki <imraphiki@gmail.com>
  */
 import { Candidate } from '../models/candidate.model';
+const dotenv = require('dotenv');
+dotenv.config();
+const { URL, PORT } = process.env;
 
 export class CandidateService {
 	// GET: loginId (create user)
@@ -14,16 +17,13 @@ export class CandidateService {
 		}
 
 		// Backend request
-		const request = await fetch(
-			'http://localhost:3000/api/candidate/' + userId,
-			{
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-					'Auth-token': token,
-				},
+		const request = await fetch(`${URL}:${PORT}/candidate/` + userId, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				'Auth-token': token,
 			},
-		);
+		});
 		const data = await request.json();
 		return new Candidate(data.data);
 	}

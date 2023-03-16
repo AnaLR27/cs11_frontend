@@ -36,7 +36,4 @@ export class Candidate {
 					encodeURIComponent(this.photo)
 			: undefined;
 	}
-	isAdmin() {
-		return this.role === 'admin';
-	}
 }

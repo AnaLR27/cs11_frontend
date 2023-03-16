@@ -11,6 +11,7 @@ import { ImageBrowser } from '../components/form/inputs/ImageInput.component';
 import { Title } from '../components/form/Title.component';
 import { CandidateService } from '../services/candidate.service';
 import { Candidate } from '../models/candidate.model';
+import { Loader } from '../components/UI/Spinner/Loader';
 
 function CandidateProfile() {
 	// const [loading, setLoading] = useState(true);
@@ -117,172 +118,172 @@ function CandidateProfile() {
 
 	return (
 		<div className={`${styles['page-wrapper']}`}>
-			{/* {loading ? (
-				<p>Cargando...</p> // TODO: Add spinner
-			) : ( */}
-			<section className={`${styles['dashboard']}`}>
-				<div className={`${styles['dash-title']}`}>
-					<Title
-						title='Mi Perfil!'
-						altText='&#191;Listo para volver?'
-						size='l'
-					/>
-				</div>
-				<div
-					className={`${styles['mb-4']} ${styles['ms-0']} ${styles['show-1023']}`}>
-					<button
-						type='button'
-						className={`${styles['btn']} ${styles['toggle-filters']}`}>
-						<span className={`${styles['flaticon-menu-1']}`}></span>
-						Menu
-					</button>
-				</div>
-				<div className={`${styles['container']}`}>
-					<div className={`${styles['container-title']}`}>
+			{loading ? (
+				<Loader />
+			) : (
+				<section className={`${styles['dashboard']}`}>
+					<div className={`${styles['dash-title']}`}>
 						<Title
-							title='Mi Perfil'
-							size='s'
+							title='Mi Perfil!'
+							altText='&#191;Listo para volver?'
+							size='l'
 						/>
 					</div>
-					<div className={`${styles['container-content']}`}>
-						<ImageBrowser
-							src={user.getPhoto()}
-							label='Buscar Logo'
-							onChange={(e) => setPhoto(e.target.files[0])}
-						/>
+					<div
+						className={`${styles['mb-4']} ${styles['ms-0']} ${styles['show-1023']}`}>
+						<button
+							type='button'
+							className={`${styles['btn']} ${styles['toggle-filters']}`}>
+							<span className={`${styles['flaticon-menu-1']}`}></span>
+							Menu
+						</button>
+					</div>
+					<div className={`${styles['container']}`}>
+						<div className={`${styles['container-title']}`}>
+							<Title
+								title='Mi Perfil'
+								size='s'
+							/>
+						</div>
+						<div className={`${styles['container-content']}`}>
+							<ImageBrowser
+								src={user.getPhoto()}
+								label='Buscar Logo'
+								onChange={(e) => setPhoto(e.target.files[0])}
+							/>
 
-						<Form
-							onSubmit={(formData) => {
-								saveUpdateUser(formData);
-							}}
-							onChange={(formData) => {
-								setFormData(formData);
-							}}>
-							<div className={`${styles['row']}`}>
-								<div
-									className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}>
-									<TextInput
-										name='fullName'
-										label='Nombre Completo'
-										placeholder='Jerome'
-										value={user?.fullName}
-									/>
+							<Form
+								onSubmit={(formData) => {
+									saveUpdateUser(formData);
+								}}
+								onChange={(formData) => {
+									setFormData(formData);
+								}}>
+								<div className={`${styles['row']}`}>
+									<div
+										className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}>
+										<TextInput
+											name='fullName'
+											label='Nombre Completo'
+											placeholder='Jerome'
+											value={user?.fullName}
+										/>
+									</div>
+									<div
+										className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}>
+										<TextInput
+											name='email'
+											label='Email'
+											placeholder='jerome@gmail.com'
+											pattern='^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$'
+											messageWhenWrongPattern='El email no es válido'
+											value={user?.email}
+										/>
+									</div>
+									<div
+										className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}>
+										<TextInput
+											name='bootcamp'
+											label='Bootcamp'
+											placeholder='Full Stack Web Developer'
+											value={user?.bootcamp}
+										/>
+									</div>
+									<div
+										className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}>
+										<TextInput
+											name='edition'
+											label='Edición'
+											placeholder='11'
+											pattern='^\d{0,2}'
+											value={user?.edition}
+										/>
+									</div>
+									<div
+										className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}>
+										<TextInput
+											name='linkedin'
+											label='LinkedIn'
+											pattern='^(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/(pub|in|profile)'
+											placeholder='https://www.linkedin.com/in/jerome/'
+											value={user?.socialNetworks?.linkedin}
+										/>
+									</div>
+									<div
+										className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}>
+										<TextInput
+											name='github'
+											label='Github'
+											pattern='^(http(s?):\/\/)?(www\.)?github\.([a-z])+\/([A-Za-z0-9]{1,})+\/?$'
+											placeholder='https://www.github.com/jerome'
+											value={user?.socialNetworks?.github}
+										/>
+									</div>
+									<div
+										className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}>
+										<TextInput
+											name='languages'
+											label='Idiomas'
+											placeholder='English, Chinese'
+											value={user?.languages?.join(', ')}
+										/>
+									</div>
+									<div
+										className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}>
+										<SelectInput
+											name='isLookingForJob'
+											label='Disponibilidad laboral'
+											items={items}
+											disabled={!user.isAdmin()}
+											messageWhenValueIsMissing='select a value'
+											value={user?.getLookingForJob()}
+										/>
+									</div>
+									<div
+										className={`${styles['input-container']} ${styles['col-md-12']}`}>
+										<TextAreaInput
+											name='description'
+											label='Sobre mi'
+											rows={10}
+											placeholder='About us...'
+											value={user?.description}
+										/>
+									</div>
+									{saved === 'updated' ? (
+										<strong
+											className={`${styles.alert}  ${styles['alert-success']}`}>
+											Usuario modificado correctamente!!
+										</strong>
+									) : (
+										''
+									)}
+									{saved === 'error' ? (
+										<strong
+											className={`${styles.alert}  ${styles['alert-danger']}`}>
+											Hay campos vacíos
+										</strong>
+									) : (
+										''
+									)}
+									<div
+										className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}>
+										<button
+											type='submit'
+											disabled={formData.invalid}
+											className={
+												formData.invalid
+													? `${styles.btn} ${styles['btn-disabled']}`
+													: `${styles.btn} ${styles['btn-primary']}`
+											}>
+											Guardar
+										</button>
+									</div>
 								</div>
-								<div
-									className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}>
-									<TextInput
-										name='email'
-										label='Email'
-										placeholder='jerome@gmail.com'
-										pattern='^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$'
-										messageWhenWrongPattern='El email no es válido'
-										value={user?.email}
-									/>
-								</div>
-								<div
-									className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}>
-									<TextInput
-										name='bootcamp'
-										label='Bootcamp'
-										placeholder='Full Stack Web Developer'
-										value={user?.bootcamp}
-									/>
-								</div>
-								<div
-									className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}>
-									<TextInput
-										name='edition'
-										label='Edición'
-										placeholder='11'
-										pattern='^\d{0,2}'
-										value={user?.edition}
-									/>
-								</div>
-								<div
-									className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}>
-									<TextInput
-										name='linkedin'
-										label='LinkedIn'
-										pattern='^(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/(pub|in|profile)'
-										placeholder='https://www.linkedin.com/in/jerome/'
-										value={user?.socialNetworks?.linkedin}
-									/>
-								</div>
-								<div
-									className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}>
-									<TextInput
-										name='github'
-										label='Github'
-										pattern='^(http(s?):\/\/)?(www\.)?github\.([a-z])+\/([A-Za-z0-9]{1,})+\/?$'
-										placeholder='https://www.github.com/jerome'
-										value={user?.socialNetworks?.github}
-									/>
-								</div>
-								<div
-									className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}>
-									<TextInput
-										name='languages'
-										label='Idiomas'
-										placeholder='English, Chinese'
-										value={user?.languages?.join(', ')}
-									/>
-								</div>
-								<div
-									className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}>
-									<SelectInput
-										name='isLookingForJob'
-										label='Disponibilidad laboral'
-										items={items}
-										disabled={!user.isAdmin()}
-										messageWhenValueIsMissing='select a value'
-										value={user?.getLookingForJob()}
-									/>
-								</div>
-								<div
-									className={`${styles['input-container']} ${styles['col-md-12']}`}>
-									<TextAreaInput
-										name='description'
-										label='Sobre mi'
-										rows={10}
-										placeholder='About us...'
-										value={user?.description}
-									/>
-								</div>
-								{saved === 'updated' ? (
-									<strong
-										className={`${styles.alert}  ${styles['alert-success']}`}>
-										Usuario modificado correctamente!!
-									</strong>
-								) : (
-									''
-								)}
-								{saved === 'error' ? (
-									<strong
-										className={`${styles.alert}  ${styles['alert-danger']}`}>
-										Hay campos vacíos
-									</strong>
-								) : (
-									''
-								)}
-								<div
-									className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}>
-									<button
-										type='submit'
-										disabled={formData.invalid}
-										className={
-											formData.invalid
-												? `${styles.btn} ${styles['btn-disabled']}`
-												: `${styles.btn} ${styles['btn-primary']}`
-										}>
-										Guardar
-									</button>
-								</div>
-							</div>
-						</Form>
+							</Form>
+						</div>
 					</div>
-				</div>
-			</section>
-			{/* )} */}
+				</section>
+			)}
 		</div>
 	);
 }
