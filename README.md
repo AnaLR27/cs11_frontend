@@ -27,31 +27,6 @@ CODE SPACE JOBS PORTAL, its a social website to connect employers with all code 
   - [**MODELS**](#models)
     - [**CANDIDATE**](#candidate)
   - [**CONTRIBUTORS**](#contributors)
-    > > > > > > > f61d71670f6a07e52ba4b3bf78c5827c0618de31
-        - [**CANDIDATE PROFILE**](#candidate-profile)
-- [**CODE SPACE JOBS PORTAL - FRONTEND**](#code-space-jobs-portal---frontend)
-  - [**DEPENDENCIES**](#dependencies)
-  - [**HOW TO RUN THE PROJECT**](#how-to-run-the-project)
-  - [**PROJECT LAYOUT**](#project-layout)
-  - [**ROUTES**](#routes)
-    - [" / "](#--)
-  - [**VIEWS**](#views)
-    - [**CANDIDATE PROFILE**](#candidate-profile)
-    - [**HOME PAGE**](#home-page)
-    - [**CANDIDATE PROFILE**](#candidate-profile-1)
-  - [**COMPONENTS**](#components)
-    - [**Form Input**](#form-input)
-    - [**Image Input**](#image-input)
-    - [**Text Input**](#text-input)
-    - [**Select Input**](#select-input)
-    - [**Text Area Input**](#text-area-input)
-    - [**Home**](#home)
-    - [**Register Form**](#register-form)
-    - [**Login Form**](#login-form)
-    - [**Reusable components** :](#reusable-components-)
-  - [**MODELS**](#models)
-    - [**CANDIDATE**](#candidate)
-  - [**CONTRIBUTORS**](#contributors)
 
 ## **DEPENDENCIES**
 
@@ -79,20 +54,6 @@ CODE SPACE JOBS PORTAL, its a social website to connect employers with all code 
 ## **PROJECT LAYOUT**
 
 ```shell
-    /
-    ├──public
-    └───src
-        ├───assets
-        │   └───img
-        ├───components
-        │   └───Form
-        │       ├───base
-        │       └───inputs
-        ├───models
-        ├───services
-        ├───styles
-        ├───utils
-        └───views
 
  src
  ┣ assets
