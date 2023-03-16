@@ -22,7 +22,8 @@ export const CardComponent = ({ offers }) => {
                 <p>{offer.companyName}</p>
               </span>
               <h4 className={classes["job-title"]}>
-                <Link to={`/job/job-single/${offer._id}`}>{offer.title}</Link>
+                {offer.title}
+                {/* <Link to={`/job/job-single/${offer._id}`}>{offer.title}</Link> */}
               </h4>
               <div className={classes.location}>
                 <span>
