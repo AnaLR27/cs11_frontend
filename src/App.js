@@ -37,6 +37,11 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/job/job-list" element={<JobList />} />
         <Route path="/job/job-single/:jobId" element={<JobInfo />} />
+        {/*Candidates List Routes <Route path="/candidate/all-candidates" element={<CandidateList />} />
+        <Route
+          path="/candidate/:loginId"
+          element={"<DetailCandidate/>QUITAR COMILLAS"}
+        /> */}
         {/* aqui proteccion de rutas */}
         <Route path='/candidate/:id' element={<CandidateSinglePage />} />
       </Routes>
