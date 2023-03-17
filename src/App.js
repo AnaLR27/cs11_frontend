@@ -45,7 +45,7 @@ function App() {
       </LoginModalProvider>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/job/job-list" element={<JobList />} />
+        <Route path="/job/all-jobs" element={<JobList />} />
         {/* <Route path="/job/job-single/:jobId" element={<JobInfo />} /> */}
 
         <Route path="/forgottenpassword" element={<ForgottenPasswordPage />} />
