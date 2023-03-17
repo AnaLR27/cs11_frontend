@@ -16,6 +16,7 @@ import Allaplicants from "./views/AllAplicants";
 import EmployerSinglePage from "./views/EmployerSinglePage";
 import ChangePassword from "./views/ChangePassword";
 import { JobList } from "./views/JobList";
+import CandidateList from "./views/CandidateList";
 
 function App() {
   //ckeck if there is a remembered user and log him in if there is, using refresh token for authentication and recieve new access token
@@ -52,10 +53,10 @@ function App() {
         <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
         {/* aqui proteccion de rutas */}
 
-        <Route
+        {/* <Route
           path="/candidate/all-candidates"
           element={<CandidatesDashboard />}
-        />
+        /> */}
         <Route
           path="/employers-dashboard/all-applicants"
           element={<Allaplicants to="/employers-dashboard/all-applicants" />}
@@ -63,7 +64,8 @@ function App() {
         <Route path="/candidate/:id" element={<CandidateSinglePage />} />
         <Route path="/candidate/curriculum" element={<Curriculum />} />
         <Route path="/employer/:id" element={<EmployerSinglePage />} />
-        {/*Candidates List Routes <Route path="/candidate/all-candidates" element={<CandidateList />} />
+        <Route path="/candidate/all-candidates" element={<CandidateList />} />
+        {/*Candidates List Routes 
         <Route
           path="/candidate/:loginId"
           element={<DetailCandidate/>}

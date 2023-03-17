@@ -1,6 +1,6 @@
 /**
  * @author: Benjamín
- * @modified: 
+ * @modified: Ana Lorenzo
  */
 
 // Description: This component is the main component of the candidates list page. It contains the main logic of the page and the components that are used in the page.
@@ -12,14 +12,14 @@ import CardInfo from "../components/candidatesList/CardInfo";
 import CardsContainer from "../components/candidatesList/CardsContainer";
 import Pagination from "../components/candidatesList/Pagination";
 import Switcher from "../components/candidatesList/Switcher";
-import DualRing from "../components/candidatesList/Spinners/DualRing";
-import { NoCards } from "../components/JobList/NoCards"
+import DualRing from "../components/UI/Spinner/Loader";
+import { NoCards } from "../components/JobList/NoCards";
 
 //import classes from "./CandidateList.module.css";
-import classes from "..styles/CandidateList.module.css";
+import classes from "../styles/CandidateList.module.css";
 
 //hooks
-import { useState, useEffect, useMemo} from "react";
+import { useState, useEffect, useMemo } from "react";
 
 //utils and services
 import { orderByDate } from "../utils/orderByDateCandidates.utils";
@@ -35,21 +35,21 @@ function CandidateList() {
   const [currentPage, setCurrentPage] = useState(1); //pagination
   const [loading, setLoading] = useState(false); //loading to be used with spinner
 
-
   //useEffect to fetch the candidates and sort them
   useEffect(() => {
     window.scrollTo(0, 0); //to send the user back to the top of the page
     setLoading(true);
     candidatesList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[order]);
+  }, [order]);
 
-   //sorting the candidates by register date
-   const candidatesList = async () => {
+  //sorting the candidates by register date
+  const candidatesList = async () => {
     setLoading(true);
-    const { info } = await fetchCards(`${CANDIDATES_API}/all-candidates`);
-    const sortedCandidates = orderByDate(info, order);
+    const { datos } = await fetchCards(`${CANDIDATES_API}/all-candidates`);
+    const sortedCandidates = orderByDate(datos, order);
     setCandidates(sortedCandidates);
+    // setCandidates([]);
     setLoading(false);
   };
 
@@ -77,9 +77,7 @@ function CandidateList() {
 
   return (
     <>
-      {loading ? (
-        <DualRing />
-      ) : candidates.length === 0 ? ( //if there are no candidates
+      {candidates.length === 0 && !loading ? (
         <NoCards valor={"candidatos"} />
       ) : (
         <>
@@ -111,21 +109,27 @@ function CandidateList() {
                 </div>
               </div>
             </div>
-            {currentCards.map((candidate, key) => {
-              return (
-                <CardWrapper key={key} candidates={candidate}>
-                  <CardImg candidate={candidate} />
-                  <CardInfo candidate={candidate} />
-                </CardWrapper>
-              );
-            })}
+            {loading ? (
+              <DualRing />
+            ) : (
+              <>
+                {currentCards.map((candidate, key) => {
+                  return (
+                    <CardWrapper key={key} candidates={candidate}>
+                      <CardImg candidate={candidate} />
+                      <CardInfo candidate={candidate} />
+                    </CardWrapper>
+                  );
+                })}
+                <Pagination
+                  currentPage={currentPage}
+                  totalCount={candidates.length}
+                  pageSize={PageSize}
+                  onPageChange={(page) => setCurrentPage(page)}
+                />
+              </>
+            )}
           </CardsContainer>
-          <Pagination
-            currentPage={currentPage}
-            totalCount={candidates.length}
-            pageSize={PageSize}
-            onPageChange={(page) => setCurrentPage(page)}
-          />
         </>
       )}
     </>

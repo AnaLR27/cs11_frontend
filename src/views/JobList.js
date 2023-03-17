@@ -73,45 +73,51 @@ export const JobList = () => {
 
   return (
     <>
-      <div className={classes["job-container"]}>
-        <div className={classes.switcher}>
-          <div className={classes["showing-result"]}></div>
-          <div className={classes["sort-by"]}>
-            <button
-              className={
-                order === "oldest" || order === "newest"
-                  ? classes["btn-clear"]
-                  : classes["btn-clear-disabled"]
-              }
-              onClick={() => {
-                setCurrentPage(1); //to send the user back to the first page
-                setSelectedOrder("default");
-                setOrder("default");
-              }}
-            >
-              Borrar filtros
-            </button>
-            <Switcher
-              value={selectedOrder}
-              handlerSelect={handlerSelect}
-              selectedOrder={selectedOrder}
-            />
+      {offers.length === 0 && !loading ? (
+        <NoCards valor={"ofertas"}/>
+      ) : (
+        <>
+          <div className={classes["job-container"]}>
+            <div className={classes.switcher}>
+              <div className={classes["showing-result"]}></div>
+              <div className={classes["sort-by"]}>
+                <button
+                  className={
+                    order === "oldest" || order === "newest"
+                      ? classes["btn-clear"]
+                      : classes["btn-clear-disabled"]
+                  }
+                  onClick={() => {
+                    setCurrentPage(1); //to send the user back to the first page
+                    setSelectedOrder("default");
+                    setOrder("default");
+                  }}
+                >
+                  Borrar filtros
+                </button>
+                <Switcher
+                  value={selectedOrder}
+                  handlerSelect={handlerSelect}
+                  selectedOrder={selectedOrder}
+                />
+              </div>
+            </div>
+            {loading ? (
+              <Loader />
+            ) : (
+              <>
+                <CardComponent offers={currentCards} />
+                <Pagination
+                  currentPage={currentPage}
+                  totalCount={offers.length}
+                  pageSize={PageSize}
+                  onPageChange={(page) => setCurrentPage(page)}
+                />
+              </>
+            )}
           </div>
-        </div>
-        {loading ? (
-          <Loader />
-        ) : (
-          <>
-            <CardComponent offers={currentCards} />
-            <Pagination
-              currentPage={currentPage}
-              totalCount={offers.length}
-              pageSize={PageSize}
-              onPageChange={(page) => setCurrentPage(page)}
-            />
-          </>
-        )}
-      </div>
+        </>
+      )}
     </>
   );
 };
