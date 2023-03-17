@@ -1,3 +1,10 @@
+header {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
 .header {
   background-color: var(--green);
   display: flex;
@@ -8,6 +15,8 @@
   padding: 1rem 1.65rem;
   width: 100vw;
   overflow: hidden;
+  position: absolute;
+  top: 0;
   z-index: 1;
 }
 .logo {
@@ -32,6 +41,7 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    height: var(--header-height-tablet);
   }
   .logo {
     display: flex;

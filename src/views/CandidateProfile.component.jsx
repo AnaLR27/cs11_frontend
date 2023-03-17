@@ -3,18 +3,18 @@
  */
 import { useEffect, useState } from 'react';
 import styles from '../styles/form.module.css';
-import { Form } from '../components/form/base/Form.component';
-import { TextAreaInput } from '../components/form/inputs/TextAreaInput.component';
-import { TextInput } from '../components/form/inputs/TextInput.component';
-import { SelectInput } from '../components/form/inputs/SelectInput.component';
-import { ImageBrowser } from '../components/form/inputs/ImageInput.component';
-import { Title } from '../components/form/Title.component';
+import { Form } from '../components/Form/base/Form.component';
+import { TextAreaInput } from '../components/Form/inputs/TextAreaInput.component';
+import { TextInput } from '../components/Form/inputs/TextInput.component';
+import { SelectInput } from '../components/Form/inputs/SelectInput.component';
+import { ImageBrowser } from '../components/Form/inputs/ImageInput.component';
+import { Title } from '../components/Form/Title.component';
 import { CandidateService } from '../services/candidate.service';
 import { Candidate } from '../models/candidate.model';
-import { Loader } from '../components/UI/Spinner/Loader';
+import Loader from '../components/UI/Spinner/Loader';
 
 function CandidateProfile() {
-	// const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(true);
 	const [user, setUser] = useState(new Candidate());
 	const [photo, setPhoto] = useState(undefined);
 	const [formData, setFormData] = useState({});
@@ -45,7 +45,7 @@ function CandidateProfile() {
 
 		// Setting user data state and loading state
 		setUser(data);
-		// setLoading(false);
+		setLoading(false);
 	};
 
 	// Setting the new values from form data.

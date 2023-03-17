@@ -1,8 +1,5 @@
-.curriculum-section {
+section {
   background-color: #e5f0ed;
-  min-height: calc(100vh - var(--header-height) - var(--footer-height));
-  color: var(--darkgrey);
-  padding: 2rem;
 }
 /* Titulos */
 .titulo-principal-h3,

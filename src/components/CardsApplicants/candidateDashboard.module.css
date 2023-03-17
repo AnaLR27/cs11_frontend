@@ -1,3 +1,56 @@
+:root {
+  box-sizing: border-box;
+  font-size: 0, 785rem;
+
+  --white: #fdfdfd;
+
+  --black: #000000;
+
+  --green: #47d7ac;
+
+  --dark-green: #2c7a7b;
+
+  --light-green: #e5f0ed;
+
+  --darkgrey: #4a4a4a;
+
+  --lightgrey: #949494;
+
+  --invalid: #e74c3c;
+
+  --valid: #07bc0c;
+}
+*,
+::after,
+::before {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  outline: none 0;
+}
+body {
+  background-color: var(--light-green);
+  font-family: "Montserrat", sans-serif;
+}
+h1 {
+  font-size: 3.5rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+h4 {
+  font-size: 1.1rem;
+  font-family: "Montserrat", sans-serif;
+}
+p {
+  font-family: "Montserrat", sans-serif;
+}
+
 /*---------------CSS-------------------*/
 
 .DivCardsApp {

@@ -3,17 +3,16 @@
   margin-bottom: 0.5rem;
   line-height: 1.3rem;
 }
-.register-form .roles {
+.roles {
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
   width: 100%;
   padding: 0.5rem;
   margin-bottom: 0.3rem;
- 
 }
-.register-form .role-btn {
-  font-size: 0.8rem;
+.role-btn {
+  font-size: 0.6rem;
   font-weight: 500;
   padding: 0.5rem;
   border-radius: 0.3rem;
@@ -23,46 +22,46 @@
   cursor: pointer;
 }
 
-.register-form .active-role {
+.active-role {
   background-color: var(--green);
   color: #fff;
   border: none;
 }
-.register-form .not-active-role:hover {
+.not-active-role:hover {
   background-color: #fff;
   color: var(--dark-green);
   border: 1px solid var(--dark-green);
 }
 
 .register-form label {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   padding: 0;
   text-align: left;
- }
+}
 
-.register-form .instructions {
+.instructions {
   font-size: 0.6rem;
   border-radius: 0.3rem;
   background: var(--darkgrey);
   color: #fff;
   padding: 0.3rem;
   width: 100%;
-  margin: -.5rem auto .4rem auto;
+  margin: 0 auto;
   display: block;
   font-weight: 300;
   text-align: justify;
 }
 
-.register-form .instructions > svg {
+.instructions > svg {
   margin-right: 0.5rem;
 }
 
-.register-form .offscreen {
+.offscreen {
   position: absolute;
   left: -9999px;
 }
 
-.register-form .alert-green {
+.alert-green {
   background-color: var(--valid);
   border-radius: 0.3rem;
   color: rgb(41, 39, 39);
@@ -75,23 +74,23 @@
   color: #fff;
 }
 
-.register-form .hide {
+.hide {
   display: none;
 }
 
-.register-form .valid {
+.valid {
   color: var(--valid);
   margin-left: 0.5rem;
   font-size: 1rem;
 }
 
-.register-form .invalid {
+.invalid {
   color: var(--invalid);
   margin-left: 0.5rem;
   font-size: 1rem;
 }
 
-.register-form .errmsg {
+.errmsg {
   background-color: rgb(207, 60, 60);
   border-radius: 0.3rem;
   color: rgb(41, 39, 39);
@@ -103,19 +102,19 @@
   font-size: .7rem;
   color: #fff;
 }
-.register-form .have-account{
-  font-size: 0.7rem;
+.have-account{
+  font-size: 0.6rem;
   padding: 0.3rem;
   margin: 0 auto;
   text-align: center;
 }
-.register-form .login{
-  font-size: 0.8rem;
+.login{
+  font-size: 0.7rem;
   text-decoration: none;
   color: var(--lightgrey);
   cursor: pointer;
 }
 
-.register-form .login:hover{
+.login:hover{
   color: var(--green);
 }
