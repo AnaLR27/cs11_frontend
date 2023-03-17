@@ -49,7 +49,7 @@ const ForgottenPassword = () => {
   };
 
   return (
-    <div className={classes["main-container"]}>
+    <div className={classes["forgotten-pwd-main-container"]}>
       {success &&
         ReactDOM.createPortal(
           <Modal openModal={success} setOpenModal={setSuccess}>

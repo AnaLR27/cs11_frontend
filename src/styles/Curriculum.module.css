@@ -1,5 +1,8 @@
-section {
+.curriculum-section {
   background-color: #e5f0ed;
+  height: calc(100vh - var(--header-height) - var(--footer-height));
+  max-height: calc(100vh - var(--header-height) - var(--footer-height));
+  width: 100vw; 
 }
 /* Titulos */
 .titulo-principal-h3,
@@ -11,7 +14,7 @@ section {
   margin-right: 40px;
 }
 .titulo-principal-h3 {
-  margin-top: 80px;
+  /* margin-top: 80px; */
   padding-top: 2rem;
   padding-bottom: 1rem;
 }
@@ -28,10 +31,8 @@ section {
 }
 .p-blue {
   color: #2c7a7b;
-
-  margin-top: 30px;
   font-weight: 600;
-  line-height: 24px;
+  line-height: 22px;
   margin-bottom: 12px;
 }
 .p2 {
@@ -163,4 +164,12 @@ section {
 }
 .icono-trash:hover {
   color: #2c7a7b;
+}
+
+@media (min-width: 768px) {
+  .p-blue {
+    margin-top: 30px;
+    line-height: 24px;
+    margin-bottom: 12px;
+  }
 }
