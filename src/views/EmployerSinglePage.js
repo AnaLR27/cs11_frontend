@@ -3,7 +3,7 @@
  * @author David Calero
  */
 
-import DetailEmployer from "../components/DetailEmployer/DetailEmployer";
+import DetailEmployer from "../components/detailEmployer/DetailEmployer";
 
 const EmployerSinglePage = () => {
   return <DetailEmployer />;
