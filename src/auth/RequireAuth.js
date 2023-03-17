@@ -5,20 +5,23 @@
  */
 import { useNavigate, Outlet } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 const RequireAuth = ({ allowedRole }) => {
   const navigate = useNavigate();
+  const [allowAccess, setAllowAccess] = useState(false);
+  const [userRole, setUserRole] = useState("");
 
   useEffect(() => {
-    if (!allowAccess) navigate("/unauthorized", { replace: true });
+    if (!token || !allowAccess) navigate("/unauthorized", { replace: true });
   }, []);
 
   const token = sessionStorage.getItem("accessToken");
-  const decoded = jwt_decode(token);
-  const userRole = decoded?.UserInfo?.role;
-  const allowAccess = userRole === allowedRole;
-  // console.log(allowAccess, "allowAccess");
-  // console.log(userRole, "userRole");
+  if (token) {
+    const decoded = jwt_decode(token);
+    const userRole = decoded?.UserInfo?.role;
+    setUserRole(userRole);
+    setAllowAccess(userRole === allowedRole);
+  }
   return allowAccess && <Outlet />;
 };
 
