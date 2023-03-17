@@ -1,25 +1,23 @@
-body {
-  background-color: #e5f0ed;
-  font-family: "Montserrat", sans-serif;
-}
 section {
   background-color: #e5f0ed;
 }
 /* Titulos */
-h3,
-h4 {
+.titulo-principal-h3,
+.titulo-inferior-h4 {
   color: #4a4a4a;
 }
 .contenedor-global {
   margin-left: 40px;
   margin-right: 40px;
 }
-h3 {
+.titulo-principal-h3 {
+  margin-top: 80px;
   padding-top: 2rem;
   padding-bottom: 1rem;
 }
 
 .texto {
+  margin-top: 20px;
   color: dimgray;
   line-height: 24px;
 }
@@ -48,7 +46,7 @@ h3 {
   cursor: pointer;
   margin-top: 2rem;
 }
-h4 {
+.titulo-inferior-h4 {
   padding: 2rem;
 }
 .cv-uploadButton {
