@@ -9,19 +9,19 @@ import { useEffect, useState } from "react";
 const RequireAuth = ({ allowedRole }) => {
   const navigate = useNavigate();
   const [allowAccess, setAllowAccess] = useState(false);
-  const [userRole, setUserRole] = useState("");
+  const token = sessionStorage.getItem("accessToken");
 
   useEffect(() => {
-    if (!token || !allowAccess) navigate("/unauthorized", { replace: true });
+    if (!token) navigate("/unauthorized", { replace: true });
+    if (token) {
+      const decoded = jwt_decode(token);
+      const decodedRole = decoded?.UserInfo?.role;
+      const allow = decodedRole === allowedRole;
+      if (!allow) navigate("/unauthorized", { replace: true });
+      setAllowAccess(allow);
+    }
   }, []);
 
-  const token = sessionStorage.getItem("accessToken");
-  if (token) {
-    const decoded = jwt_decode(token);
-    const userRole = decoded?.UserInfo?.role;
-    setUserRole(userRole);
-    setAllowAccess(userRole === allowedRole);
-  }
   return allowAccess && <Outlet />;
 };
 

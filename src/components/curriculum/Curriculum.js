@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 //import jwt_decode from "jwt-decode";
-import classes from '../../styles/Curriculum/Curriculum.module.css';
+import classes from '../../styles/curriculum/Curriculum.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
@@ -89,17 +89,17 @@ function Curriculum() {
     };
 
     return (
-        <section>
+        <section className={classes["curriculum-section"]}>
             <div className={classes['contenedor-global']}>
                 <div className={classes['container-superior']}>
                     <div className={classes['titulo-principal']}>
-                        <h3>Gestor de Curriculum!</h3>
+                        <h3 className={classes['titulo-principal-h3']}>Gestor de Curriculum!</h3>
                         <div className={classes.texto}>Vamos allá!</div>
                     </div>
                     {/* Aquí va el boton de Menú de Helena */}
                 </div>
                 <div className={classes['contenedor-inferior']}>
-                    <h4>Gestor de Curriculum.</h4>
+                    <h4 className={classes['titulo-inferior-h4']}>Gestor de Curriculum.</h4>
                     <form
                         className={classes['contenedor-cv']}
                         action="/files"
