@@ -32,7 +32,7 @@ const Routing = () => {
         {/* Ruta con authenticacion con acceso tanto para candidatos como para empleadores */}
         <Route
           path='auth'
-          element={<RequireAuth allowedRole={"candidate" || "employer"} />}
+          element={<RequireAuth allowedRole="both" />}
         >
           <Route path='change-password' element={<ChangePassword />} />
         </Route>

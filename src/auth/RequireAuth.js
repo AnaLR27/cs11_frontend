@@ -16,6 +16,13 @@ const RequireAuth = ({ allowedRole }) => {
     if (token) {
       const decoded = jwt_decode(token);
       const decodedRole = decoded?.UserInfo?.role;
+      if (
+        allowedRole === "both" &&
+        (decodedRole === "candidate" || "employer")
+      ) {
+        setAllowAccess(true);
+        return;
+      }
       const allow = decodedRole === allowedRole;
       if (!allow) navigate("/unauthorized", { replace: true });
       setAllowAccess(allow);
