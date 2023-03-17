@@ -53,10 +53,6 @@ function App() {
         <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
         {/* aqui proteccion de rutas */}
 
-        {/* <Route
-          path="/candidate/all-candidates"
-          element={<CandidatesDashboard />}
-        /> */}
         <Route
           path="/employers-dashboard/all-applicants"
           element={<Allaplicants to="/employers-dashboard/all-applicants" />}
@@ -65,11 +61,7 @@ function App() {
         <Route path="/candidate/curriculum" element={<Curriculum />} />
         <Route path="/employer/:id" element={<EmployerSinglePage />} />
         <Route path="/candidate/all-candidates" element={<CandidateList />} />
-        {/*Candidates List Routes 
-        <Route
-          path="/candidate/:loginId"
-          element={<DetailCandidate/>}
-        /> */}
+        {/* <Route path="/candidate/:loginId" element={<DetailCandidate />} /> */}
         <Route path="/job/employer-jobs" element={<ManageJobsPage />} />
         <Route path="/auth/change-password" element={<ChangePassword />} />
       </Routes>
