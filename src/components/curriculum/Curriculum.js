@@ -74,7 +74,7 @@ function Curriculum() {
     const formdata = new FormData();
     formdata.append("file", file);
     //Guardar el documento en la carpeta files
-    fetch("http://localhost:8000/candidates/files/" + loginId, {
+    fetch("http://localhost:8000/candidate/files/" + loginId, {
       mode: "no-cors",
       method: "POST",
       body: formdata,
