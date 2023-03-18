@@ -121,7 +121,11 @@
 
 .td-applications a {
   text-decoration: none;
-  color: #47d7ac;
+  color: #000;
+}
+
+.td-applications a:hover {
+ color: #47d7ac;
 }
 
 .table .td-title .logo {
