@@ -43,15 +43,13 @@ function Curriculum() {
   // Funcion que muestra el nombre del archivo en la caja inferior
   let name;
   const showName = (e) => {
-    if (!file) {
-      name = document.getElementById("upload").files[0].name;
-      document.getElementById("fileName").innerHTML = name;
-      document
-        .getElementById("caja-archivo")
-        .classList.replace(classes["caja-archivo"], classes["mostrar"]);
-      RefRedAlert.current.style.display = "none";
-      RefGreenAlert.current.style.display = "none";
-    }
+    name = document.getElementById("upload").files[0].name;
+    document.getElementById("fileName").innerHTML = name;
+    document
+      .getElementById("caja-archivo")
+      .classList.replace(classes["caja-archivo"], classes["mostrar"]);
+    RefRedAlert.current.style.display = "none";
+    RefGreenAlert.current.style.display = "none";
   };
 
   //Obtener el token y extraer del payload el loginId
