@@ -7,6 +7,7 @@ import { Title } from "../components/Title.component";
 import { JobService, getById } from "../services/JobService";
 import { useEffect, useState } from "react";
 import { Job } from "../models/postAJob.model";
+import jobData from "../models/postAJob.model";
 
 function PostAJobComponents() {
   const [job, setJob] = useState(new Job());
@@ -15,61 +16,16 @@ function PostAJobComponents() {
 
   // Selects items
 
-  const modalityItems = [
-    { value: "Presencial", label: "Presencial" },
-    { value: "Remoto", label: "Remoto" },
-    { value: "Híbrido", label: "Híbrido" },
-  ];
+const getJobData = async () => {
+  try {
+    const data = await JobService.getById;
+  } catch (error) {
+    
+  }
+};
 
-  const countryItems = [
-    { value: "España", label: "España" },
-    { value: "EEUU", label: "EEUU" },
-    { value: "Alemania", label: "Alemania" },
-    { value: "Reino Unido", label: "Reino Unido" },
-    { value: "Francia", label: "Francia" },
-    { value: "Italia", label: "Italia" },
-  ];
-
-  const cityItems = [
-    { value: "Málaga", label: "Málaga" },
-    { value: "Badajoz", label: "Badajoz" },
-    { value: "Barcelona", label: "Barcelona" },
-    { value: "Burgos", label: "Burgos" },
-    { value: "Cáceres", label: "Cáceres" },
-    { value: "Cádiz", label: "Cádiz" },
-    { value: "Granada", label: "Granada" },
-    { value: "Guadalajara", label: "Guadalajara" },
-    { value: "Guipúzcoa", label: "Guipúzcoa" },
-    { value: "Huelva", label: "Huelva" },
-    { value: "Huesca", label: "Huesca" },
-    { value: "Islas Baleares", label: "Islas Baleares" },
-    { value: "Jaén", label: "Jaén" },
-    { value: "La Coruña", label: "La Coruña" },
-    { value: "La Rioja", label: "La Rioja" },
-    { value: "Las Palmas", label: "Las Palmas" },
-    { value: "Lugo", label: "Lugo" },
-    { value: "Madrid", label: "Madrid" },
-    { value: "Salamanca", label: "Salamanca" },
-    { value: "Santa Cruz de Tenerife", label: "Santa Cruz de Tenerife" },
-    { value: "Sevilla", label: "Sevilla" },
-  ];
-
-  const categoryItems = [
-    { value: "Desarrollador Web", label: "Desarrollador Web" },
-    { value: "Desarrollador Móvil", label: "Desarrollador Móvil" },
-    { value: "Data Science", label: "Data Science" },
-    { value: "UX/UI", label: "UX/UI" },
-    { value: "DevOps", label: "DevOps" },
-    { value: "Ciberseguridad", label: "Ciberseguridad" },
-    { value: "Marketing", label: "Marketing" },
-    { value: "Ventas", label: "Ventas" },
-    { value: "Otros", label: "Otros" },
-  ];
-
-  const workdayItems = [
-    { value: "Jornada Completa", label: "Jornada Completa" },
-    { value: "Media Jornada", label: "Media Jornada" },
-  ];
+ 
+  
 
   //useeffect: carga del componente
 
@@ -154,7 +110,7 @@ function PostAJobComponents() {
         <div className={`${styles["dash-title"]}`}>
           <Title
             title="Publicar un nuevo trabajo"
-            altText="¿Listo para saltar de nuevo?"
+            altText="¿Listo para encontrar talento?"
             size="l"
           />
         </div>

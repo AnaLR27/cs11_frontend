@@ -3,7 +3,7 @@ import { Job } from "../models/postAJob.model";
 //GET: loginId (crear el job)
 export const getById = async (jobId) => {
   const token =
-    sessionStorage.getItem("token") || localStorage.getItem("token");
+    sessionStorage.getItem("accessToken") || localStorage.getItem("accessToken");
 
   if (!token) {
     return false;
