@@ -26,9 +26,6 @@ function App() {
     (async () => handleRememberedUser())();
   }, []);
 
-
   return <Routing />;
-
 }
 export default App;
-
