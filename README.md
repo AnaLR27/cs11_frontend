@@ -1,4 +1,4 @@
-![baner](<https://github.com/GhostDevs3/cs11_frontend/blob/develop/banner%20(1).png>)
+![baner](https://github.com/GhostDevs3/cs11_frontend/blob/develop/banner.png)
 
 # **CODE SPACE JOBS PORTAL - FRONTEND**
 
@@ -12,8 +12,7 @@ CODE SPACE JOBS PORTAL, its a social website to connect employers with all Code 
     - [" / "](#--)
   - [**VIEWS**](#views)
     - [**HOME PAGE**](#home-page)
-    - [**CANDIDATE PROFILE**](#candidate-profile) 
-    - [**CANDIDATES LIST**](#candidates-list)
+    - [**CANDIDATE PROFILE**](#candidate-profile)
   - [**COMPONENTS**](#components)
     - [**Form Input**](#form-input)
     - [**Image Input**](#image-input)
@@ -24,10 +23,7 @@ CODE SPACE JOBS PORTAL, its a social website to connect employers with all Code 
     - [**Register Form**](#register-form)
     - [**Login Form**](#login-form)
     - [**Reusable components** :](#reusable-components-)
-      - [**CardImg**](#cardimg)
-      - [**CardInfo**](#info)
-      - [**CardsContainer**](#cardscontainer)
-
+    - [**Detail Candidate**](#detail-candidate)
   - [**MODELS**](#models)
     - [**CANDIDATE**](#candidate)
   - [**CONTRIBUTORS**](#contributors)
@@ -42,6 +38,7 @@ CODE SPACE JOBS PORTAL, its a social website to connect employers with all Code 
 |   [@fortawesome/fontawesome-svg-core](https://www.npmjs.com/package/@fortawesome/fontawesome-svg-core)   | SVG framework                                                                                                                                    |
 | [@fortawesome/free-regular-svg-icons](https://www.npmjs.com/package/@fortawesome/free-regular-svg-icons) | SVG framework                                                                                                                                    |
 |   [@fortawesome/free-solid-svg-icons](https://www.npmjs.com/package/@fortawesome/free-solid-svg-icons)   | SVG framework                                                                                                                                    |
+|  [@fortawesome/free-solid-svg-icons](https://www.npmjs.com/package/@fortawesome/free-brands-svg-icons)   | SVG framework                                                                                                                                    |
 |      [@fortawesome/react-fontawesome](https://www.npmjs.com/package/@fortawesome/react-fontawesome)      | Official React component for Font Awesome 5                                                                                                      |
 |                        [react-router](https://www.npmjs.com/package/react-router)                        | Declarative routing for React                                                                                                                    |
 |                    [react-router-dom](https://www.npmjs.com/package/react-router-dom)                    | Declarative routing for React web applications                                                                                                   |
@@ -58,56 +55,38 @@ CODE SPACE JOBS PORTAL, its a social website to connect employers with all Code 
 ## **PROJECT LAYOUT**
 
 ```shell
-    /
+/
+├───public
+└───src
+    ├───assets
+    │   ├───img
+    │   └───Logo
+    ├───components
+    │   ├───candidatesAppliedJobs
+    │   ├───candidatesList
+    │   ├───detailCandidate
+    │   ├───Error
+    │   ├───Form
+    │   │   ├───base
+    │   │   └───inputs
+    │   ├───HeaderFooter
+    │   ├───login_register_forms
+    │   ├───manageJobs
+    │   │   └───modal
+    │   └───UI
+    │       ├───modulesUI
+    │       └───Spinner
+    ├───config
+    ├───hooks
+    ├───models
+    ├───providers
+    ├───reducers
+    ├───services
+    │   └───detailCandidateService
+    ├───styles
+    ├───utils
+    └───views
 
- src
- ┣ assets
- ┃ ┗ img
- ┃ ┃ ┣ banner-img-1.png
- ┃ ┃ ┣ banner-img-2.png
- ┃ ┃ ┣ banner-img-3.png
- ┃ ┃ ┣ img-people.png
- ┃ ┃ ┗ logo-negro.png
- ┣ components
- ┃ ┣ Form
- ┃ ┃ ┣ base
- ┃ ┃ ┗ inputs
- ┃ ┣ UI
- ┃ ┃ ┣ modulesUI
- ┃ ┃ ┃ ┣ Button.module.css
- ┃ ┃ ┃ ┣ InfoAlert.module.css
- ┃ ┃ ┃ ┣ Input.module.css
- ┃ ┃ ┃ ┗ Modal.module.css
- ┃ ┃ ┣ Button.js
- ┃ ┃ ┣ InfoAlert.js
- ┃ ┃ ┣ Input.js
- ┃ ┃ ┗ Modal.js
- ┃ ┣ login_register_forms
- ┃ ┃ ┣ LoginForm.js
- ┃ ┃ ┗ RegisterForm.js
- ┃ ┗ Home.js
- ┣ config
- ┃ ┗ urls.js
- ┣ models
- ┃ ┗ delete.this
- ┣ providers
- ┃ ┗ LoginModalProvider.js
- ┣ reducers
- ┃ ┗ registerReducer.js
- ┣ services
- ┃ ┗ apiRequest.js
- ┣ styles
- ┃ ┣ Home.module.css
- ┃ ┣ LoginForm.module.css
- ┃ ┗ RegisterForm.module.css
- ┣ utils
- ┃ ┗ regExp.js
- ┣ views
- ┃ ┗ HomePage.js
- ┣ App.css
- ┣ App.js
- ┣ index.css
- ┗ index.js
 ```
 
 ## **ROUTES**
@@ -158,6 +137,8 @@ Home page, fully responsive where animations controlled by states (useState hook
 
 - Button
 
+### **Detail Candidate**
+
 <a href="#code-space-jobs-portal---frontend"><span> &uArr; Table of contents</span></a>
 
 ---
@@ -172,10 +153,14 @@ Home page, fully responsive where animations controlled by states (useState hook
 
 ## **CONTRIBUTORS**
 
+
 | Name             |                      Github                       |                         Linkedin                         |                    Email                    |
 | :--------------- | :-----------------------------------------------: | :------------------------------------------------------: | :-----------------------------------------: |
 | Rafael Fernandez |    [**&check;**](https://github.com/iRaphiki)     |   [**&check;**](https://www.linkedin.com/in/rafa-fr/)    |  [Contact me](mailto:imraphiki@gmail.com)   |
-| Alina Dorosh     | [**&check;**](https://github.com/AlinaDorosh-dev) | [**&check;**](https://www.linkedin.com/in/alina-dorosh/) | [Contact me](mailto:alina.dorosh@gmail.com) |
+| Alina Dorosh     | [**&check;**](https://github.com/AlinaDorosh-dev) | [**&check;**](https://www.linkedin.com/in/alina-dorosh/) | [Contact me](mailto:alina.dorosh@gmail.com) | 
+| Ismael Boumhir   | [**&check;**](https://github.com/IsmaelBoule)     | [**&check;**](https://www.linkedin.com/in/ismael-boumhir-lendinez/) | [Contact me](mailto:ismaelboulen@gmail.com) |
+| Juan Domínguez Ortega |    [**&check;**](https://github.com/JuaniniDO)    | [**&check;**](https://www.linkedin.com/in/juan-dominguez-ortega-a2685a1a1/) | [Contact me](mailto:juandominortega92@gmail.com) |
+
 
 <a href="#code-space-jobs-portal---frontend"><span> &uArr; Table of contents</span></a>
 
