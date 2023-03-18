@@ -23,7 +23,7 @@ function CandidateAppliedJobs() {
   // Value of the selected option, it's used to filter the data and it's updated when the user selects a new option
   const [selectValue, setSelectValue] = useState(options[0].value);
 
-  const token = sessionStorage.getItem("accessToken");
+  const token = sessionStorage.getItem("accessToken") || localStorage.getItem("accessToken");
   const decoded = jwt_decode(token);
   const candidateId = decoded.UserInfo.id;
 

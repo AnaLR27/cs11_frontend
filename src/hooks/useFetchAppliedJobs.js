@@ -7,7 +7,7 @@ import { useState } from "react";
 import { EMPLOYER_JOBS } from "../config/urls";
 
 const URL = `${EMPLOYER_JOBS}/candidate-applied-jobs/`
-const token = sessionStorage.getItem("accessToken");
+const token = sessionStorage.getItem("accessToken") || localStorage.getItem("accessToken");
 
 const useFetchAppliedJobs = () => {
   const [data, setData] = useState([]);

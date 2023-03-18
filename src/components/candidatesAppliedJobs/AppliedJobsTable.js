@@ -65,7 +65,7 @@ function AppliedJobsTable({ data, candidateId, setLoadData }) {
                       <span className={classes["company-logo"]}>
                         <img src={job.logo} alt={`${job.companyName} logo`} />
                       </span>
-                      {/* <Link to="/job-single/:job._id"> Aquí tendrá que ir el enlace a la página single job con el id del trabajo seleccionado*/}
+                      {/* <Link to="job/job-single/:job._id"> Aquí tendrá que ir el enlace a la página single job con el id del trabajo seleccionado*/}
                       <h4>{job.title}</h4>
                       {/* </Link> */}
                       <ul className={classes["job-info"]}>
@@ -100,7 +100,7 @@ function AppliedJobsTable({ data, candidateId, setLoadData }) {
                   <td>
                     <ul className={classes["action-list"]}>
                       <li>
-                        {/* <Link to="/job-single/:job._id"> Aquí tendrá que ir el enlace a la página single job con el id del trabajo seleccionado*/}
+                        {/* <Link to="/job/job-single/:job._id"> Aquí tendrá que ir el enlace a la página single job con el id del trabajo seleccionado*/}
                         <button className={classes["icon-button"]}>
                           <FontAwesomeIcon icon={faEye} />
                         </button>

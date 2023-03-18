@@ -16,6 +16,7 @@ import ErrorPage from "../views/ErrorPage";
 import UnauthorizedPage from "../views/UnauthorizedPage";
 import { JobList } from "../views/JobList";
 import RequireAuth from "../auth/RequireAuth";
+import AppliedJobsPage from "../views/AppliedJobsPage";
 const Routing = () => {
   return (
     <Router>
@@ -43,6 +44,7 @@ const Routing = () => {
           <Route path='curriculum' element={<Curriculum />} />
           <Route path='employer/:id' element={<EmployerSinglePage />} />
           <Route path='job/job-list' element={<JobList />} />
+          <Route path='applied-jobs' element={<AppliedJobsPage />} />
           {/* <Route path="/job/job-single/:jobId" element={<JobInfo />} /> */}
         </Route>
 
