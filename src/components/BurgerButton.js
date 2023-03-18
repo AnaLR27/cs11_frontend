@@ -44,15 +44,17 @@ const StyledBurger = styled.button`
 
   .hamburger:hover {
     cursor: pointer;
+  
   }
 
 
   #hamburger-1.is-active {
     background-color: #e5f0ed;
-    position: absolute;
     top: 3.7rem;
     left: 232px;
     margin-top: 1rem;
+    position: absolute;
+  
   }
 
   #hamburger-1.is-active .line:nth-child(2) {

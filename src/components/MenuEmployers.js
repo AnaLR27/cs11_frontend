@@ -1,4 +1,4 @@
-import { DELETECANDIDATE_API } from "../config/urls";
+import { CANDIDATES_API } from "../config/urls";
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import BurgerButton from "./BurgerButton";
 // STYLED
 import styled from "styled-components";
-// import Styles from "./styles/MenuEmployers.module.css";
 import swal from "sweetalert2";
 // ICONS
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -91,12 +90,11 @@ function MenuEmployers() {
             let loginId = sessionStorage.getItem("userId");
             // Realizamos la petición a la API para que nos devuelva los datos del candidato descargando el pdf
             try {
-              const response = await fetch(` ${DELETECANDIDATE_API}/${loginId}`, {
+              const response = await fetch(` ${CANDIDATES_API}/${loginId}`, {
                 method: "DELETE",
                 headers: {
                   "Content-Type": "application/json",
                   "auth-token": token,
-                  loginId: loginId,
                 },
               });
               const responseJson = await response.json();
@@ -105,6 +103,7 @@ function MenuEmployers() {
             } catch (error) {
               console.error(error);
             }
+            console.log(loginId);
             console.log("borrando");
           }
           DeleteCandidateData();
@@ -122,6 +121,7 @@ function MenuEmployers() {
         </div>
         <nav className={`Menulinks ${clicked ? "active" : ""}`}>
           <div className="burger-container">
+            
             <BurgerButton clicked={clicked} handleClick={handleClick} />
           </div>
           <div className="icon"> </div>
