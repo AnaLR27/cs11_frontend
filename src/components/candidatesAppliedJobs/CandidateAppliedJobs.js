@@ -9,7 +9,7 @@ import jwt_decode from "jwt-decode";
 import useFetchAppliedJobs from "../../hooks/useFetchAppliedJobs";
 import { filterDate } from "../../utils/filterDate";
 import AppliedJobsTable from "./AppliedJobsTable";
-import Loader from "../UI/Spinners/Loader";
+import Loader from "../UI/Spinner/Loader";
 
 function CandidateAppliedJobs() {
   // Label is the text that is displayed in the select and value is used to filter the data
@@ -22,9 +22,6 @@ function CandidateAppliedJobs() {
 
   // Value of the selected option, it's used to filter the data and it's updated when the user selects a new option
   const [selectValue, setSelectValue] = useState(options[0].value);
-
-  // mocked candidateId
-  //const candidateId = "63f476530a02e452e18c32ae";
 
   const token = sessionStorage.getItem("accessToken");
   const decoded = jwt_decode(token);

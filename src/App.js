@@ -16,6 +16,7 @@ import Allaplicants from "./views/AllAplicants";
 import EmployerSinglePage from "./views/EmployerSinglePage";
 import ChangePassword from "./views/ChangePassword";
 import { JobList } from "./views/JobList";
+import AppliedJobsPage from "./views/AppliedJobsPage";
 
 function App() {
   //ckeck if there is a remembered user and log him in if there is, using refresh token for authentication and recieve new access token
@@ -70,6 +71,7 @@ function App() {
         /> */}
         <Route path="/job/employer-jobs" element={<ManageJobsPage />} />
         <Route path="/auth/change-password" element={<ChangePassword />} />
+        <Route path="/applied-jobs" element={<AppliedJobsPage />} />
       </Routes>
       <Footer />
     </Router>

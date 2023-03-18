@@ -4,8 +4,9 @@
  */
 
 import { useState } from "react";
+import { EMPLOYER_JOBS } from "../config/urls";
 
-const URL = "http://localhost:8000/job/candidate-applied-jobs/";
+const URL = `${EMPLOYER_JOBS}/candidate-applied-jobs/`
 const token = sessionStorage.getItem("accessToken");
 
 const useFetchAppliedJobs = () => {
