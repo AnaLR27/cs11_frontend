@@ -1,3 +1,6 @@
+/**
+ * @author Sebastian Gonzalez
+ */
 import React, { useState } from 'react';
 import styles from '../styles/ChangePassword.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
