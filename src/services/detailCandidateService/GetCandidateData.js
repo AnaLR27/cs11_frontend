@@ -26,7 +26,6 @@ async function GetCandidateData(loginId) {
   } catch (error) {
     console.error(error);
   }
-  console.log(responseJson.data);
 }
 
 export default GetCandidateData;
