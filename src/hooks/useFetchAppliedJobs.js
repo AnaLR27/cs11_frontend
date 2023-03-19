@@ -16,6 +16,31 @@ const useFetchAppliedJobs = () => {
   // message is a string that contains the message that is displayed when the user deletes an application from the table successfully
   const [message, setMessage] = useState("");
 
+  const [candidateId, setCandidateId] = useState("");
+
+  const getCandidateId = async (loginId) => {
+    try {
+      setPending(true);
+      const response = await fetch(`http://localhost:8000/candidate/${loginId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+        },
+      });
+      const data = await response.json();
+      if (data.status === "Succeeded") {
+        setCandidateId(data.data._id);
+      } else {
+        setCandidateId(null);
+      }
+    } catch (error) {
+    setError("Ha ocurrido un error, por favor inténtelo de nuevo más tarde.");
+  } finally {
+    setPending(false);
+  }
+};
+
   /**
    * This function makes the request to the backend to get the list of jobs that the candidate has applied to.
    * @param {string} candidateId the id of the candidate
@@ -80,6 +105,8 @@ const useFetchAppliedJobs = () => {
     message,
     getAppliedJobs,
     deleteAppliedJob,
+    candidateId,
+    getCandidateId,
   };
 };
 

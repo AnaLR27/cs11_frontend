@@ -93,7 +93,7 @@ function Curriculum() {
   };
 
   return (
-    <section>
+    <section className={classes["curriculum-section"]}>
       <div className={classes["contenedor-global"]}>
         <div className={classes["container-superior"]}>
           <div className={classes["titulo-principal"]}>

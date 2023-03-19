@@ -23,11 +23,14 @@ function CandidateAppliedJobs() {
   // Value of the selected option, it's used to filter the data and it's updated when the user selects a new option
   const [selectValue, setSelectValue] = useState(options[0].value);
 
-  const token = sessionStorage.getItem("accessToken") || localStorage.getItem("accessToken");
+  const token =
+    sessionStorage.getItem("accessToken") ||
+    localStorage.getItem("accessToken");
   const decoded = jwt_decode(token);
-  const candidateId = decoded.UserInfo.id;
+  const loginId = decoded.UserInfo.id;
 
-  const { pending, error, getAppliedJobs, data } = useFetchAppliedJobs();
+  const { pending, error, getAppliedJobs, data, getCandidateId, candidateId } =
+    useFetchAppliedJobs();
 
   // loadData is a boolean that is used to control when the component makes the request to the backend, it's set to true when the component is rendered for the first time and to false when the request is made, it's set to true again when the user deletes an application from the table
   const [loadData, setLoadData] = useState(true);
@@ -41,14 +44,20 @@ function CandidateAppliedJobs() {
     setFilteredData(filterDate(event.target.value, data, candidateId));
   };
 
+   // get the candidate id when the component is rendered for the first time
+   useEffect(() => {
+    getCandidateId(loginId);
+  }, []);
+
   // executed when the component is rendered for the first time, or when the user deletes an application from the table
   useEffect(() => {
     if (loadData) {
-      getAppliedJobs(candidateId);
+      getAppliedJobs(loginId);
       setLoadData(false);
     }
   }, [loadData]);
 
+  
   useEffect(() => {
     // if loadData is false it means that the request to the backend has been made and the data is loaded
     if (!loadData) {
@@ -90,6 +99,7 @@ function CandidateAppliedJobs() {
               <AppliedJobsTable
                 data={filteredData}
                 candidateId={candidateId}
+                loginId={loginId}
                 setLoadData={setLoadData}
               />
             </>
