@@ -1,3 +1,8 @@
+/**
+ * @fileoverview This file contains the useRedirect custom hook for redirecting user after succesfull login.
+ * @author Alina Dorosh
+ */
+
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import jwt_decode from "jwt-decode";
@@ -54,7 +59,7 @@ const useRedirect = () => {
           navigate(`/candidates-dashboard`);
         }
       } catch (error) {
-        setError(error);
+        setError(error.message);
       }
     } else {
       setError("Role not found");

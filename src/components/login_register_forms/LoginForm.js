@@ -122,7 +122,7 @@ const LoginForm = () => {
 
       //redirect
       redirect(response.accessToken);
-      if (error) setErrMsg(error.message);
+      if (error) setErrMsg(error);
     }
   };
 
