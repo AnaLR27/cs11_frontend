@@ -10,6 +10,7 @@ import {
 import classes from "../styles/CandidateDashboard.module.css";
 import FetchUserData from "../services/candidateDashboardFetch/FetchUsersData";
 import FetchOfferData from "../services/candidateDashboardFetch/FetchOfferData";
+import Loader from "../components/UI/Spinner/Loader";
 
 function CandidatesDashboard() {
     //Controlador del fetch
@@ -60,9 +61,7 @@ function CandidatesDashboard() {
     //Forma de renderizar algo durante la espera a la llamada de la base de datos
     if (isLoading) {
         return (
-            <div className={classes.CardCand}>
-                <h1>Cargando...</h1>
-            </div>
+            <Loader />
         );
     }
 
