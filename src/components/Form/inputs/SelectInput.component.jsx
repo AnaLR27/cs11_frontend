@@ -109,7 +109,7 @@ export function SelectInput({
 				name={name}
 				placeholder={placeholder}
 				disabled={disabled}
-				onChange={(e) => onChangeInput(e)}
+				onInput={(e) => onChangeInput(e)}
 				onBlur={(e) => onBlurInput(e)}
 				className={`${styles['form-control']} ${styles['select__control']}`}>
 				{_items.map((item) => {

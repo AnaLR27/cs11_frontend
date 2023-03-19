@@ -16,14 +16,18 @@ export const CardComponent = ({ offers }) => {
                 <li className={classes.position}>{offer.jobType}</li>
               </ul>
               <span className={classes["company-logo"]}>
-                <img src={offer.logo} alt={offer.companyName} />
+                <img
+                  src={offer.logo || offer.company.logo}
+                  alt={offer.companyName || offer.company.companyName}
+                />
               </span>
               <span className={classes["company-name"]}>
-                <p>{offer.companyName}</p>
+                <p>{offer.companyName || offer.company.companyName}</p>
               </span>
               <h4 className={classes["job-title"]}>
-                {offer.title}
-                {/* <Link to={`/job/job-single/${offer._id}`}>{offer.title}</Link> */}
+                <Link to={`/api/job/job-single/${offer._id}`}>
+                  {offer.title}
+                </Link>
               </h4>
               <div className={classes.location}>
                 <span>

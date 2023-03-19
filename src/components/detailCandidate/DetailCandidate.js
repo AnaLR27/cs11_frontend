@@ -13,32 +13,32 @@ import {
   faClock,
 } from "@fortawesome/free-regular-svg-icons";
 import { faCoins, faLanguage } from "@fortawesome/free-solid-svg-icons";
-// import img from "../../assets/img/candidate-2.png";
 import GetCandidateData from "../../services/detailCandidateService/GetCandidateData";
 import Like from "../../services/detailCandidateService/ButtonMark";
 import { useEffect, useState } from "react";
-
+import { useParams } from "react-router";
 
 function DetailCandidate(props) {
   const [infoCandidate, setInfoCandidate] = useState([]);
+  const params = useParams();
+  const loginId = params.loginId;
 
   useEffect(() => {
-    let infoCandidateTmp = GetCandidateData();
+    let infoCandidateTmp = GetCandidateData(loginId);
     infoCandidateTmp.then((data) => {
       setInfoCandidate(data);
     });
-  }, [ ]);
-  // console.log(infoCandidate.appliedJobs);
+  }, []);
   return (
     <div className={classesDetails.container}>
       <div className={classesDetails["col-lg-8"]}>
         <div className={classesDetails["content-candidate"]}>
           <div>
-             <img
+            <img
               src={infoCandidate.photo}
               alt="imagen"
               className={classesDetails["img-candidate"]}
-            /> 
+            />
             <h4 className={classesDetails["name-candidate"]}>
               {infoCandidate.firstName} {infoCandidate.lastName}
             </h4>
@@ -72,9 +72,8 @@ function DetailCandidate(props) {
             Descargar CV
           </a>
           <button
-            className={
-              classesDetails["button-mark"]
-            } onClick={()=>Like(props.candidate) }
+            className={classesDetails["button-mark"]}
+            onClick={() => Like(props.candidate)}
           >
             <FontAwesomeIcon icon={faBookmark} />
           </button>
@@ -88,7 +87,9 @@ function DetailCandidate(props) {
               />
 
               <h5>Email:</h5>
-              <a href={`mailto:${infoCandidate.email}`}>{infoCandidate.email}</a>
+              <a href={`mailto:${infoCandidate.email}`}>
+                {infoCandidate.email}
+              </a>
             </li>
             <li>
               <FontAwesomeIcon
@@ -96,15 +97,20 @@ function DetailCandidate(props) {
                 className={classesDetails["icons-job"]}
               />
               <h5>Bootcamp:</h5>
-              <span>{infoCandidate.bootcamp} {infoCandidate.edition}</span>
+              <span>
+                {infoCandidate.bootcamp} {infoCandidate.edition}
+              </span>
             </li>
             <li>
-            <FontAwesomeIcon icon={faCoins} className={classesDetails["icons-job"]} />
-            <h5>Linkedin:</h5>
-            <a target="_blank" href={infoCandidate.socialNetworks?.linkedin}>
-               {infoCandidate.socialNetworks?.linkedin}
-            </a>
-          </li>
+              <FontAwesomeIcon
+                icon={faCoins}
+                className={classesDetails["icons-job"]}
+              />
+              <h5>Linkedin:</h5>
+              <a target="_blank" href={infoCandidate.socialNetworks?.linkedin}>
+                {infoCandidate.socialNetworks?.linkedin}
+              </a>
+            </li>
             <li>
               <FontAwesomeIcon
                 icon={faLanguage}
@@ -121,6 +127,5 @@ function DetailCandidate(props) {
 }
 
 export default DetailCandidate;
-
 
 // {`mailto:${infoCandidate.email}`} realiza la función de un href, pero en este caso es para enviar un correo electrónico.
