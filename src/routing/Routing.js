@@ -15,9 +15,11 @@ import Curriculum from '../components/curriculum/Curriculum';
 import ErrorPage from '../views/ErrorPage';
 import UnauthorizedPage from '../views/UnauthorizedPage';
 import { JobList } from '../views/JobList';
+import CandidateList from '../views/CandidateList';
 import RequireAuth from '../auth/RequireAuth';
-import CompanyProfile from '../views/CompanyProfile.component';
-import CandidateProfile from '../views/CandidateProfile.component';
+import PostAJobComponents from '../views/PostAJob.components';
+import DetailCandidate from '../components/detailCandidate/DetailCandidate';
+
 const Routing = () => {
     return (
         <Router>
@@ -56,7 +58,6 @@ const Routing = () => {
                         path="employer/:id"
                         element={<EmployerSinglePage />}
                     />
-                    <Route path="profile" element={<CandidateProfile />} />
                     <Route path="job/job-list" element={<JobList />} />
                     {/* <Route path="/job/job-single/:jobId" element={<JobInfo />} /> */}
                 </Route>
@@ -67,23 +68,27 @@ const Routing = () => {
                     element={<RequireAuth allowedRole="employer" />}
                 >
                     <Route
-                        path="all-candidates"
-                        element={<CandidatesDashboard />}
+                        path="candidate/all-candidates"
+                        element={<CandidateList />}
                     />
-                    <Route path="profile" element={<CompanyProfile />} />
+                    <Route
+                        path="candidate/:loginId"
+                        element={<DetailCandidate />}
+                    />
+
                     {/* Entiendo que la ruta all-applicants deberia de ir concatenado con job  !!!CONFIRMAR */}
+
                     <Route path="all-applicants" element={<Allaplicants />} />
                     <Route
                         path="job/employer-jobs"
                         element={<ManageJobsPage />}
                     />
+                    <Route path="post-a-job" element={<PostAJobComponents />} />
+                    <Route
+                        path="post-a-job/:jobId"
+                        element={<PostAJobComponents />}
+                    />
                 </Route>
-
-                {/*Candidates List Routes <Route path="/candidate/all-candidates" element={<CandidateList />} />
-      <Route
-        path="/candidate/:loginId"
-        element={<DetailCandidate/>}
-      /> */}
             </Routes>
             <Footer />
         </Router>

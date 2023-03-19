@@ -45,7 +45,7 @@ const Home = () => {
 
   return (
     <>
-      <main className={classes.main}>
+      <main className={classes["main-home"]}>
         <div className={classes["background"]}></div>
 
         <div className={classes["main-container"]}>

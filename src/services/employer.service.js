@@ -4,7 +4,8 @@ export class EmployerService {
     //GET: loginId (crear el usuario)
     static async getById(userId) {
         const token =
-            sessionStorage.getItem('token') || localStorage.getItem('token');
+            sessionStorage.getItem('accessToken') ||
+            localStorage.getItem('accessToken');
 
         if (!token) {
             return false;
@@ -25,7 +26,8 @@ export class EmployerService {
     static async editemployer(userId, body) {
         //cogemos el token del local storage
         const token =
-            sessionStorage.getItem('token') || localStorage.getItem('token');
+            sessionStorage.getItem('accessToken') ||
+            localStorage.getItem('accessToken');
 
         //comprobamos si ha cogido el token
         if (!token) {
@@ -48,7 +50,8 @@ export class EmployerService {
     static async newemployer(body) {
         //cogemos el token del local storage
         const token =
-            sessionStorage.getItem('token') || localStorage.getItem('token');
+            sessionStorage.getItem('accessToken') ||
+            localStorage.getItem('accessToken');
 
         //comprobamos si ha cogido el token
         if (!token) {
@@ -71,7 +74,8 @@ export class EmployerService {
     static async uploadImage(file, _id) {
         //cogemos el token del local storage
         const token =
-            sessionStorage.getItem('token') || localStorage.getItem('token');
+            sessionStorage.getItem('accessToken') ||
+            localStorage.getItem('accessToken');
 
         //comprobamos si ha cogido el token
         if (!token) {

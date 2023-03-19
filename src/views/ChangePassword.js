@@ -1,18 +1,12 @@
+/**
+ * @author Sebastian Gonzalez
+ */
 import React, { useState } from 'react';
 import styles from '../styles/ChangePassword.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { useEffect } from 'react';
 
 const ChangePassword = () => {
-    //useEffect para prueba. Luego borrarlo
-    useEffect(() => {
-        sessionStorage.setItem(
-            'accessToken',
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJpZCI6IjY0MTAzYmFmNTA3YzljZWFjMGUyZjA3NSIsImVtYWlsIjoic2ViYXNAcHJ1ZWJhLmNvbSIsInJvbGUiOiJlbXBsb3llciJ9LCJpYXQiOjE2Nzg3ODYyODcsImV4cCI6MTY3ODc4NzQ4N30.-_a4un2gT7E6ztIIDgnIaXKQX1H-ajrGesDeejF0Lgw',
-        );
-        sessionStorage.setItem('userId', '64103baf507c9ceac0e2f075');
-    }, []);
 
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');

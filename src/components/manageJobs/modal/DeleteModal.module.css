@@ -18,9 +18,13 @@
   padding: 2rem;
 }
 
-.button{
+.button-modal button{
  margin-top: 1em;
- margin-left: 8.5em;
+ margin-left: 8em;
+ padding: .75em 3em;
+ border: 1px solid #000;
+ border-radius: .25em;
+ text-align: center;
 }
 
 /* Modal Delete */
@@ -40,7 +44,6 @@
   background-color: #f8d7da;
   border-color: #f5c6cb;
   padding: 0.75rem 1.25rem;
-  /* margin-bottom: 1rem; */
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
@@ -62,8 +65,7 @@
 }
 
 @media (min-width: 1270px) {
-  .modal-get{
-    margin-left: 19.5em;
-
-  }
+.modal{
+  padding-top: 7em;
+}
 }
