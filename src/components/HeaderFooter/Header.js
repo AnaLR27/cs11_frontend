@@ -26,6 +26,7 @@ function Header() {
     setOnLogin(true);
   };
   return (
+    
     <header className={classes.header}>
       {ReactDOM.createPortal(
         <Modal openModal={openLoginModal} setOpenModal={setOpenLoginModal}>

@@ -9,9 +9,9 @@
 
 import classes from './modulesUI/Button.module.css'
 
-const Button = ({buttonTxt, className= "form-btn", onClick, disabled}) => {
+const Button = ({buttonTxt, className= "form-btn", onClick, disabled, type}) => {
   return (
-    <button className={classes[className]} onClick={onClick} disabled={disabled}>{buttonTxt}</button>
+    <button className={classes[className]} onClick={onClick} disabled={disabled} type={type}>{buttonTxt}</button>
   )
 }
 

@@ -1,12 +1,8 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./views/HomePage";
+
 import { useEffect } from "react";
 import ApiRequest from "./services/apiRequest";
-import LoginModalProvider from "./providers/LoginModalProvider";
-import Header from "./components/HeaderFooter/Header";
-import Footer from "./components/HeaderFooter/Footer";
-import CandidateDashboard from "./views/CandidateDashboard";
+import Routing from "./routing/Routing";
 
 function App() {
   //ckeck if there is a remembered user and log him in if there is, using refresh token for authentication and recieve new access token
@@ -28,17 +24,7 @@ function App() {
     };
     (async () => handleRememberedUser())();
   }, []);
-  return (
-    <Router>
-      <LoginModalProvider>
-        <Header />
-      </LoginModalProvider>
-      <Routes>
-        <Route path='/candidates-dashboard' element={<CandidateDashboard />} />
-        <Route path='/' element={<HomePage />} />
-      </Routes>
-      <Footer />
-    </Router>
-  );
-}
+
+  return <Routing />;
+  
 export default App;

@@ -11,9 +11,13 @@ import { useContext, useState, useEffect, useRef } from "react";
 import { LoginModalContext } from "../../providers/LoginModalProvider";
 import ApiRequest from "../../services/apiRequest";
 import { EMAIL_REGEX } from "../../utils/regExp";
+import { useNavigate} from "react-router";
+import { Link } from "react-router-dom";
 const LoginForm = () => {
+const navigate = useNavigate();
+
   //access to context
-  const { setOnLogin, setOnRegister, openLoginModal, setOpenLoginModal } =
+  const { setOnLogin, setOnRegister, openLoginModal, setOpenLoginModal , handleClose} =
     useContext(LoginModalContext);
 
   //reference to focus on error message for accesibility
@@ -62,17 +66,19 @@ const LoginForm = () => {
 
     //if email is not valid, show error message, avoid requests to backend
     if (!validEmail) {
-      setErrMsg("Please enter a valid email");
+      setErrMsg("Inroduce por favor un email válido");
       return;
     }
     const response = await ApiRequest.login(loggedUser);
     if (response.message === "Failed to fetch") {
       setErrMsg("Conection error. Please reload the app");
       succesfullLogin(false);
+      return;
     }
     if (response.error === "Wrong email or password") {
       setErrMsg(response.error);
       succesfullLogin(false);
+      return;
     }
     if (response.accessToken) {
       setSuccesfullLogin(true);
@@ -152,8 +158,8 @@ const LoginForm = () => {
           <label htmlFor='rememberMe'>Recuérdame</label>
         </div>
 
-        {/* !!!!! Here we should redirect to forgotten password route (Part of David Bonora), where will be rendered the component of Nayara*/}
-        <a href='#'>Contarseña olvidada?</a>
+       
+        <Link to ="/forgottenpassword" onClick={handleClose}>Contarseña olvidada?</Link>
       </div>
       <Button
         buttonTxt='Acceder'
