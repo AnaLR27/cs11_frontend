@@ -21,12 +21,16 @@ import DeleteModal from "./modal/DeleteModal";
 import GetJobsModal from "./modal/GetJobsModal";
 import formatearFecha from "../../utils/formateadorFecha";
 import { EMPLOYER_JOBS, EMPLOYER_JOBS_DELETE } from "../../config/urls";
+import Loader from "../UI/Spinner/Loader";
 
 // Componente principal de gestión de empleos
 function ManageJobs() {
   // useState para abrir y cerrar el modal delete
   const [deleteResult, setDeleteResult] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  // UseState para controlar el componente Loader
+  const [isLoading, setIsLoading] = useState(false);
 
   // Funcion fetch para obtener los jobs publicados
   const [showGetJobsModal, setShowGetJobsModal] = useState(false);
@@ -36,24 +40,20 @@ function ManageJobs() {
 
   // Obteniendo el token del sessionStorage
   const token = sessionStorage.getItem("accessToken");
-  console.log(token);
 
   // Obtenemos el id del usuario a partir del token para poder obtener sus empleos publicados
-const tokenParts = token.split(".");
-const payload = JSON.parse(atob(tokenParts[1]));
-const userId = payload.UserInfo.id;
-console.log(userId);
+  const tokenParts = token.split(".");
+  const payload = JSON.parse(atob(tokenParts[1]));
+  const userId = payload.UserInfo.id;
 
   // Funcion fetch para obtener los empleos publicados por el usuario
   const fetchGetPublishedJobs = async () => {
-    
+    setIsLoading(true);
 
     // Verificamos de la existencia del token
     if (!token) {
       return;
     }
-
-
 
     // Realizamos la petición GET para obtener los empleos publicados
     fetch(`${EMPLOYER_JOBS}/employer-jobs/${userId}`, {
@@ -70,7 +70,6 @@ console.log(userId);
       })
       .then((data) => {
         // Manejo del resultado exitoso de la petición
-        console.log(data);
         if (data.status === "Succeeded") {
           setPublishedJobs(data.data);
         }
@@ -84,7 +83,8 @@ console.log(userId);
           message:
             "Ha ocurrido un error, por favor inténtelo de nuevo mas tarde.",
         });
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   // useEffect para obtener los empleos publicados al cargar la página
@@ -94,13 +94,11 @@ console.log(userId);
 
   // Funcion fetch para eliminar un empleo
   const fetchDeleteJob = async (id) => {
-    // const token = sessionStorage.getItem("token") || localStorage.getItem("token");
+    setIsLoading(true);
+
     if (!token) {
       return;
     }
-    // const tokenParts = token.split(".");
-    // const payload = JSON.parse(atob(tokenParts[1]));
-    // const userId = payload.UserInfo.id;
 
     fetch(`${EMPLOYER_JOBS_DELETE}/${userId}/${id}/`, {
       method: "DELETE",
@@ -109,17 +107,13 @@ console.log(userId);
       },
     })
       .then((res) => {
-        console.log(userId);
-        console.log(res);
         if (!res.ok) {
           throw new Error(`Failed to fetch, status: ${res.status}`);
         }
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         if (data.status === "Succeeded") {
-          console.log("Job delete successfully");
           const updatedPublishedJobs = publishedJobs.filter(
             (job) => job._id !== id
           );
@@ -134,8 +128,6 @@ console.log(userId);
             });
           }
         } else {
-          console.log("Job delete failed");
-          console.log(data.status);
           if (!showDeleteModal) {
             setShowDeleteModal(true);
             setDeleteResult({
@@ -146,13 +138,13 @@ console.log(userId);
         }
       })
       .catch((error) => {
-        console.log(error);
         setShowDeleteModal(true);
         setDeleteResult({
           success: false,
           message: "Ha ocurrido un error al eliminar la oferta.",
         });
       })
+      .finally(() => setIsLoading(false));
   };
 
   // useState para filtrar los jobs por fecha
@@ -210,8 +202,7 @@ console.log(userId);
           </p>
           {/* Componente Boton Menu Lateral */}
         </div>
-
-        {console.log(fetchError)}
+        {isLoading && <Loader />}
         {!fetchError ? (
           <div className={classes["job-listing-container"]}>
             <div>
@@ -242,92 +233,84 @@ console.log(userId);
                     <th className={classes["th-title"]}>Oferta</th>
                     <th className={classes["th-applications"]}>Solicitudes</th>
                     <th className={classes["th-created"]}>Creada</th>
-                    <th className={classes["th-status"]}>Estado</th>
                     <th className={classes["th-action"]}>Acción</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {sortedJobs.map(
-                    (job) => (
-                      console.log(job),
-                      (
-                        <tr key={job._id}>
-                          <td className={classes["td-title"]}>
-                            <div>
-                              <div className={classes.logo}>
-                                <img src={job.logo} />
+                  {sortedJobs.map((job) => {
+                    return (
+                      <tr key={job._id}>
+                        <td className={classes["td-title"]}>
+                          <div>
+                            <div className={classes.logo}>
+                              <img src={job.logo} />
+                            </div>
+                            <div className={classes.job}>
+                              <div>
+                                <h4>{job.title}</h4>
                               </div>
-                              <div className={classes.job}>
-                                <div>
-                                  <h4>{job.title}</h4>
-                                </div>
-                                <div className={classes.type}>
-                                  <FontAwesomeIcon
-                                    icon={faBriefcase}
-                                    className={classes.icon}
-                                  />
-                                  <span> {job.jobType} </span>
-                                </div>
-                                <div className={classes.location}>
-                                  <FontAwesomeIcon
-                                    icon={faLocationDot}
-                                    className={classes.icon}
-                                  />
-                                  <span>
-                                    {job.location.city}, {job.location.country}
-                                  </span>
-                                </div>
+                              <div className={classes.type}>
+                                <FontAwesomeIcon
+                                  icon={faBriefcase}
+                                  className={classes.icon}
+                                />
+                                <span> {job.jobType} </span>
+                              </div>
+                              <div className={classes.location}>
+                                <FontAwesomeIcon
+                                  icon={faLocationDot}
+                                  className={classes.icon}
+                                />
+                                <span>
+                                  {job.location.city}, {job.location.country}
+                                </span>
                               </div>
                             </div>
-                          </td>
-                          <td className={classes["td-applications"]}>
-                            {/* <Link to="/candidate/all-candidates"> */}
-                            {/*Si hay menos de 3 aplicantes, muestro la cantidad de aplicantes*/}
-                            {job.applicants.length <= 3
-                              ? `${job.applicants.length} Applied`
-                              : "3+ Applied"}
-                            {/* </Link> */}
-                          </td>
-                          <td
-                            className={classes["td-created"]}
-                            data-date={job.createdAt}
-                          >
-                            <span>{formatearFecha(job.createdAt)}</span>
-                          </td>
-                          <td className={classes["td-status"]}>
-                            <span>{job.status}</span>
-                          </td>
-                          <td className={classes["td-action"]}>
-                            {/* <Link to="/job-single"> */}
-                            <button>
-                              <FontAwesomeIcon
-                                icon={faEye}
-                                className={classes.icon}
-                              />
-                            </button>
-                            {/* </Link> */}
+                          </div>
+                        </td>
+                        <td className={classes["td-applications"]}>
+                          <Link to="employers-dashboard/all-applicants"> 
+                          {job.applicants.length <= 3
+                            ? `${job.applicants.length} Candidatos`
+                            : "3+ Candidatos"}
+                          </Link> 
+                        </td>
+                        <td
+                          className={classes["td-created"]}
+                          data-date={job.createdAt}
+                        >
+                          <span>{formatearFecha(job.createdAt)}</span>
+                        </td>
+                        <td className={classes["td-action"]}>
+                          {/* <Link to=`employers-dashboard/job/job-single/${job.id}`> */}
+                          <button>
+                            <FontAwesomeIcon
+                              icon={faEye}
+                              className={classes.icon}
+                            />
+                          </button>
+                          {/* </Link> */}
 
-                            {/* <Link to="/job/edit-job/"> */}
-                            <button>
-                              <FontAwesomeIcon
-                                icon={faPencil}
-                                className={classes.icon}
-                              />
-                            </button>
-                            {/* </Link> */}
+                          {/* <Link to=`employers-dashboard/job/edit-job/${job.id}`> */}
+                          <button>
+                            <FontAwesomeIcon
+                              icon={faPencil}
+                              className={classes.icon}
+                            />
+                          </button>
+                          {/* </Link> */}
 
-                            <button>
-                              <FontAwesomeIcon
-                                icon={faTrashCan}
-                                className={classes.icon}
-                                onClick={() => fetchDeleteJob(job._id)}
-                              />
-                            </button>
-                          </td>
-                        </tr>
-                      )
-                    )
-                  )}
+                          <button>
+                            <FontAwesomeIcon
+                              icon={faTrashCan}
+                              className={classes.icon}
+                              onClick={() => fetchDeleteJob(job._id)}
+                            />
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
