@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-//import jwt_decode from "jwt-decode";
+import jwt_decode from "jwt-decode";
 import classes from "../../styles/Curriculum.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
@@ -13,21 +13,26 @@ function Curriculum() {
 
   const selectedHandler = (e) => {
     setFile(e.target.files[0]);
-
-    let fileName = e.target.files[0].name;
-    const splitName = fileName.split(".");
-    const extension = splitName[splitName.length - 1];
-
-    if (
-      (fileName && extension === "pdf") ||
-      extension === "doc" ||
-      extension === "docx"
-    ) {
-      showName();
+    console.log(e.target.files[0]);
+    if (!e.target.files[0]) {
+      eliminarArchivo()
+      console.log("no hay archivo");
     } else {
-      RefRedAlert.current.style.display = "flex";
-      RefGreenAlert.current.style.display = "none";
-      setFile(null);
+      let fileName = e.target.files[0].name;
+      const splitName = fileName.split(".");
+      const extension = splitName[splitName.length - 1];
+
+      if (
+        (fileName && extension === "pdf") ||
+        extension === "doc" ||
+        extension === "docx"
+      ) {
+        showName();
+      } else {
+        RefRedAlert.current.style.display = "flex";
+        RefGreenAlert.current.style.display = "none";
+        setFile(null);
+      }
     }
   };
 
@@ -54,10 +59,9 @@ function Curriculum() {
 
   //Obtener el token y extraer del payload el loginId
   const handleFunctions = () => {
-    // let token = sessionStorage.getItem("auth-token");
-    // let decoded = jwt_decode(token);
-    // let loginId = decoded.UserInfo.id;
-    let loginId = "63f476530a02e452e18c32ae";
+    let token = sessionStorage.getItem("accessToken");
+    let decoded = jwt_decode(token);
+    let loginId = decoded.UserInfo.id;
 
     sendHandler(loginId);
   };
