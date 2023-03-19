@@ -20,7 +20,7 @@ import RequireAuth from "../auth/RequireAuth";
 import PostAJobComponents from "../views/PostAJob.components";
 import DetailCandidate from "../components/detailCandidate/DetailCandidate";
 // Revisar esta importación, es el componente que esta haciendo Rafa
-import { JobDetails } from "../components/Prueba";
+// import { JobDetails } from "../components/Prueba";
 
 const Routing = () => {
   return (
@@ -39,7 +39,7 @@ const Routing = () => {
         {/* Ruta con authenticacion con acceso tanto para candidatos como para empleadores */}
         <Route path="api" element={<RequireAuth allowedRole="both" />}>
           <Route path="change-password" element={<ChangePassword />} />
-          <Route path="job/job-single/:jobId" element={<JobDetails />} />
+          {/* <Route path="job/job-single/:jobId" element={<JobDetails />} /> */}
         </Route>
         
         {/* Rutas de candidatos */}
