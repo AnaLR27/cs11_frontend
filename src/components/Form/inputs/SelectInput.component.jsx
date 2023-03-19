@@ -95,7 +95,6 @@ export function SelectInput({
         }
     };
 
-<<<<<<< HEAD
     return (
         <>
             {label && (
@@ -132,45 +131,4 @@ export function SelectInput({
             )}
         </>
     );
-=======
-	return (
-		<>
-			{label && (
-				<label
-					className={`${styles['form-label']}`}
-					htmlFor={id}>
-					{label}
-				</label>
-			)}
-			<select
-				ref={inputRef}
-				defaultValue={defaultValue}
-				value={_value}
-				id={id}
-				name={name}
-				placeholder={placeholder}
-				disabled={disabled}
-				onInput={(e) => onChangeInput(e)}
-				onBlur={(e) => onBlurInput(e)}
-				className={`${styles['form-control']} ${styles['select__control']}`}>
-				{_items.map((item) => {
-					return (
-						<option
-							key={item.value}
-							value={item.value}>
-							{item.label}
-						</option>
-					);
-				})}
-			</select>
-			{_invalid && (
-				<div className={`${styles['text-danger']}`}>
-					{_errors && _errors.required && (
-						<span>{messageWhenValueIsMissing}</span>
-					)}
-				</div>
-			)}
-		</>
-	);
->>>>>>> d4950344da4ee5d13f846778e3e73d750e7cfe4f
 }

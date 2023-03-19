@@ -19,8 +19,10 @@ import CandidateList from '../views/CandidateList';
 import RequireAuth from '../auth/RequireAuth';
 import PostAJobComponents from '../views/PostAJob.components';
 import DetailCandidate from '../components/detailCandidate/DetailCandidate';
+import CandidateProfile from '../views/CandidateProfile.component';
+import CompanyProfile from '../views/CompanyProfile.component';
 // Revisar esta importación, es el componente que esta haciendo Rafa
-import { JobDetails } from '../views/JobDetail';
+/* import { JobDetails } from '../views/JobDetail'; */
 
 const Routing = () => {
     return (
@@ -48,10 +50,10 @@ const Routing = () => {
                         path="change-password"
                         element={<ChangePassword />}
                     />
-                    <Route
+                    {/*  <Route
                         path="job/job-single/:jobId"
                         element={<JobDetails />}
-                    />
+                    /> */}
                 </Route>
 
                 {/* Rutas de candidatos */}
@@ -66,6 +68,7 @@ const Routing = () => {
                         element={<EmployerSinglePage />}
                     />
                     <Route path="job/job-list" element={<JobList />} />
+                    <Route path="profile/:id" element={<CandidateProfile />} />
                 </Route>
 
                 {/* Rutas de empleadores */}
@@ -81,6 +84,7 @@ const Routing = () => {
                         path="candidate/:loginId"
                         element={<DetailCandidate />}
                     />
+                    <Route path="profile/:id" element={<CompanyProfile />} />
 
                     {/* Entiendo que la ruta all-applicants deberia de ir concatenado con job  !!!CONFIRMAR */}
 

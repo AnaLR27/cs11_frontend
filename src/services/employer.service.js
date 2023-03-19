@@ -12,13 +12,16 @@ export class EmployerService {
         }
 
         //petición all backend
-        const request = await fetch('http://localhost:8000/employer' + userId, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Auth-token': token,
+        const request = await fetch(
+            'http://localhost:8000/employer/' + userId,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Auth-token': token,
+                },
             },
-        });
+        );
         const data = await request.json();
         return new Employer(data.data);
     }
@@ -34,14 +37,17 @@ export class EmployerService {
             return false;
         }
         // Peticion al backend
-        const request = await fetch('http://localhost:8000/employer' + userId, {
-            method: 'PATCH',
-            body: JSON.stringify(body),
-            headers: {
-                'Content-Type': 'application/json',
-                'Auth-token': localStorage.getItem('token'),
+        const request = await fetch(
+            'http://localhost:8000/employer/' + userId,
+            {
+                method: 'PATCH',
+                body: JSON.stringify(body),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Auth-token': token,
+                },
             },
-        });
+        );
         const data = await request.json();
         return new Employer(data.data);
     }
@@ -86,7 +92,7 @@ export class EmployerService {
 
         //Peticion al backend
         const request = await fetch(
-            'http://localhost:8000/employer' + _id + '/logo',
+            'http://localhost:8000/employer/' + _id + '/logo',
             {
                 method: 'POST',
                 body: formData,

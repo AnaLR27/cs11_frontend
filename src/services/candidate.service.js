@@ -32,7 +32,8 @@ export class CandidateService {
     static async editCandidate(userId, body) {
         // Saving token from session storage or local storage.
         const token =
-            sessionStorage.getItem('token') || localStorage.getItem('token');
+            sessionStorage.getItem('accessToken') ||
+            localStorage.getItem('accessToken');
 
         // Checking if token have data.
         if (!token) {
@@ -46,7 +47,7 @@ export class CandidateService {
                 body: JSON.stringify(body),
                 headers: {
                     'Content-Type': 'application/json',
-                    'Auth-token': localStorage.getItem('token'),
+                    'Auth-token': token,
                 },
             },
         );
@@ -58,7 +59,8 @@ export class CandidateService {
     static async newCandidate(body) {
         // Saving token from session storage or local storage.
         const token =
-            sessionStorage.getItem('token') || localStorage.getItem('token');
+            sessionStorage.getItem('accessToken') ||
+            localStorage.getItem('accessToken');
 
         // Checking if token have data.
         if (!token) {
@@ -81,7 +83,8 @@ export class CandidateService {
     static async uploadImage(file, _id) {
         // Saving token from session storage or local storage.
         const token =
-            sessionStorage.getItem('token') || localStorage.getItem('token');
+            sessionStorage.getItem('accessToken') ||
+            localStorage.getItem('accessToken');
 
         // Checking if token have data.
         if (!token) {

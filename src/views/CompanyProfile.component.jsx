@@ -13,7 +13,7 @@ import { EmployerService } from '../services/employer.service';
 import { Employer } from '../models/employer model';
 
 function CompanyProfile() {
-    const [loading, setLoading] = useState(true);
+    //const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(new Employer());
     const [logo, setLogo] = useState(undefined);
     const [formData, setFormData] = useState({});
@@ -44,7 +44,7 @@ function CompanyProfile() {
 
         //Seteamos los datos del usuario y del loading
         setUser(data);
-        setLoading(false);
+        //setLoading(false);
     };
 
     /**
@@ -63,7 +63,9 @@ function CompanyProfile() {
         newEmployer.phone = formData.fields.phone.value;
         newEmployer.website = formData.fields.website.value;
         newEmployer.description = formData.fields.description.value;
-        newEmployer.isLookingForJob = formData.fields.isLookingForJob.value;
+        newEmployer.setLookingForEmployers(
+            formData.fields.isLookingForEmployees.value,
+        );
 
         //comprobamos si existe el usuario
         if (!newEmployer._id) {
@@ -174,7 +176,7 @@ function CompanyProfile() {
                                         placeholder="email"
                                         pattern="^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$"
                                         messageWhenWrongPattern="El email no es válido"
-                                        value={user.email}
+                                        value={user.loginId?.email}
                                     />
                                 </div>
                                 <div

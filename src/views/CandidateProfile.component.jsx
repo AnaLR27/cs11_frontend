@@ -65,8 +65,8 @@ function CandidateProfile() {
             github: formData.fields.github.value,
         };
         userData.languages = formData.fields.languages.value;
-        userData.isLookingForJob = formData.fields.isLookingForJob.value;
         userData.description = formData.fields.description.value;
+        userData.setLookingForJob(formData.fields.isLookingForJob.value);
 
         // If user with id is not exist, create it.
         if (!userData._id) {
@@ -176,9 +176,10 @@ function CandidateProfile() {
                                         name="email"
                                         label="Email"
                                         placeholder="jerome@gmail.com"
+                                        disabled={user.loginId?.email}
                                         pattern="^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$"
                                         messageWhenWrongPattern="El email no es válido"
-                                        value={user?.email}
+                                        value={user.loginId?.email}
                                     />
                                 </div>
                                 <div
