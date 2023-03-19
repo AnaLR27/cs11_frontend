@@ -1,29 +1,3 @@
-export class Job {
-  constructor(data) {
-    if (data) {
-      this._id = data._id;
-      this.title = data.title;
-      this.company = data.company;
-      this.companyName = data.companyName;
-      this.location.city = data.location.city;
-      this.location.country = data.location.country;
-      this.salary = data.salary;
-      this.jobType = data.jobType;
-      this.description = data.description;
-      this.logo = data.logo;
-      this.applicants = data.applicants;
-    }
-  }
-}
-
-const jodData = {
-  jobType: modalityItems,
-  country: countryItems,
-  city: cityItems,
-  title: categoryItems,
-  x: workdayItems,
-};
-
 const workdayItems = [
   { value: "Jornada Completa", label: "Jornada Completa" },
   { value: "Media Jornada", label: "Media Jornada" },
@@ -108,5 +82,42 @@ const categoryItems = [
   { value: "Ventas", label: "Ventas" },
   { value: "Otros", label: "Otros" },
 ];
+
+
+
+const jodData = {
+  modalityItems: modalityItems,
+  countryItems: countryItems,
+  cityItems: cityItems,
+  categoryItems: categoryItems,
+  workdayItems: workdayItems,
+};
+
+
+
+
+export class Job {
+  constructor(data) {
+    if (data) {
+      this._id = data._id;
+      this.title = data.title;
+      this.location = {};
+      this.location.city = data.location?.city;
+      this.location.country = data.location?.country;
+      this.salary = data.salary;
+      this.jobType = data.jobType;
+      this.specialtyJob = data.specialtyJob;
+      this.description = data.description;
+      this.workDay = data.workDay;
+      this.applicants = data.applicants;
+    }
+  }
+  static getJobData() {
+  return jodData;
+  }
+}
+
+
+
 
 module.export = jodData;

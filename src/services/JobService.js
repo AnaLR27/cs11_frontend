@@ -4,7 +4,7 @@ import { Job } from "../models/postAJob.model";
 export const getById = async (jobId) => {
   const token =
     sessionStorage.getItem("accessToken") || localStorage.getItem("accessToken");
-
+console.log(token);
   if (!token) {
     return false;
   }
@@ -12,7 +12,7 @@ export const getById = async (jobId) => {
   // Cambiar URL y en userid poner jobId
   //petición all backend
   const request = await fetch(
-    "http://localhost:8000/job/post-job" + jobId,
+    "http://localhost:8000/job/job-single/" + jobId,
 
     {
       method: "GET",
@@ -30,12 +30,13 @@ export class JobService {
   static async editjob(jobId, body) {
     //cogemos el token del local storage
     const token =
-      sessionStorage.getItem("token") || localStorage.getItem("token");
+      sessionStorage.getItem("accessToken") || localStorage.getItem("accessToken");
 
     //comprobamos si ha cogido el token
     if (!token) {
       return false;
     }
+    console.log(token);
     // Peticion al backend
     try {
       const request = await fetch(
@@ -60,7 +61,7 @@ export class JobService {
   static async newjob(body) {
     //cogemos el token del local storage
     const token =
-      sessionStorage.getItem("token") || localStorage.getItem("token");
+      sessionStorage.getItem("accessToken") || localStorage.getItem("accessToken");
 
     //comprobamos si ha cogido el token
     if (!token) {
