@@ -17,7 +17,9 @@ import UnauthorizedPage from "../views/UnauthorizedPage";
 import { JobList } from "../views/JobList";
 import CandidateList from "../views/CandidateList";
 import RequireAuth from "../auth/RequireAuth";
+import PostAJobComponents from "../views/PostAJob.components";
 import DetailCandidate from "../components/detailCandidate/DetailCandidate";
+
 
 const Routing = () => {
   return (
@@ -58,8 +60,12 @@ const Routing = () => {
           <Route path="candidate/:loginId" element={<DetailCandidate />} />
 
           {/* Entiendo que la ruta all-applicants deberia de ir concatenado con job  !!!CONFIRMAR */}
-          <Route path="all-applicants" element={<Allaplicants />} />
-          <Route path="job/employer-jobs" element={<ManageJobsPage />} />
+
+          <Route path='all-applicants' element={<Allaplicants />} />
+          <Route path='job/employer-jobs' element={<ManageJobsPage />} />
+          <Route path='post-a-job' element={<PostAJobComponents />} />
+          <Route path='post-a-job/:jobId' element={<PostAJobComponents />} />
+
         </Route>
       </Routes>
       <Footer />
