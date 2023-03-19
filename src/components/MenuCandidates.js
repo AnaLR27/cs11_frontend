@@ -81,7 +81,7 @@ function MenuCandidates() {
           // Realizamos la petición a la API para que nos devuelva los datos del candidato descargando el pdf
           try {
             const response = await fetch(` ${CANDIDATES_API}/${loginId}`, {
-              method: "DELETE",
+              method: "POST",
               headers: {
                 "Content-Type": "application/json",
                 "auth-token": token,
@@ -193,6 +193,7 @@ font-size: 23px;
     height: 100vh; 
     transition: all .6s ease-in-out;
     display: none;
+
 
   }}
   

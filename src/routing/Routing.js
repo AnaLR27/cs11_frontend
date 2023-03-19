@@ -16,6 +16,8 @@ import ErrorPage from "../views/ErrorPage";
 import UnauthorizedPage from "../views/UnauthorizedPage";
 import { JobList } from "../views/JobList";
 import RequireAuth from "../auth/RequireAuth";
+import MenuCandidates from "../components/MenuEmployers";
+import MenuEmployers from "../components/MenuEmployers";
 const Routing = () => {
   return (
     <Router>
@@ -29,6 +31,7 @@ const Routing = () => {
         <Route path='reset-password/:token' element={<ResetPasswordPage />} />
         <Route path='unauthorized' element={<UnauthorizedPage />} />
         <Route path='*' element={<ErrorPage />} />
+        <Route path='menu' element={<MenuEmployers />} />
 
         {/* Ruta con authenticacion con acceso tanto para candidatos como para empleadores */}
         <Route path='auth' element={<RequireAuth allowedRole='both' />}>

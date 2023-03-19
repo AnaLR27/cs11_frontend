@@ -23,6 +23,8 @@ function BurgerButton(props) {
 export default BurgerButton;
 
 const StyledBurger = styled.button`
+display: block;
+background-color: #e5f0ed;
   .row .three {
     padding: 80px 30px;
     -webkit-box-sizing: border-box;
@@ -41,9 +43,11 @@ const StyledBurger = styled.button`
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
   }
+  }
 
   .hamburger:hover {
     cursor: pointer;
+   
   
   }
 
@@ -54,6 +58,7 @@ const StyledBurger = styled.button`
     left: 232px;
     margin-top: 1rem;
     position: absolute;
+    
   
   }
 
@@ -73,5 +78,8 @@ const StyledBurger = styled.button`
     -ms-transform: translateY(-13px) rotate(-45deg);
     -o-transform: translateY(-13px) rotate(-45deg);
     transform: translateY(-13px) rotate(-45deg);
+  }
+  @media (min-width: 767px) {
+    display: none;
   }
 `;
