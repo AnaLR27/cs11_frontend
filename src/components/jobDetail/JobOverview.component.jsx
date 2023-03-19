@@ -4,7 +4,7 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 import { faCoins, faLanguage } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styles from './JobOverview.module.css';
+import styles from './jobOverview.module.css';
 
 // TODO : Terminarlo
 function JobOverview(props) {
