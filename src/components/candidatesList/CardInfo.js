@@ -17,7 +17,7 @@ function CardInfo(props) {
           <h3 className={classes["info-name"]}>{props.candidate.fullName}</h3>
           <p className={classes["info-role"]}>{props.candidate.bootcamp}</p>
         </div>
-          <Link className={classes["view-profile"]} to={`/candidate/${props.candidate._id}`}>Ver Perfil</Link>
+          <Link className={classes["view-profile"]} to={`/candidate-dashboard/candidate/${props.candidate._id}`}>Ver Perfil</Link>
       </div>
     </>
   );

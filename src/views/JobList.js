@@ -19,6 +19,7 @@ import { NoCards } from "../components/JobList/NoCards";
 import { fetchCards } from "../services/fetchCards.service";
 import { orderByDate } from "../utils/orderByDate.utils";
 import { EMPLOYER_JOBS } from "../config/urls";
+import Loader from "../components/UI/Spinner/Loader";
 
 let PageSize = 12; //to fix the number of offers per page
 export const JobList = () => {
@@ -39,13 +40,12 @@ export const JobList = () => {
   const listJobs = async () => {
     setLoading(true);
     const { datos } = await fetchCards(`${EMPLOYER_JOBS}/all-jobs`);
-    console.log(datos);
 
     const orderOffers = orderByDate(datos, order);
-
     setOffers(orderOffers);
-    // setOffers([]);
+
     setLoading(false);
+    // setOffers([]);
   };
 
   //* paginacion
@@ -70,56 +70,53 @@ export const JobList = () => {
     }
     setCurrentPage(1); //to send the user back to the first page
   };
-  // console.log(order);
 
   return (
     <>
-      {loading ? ( //spinner
-        <h2
-          style={{
-            color: "green",
-            fontSize: "2rem",
-            textAlign: "center",
-          }}
-        >
-          Loading...
-        </h2>
-      ) : offers.length === 0 ? ( //no offers
-        <NoCards valor={"ofertas"} />
+      {offers.length === 0 && !loading ? (
+        <NoCards valor={"ofertas"}/>
       ) : (
-        <div className={classes["job-container"]}>
-          <div className={classes.switcher}>
-            <div className={classes["showing-result"]}></div>
-            <div className={classes["sort-by"]}>
-              <button
-                className={
-                  order === "oldest" || order === "newest"
-                    ? classes["btn-clear"]
-                    : classes["btn-clear-disabled"]
-                }
-                onClick={() => {
-                  setCurrentPage(1); //to send the user back to the first page
-                  setSelectedOrder("default");
-                  setOrder("default");
-                }}
-              >
-                Borrar filtros
-              </button>
-              <Switcher
-                value={selectedOrder}
-                handlerSelect={handlerSelect}
-                selectedOrder={selectedOrder}
-              />
+        <>
+          <div className={classes["job-container"]}>
+            <div className={classes.switcher}>
+              <div className={classes["showing-result"]}></div>
+              <div className={classes["sort-by"]}>
+                <button
+                  className={
+                    order === "oldest" || order === "newest"
+                      ? classes["btn-clear"]
+                      : classes["btn-clear-disabled"]
+                  }
+                  onClick={() => {
+                    setCurrentPage(1); //to send the user back to the first page
+                    setSelectedOrder("default");
+                    setOrder("default");
+                  }}
+                >
+                  Borrar filtros
+                </button>
+                <Switcher
+                  value={selectedOrder}
+                  handlerSelect={handlerSelect}
+                  selectedOrder={selectedOrder}
+                />
+              </div>
             </div>
+            {loading ? (
+              <Loader />
+            ) : (
+              <>
+                <CardComponent offers={currentCards} />
+                <Pagination
+                  currentPage={currentPage}
+                  totalCount={offers.length}
+                  pageSize={PageSize}
+                  onPageChange={(page) => setCurrentPage(page)}
+                />
+              </>
+            )}
           </div>
-          <CardComponent offers={currentCards} />
-          <Pagination
-            currentPage={currentPage}
-            totalCount={offers.length}
-            pageSize={PageSize}
-            onPageChange={(page) => setCurrentPage(page)}
-          />
-        </div>
+        </>
       )}
     </>
   );
