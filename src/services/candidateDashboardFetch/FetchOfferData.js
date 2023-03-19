@@ -1,4 +1,4 @@
-async function FetchOfferData() {
+async function FetchOfferData(userID) {
     const requestOptions = {
         method: "GET",
         headers: {
@@ -11,14 +11,14 @@ async function FetchOfferData() {
     const getOfferData = async () => {
         try {
             const response = await fetch(
-                `http://localhost:8000/job/job-single/${sessionStorage.getItem("_id")}`,
+                `http://localhost:8000/job/candidate-applied-jobs/` + userID,
                 requestOptions
             );
             const data = await response.json();
             return data.data;
         } catch (error) {
-         console.log(error.message);  
-        }       
+            console.log(error.message);
+        }
     };
 
     let offersData = await getOfferData();

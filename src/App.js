@@ -34,7 +34,7 @@ function App() {
         <Header />
       </LoginModalProvider>
       <Routes>
-        <Route path='/candidate/dashboard' element={<CandidateDashboard />} />
+        <Route path='/candidates-dashboard' element={<CandidateDashboard />} />
         <Route path='/' element={<HomePage />} />
       </Routes>
       <Footer />

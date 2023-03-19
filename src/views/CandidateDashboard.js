@@ -17,9 +17,8 @@ function CandidatesDashboard() {
     const [userData, setUserData] = useState();
     const [userReady, setUserReady] = useState(false);
     const [offerData, setOfferData] = useState();
-    const [offerReady, setOfferrReady] = useState(false);
-    const appliedJobsByTime = [];
-    const jobIDs = [];
+    const [offerReady, setOfferReady] = useState(false);
+    let userID = "";
 
     //Fetch para obtener los datos del usuario
     useEffect(() => {
@@ -33,50 +32,30 @@ function CandidatesDashboard() {
         );
     }, []);
 
-    //Fetch para obtener los datos de las ofertas
+    if (userReady) {
+        userID = userData._id;
+    }
+
+    //Fetch para obtener los datos de los empleos
     useEffect(() => {
-        if (offerReady) {
+        if (userReady) {
             setOfferData(
-                FetchOfferData()
+                FetchOfferData(userID)
                     .then((data) => {
                         setOfferData(data);
-                        setOfferrReady(true);
+                        setOfferReady(true);
                     })
                     .catch((error) => console.log("Algo ha fallado..."))
             );
         }
-    }, []);
-
+    }, [userID, userReady]);
+    
+    //Controlador de la espera a la llamada de la base de datos
     useEffect(() => {
-        if (offerData) {
+        if (userReady && offerReady) {
             setIsLoading(false);
         }
-    }, [offerData]);
-
-    if (userReady) {
-        const mappedJobs = userData.appliedJobs.map((job) => {
-            appliedJobsByTime.push(job);
-            return job;
-        });
-
-        // Ordenar los empleos por fecha de solicitud
-        const mappedJobsSorted = mappedJobs.sort((a, b) => {
-            return new Date(b.appliedDate) - new Date(a.appliedDate);
-        });
-
-        const mappedJobsIDs = mappedJobsSorted.map((job) => {
-            jobIDs.push(job.idJob);
-            return job.idJob;
-        });
-        console.log(mappedJobsIDs);
-    }
-
-    if (offerReady) {
-        const mappedOffers = offerData.map((offer) => {
-            return offer;
-        });
-        console.log(mappedOffers);
-    }
+    }, [userReady, offerReady]);
 
     //Forma de renderizar algo durante la espera a la llamada de la base de datos
     if (isLoading) {
@@ -86,6 +65,8 @@ function CandidatesDashboard() {
             </div>
         );
     }
+
+    console.log(offerData);
 
     return (
         <>
@@ -105,15 +86,7 @@ function CandidatesDashboard() {
                             <h4>Empleos Solicitados Recientemente</h4>
                         </div>
                         <div>
-                            {jobIDs.map((uca, i) => {
-                                // calculo de tiempo transcurrido desde {uca.createdAt} y date.now()
-                                let elapsedTime = Math.floor(
-                                    (Date.now() -
-                                        new Date(uca.appliedDate).getTime()) /
-                                        3600000
-                                );
-                                console.log(elapsedTime);
-
+                            {offerData.map((uca, i) => {
                                 return (
                                     <div className={classes.CardEmp} key={i}>
                                         <div>
@@ -124,7 +97,9 @@ function CandidatesDashboard() {
                                             />
                                         </div>
                                         <div>
-                                            <h4>{uca.title}</h4>
+                                            <h4>
+                                                {uca.title}
+                                            </h4>
                                             <div>
                                                 <div>
                                                     <FontAwesomeIcon
@@ -133,7 +108,9 @@ function CandidatesDashboard() {
                                                         }
                                                         icon={faBriefcase}
                                                     />
-                                                    <p>{uca.companyName}</p>
+                                                    <p>
+                                                        {uca.company}
+                                                    </p>
                                                 </div>
                                                 <div>
                                                     <FontAwesomeIcon
@@ -142,7 +119,10 @@ function CandidatesDashboard() {
                                                         }
                                                         icon={faLocationDot}
                                                     />
-                                                    <p>{uca.location}</p>
+                                                    <p>
+                                                        {uca.location.city},{" "}
+                                                        {uca.location.country}
+                                                    </p>
                                                 </div>
                                                 <div>
                                                     <FontAwesomeIcon
@@ -152,7 +132,7 @@ function CandidatesDashboard() {
                                                         icon={faClock}
                                                     />
                                                     <p>
-                                                        Hace {elapsedTime} horas
+                                                        Hace más de 24h
                                                     </p>
                                                 </div>
                                                 <div>
@@ -167,8 +147,9 @@ function CandidatesDashboard() {
                                             </div>
                                             <div>
                                                 <ul>
-                                                    <li>{uca.jobType}</li>
-                                                    <li>{uca.privacy}</li>
+                                                    <li>
+                                                        {uca.jobType}
+                                                    </li>
                                                     <li>Urgente</li>
                                                 </ul>
                                             </div>
