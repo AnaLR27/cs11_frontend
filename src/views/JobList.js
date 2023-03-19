@@ -47,6 +47,7 @@ export const JobList = () => {
     setLoading(false);
     // setOffers([]);
   };
+  // console.log(offers);
 
   //* paginacion
   const currentCards = useMemo(() => {
