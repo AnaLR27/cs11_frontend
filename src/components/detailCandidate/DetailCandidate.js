@@ -21,7 +21,6 @@ import { useParams } from "react-router";
 function DetailCandidate(props) {
   const [infoCandidate, setInfoCandidate] = useState([]);
   const params = useParams();
-  console.log(params);
   const loginId = params.loginId;
 
   useEffect(() => {
@@ -30,7 +29,6 @@ function DetailCandidate(props) {
       setInfoCandidate(data);
     });
   }, []);
-  // console.log(infoCandidate.appliedJobs);
   return (
     <div className={classesDetails.container}>
       <div className={classesDetails["col-lg-8"]}>
