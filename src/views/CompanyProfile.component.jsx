@@ -1,7 +1,6 @@
 /**
- * @author iRaphiki <imraphiki@gmail.com>
+ * @author VeroniKa <vsc1972@gmail.com>
  */
-import { useEffect, useState } from 'react';
 import styles from '../styles/form.module.css';
 import { Form } from '../components/Form/base/Form.component';
 import { TextAreaInput } from '../components/Form/inputs/TextAreaInput.component';
@@ -9,14 +8,14 @@ import { TextInput } from '../components/Form/inputs/TextInput.component';
 import { SelectInput } from '../components/Form/inputs/SelectInput.component';
 import { ImageBrowser } from '../components/Form/inputs/ImageInput.component';
 import { Title } from '../components/Form/Title.component';
-import { CandidateService } from '../services/candidate.service';
-import { Candidate } from '../models/candidate.model';
-//import Loader from '../components/UI/Spinner/Loader';
+import { useEffect, useState } from 'react';
+import { EmployerService } from '../services/employer.service';
+import { Employer } from '../models/employer model';
 
-function CandidateProfile() {
+function CompanyProfile() {
     //const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState(new Candidate());
-    const [photo, setPhoto] = useState(undefined);
+    const [user, setUser] = useState(new Employer());
+    const [logo, setLogo] = useState(undefined);
     const [formData, setFormData] = useState({});
     const [saved, setSaved] = useState('not_saved');
 
@@ -25,92 +24,91 @@ function CandidateProfile() {
         { label: 'No', value: 'no' },
     ];
 
-    // useEffect: loading the component data
+    //useeffect: carga del componente
     useEffect(() => {
         userAuth();
     }, []);
 
     const userAuth = async () => {
-        // Get user id from session/local storage
+        //Sacar los datos de usuario
         const user =
             sessionStorage.getItem('userId') || localStorage.getItem('userId');
 
-        // Check if user do not exists return false with no data
+        //comprobar si tenemos los datos
         if (!user) {
             return false;
         }
 
-        // Get user data by id
-        const data = await CandidateService.getById(user);
+        //Hacemos la llamada que devuelva los datos del usuario
+        const data = await EmployerService.getById(user);
 
-        // Setting user data state and loading state
+        //Seteamos los datos del usuario y del loading
         setUser(data);
         //setLoading(false);
     };
 
-    // Setting the new values from form data.
+    /**
+     * Setting the new values from form data.
+     * @param {*} formData
+     */
     const saveUpdateUser = async (formData) => {
-        // Mapping user data
-        const userData = new Candidate();
-        userData._id = user._id;
-        userData.role = 'candidate';
-        userData.loginId =
+        //mapeamos los datos del usuario
+        const newEmployer = new Employer();
+        newEmployer._id = user._id;
+        newEmployer.role = 'empleador';
+        newEmployer.loginId =
             sessionStorage.getItem('userId') || localStorage.getItem('userId');
-        userData.fullName = formData.fields.fullName.value;
-        userData.email = formData.fields.email.value;
-        userData.bootcamp = formData.fields.bootcamp.value;
-        userData.edition = formData.fields.edition.value;
-        userData.socialNetworks = {
-            linkedin: formData.fields.linkedin.value,
-            github: formData.fields.github.value,
-        };
-        userData.languages = formData.fields.languages.value;
-        userData.description = formData.fields.description.value;
-        userData.setLookingForJob(formData.fields.isLookingForJob.value);
+        newEmployer.companyName = formData.fields.companyName.value;
+        newEmployer.email = formData.fields.email.value;
+        newEmployer.phone = formData.fields.phone.value;
+        newEmployer.website = formData.fields.website.value;
+        newEmployer.description = formData.fields.description.value;
+        newEmployer.setLookingForEmployers(
+            formData.fields.isLookingForEmployees.value,
+        );
 
-        // If user with id is not exist, create it.
-        if (!userData._id) {
+        //comprobamos si existe el usuario
+        if (!newEmployer._id) {
             try {
-                // Insert new user into the database
-                let candidateData = await CandidateService.newCandidate(
-                    userData,
+                //Creamos el usuario en la ddbb
+                let employerData = await EmployerService.newemployer(
+                    newEmployer,
                 );
                 // If we have image data, upload it into user created before.
-                if (photo) {
-                    candidateData = await CandidateService.uploadImage(
-                        photo,
-                        candidateData._id,
+                if (logo) {
+                    employerData = await EmployerService.uploadImage(
+                        logo,
+                        employerData._id,
                     );
                 }
-                // Set user and save states
-                setUser(candidateData);
+                //Seteamos estado y datos
+                setUser(employerData);
                 setSaved('updated');
             } catch (error) {
                 setSaved('error');
             }
         } else {
             try {
-                // Update candidate data by id
-                let candidateData = await CandidateService.editCandidate(
-                    userData._id,
-                    userData,
+                //Actualizamos el usuario en la ddbb
+                let employerData = await EmployerService.editemployer(
+                    newEmployer._id,
+                    newEmployer,
                 );
-                if (photo) {
-                    candidateData = await CandidateService.uploadImage(
-                        photo,
-                        candidateData._id,
+                if (logo) {
+                    employerData = await EmployerService.uploadImage(
+                        logo,
+                        employerData._id,
                     );
+                    console.log(employerData);
                 }
-                // Set updated state and user data
-                setUser(candidateData);
+                //Seteamos estado y datos
+                setUser(employerData);
                 setSaved('updated');
             } catch (error) {
                 setSaved('error');
             }
         }
 
-        // Timeout 3 seg if we update the user data
-        // TODO: Export timeout into success modal
         setTimeout(() => {
             if (saved === 'updated') {
             }
@@ -123,8 +121,8 @@ function CandidateProfile() {
             <section className={`${styles['dashboard']}`}>
                 <div className={`${styles['dash-title']}`}>
                     <Title
-                        title="Mi Perfil!"
-                        altText="&#191;Listo para volver?"
+                        title="Perfil de la empresa!"
+                        altText="¿Listo para saltar de nuevo?"
                         size="l"
                     />
                 </div>
@@ -145,9 +143,9 @@ function CandidateProfile() {
                     </div>
                     <div className={`${styles['container-content']}`}>
                         <ImageBrowser
-                            src={user.getPhoto()}
-                            label="Buscar Logo"
-                            onChange={(e) => setPhoto(e.target.files[0])}
+                            src={user.getLogo()}
+                            label="Buscar logo"
+                            onChange={(e) => setLogo(e.target.files[0])}
                         />
 
                         <Form
@@ -163,10 +161,10 @@ function CandidateProfile() {
                                     className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}
                                 >
                                     <TextInput
-                                        name="fullName"
-                                        label="Nombre Completo"
-                                        placeholder="Jerome"
-                                        value={user?.fullName}
+                                        name="companyName"
+                                        label="Nombre de la compañía (opcional)"
+                                        placeholder="Nombre de la compañía"
+                                        value={user.companyName}
                                     />
                                 </div>
                                 <div
@@ -175,8 +173,7 @@ function CandidateProfile() {
                                     <TextInput
                                         name="email"
                                         label="Email"
-                                        placeholder="jerome@gmail.com"
-                                        disabled={user.loginId?.email}
+                                        placeholder="email"
                                         pattern="^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$"
                                         messageWhenWrongPattern="El email no es válido"
                                         value={user.loginId?.email}
@@ -186,65 +183,36 @@ function CandidateProfile() {
                                     className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}
                                 >
                                     <TextInput
-                                        name="bootcamp"
-                                        label="Bootcamp"
-                                        placeholder="Full Stack Web Developer"
-                                        value={user?.bootcamp}
+                                        name="phone"
+                                        label="Teléfono"
+                                        placeholder="000000000"
+                                        pattern="^(6|7)([0-9]){8}$"
+                                        messageWhenWrongPattern="El teléfono no es válido"
+                                        value={user.phone}
                                     />
                                 </div>
                                 <div
                                     className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}
                                 >
                                     <TextInput
-                                        name="edition"
-                                        label="Edición"
-                                        placeholder="11"
-                                        pattern="^\d{0,2}"
-                                        value={user?.edition}
-                                    />
-                                </div>
-                                <div
-                                    className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}
-                                >
-                                    <TextInput
-                                        name="linkedin"
-                                        label="LinkedIn"
-                                        pattern="^(http(s)?:\/\/)?([\w]+\.)?linkedin\.com\/(pub|in|profile)"
-                                        placeholder="https://www.linkedin.com/in/jerome/"
-                                        value={user?.socialNetworks?.linkedin}
-                                    />
-                                </div>
-                                <div
-                                    className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}
-                                >
-                                    <TextInput
-                                        name="github"
-                                        label="Github"
-                                        pattern="^(http(s?):\/\/)?(www\.)?github\.([a-z])+\/([A-Za-z0-9]{1,})+\/?$"
-                                        placeholder="https://www.github.com/jerome"
-                                        value={user?.socialNetworks?.github}
-                                    />
-                                </div>
-                                <div
-                                    className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}
-                                >
-                                    <TextInput
-                                        name="languages"
-                                        label="Idiomas"
-                                        placeholder="English, Chinese"
-                                        value={user?.languages?.join(', ')}
+                                        name="website"
+                                        label="Sitio Web"
+                                        placeholder=" URL Sitio Web"
+                                        pattern="((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)"
+                                        messageWhenWrongPattern="La URL no es válida"
+                                        value={user.website}
                                     />
                                 </div>
                                 <div
                                     className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}
                                 >
                                     <SelectInput
-                                        name="isLookingForJob"
-                                        label="Disponibilidad laboral"
+                                        name="isLookingForEmployees"
+                                        label="Está buscando empleados"
                                         items={items}
-                                        /* disabled={!user.isAdmin()} */
-                                        messageWhenValueIsMissing="select a value"
-                                        value={user?.getLookingForJob()}
+                                        disabled={!user.isAdmin()}
+                                        messageWhenValueIsMissing="Seleccione un valor"
+                                        value={user.getLookingForEmployees()}
                                     />
                                 </div>
                                 <div
@@ -252,10 +220,10 @@ function CandidateProfile() {
                                 >
                                     <TextAreaInput
                                         name="description"
-                                        label="Sobre mi"
+                                        label="Sobre nuestra empresa"
                                         rows={10}
-                                        placeholder="About us..."
-                                        value={user?.description}
+                                        placeholder="Sobre nuestra empresa..."
+                                        value={user.description}
                                     />
                                 </div>
                                 {saved === 'updated' ? (
@@ -280,11 +248,10 @@ function CandidateProfile() {
                                     className={`${styles['input-container']} ${styles['col-lg-6']} ${styles['col-md-12']}`}
                                 >
                                     <button
-                                        type="submit"
                                         disabled={formData.invalid}
                                         className={
                                             formData.invalid
-                                                ? `${styles.btn} ${styles['btn-disabled']}`
+                                                ? `${styles.btn} ${styles['btn-disable']}`
                                                 : `${styles.btn} ${styles['btn-primary']}`
                                         }
                                     >
@@ -300,4 +267,4 @@ function CandidateProfile() {
     );
 }
 
-export default CandidateProfile;
+export default CompanyProfile;

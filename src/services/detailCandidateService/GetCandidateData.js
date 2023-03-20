@@ -8,9 +8,9 @@
  */
 import { CANDIDATES_API } from "../../config/urls";
 
-async function GetCandidateData() {
+async function GetCandidateData(loginId) {
   let token = sessionStorage.getItem("accessToken");
-  let loginId = sessionStorage.getItem("userId");
+  // let loginId = sessionStorage.getItem("userId");
   // Realizamos la petición a la API para que nos devuelva los datos del candidato descargando el pdf
   try {
     const response = await fetch(` ${CANDIDATES_API}/${loginId}`, {
