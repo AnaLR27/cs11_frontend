@@ -1,10 +1,7 @@
-/**
- * @author iRaphiki <imraphiki@gmail.com>
- */
-import { Candidate } from '../models/candidate.model';
+import { Employer } from '../models/employer model';
 
-export class CandidateService {
-    // GET: loginId (create user)
+export class EmployerService {
+    //GET: loginId (crear el usuario)
     static async getById(userId) {
         const token =
             sessionStorage.getItem('accessToken') ||
@@ -14,9 +11,9 @@ export class CandidateService {
             return false;
         }
 
-        // Backend request
+        //petición all backend
         const request = await fetch(
-            'http://localhost:8000/candidate/' + userId,
+            'http://localhost:8000/employer/' + userId,
             {
                 method: 'GET',
                 headers: {
@@ -26,22 +23,22 @@ export class CandidateService {
             },
         );
         const data = await request.json();
-        return new Candidate(data.data);
+        return new Employer(data.data);
     }
-    // PATCH: Update ==> userId || loginId
-    static async editCandidate(userId, body) {
-        // Saving token from session storage or local storage.
+    //PATCH: Update->UserId || loginID
+    static async editemployer(userId, body) {
+        //cogemos el token del local storage
         const token =
             sessionStorage.getItem('accessToken') ||
             localStorage.getItem('accessToken');
 
-        // Checking if token have data.
+        //comprobamos si ha cogido el token
         if (!token) {
             return false;
         }
-        // Backend request
+        // Peticion al backend
         const request = await fetch(
-            'http://localhost:8000/candidate/' + userId,
+            'http://localhost:8000/employer/' + userId,
             {
                 method: 'PATCH',
                 body: JSON.stringify(body),
@@ -52,22 +49,22 @@ export class CandidateService {
             },
         );
         const data = await request.json();
-        return new Candidate(data.data);
+        return new Employer(data.data);
     }
 
-    // POST:  Create ==> userId || loginId
-    static async newCandidate(body) {
-        // Saving token from session storage or local storage.
+    //POST:  Create-> UserId || loginID
+    static async newemployer(body) {
+        //cogemos el token del local storage
         const token =
             sessionStorage.getItem('accessToken') ||
             localStorage.getItem('accessToken');
 
-        // Checking if token have data.
+        //comprobamos si ha cogido el token
         if (!token) {
             return false;
         }
-        // Backend request
-        const request = await fetch('http://localhost:8000/candidate/', {
+        //Peticion al backend
+        const request = await fetch('http://localhost:8000/employer', {
             method: 'POST',
             body: JSON.stringify(body),
             headers: {
@@ -76,26 +73,26 @@ export class CandidateService {
             },
         });
         const data = await request.json();
-        return new Candidate(data.data);
+        return new Employer(data.data);
     }
 
-    // POST
+    //POST
     static async uploadImage(file, _id) {
-        // Saving token from session storage or local storage.
+        //cogemos el token del local storage
         const token =
             sessionStorage.getItem('accessToken') ||
             localStorage.getItem('accessToken');
 
-        // Checking if token have data.
+        //comprobamos si ha cogido el token
         if (!token) {
             return false;
         }
         const formData = new FormData();
         formData.append('file0', file);
 
-        // Backend request
+        //Peticion al backend
         const request = await fetch(
-            'http://localhost:8000/candidate/' + _id + '/photo',
+            'http://localhost:8000/employer/' + _id + '/logo',
             {
                 method: 'POST',
                 body: formData,
@@ -105,6 +102,6 @@ export class CandidateService {
             },
         );
         const data = await request.json();
-        return new Candidate(data.data);
+        return new Employer(data.data);
     }
 }

@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBriefcase, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faEye, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 
-function AppliedJobsTable({ data, candidateId, setLoadData }) {
+function AppliedJobsTable({ data, candidateId, setLoadData, loginId }) {
   const columnNames = ["Oferta", "Fecha Aplicación", "Estado", "Acción"];
 
   // To control the visibility of the modal, the state visible is used. The function handleVisibility also sets the state of loadData to true, so that the useEffect in the parent component is triggered and the data is fetched again.
@@ -31,8 +31,8 @@ function AppliedJobsTable({ data, candidateId, setLoadData }) {
   const { deleteAppliedJob, message, error } = useFetchAppliedJobs();
 
   // handleDelete is the function that is called when the user clicks on the delete button. It receives as parameters the id of the job and the id of the candidate. It calls the deleteAppliedJob function from the custom hook useFetchAppliedJobs.
-  const handleDelete = async (jobId, candidateId) => {
-    await deleteAppliedJob(jobId, candidateId);
+  const handleDelete = async (jobId, loginId) => {
+    await deleteAppliedJob(jobId, loginId);
     handleVisibility();
   };
 
@@ -63,16 +63,16 @@ function AppliedJobsTable({ data, candidateId, setLoadData }) {
                   <td>
                     <div className={classes["job-block"]}>
                       <span className={classes["company-logo"]}>
-                        <img src={job.logo} alt={`${job.companyName} logo`} />
+                        <img src={job.logo || job.company.logo} alt={`${job.companyName || job.company.companyName} logo`} />
                       </span>
-                      {/* <Link to="/job-single/:job._id"> Aquí tendrá que ir el enlace a la página single job con el id del trabajo seleccionado*/}
+                      {/* <Link to="job/job-single/:job._id"> Aquí tendrá que ir el enlace a la página single job con el id del trabajo seleccionado*/}
                       <h4>{job.title}</h4>
                       {/* </Link> */}
                       <ul className={classes["job-info"]}>
                         <li>
                           <FontAwesomeIcon icon={faBriefcase} />
                           <span className={classes["job-block-icon"]}>
-                            {job.companyName}
+                            {job.companyName || job.company.companyName}
                           </span>
                         </li>
                         <li>
@@ -100,7 +100,7 @@ function AppliedJobsTable({ data, candidateId, setLoadData }) {
                   <td>
                     <ul className={classes["action-list"]}>
                       <li>
-                        {/* <Link to="/job-single/:job._id"> Aquí tendrá que ir el enlace a la página single job con el id del trabajo seleccionado*/}
+                        {/* <Link to="/job/job-single/:job._id"> Aquí tendrá que ir el enlace a la página single job con el id del trabajo seleccionado*/}
                         <button className={classes["icon-button"]}>
                           <FontAwesomeIcon icon={faEye} />
                         </button>
@@ -110,7 +110,7 @@ function AppliedJobsTable({ data, candidateId, setLoadData }) {
                         <button
                           className={classes["icon-button"]}
                           onClick={() => {
-                            handleDelete(job._id, candidateId);
+                            handleDelete(job._id, loginId);
                           }}
                         >
                           <FontAwesomeIcon icon={faTrashCan} />
