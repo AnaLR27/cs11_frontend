@@ -43,11 +43,11 @@ export const JobList = () => {
 
     const orderOffers = orderByDate(datos, order);
     setOffers(orderOffers);
-
+    
     setLoading(false);
+    console.log(orderOffers);
     // setOffers([]);
   };
-
   //* paginacion
   const currentCards = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
@@ -74,7 +74,7 @@ export const JobList = () => {
   return (
     <>
       {offers.length === 0 && !loading ? (
-        <NoCards valor={"ofertas"}/>
+        <NoCards valor={"ofertas"} />
       ) : (
         <>
           <div className={classes["job-container"]}>
