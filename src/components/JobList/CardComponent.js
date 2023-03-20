@@ -27,7 +27,7 @@ export const CardComponent = ({ offers }) => {
                 />
               </span>
               <span className={classes["company-name"]}>
-                <p>{offer.companyName || offer.company.companyName}</p>
+                <p>{offer.company.companyName}</p>
               </span>
               <h4 className={classes["job-title"]}>
                 <Link to={`/api/job/job-single/${offer._id}`}>

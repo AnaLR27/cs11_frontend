@@ -36,8 +36,6 @@ export const JobList = () => {
     listJobs();
   }, [order]);
 
- 
-
   //* lista / ordena las ofertas de trabajo
   const listJobs = async () => {
     setLoading(true);
@@ -45,8 +43,9 @@ export const JobList = () => {
 
     const orderOffers = orderByDate(datos, order);
     setOffers(orderOffers);
-
+    
     setLoading(false);
+    console.log(orderOffers);
     // setOffers([]);
   };
   //* paginacion

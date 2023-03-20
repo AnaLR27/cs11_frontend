@@ -47,10 +47,12 @@
 }
 
 .job-other-info .jobType {
+  font-weight: bold;
   background-color: var(--light-green);
   color: var(--green);
 }
 .job-other-info .position {
+  font-weight: bold;
   background-color: var(--green);
   color: var(--light-green);
 }
