@@ -47,7 +47,7 @@ function CandidateAppliedJobs() {
    // get the candidate id when the component is rendered for the first time
    useEffect(() => {
     getCandidateId(loginId);
-  }, []);
+  }, [loginId]);
 
   // executed when the component is rendered for the first time, or when the user deletes an application from the table
   useEffect(() => {
@@ -60,7 +60,7 @@ function CandidateAppliedJobs() {
   
   useEffect(() => {
     // if loadData is false it means that the request to the backend has been made and the data is loaded
-    if (!loadData) {
+    if (!loadData && candidateId.length > 0) {
       setFilteredData(filterDate(selectValue, data, candidateId));
     }
   }, [data]);
