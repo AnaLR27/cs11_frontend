@@ -19,7 +19,13 @@ import CandidateList from "../views/CandidateList";
 import RequireAuth from "../auth/RequireAuth";
 import PostAJobComponents from "../views/PostAJob.components";
 import DetailCandidate from "../components/detailCandidate/DetailCandidate";
+import CandidateProfile from "../views/CandidateProfile.component";
+import CompanyProfile from "../views/CompanyProfile.component";
+import EmployersDashboard from "../views/EmployersDashboard";
+import AppliedJobsPage from "../views/AppliedJobsPage";
 
+// Revisar esta importación, es el componente que esta haciendo Rafa
+/* import { JobDetails } from '../views/JobDetail'; */
 
 const Routing = () => {
   return (
@@ -36,19 +42,29 @@ const Routing = () => {
         <Route path="*" element={<ErrorPage />} />
 
         {/* Ruta con authenticacion con acceso tanto para candidatos como para empleadores */}
-        <Route path="auth" element={<RequireAuth allowedRole="both" />}>
+        <Route path="api" element={<RequireAuth allowedRole="both" />}>
           <Route path="change-password" element={<ChangePassword />} />
+          {/*  <Route
+                        path="job/job-single/:jobId"
+                        element={<JobDetails />}
+                    /> */}
         </Route>
+
         {/* Rutas de candidatos */}
         <Route
           path="candidate-dashboard"
           element={<RequireAuth allowedRole="candidate" />}
         >
+          <Route
+            path="candidates-dashboard"
+            element={<CandidatesDashboard />}
+          />
           <Route path=":id" element={<CandidateSinglePage />} />
           <Route path="curriculum" element={<Curriculum />} />
           <Route path="employer/:id" element={<EmployerSinglePage />} />
           <Route path="job/job-list" element={<JobList />} />
-          {/* <Route path="/job/job-single/:jobId" element={<JobInfo />} /> */}
+          <Route path="profile/:id" element={<CandidateProfile />} />
+          <Route path="applied-jobs" element={<AppliedJobsPage />} />
         </Route>
 
         {/* Rutas de empleadores */}
@@ -56,16 +72,17 @@ const Routing = () => {
           path="employers-dashboard"
           element={<RequireAuth allowedRole="employer" />}
         >
+          <Route path="dashboard" element={<EmployersDashboard />} />
           <Route path="candidate/all-candidates" element={<CandidateList />} />
           <Route path="candidate/:loginId" element={<DetailCandidate />} />
+          <Route path="profile/:id" element={<CompanyProfile />} />
 
           {/* Entiendo que la ruta all-applicants deberia de ir concatenado con job  !!!CONFIRMAR */}
 
-          <Route path='all-applicants' element={<Allaplicants />} />
-          <Route path='job/employer-jobs' element={<ManageJobsPage />} />
-          <Route path='post-a-job' element={<PostAJobComponents />} />
-          <Route path='post-a-job/:jobId' element={<PostAJobComponents />} />
-
+          <Route path="all-applicants" element={<Allaplicants />} />
+          <Route path="job/employer-jobs" element={<ManageJobsPage />} />
+          <Route path="post-a-job" element={<PostAJobComponents />} />
+          <Route path="post-a-job/:jobId" element={<PostAJobComponents />} />
         </Route>
       </Routes>
       <Footer />

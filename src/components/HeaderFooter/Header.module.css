@@ -6,7 +6,7 @@
   flex-direction: row;
   height: var(--header-height);
   padding: 1rem 1.65rem;
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
   z-index: 1;
 }

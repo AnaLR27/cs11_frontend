@@ -8,7 +8,7 @@
   justify-content: center;
   background-color: var(--light-green);
   align-items: center;
-  padding: 0 10px 15px;
+  padding: 15px 10px 15px;
 }
 
 /*spacer to numbers between last and first number range*/
