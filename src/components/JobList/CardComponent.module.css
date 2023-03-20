@@ -61,7 +61,7 @@
   width: 90px;
   border-radius: 50%;
   overflow: hidden;
-  margin: 0 auto 12px;
+  margin: 20px auto 12px;
   transition: all 0.3s ease;
 }
 .company-logo img {
@@ -83,7 +83,7 @@
   font-size: 18px;
   line-height: 24px;
   color: #202124;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 .job-title a {
   text-decoration: none;

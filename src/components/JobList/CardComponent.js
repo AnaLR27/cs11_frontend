@@ -12,8 +12,8 @@ export const CardComponent = ({ offers }) => {
           <div key={offer._id} className={classes["job-card"]}>
             <div className={classes["inner-box"]}>
               <ul className={classes["job-other-info"]}>
+                <li className={classes.position}>{offer.workDay}</li>
                 <li className={classes.jobType}>{offer.jobType}</li>
-                <li className={classes.position}>{offer.jobType}</li>
               </ul>
               <span className={classes["company-logo"]}>
                 <img

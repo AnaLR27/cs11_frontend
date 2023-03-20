@@ -47,7 +47,7 @@ export const JobList = () => {
     setLoading(false);
     // setOffers([]);
   };
-
+  console.log(offers);
   //* paginacion
   const currentCards = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
@@ -74,7 +74,7 @@ export const JobList = () => {
   return (
     <>
       {offers.length === 0 && !loading ? (
-        <NoCards valor={"ofertas"}/>
+        <NoCards valor={"ofertas"} />
       ) : (
         <>
           <div className={classes["job-container"]}>

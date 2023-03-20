@@ -22,6 +22,7 @@ function DetailCandidate(props) {
   const [infoCandidate, setInfoCandidate] = useState([]);
   const params = useParams();
   const loginId = params.loginId;
+  console.log(loginId);
 
   useEffect(() => {
     let infoCandidateTmp = GetCandidateData(loginId);
