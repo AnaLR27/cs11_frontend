@@ -8,7 +8,7 @@ export const fetchCards = async (url) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "auth-token": sessionStorage.getItem("accessToken"),
+      "auth-token": sessionStorage.getItem("accessToken") || localStorage.getItem("accessToken"),
     },
   });
 
