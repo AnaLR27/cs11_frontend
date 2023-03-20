@@ -17,31 +17,40 @@ import GetCandidateData from "../../services/detailCandidateService/GetCandidate
 import Like from "../../services/detailCandidateService/ButtonMark";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { reformatDate } from "../../utils/filterDate"; 
 
 function DetailCandidate(props) {
   const [infoCandidate, setInfoCandidate] = useState([]);
   const params = useParams();
   const loginId = params.loginId;
+<<<<<<< HEAD
   console.log(loginId);
 
+=======
+>>>>>>> 7ff59c0 ([CSF-60] modificar css e insertar foto)
   useEffect(() => {
     let infoCandidateTmp = GetCandidateData(loginId);
     infoCandidateTmp.then((data) => {
       setInfoCandidate(data);
     });
   }, []);
+  
+  const getCandidatePhoto = (photo) => {
+    return photo ? "http://localhost:8000/candidate/photo/" + photo : undefined;
+  };
+  if(infoCandidate.length === 0) return (<div>Loading...</div>)
   return (
     <div className={classesDetails.container}>
       <div className={classesDetails["col-lg-8"]}>
         <div className={classesDetails["content-candidate"]}>
           <div>
             <img
-              src={infoCandidate.photo}
+              src={getCandidatePhoto(infoCandidate.photo)}
               alt="imagen"
               className={classesDetails["img-candidate"]}
             />
             <h4 className={classesDetails["name-candidate"]}>
-              {infoCandidate.firstName} {infoCandidate.lastName}
+              {infoCandidate.fullName} 
             </h4>
             <ul className={classesDetails["info-candidate"]}>
               <li className={classesDetails["job"]}>
@@ -53,7 +62,7 @@ function DetailCandidate(props) {
                     icon={faClock}
                     className={classesDetails["icon-fa-clock"]}
                   />
-                  Miembro desde, {infoCandidate.registerAt}
+                  Miembro desde {reformatDate(infoCandidate.loginId.registerAt)}
                 </span>
               </li>
             </ul>
@@ -88,8 +97,8 @@ function DetailCandidate(props) {
               />
 
               <h5>Email:</h5>
-              <a href={`mailto:${infoCandidate.email}`}>
-                {infoCandidate.email}
+              <a href={`mailto:${infoCandidate.loginId.email}`}>
+                {infoCandidate.loginId.email}
               </a>
             </li>
             <li>
@@ -109,7 +118,7 @@ function DetailCandidate(props) {
               />
               <h5>Linkedin:</h5>
               <a target="_blank" href={infoCandidate.socialNetworks?.linkedin}>
-                {infoCandidate.socialNetworks?.linkedin}
+                {`${infoCandidate.socialNetworks?.linkedin.substring(0, 28)}...`}
               </a>
             </li>
             <li>
