@@ -5,6 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 export const CardComponent = ({ offers }) => {
+  
+  const getCompanyLogo = (logo) => {
+    return logo ? "http://localhost:8000/employer/logo/" + logo : undefined;
+  };
+
   return (
     <div className={classes.row}>
       {offers?.map((offer, _id) => {
@@ -16,9 +21,10 @@ export const CardComponent = ({ offers }) => {
                 <li className={classes.jobType}>{offer.jobType}</li>
               </ul>
               <span className={classes["company-logo"]}>
+                {console.log(offer.company.logo)}
                 <img
-                  src={offer.logo || offer.company.logo}
-                  alt={offer.companyName || offer.company.companyName}
+                  src={getCompanyLogo(offer.company?.logo)}
+                  alt={offer.company.companyName}
                 />
               </span>
               <span className={classes["company-name"]}>

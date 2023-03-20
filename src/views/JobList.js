@@ -36,6 +36,8 @@ export const JobList = () => {
     listJobs();
   }, [order]);
 
+ 
+
   //* lista / ordena las ofertas de trabajo
   const listJobs = async () => {
     setLoading(true);
