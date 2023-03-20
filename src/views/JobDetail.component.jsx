@@ -1,4 +1,4 @@
-import styles from '../styles/jobDetail.module.css';
+import style from '../styles/jobDetail.module.css';
 import { useEffect, useState } from 'react';
 import { JobService } from '../services/JobService';
 import { JobModel } from '../models/postAJob.model';
@@ -26,10 +26,11 @@ function JobDetail() {
 	}, []);
 
 	return (
-		<section className={styles['job-detail-section']}>
-			<div className={styles['header-section']}>
+		<section className={style['job-detail-section']}>
+			<div className={style['upper-box']}>
 				<JobInfo
-					companyName={jobData.companyName}
+					refLogo={jobData.refLogo}
+					title={jobData.title}
 					specialty={jobData.specialty}
 					location={jobData.location}
 					registerAt={jobData.registerAt}
@@ -38,12 +39,14 @@ function JobDetail() {
 					jobType={jobData.jobType}
 				/>
 			</div>
-			<div className={styles['auto-container']}>
-				<div className={styles['description']}>
-					<p>{jobData.description}</p>
+			<div className={style['job-detail-outer']}>
+				<div className={style['row']}>
+					<div className={style['description']}>
+						<h4 className={style['title-h4']}>Descripción</h4>
+						<p>{jobData.description}</p>
+					</div>
 				</div>
 			</div>
-			<div className={styles['col-lg-4']}></div>
 		</section>
 	);
 }

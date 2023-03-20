@@ -1,4 +1,4 @@
-import style from './badge.component.css';
+import style from './badge.module.css';
 
 function Badge({ type, text }) {
 	return (
