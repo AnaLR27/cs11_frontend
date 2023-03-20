@@ -3,23 +3,24 @@
 .main-container {
   background-color: var(--light-green);
   padding: 40px 15px;
-  width: 100%;
-  min-height: 100vh;
+  width: 100vw;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  
 }
 
 /* header class containing title and a paragraph */
 
-.header {
+.main-container .header {
   margin-bottom: 40px;
 }
 
-.header h3 {
+.main-container .header h3 {
   margin-bottom: 5px;
   font-size: 1.7rem;
   line-height: 1.3em;
 }
 
-.header p {
+.main-container .header p {
   color: var(--darkgrey);
   line-height: 24px;
   font-size: 1.1rem;

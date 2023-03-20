@@ -11,7 +11,7 @@
  * @returns an array of jobs filtered by date
  */
 
-export const filterDate = (selectValue, data, id) => {
+export const filterDate = (selectValue, data, candidateId) => {
   const today = new Date();
 
   const prevMonth = new Date(
@@ -30,17 +30,18 @@ export const filterDate = (selectValue, data, id) => {
     today.getDate()
   );
 
+
   const filterJobsByDate = (startDate, endDate, data) => {
     return data.filter((data) => {
       return (
         +new Date(
           data.applicants.find(
-            (candidate) => candidate.applicantId === id
+            (candidate) => candidate.applicantId === candidateId
           ).applicationDate
         ) >= startDate &&
         +new Date(
           data.applicants.find(
-            (candidate) => candidate.applicantId === id
+            (candidate) => candidate.applicantId === candidateId
           ).applicationDate
         ) <= endDate
       );
@@ -70,12 +71,12 @@ export const filterDate = (selectValue, data, id) => {
   const sortedFilteredData = filteredData.sort((a, b) => {
     const dateA = new Date(
       a.applicants.find(
-        (candidate) => candidate.applicantId === id
+        (candidate) => candidate.applicantId === candidateId
       ).applicationDate
     );
     const dateB = new Date(
       b.applicants.find(
-        (candidate) => candidate.applicantId === id
+        (candidate) => candidate.applicantId === candidateId
       ).applicationDate
     );
     return dateB - dateA;
