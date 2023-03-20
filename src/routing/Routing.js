@@ -63,6 +63,7 @@ const Routing = () => {
                     path="candidate-dashboard"
                     element={<RequireAuth allowedRole="candidate" />}
                 >
+                    <Route path="candidates-dashboard" element={<CandidatesDashboard />} />
                     <Route path=":id" element={<CandidateSinglePage />} />
                     <Route path="curriculum" element={<Curriculum />} />
                     <Route
@@ -73,6 +74,7 @@ const Routing = () => {
                     <Route path="profile/:id" element={<CandidateProfile />} />
                     <Route path="applied-jobs" element={<AppliedJobsPage />} />
                 </Route>
+
 
                 {/* Rutas de empleadores */}
                 <Route
