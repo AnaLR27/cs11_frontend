@@ -3,17 +3,39 @@ import { FaRegMoneyBillAlt } from 'react-icons/fa';
 import { AiOutlineEye, AiOutlineCheck, AiOutlineCloseCircle } from 'react-icons/ai';
 import { IoLocationOutline } from 'react-icons/io5';
 import FetchMail from '../../../services/allAplicantsService/FetchMail'
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 
 function CardCandidate(props) {
 
-    const sendMail = (dataAction) => {
+    const sendMail = async (dataAction) => {
         const mailType = dataAction === 'aceptada' ? props.accepted : props.refused;
-        FetchMail(props.email, props.username, mailType, props.job);
+        let sended = await FetchMail(props.email, props.username, mailType, props.job);
+        if (sended) {
+            Swal.fire({
+                title: 'Email enviado!',
+                text: 'Se ha comunicado al candidato que su solicitud ha sido ' + dataAction + '',
+                icon: 'success',
+                iconColor: '#47d7ac',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#47d7ac'
+            });
+            }
+        else {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Ops! Ha habido un error al enviar el email',
+                icon: 'error',
+                iconColor: '#47d7ac',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#47d7ac'
+            });
+        }
       };
       
-      const sendMailHandlerAccepted = () => {
-        sendMail('aceptada');
+      const sendMailHandlerAccepted = async () => {
+        await sendMail('aceptada');
       };
       
       const sendMailHandlerRefused = () => {
@@ -29,23 +51,24 @@ function CardCandidate(props) {
                 <div className={Styles['user-data']}>
                 <div className={Styles['user-name']}>{props.username}</div>
                 <div className={Styles['user-datas']}>
-                    {/* <div className={Styles['user-potition']}>{props.especiality}</div> */}
-                    <div className={Styles['user-location']}><IoLocationOutline />{props.location}</div>
-                    <div className={Styles['user-fee']}><FaRegMoneyBillAlt className={Styles['money']}/>{props.hourate}€ / hour</div>
+                    <div className={Styles['user-location']}>Bootcamp: {props.edition}</div>
                 </div>
                 </div>
-                {/* <div className={Styles['user-skills']}>
+                <div className={Styles['user-skills']}>
                     {props.skills.map((skill) => {
                         return (
                             <div key={skill} className={Styles['user-skill']}>{skill}</div>
                         )
                     })}
-                </div> */}
+                </div>
                 <div className={Styles['user-actions']}>
-                    <div className={Styles['user-profile']}><AiOutlineEye/></div>
+                    <div className={Styles['user-profile']}>
+                        <Link className={Styles['profile-user-link']} to={`/employers-dashboard/candidate/${props.linkid}`}>
+                            <AiOutlineEye/>
+                        </Link>
+                    </div>
                     <div className={Styles['user-accept']} onClick={sendMailHandlerAccepted}><AiOutlineCheck/></div>
                     <div className={Styles['user-reject']} onClick={sendMailHandlerRefused}><AiOutlineCloseCircle /></div>
-                    {/* <div className={Styles['user-delete']}><IoTrashOutline/></div> */}
                 </div>
             </div>
         </>
