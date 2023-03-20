@@ -46,6 +46,10 @@ function ManageJobs() {
   const payload = JSON.parse(atob(tokenParts[1]));
   const userId = payload.UserInfo.id;
 
+  const getCompanyLogo = (logo)=>{
+    return logo ? 'http://localhost:8000/employer/logo/' + logo : undefined;
+  }
+
   // Funcion fetch para obtener los empleos publicados por el usuario
   const fetchGetPublishedJobs = async () => {
     setIsLoading(true);
@@ -243,7 +247,7 @@ function ManageJobs() {
                         <td className={classes["td-title"]}>
                           <div>
                             <div className={classes.logo}>
-                              <img src={job.company.logo} />
+                              <img src={getCompanyLogo(job.company?.logo)} />
                             </div>
                             <div className={classes.job}>
                               <div>
