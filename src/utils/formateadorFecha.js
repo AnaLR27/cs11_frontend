@@ -1,3 +1,9 @@
+/**
+ * @fileoverview This file contains the function to format the date that is received from the backend in ISO format
+ * @author Pablo Muñoz
+ * @modified
+ */
+
 export function formatearFecha(fechaISO) {
     const fecha = new Date(fechaISO);
   

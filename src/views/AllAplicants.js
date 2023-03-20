@@ -1,3 +1,8 @@
+/**
+ * @fileoverview This is the view where the cards are loaded depending on the ofecta selected
+ * @author Daniel Sánchez Gonzalez
+ */
+
 import Styles from "../styles/AllAplicants.module.css";
 import { useEffect, useState } from "react";
 import FetchJobs from "../services/allAplicantsService/FetchJobs";
@@ -8,6 +13,7 @@ import Card from "../components/allaplicants/cardcandidate/CardCandidate";
 import { Link, Navigate } from "react-router-dom";
 import Spinner from "../components/UI/Spinner/Loader";
 import Unauthorized from "../components/Unauthorized";
+import mokcSkills from "../utils/mokcSkills";
 
 function Allaplicants() {
 
@@ -22,33 +28,33 @@ function Allaplicants() {
   const [role, setRole] = useState(true);
   const [countDown, setCountDown] = useState(5);
 
-  
- 
 
-  function getJobList() {
+  // funcion que carga las ofertas de trabajo
+  const getJobList = () => {
     let jobList = [];
     if (userReady && jobReady) {
       Object.keys(jobs.data).map((key) => {
         let obj = {
-          value : jobs.data[key].title,
-          label : jobs.data[key].title
-      };
+          value: jobs.data[key].title,
+          label: jobs.data[key].title
+        };
         jobList.push(obj);
       });
     }
     return jobList;
-  }
+  };
 
-
-  function handleJobChange(e) {
+  // funcion que carga los candidatos de una oferta de trabajo en funcion de la oferta seleccionada
+  const handleJobChange = (e) => {
     setSelectedJob(e.value);
     let jobApplicants = getJobApplicants();
     setJobApplicants(jobApplicants);
     let jobApplicantsData = getJobApplicantsData();
     setJobApplicantsData(jobApplicantsData);
-  }
+  };
 
-  async function getJobApplicants() {
+  // funcion que carga los id de los candidatos para posteriormente cargar los datos de los candidatos si estan en el array de usuarios
+  const getJobApplicants = async () => {
     let jApplicants = await [];
     if (jobReady) {
       Object.keys(jobs.data).map((key) => {
@@ -60,12 +66,11 @@ function Allaplicants() {
       });
     }
     setJobApplicants(jApplicants);
-    // console.log(jApplicants);
     return jApplicants;
-  }
+  };
 
-
-  async function getJobApplicantsData() {
+  // funcion que carga los datos de los candidatos
+  const getJobApplicantsData = async () =>{
     let jap = await [];
     let jobApplicants =  await getJobApplicants();
     if (userReady && jobReady) {
@@ -76,9 +81,9 @@ function Allaplicants() {
       });
     }
     setJobApplicantsData(jap);
-    console.log(jap);
     return jap;
   }
+
   
   useEffect(() => {
     if (
@@ -111,8 +116,6 @@ function Allaplicants() {
     setJobList(getJobList());
     setJobApplicants(getJobApplicants());
     setJobApplicantsData(getJobApplicantsData());
-    console.log(users);
-    console.log(jobs);
   }
   , [userReady && jobReady, selectedJob, role, countDown]);
   
@@ -129,7 +132,7 @@ function Allaplicants() {
             </button>
           </div>
           <div className={Styles["main-applicants"]}>
-            <p>Tus Candidatos</p>
+            <h4 className={Styles["your-candidates"]}>Ofertas publicadas</h4>
             <JobSelector options={jobList} onChange={handleJobChange} />
           </div>
           <div className={Styles["main-jobs"]}>
@@ -149,10 +152,10 @@ function Allaplicants() {
                       className={Styles["applicant"]}
                       linkid={jobApplicantsData[key].loginId}
                       photo={jobApplicantsData[key].photo}
-                      username={jobApplicantsData[key].fullName + " " + jobApplicantsData[key].secondLastName}
+                      username={jobApplicantsData[key].fullName}
                       especiality={jobApplicantsData[key].speciality}
                       edition={jobApplicantsData[key].bootcamp + " " + jobApplicantsData[key].edition}
-                      skills={jobApplicantsData[key].professionalSkills}
+                      skills={mokcSkills(3)}
                       // email={users.data[key].email}
                       email={"the.d00m.666@gmail.com"}
                       job={selectedJob}
