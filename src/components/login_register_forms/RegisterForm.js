@@ -116,7 +116,7 @@ const RegisterForm = () => {
       setPending(false);
       setOpenLoginModal(false);
       if (response.newUser.role === "candidate") {
-        navigate(`candidate-dashboard/profile/${response.newUser.id}}`);
+        navigate(`candidates-dashboard/profile/${response.newUser.id}}`);
       } else if (response.newUser.role === "employer") {
         navigate(`employers-dashboard/profile/${response.newUser.id}}`);
       }

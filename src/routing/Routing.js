@@ -44,6 +44,11 @@ const Routing = () => {
         {/* Ruta con authenticacion con acceso tanto para candidatos como para empleadores */}
         <Route element={<RequireAuth allowedRole='both' />}>
           <Route path='auth/change-password' element={<ChangePassword />} />
+          <Route path='candidate/:loginId' element={<CandidateSinglePage />} />
+          <Route path='employer/:id' element={<EmployerSinglePage />} />
+
+          {/*  importacion desde componentes repetiendo la ruta de arriba*/}
+          {/* <Route path='candidate/:loginId' element={<DetailCandidate />} /> */}
           {/*  <Route
                         path="job/job-single/:jobId"
                         element={<JobDetails />}
@@ -56,27 +61,55 @@ const Routing = () => {
             path='candidates-dashboard'
             element={<CandidatesDashboard />}
           />
-          <Route path=':id' element={<CandidateSinglePage />} />
-          <Route path='curriculum' element={<Curriculum />} />
-          <Route path='employer/:id' element={<EmployerSinglePage />} />
-          <Route path='job/job-list' element={<JobList />} />
-          <Route path='profile/:id' element={<CandidateProfile />} />
-          <Route path='applied-jobs' element={<AppliedJobsPage />} />
+          <Route
+            path='candidates-dashboard/profile/:id'
+            element={<CandidateProfile />}
+          />
+          <Route
+            path='candidates-dashboard/curriculum'
+            element={<Curriculum />}
+          />
+          <Route
+            path='candidates-dashboard/job/job-list'
+            element={<JobList />}
+          />
+          <Route
+            path='candidates-dashboard/applied-jobs'
+            element={<AppliedJobsPage />}
+          />
         </Route>
 
         {/* Rutas de empleadores */}
         <Route element={<RequireAuth allowedRole='employer' />}>
           <Route path='employers-dashboard' element={<EmployersDashboard />} />
-          <Route path='candidate/all-candidates' element={<CandidateList />} />
-          <Route path='candidate/:loginId' element={<DetailCandidate />} />
-          <Route path='profile/:id' element={<CompanyProfile />} />
+          <Route
+            path='employers-dashboard/candidate/all-candidates'
+            element={<CandidateList />}
+          />
+
+          <Route
+            path='employers-dashboard/profile/:id'
+            element={<CompanyProfile />}
+          />
 
           {/* Entiendo que la ruta all-applicants deberia de ir concatenado con job  !!!CONFIRMAR */}
 
-          <Route path='all-applicants' element={<Allaplicants />} />
-          <Route path='job/employer-jobs' element={<ManageJobsPage />} />
-          <Route path='post-a-job' element={<PostAJobComponents />} />
-          <Route path='post-a-job/:jobId' element={<PostAJobComponents />} />
+          <Route
+            path='employers-dashboard/all-applicants'
+            element={<Allaplicants />}
+          />
+          <Route
+            path='employers-dashboard/job/employer-jobs'
+            element={<ManageJobsPage />}
+          />
+          <Route
+            path='employers-dashboard/post-a-job'
+            element={<PostAJobComponents />}
+          />
+          <Route
+            path='employers-dashboard/post-a-job/:jobId'
+            element={<PostAJobComponents />}
+          />
         </Route>
       </Routes>
       <Footer />

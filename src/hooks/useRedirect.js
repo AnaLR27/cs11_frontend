@@ -29,12 +29,11 @@ const useRedirect = () => {
         setLoading(false);
 
         //If employer has no profile, redirect to form for create profile
-        if (res.data === null) {
-          navigate(`/employer-dashbord/profile/${decodedId}`);
+        if (!res.data.companyName) {
+          navigate(`/employers-dashboard/profile/${decodedId}`);
         }
-
         //If employer has a profile, redirect to dashboard
-        if (res.data !== null && res.data?.loginId === decodedId) {
+        if (res.data.companyName) {
           navigate(`/employers-dashboard`);
         }
       } catch (error) {
@@ -50,12 +49,14 @@ const useRedirect = () => {
         setLoading(false);
 
         //If candidate has no profile, redirect to form for create profile
-        if (res.data === null) {
-          navigate(`/candidate-dashbord/profile/${decodedId}`);
+        console.log(res.data);
+        if (!res.data.fullName) {
+          navigate(`/candidates-dashboard/profile/${decodedId}`);
         }
 
         //If candidate has a profile, redirect to dashboard
-        if (res.data !== null && res.data?.loginId === decodedId) {
+        console.log(res.data.fullName);
+        if (res.data.fullName) {
           navigate(`/candidates-dashboard`);
         }
       } catch (error) {
