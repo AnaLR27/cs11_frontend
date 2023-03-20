@@ -16,7 +16,6 @@ import ReactDOM from "react-dom";
 import Modal from "../UI/Modal";
 import LoginForm from "../login_register_forms/LoginForm";
 import RegisterForm from "../login_register_forms/RegisterForm";
-import { Link } from "react-router-dom";
 
 function Header() {
   const { onLogin, setOnLogin, onRegister, setOpenLoginModal, openLoginModal } =
@@ -35,9 +34,7 @@ function Header() {
         </Modal>,
         document.querySelector("#modal")
       )}
-      <Link to="/">
-        <img className={classes.logo} src={logo} alt="" />
-      </Link>
+      <img className={classes.logo} src={logo} alt="" />
       <div className={classes.btns}>
         <button className={classes.btn} onClick={handleClick}>
           Login / Register
