@@ -19,6 +19,12 @@ import CandidateList from "../views/CandidateList";
 import RequireAuth from "../auth/RequireAuth";
 import PostAJobComponents from "../views/PostAJob.components";
 import DetailCandidate from "../components/detailCandidate/DetailCandidate";
+import CandidateProfile from '../views/CandidateProfile.component';
+import CompanyProfile from '../views/CompanyProfile.component';
+import EmployersDashboard from "../views/EmployersDashboard";
+
+// Revisar esta importación, es el componente que esta haciendo Rafa
+/* import { JobDetails } from '../views/JobDetail'; */
 
 const Routing = () => {
   return (
@@ -62,7 +68,6 @@ const Routing = () => {
           element={<RequireAuth allowedRole="employer" />}
         >
           <Route path="dashboard" element={<EmployersDashboard />} />
-
           <Route path="candidate/all-candidates" element={<CandidateList />} />
           <Route path="candidate/:loginId" element={<DetailCandidate />} />
           <Route path="profile/:id" element={<CompanyProfile />} />
