@@ -9,10 +9,10 @@ import {
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import classes from "./employersDashboard.module.css";
 import { Link } from "react-router-dom";
-import FetchEmployerJobs from "../../services/FetchEmployerJobs";
-import Loader from '../UI/Spinner/Loader';
+import FetchEmployerJobs from "../../services/employersDashService/FetchEmployerJobs";
+import Loader from "../UI/Spinner/Loader";
 
-function CardsApplicants() {
+function EmployerDashboard() {
   //Controlador del fetch
   const [isLoading, setIsLoading] = useState(true);
   const [useJobs, setJobs] = useState([]);
@@ -26,30 +26,38 @@ function CardsApplicants() {
   }, []);
 
   async function loadJobs() {
-    const data = await FetchEmployerJobs();
-    setJobs(data);
-    setJobReady(true);
-    // Filtrado de la data 
-    let filterData = data
-      .filter((wow) => wow.applicants.length >= 1)
-      .map((usa) => usa.applicants.at(-1))
-      .sort(
-        (c, d) =>
-          -new Date(c.applicationDate).getTime() +
-          new Date(d.applicationDate).getTime()
-      );
-      console.log(filterData);
+    try {
+      const data = await FetchEmployerJobs();
+      setJobReady(true);
+      setIsLoading(false);
+      // Filtrado de la data
+      let filterData = data
+        .filter((wow) => wow.applicants.length >= 1)
+        .sort(
+          (c, d) =>
+            -new Date(c.applicants.at(-1).applicationDate).getTime() +
+            new Date(d.applicants.at(-1).applicationDate).getTime()
+        )
+        .map((usa) => usa.applicants.at(-1).applicantId)
+        .slice(0, 6);
+      setJobs(filterData);
+    } catch (error) {
+      return error;
+    }
   }
 
   // Renderizacion de un componente spinner durante la espera a la
   // llamada de la base de datos
   if (isLoading) {
-    return <div className={classes.DivCardsApp}><Loader /></div>;
+    return (
+      <div className={classes.DivCardsApp}>
+        <Loader />
+      </div>
+    );
   }
 
   return (
     <>
-      {/* 
       <section className={classes.DivCardsApp}>
         <div>
           <div>
@@ -66,7 +74,7 @@ function CardsApplicants() {
               <h4>Candidatos Recientes</h4>
             </div>
             <div>
-              {filtroCandidatos.map((uca, i) => {
+              {useJobs.map((uca, i) => {
                 return (
                   <div className={classes.CardCand} key={i}>
                     <div>
@@ -77,40 +85,32 @@ function CardsApplicants() {
                       />
                     </div>
                     <div>
-                      <h4>
-                        {uca.firstName} {uca.lastName} {uca.secondLastName}
-                      </h4>
+                      <h4>{uca.fullName}</h4>
                       <div>
                         <div>
-                          <p className={classes.blueP}>{uca.especiality}</p>
+                          <p className={classes.blueP}>{uca.specialty}</p>
                         </div>
                         <div>
                           <FontAwesomeIcon
                             className={classes.IconsCards}
                             icon={faLocationDot}
                           />
-                          <p>{uca.location}</p>
+                          <p>Málaga</p>
                         </div>
                         <div>
                           <FontAwesomeIcon
                             className={classes.IconsCards}
                             icon={faMoneyBills}
                           />
-                          <p>{uca.hourlyRate.max} /hora</p>
+                          <p>50 $/hora</p>
                         </div>
                       </div>
                       <div>
-                        <p>{uca.skills[0]}</p>
-                        <p>{uca.skills[1]}</p>
-                        <p>{uca.skills[2]}</p>
+                        <p>{uca.professionalSkills[0]}</p>
+                        <p>{uca.professionalSkills[1]}</p>
+                        <p>{uca.professionalSkills[2]}</p>
                       </div>
                       <div>
-                        {/*<Link to={uca}>
-                        <FontAwesomeIcon
-                          className={classes.ButtonCardsCand}
-                          icon={faEye}
-                        />
-                        {/*</Link> 
                         <a href={uca.socialNetworks.github}>
                           <FontAwesomeIcon
                             className={classes.ButtonCardsCand}
@@ -123,10 +123,6 @@ function CardsApplicants() {
                             icon={faLinkedin}
                           />
                         </a>
-                        {/*<a><FontAwesomeIcon
-                          className={classes.ButtonCardsCand}
-                          icon={faTrashCan}
-                        /></a>
                       </div>
                     </div>
                   </div>
@@ -136,8 +132,7 @@ function CardsApplicants() {
           </div>
         </div>
       </section>
-    */}
     </>
   );
 }
-export default CardsApplicants;
+export default EmployerDashboard;

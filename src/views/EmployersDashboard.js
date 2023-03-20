@@ -1,8 +1,7 @@
-import EmployersDashboard from "../components/EmployersDashboard/EmployerDashboard";
-
+import EmployerDashboard from "../components/EmployersDashboard/EmployerDashboard";
 
 const EmployersDashboard = () => {
-  return <EmployersDashboard />;
+  return <EmployerDashboard />;
 };
 
 export default EmployersDashboard;

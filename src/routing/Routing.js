@@ -19,7 +19,7 @@ import CandidateList from "../views/CandidateList";
 import RequireAuth from "../auth/RequireAuth";
 import PostAJobComponents from "../views/PostAJob.components";
 import DetailCandidate from "../components/detailCandidate/DetailCandidate";
-
+import EmployersDashboard from "../views/EmployersDashboard";
 
 const Routing = () => {
   return (
@@ -56,16 +56,17 @@ const Routing = () => {
           path="employers-dashboard"
           element={<RequireAuth allowedRole="employer" />}
         >
+          <Route path="dashboard" element={<EmployersDashboard />} />
           <Route path="candidate/all-candidates" element={<CandidateList />} />
           <Route path="candidate/:loginId" element={<DetailCandidate />} />
+          
 
           {/* Entiendo que la ruta all-applicants deberia de ir concatenado con job  !!!CONFIRMAR */}
 
-          <Route path='all-applicants' element={<Allaplicants />} />
-          <Route path='job/employer-jobs' element={<ManageJobsPage />} />
-          <Route path='post-a-job' element={<PostAJobComponents />} />
-          <Route path='post-a-job/:jobId' element={<PostAJobComponents />} />
-
+          <Route path="all-applicants" element={<Allaplicants />} />
+          <Route path="job/employer-jobs" element={<ManageJobsPage />} />
+          <Route path="post-a-job" element={<PostAJobComponents />} />
+          <Route path="post-a-job/:jobId" element={<PostAJobComponents />} />
         </Route>
       </Routes>
       <Footer />
