@@ -50,18 +50,23 @@ const Routing = () => {
                     /> */}
         </Route>
 
-        {/* Rutas de candidatos */}
-        <Route
-          path="candidate-dashboard"
-          element={<RequireAuth allowedRole="candidate" />}
-        >
-          <Route path=":id" element={<CandidateSinglePage />} />
-          <Route path="curriculum" element={<Curriculum />} />
-          <Route path="employer/:id" element={<EmployerSinglePage />} />
-          <Route path="job/job-list" element={<JobList />} />
-          <Route path="profile/:id" element={<CandidateProfile />} />
-          <Route path="applied-jobs" element={<AppliedJobsPage />} />
-        </Route>
+                {/* Rutas de candidatos */}
+                <Route
+                    path="candidate-dashboard"
+                    element={<RequireAuth allowedRole="candidate" />}
+                >
+                    <Route path="candidates-dashboard" element={<CandidatesDashboard />} />
+                    <Route path=":id" element={<CandidateSinglePage />} />
+                    <Route path="curriculum" element={<Curriculum />} />
+                    <Route
+                        path="employer/:id"
+                        element={<EmployerSinglePage />}
+                    />
+                    <Route path="job/job-list" element={<JobList />} />
+                    <Route path="profile/:id" element={<CandidateProfile />} />
+                    <Route path="applied-jobs" element={<AppliedJobsPage />} />
+                </Route>
+
 
         {/* Rutas de empleadores */}
         <Route

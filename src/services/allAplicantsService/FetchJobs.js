@@ -1,23 +1,32 @@
+import { EMPLOYER_JOBS } from "../../config/urls";
 
-async function FetchJobs (id) {
+async function FetchJobs(id) {
     const requestOptions = {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json',
-                            'auth-token': sessionStorage.getItem('token') ? sessionStorage.getItem('token') : localStorage.getItem('token') },
-            };
-
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'auth-token': sessionStorage.getItem('accessToken')
+          ? sessionStorage.getItem('accessToken')
+          : localStorage.getItem('token'),
+      },
+    };
+  
     const getDatas = async (id) => {
-        // const response = await fetch('http://localhost:8000/job/all-jobs', requestOptions)
-        const response = await fetch(`http://localhost:8000/job/employer-jobs/${id}`, requestOptions)
-        const data = await response.json();
-        return data;
+      const response = await fetch(`${EMPLOYER_JOBS}/employer-jobs/${id}`, requestOptions);
+      const data = await response.json();
+      return data;
+    };
+  
+    try {
+      let datas = await getDatas(id);
+      return datas;
+    } catch (error) {
+      throw new Error('Error fetching job data');
+      return error;
     }
-
-    let datas = await getDatas(id);
-    return datas;
-}
-
-    export default FetchJobs;
+  }
+  
+  export default FetchJobs;
 
 
 
