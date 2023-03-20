@@ -19,10 +19,10 @@ import CandidateList from "../views/CandidateList";
 import RequireAuth from "../auth/RequireAuth";
 import PostAJobComponents from "../views/PostAJob.components";
 import DetailCandidate from "../components/detailCandidate/DetailCandidate";
-import CandidateProfile from '../views/CandidateProfile.component';
-import CompanyProfile from '../views/CompanyProfile.component';
+import CandidateProfile from "../views/CandidateProfile.component";
+import CompanyProfile from "../views/CompanyProfile.component";
 import EmployersDashboard from "../views/EmployersDashboard";
-import AppliedJobsPage from '../views/AppliedJobsPage';
+import AppliedJobsPage from "../views/AppliedJobsPage";
 
 // Revisar esta importación, es el componente que esta haciendo Rafa
 /* import { JobDetails } from '../views/JobDetail'; */
@@ -50,23 +50,22 @@ const Routing = () => {
                     /> */}
         </Route>
 
-                {/* Rutas de candidatos */}
-                <Route
-                    path="candidate-dashboard"
-                    element={<RequireAuth allowedRole="candidate" />}
-                >
-                    <Route path="candidates-dashboard" element={<CandidatesDashboard />} />
-                    <Route path=":id" element={<CandidateSinglePage />} />
-                    <Route path="curriculum" element={<Curriculum />} />
-                    <Route
-                        path="employer/:id"
-                        element={<EmployerSinglePage />}
-                    />
-                    <Route path="job/job-list" element={<JobList />} />
-                    <Route path="profile/:id" element={<CandidateProfile />} />
-                    <Route path="applied-jobs" element={<AppliedJobsPage />} />
-                </Route>
-
+        {/* Rutas de candidatos */}
+        <Route
+          path="candidate-dashboard"
+          element={<RequireAuth allowedRole="candidate" />}
+        >
+          <Route
+            path="candidates-dashboard"
+            element={<CandidatesDashboard />}
+          />
+          <Route path=":id" element={<CandidateSinglePage />} />
+          <Route path="curriculum" element={<Curriculum />} />
+          <Route path="employer/:id" element={<EmployerSinglePage />} />
+          <Route path="job/job-list" element={<JobList />} />
+          <Route path="profile/:id" element={<CandidateProfile />} />
+          <Route path="applied-jobs" element={<AppliedJobsPage />} />
+        </Route>
 
         {/* Rutas de empleadores */}
         <Route
