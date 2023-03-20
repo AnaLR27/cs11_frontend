@@ -25,7 +25,7 @@ import EmployersDashboard from "../views/EmployersDashboard";
 import AppliedJobsPage from "../views/AppliedJobsPage";
 
 // Revisar esta importación, es el componente que esta haciendo Rafa
-/* import { JobDetails } from '../views/JobDetail'; */
+import JobDetails from "../views/JobDetail.component";
 
 const Routing = () => {
   return (
@@ -44,10 +44,7 @@ const Routing = () => {
         {/* Ruta con authenticacion con acceso tanto para candidatos como para empleadores */}
         <Route path="api" element={<RequireAuth allowedRole="both" />}>
           <Route path="change-password" element={<ChangePassword />} />
-          {/*  <Route
-                        path="job/job-single/:jobId"
-                        element={<JobDetails />}
-                    /> */}
+          <Route path="job/job-single/:jobId" element={<JobDetails />} />
         </Route>
 
         {/* Rutas de candidatos */}
