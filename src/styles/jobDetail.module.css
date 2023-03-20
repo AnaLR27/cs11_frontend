@@ -1,0 +1,14 @@
+section.job-detail-section {
+	display: block;
+	position: relative;
+}
+
+section.job-detail-section div.header-section {
+	position: relative;
+	background-color: var(--light-green);
+	background-size: cover;
+	padding: 80px 0 70px;
+}
+
+
+

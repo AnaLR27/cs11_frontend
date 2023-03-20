@@ -1,0 +1,16 @@
+.auto-container {
+	position: static;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+.job-block {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.job-block .content {
+	position: relative;
+	padding-left: 120px;
+	min-height: 51px;
+}

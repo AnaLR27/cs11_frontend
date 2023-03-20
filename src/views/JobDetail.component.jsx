@@ -26,11 +26,19 @@ function JobDetail() {
 	}, []);
 
 	return (
-		<section className={styles.container}>
-			<div className={`${styles['col-lg-12']} ${styles['container-header']} `}>
-				<JobInfo />
+		<section className={styles['job-detail-section']}>
+			<div className={styles['header-section']}>
+				<JobInfo
+					companyName={jobData.companyName}
+					specialty={jobData.specialty}
+					location={jobData.location}
+					registerAt={jobData.registerAt}
+					salary={jobData.salary}
+					workDay={jobData.workDay}
+					jobType={jobData.jobType}
+				/>
 			</div>
-			<div className={styles['col-lg-8']}>
+			<div className={styles['auto-container']}>
 				<div className={styles['description']}>
 					<p>{jobData.description}</p>
 				</div>
