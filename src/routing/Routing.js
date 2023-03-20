@@ -22,6 +22,7 @@ import DetailCandidate from "../components/detailCandidate/DetailCandidate";
 import CandidateProfile from '../views/CandidateProfile.component';
 import CompanyProfile from '../views/CompanyProfile.component';
 import EmployersDashboard from "../views/EmployersDashboard";
+import AppliedJobsPage from '../views/AppliedJobsPage';
 
 // Revisar esta importación, es el componente que esta haciendo Rafa
 /* import { JobDetails } from '../views/JobDetail'; */
