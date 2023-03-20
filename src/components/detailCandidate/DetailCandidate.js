@@ -23,11 +23,6 @@ function DetailCandidate(props) {
   const [infoCandidate, setInfoCandidate] = useState([]);
   const params = useParams();
   const loginId = params.loginId;
-<<<<<<< HEAD
-  console.log(loginId);
-
-=======
->>>>>>> 7ff59c0 ([CSF-60] modificar css e insertar foto)
   useEffect(() => {
     let infoCandidateTmp = GetCandidateData(loginId);
     infoCandidateTmp.then((data) => {
@@ -81,12 +76,12 @@ function DetailCandidate(props) {
           >
             Descargar CV
           </a>
-          <button
+          {/* <button
             className={classesDetails["button-mark"]}
             onClick={() => Like(props.candidate)}
           >
             <FontAwesomeIcon icon={faBookmark} />
-          </button>
+          </button> */}
         </div>
         <div className={classesDetails["content"]}>
           <ul className={classesDetails["jobs-information"]}>
