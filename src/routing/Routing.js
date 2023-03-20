@@ -21,8 +21,10 @@ import PostAJobComponents from '../views/PostAJob.components';
 import DetailCandidate from '../components/detailCandidate/DetailCandidate';
 import CandidateProfile from '../views/CandidateProfile.component';
 import CompanyProfile from '../views/CompanyProfile.component';
+import AppliedJobsPage from '../views/AppliedJobsPage';
 // Revisar esta importación, es el componente que esta haciendo Rafa
 /* import { JobDetails } from '../views/JobDetail'; */
+
 
 const Routing = () => {
     return (
@@ -69,6 +71,7 @@ const Routing = () => {
                     />
                     <Route path="job/job-list" element={<JobList />} />
                     <Route path="profile/:id" element={<CandidateProfile />} />
+                    <Route path="applied-jobs" element={<AppliedJobsPage />} />
                 </Route>
 
                 {/* Rutas de empleadores */}
