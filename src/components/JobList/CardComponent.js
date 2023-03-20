@@ -21,7 +21,6 @@ export const CardComponent = ({ offers }) => {
                 <li className={classes.jobType}>{offer.jobType}</li>
               </ul>
               <span className={classes["company-logo"]}>
-                {console.log(offer.company.logo)}
                 <img
                   src={getCompanyLogo(offer.company?.logo)}
                   alt={offer.company.companyName}
