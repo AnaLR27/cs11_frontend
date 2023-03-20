@@ -9,8 +9,9 @@
   margin-right: 10px;
   width: fit-content;
   background: var(--light-green);
-  color: #34a853;
+  color: var(--green);
   cursor: default;
+  font-weight: bold;
 }
 
 /* working pill */
