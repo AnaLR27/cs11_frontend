@@ -27,29 +27,33 @@ function MenuCandidates() {
   // LOGOUT
   const [isLogged, setIsLogged] = useState(false);
   const handleLogout = () => {
-    Swal.fire({
-      title: "¿Estás seguro de que quieres hacer logout?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#47d7ac",
-      cancelButtonColor: "#2c7a7b",
-      confirmButtonText: "Logout",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: "Volviendo a la página principal",
-          icon: "success",
-          confirmButtonColor: "#2c7a7b",
-        }).then(function () {
-          window.location.href = "/#";
-        });
-        sessionStorage.removeItem("userToken");
-        sessionStorage.clear();
-        setIsLogged(!isLogged);
-      } else {
-        window.location.href = "/menu";
-      }
-    });
+    Swal
+      .fire({
+        title: "¿Estás seguro de que quieres hacer logout?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#47d7ac",
+        cancelButtonColor: "#2c7a7b",
+        confirmButtonText: "Logout",
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          Swal
+            .fire({
+              title: "Volviendo a la página principal",
+              icon: "success",
+              confirmButtonColor: "#2c7a7b",
+            })
+            .then(function () {
+              window.location.href = "/#";
+            });
+          sessionStorage.removeItem("userToken");
+          sessionStorage.clear();
+          setIsLogged(!isLogged);
+        } else {
+          window.location.href = "/menu";
+        }
+      });
   };
 
   // DELETE PROFILE
@@ -81,7 +85,7 @@ function MenuCandidates() {
           // Realizamos la petición a la API para que nos devuelva los datos del candidato descargando el pdf
           try {
             const response = await fetch(` ${CANDIDATES_API}/${loginId}`, {
-              method: "POST",
+              method: "DELETE",
               headers: {
                 "Content-Type": "application/json",
                 "auth-token": token,
@@ -109,8 +113,9 @@ function MenuCandidates() {
           <BurgerButton clicked={clicked} handleClick={handleClick} />
         </div>
         <nav className={`Menulinks ${clicked ? "active" : ""}`}>
+          <div className="burger-container2">
           <BurgerButton clicked={clicked} handleClick={handleClick} />
-
+          </div>
           <Link className="Menu-a" to="/Myprofile">
             <span className="icon">
               <FontAwesomeIcon icon={faUser} />
@@ -129,14 +134,11 @@ function MenuCandidates() {
             </span>
             Cambiar Contraseña
           </Link>
-          <Link className="Menu-a" to="/#">
+          <Link onClick={handleLogout} className="Menu-a" to="/">
             <span className="icon">
-              <FontAwesomeIcon
-                onClick={handleLogout}
-                icon={faRightFromBracket}
-              />
+              <FontAwesomeIcon icon={faRightFromBracket} />
             </span>
-            Log out
+            Logout
           </Link>
           <Link onClick={handleDelete} className="Menu-a" to="/#">
             <span className="icon">
@@ -155,7 +157,7 @@ export default MenuCandidates;
 const MenuContainer = styled.div`
 .Menu-a {
   padding-top: 3rem;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #4a4a4a;
   background-color: #e5f0ed;
   text-decoration: none;
@@ -168,30 +170,29 @@ const MenuContainer = styled.div`
   
 }
 .icon{
-margin-right: 15px;
+margin-right: 18px;
 font-size: 23px;
 }
   
 .Menulinks {
-  padding-top: 5rem;
+  padding-top: 0rem;
   position: absolute;
     left: 0px;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
     background-color: #e5f0ed;
-    width: 20rem;
+    width: 21rem;
     height: 100%; 
-    transition: all .6s ease-in-out;
+   
     
     
-  @media (max-width: 767px) {
+  @media (max-width: 821px) {
    position: relative;
     left: -700px;
     background-color: #e5f0ed;
     width: 8%;
-    height: 100vh; 
-    transition: all .6s ease-in-out;
+    height: 80vh; 
     display: none;
 
 
@@ -204,18 +205,20 @@ font-size: 23px;
     display: block;
     margin-left: 0;
     margin-right: auto;
-    top: -9px;
+    top: -6rem;
     left: 0;
     rigth: 0;
     text-align: left;
-    position: absolute;
-    transition: all .6s ease-in-out;
+    position: relative;
+    border-radius: 0 40px 0 0;
+  
   }
 .burger-container{
- margin-top: 15%;
- transition: all .6s ease-in-out;
-  @media (min-width: 768px) {
-    display: none;
+  margin-top: 3rem;
+  margin-left: -9rem;
+  @media (min-width: 821px) {
+    display: none;}
   
+
 
 `;

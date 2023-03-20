@@ -1,13 +1,23 @@
-// import './BurgerButton.css';
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 function BurgerButton(props) {
   return (
     <StyledBurger>
       {/* Cuando hagamos click, se ejecuta la función handleClick y cambia el
       estado de clicked a true o false */}
-
       <div
+        onClick={props.handleClick}
+        className={`hamburger ${props.clicked ? "is-active" : ""}`}
+        id="hamburger-1"
+      >
+        <button >
+          <FontAwesomeIcon className="icon" icon={faBars} /> 
+        </button>
+      </div>
+
+      {/* <div
         onClick={props.handleClick}
         className={`hamburger ${props.clicked ? "is-active" : ""}`}
         id="hamburger-1"
@@ -15,7 +25,7 @@ function BurgerButton(props) {
         <span className="line"></span>
         <span className="line"></span>
         <span className="line"></span>
-      </div>
+      </div> */}
     </StyledBurger>
   );
 }
@@ -23,63 +33,44 @@ function BurgerButton(props) {
 export default BurgerButton;
 
 const StyledBurger = styled.button`
-display: block;
-background-color: #e5f0ed;
-  .row .three {
-    padding: 80px 30px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    color: black;
-    text-align: center;
+
+#hamburger-1.hamburger.is-active{
+  background-color: #e5f0ed;
+width: 110%;
+} 
+.icon{
+  font-size: 1.5rem;
+
+}
+
+  div.is-active {
+    position: relative;
+    padding: 10px 30px;
+    border-radius: 8px;
+    top: 0rem;
+    transition: 0.8s ease-in-out;
   }
 
-  .hamburger .line {
-    width: 30px;
-    height: 3px;
-    background-color: #4a4a4a;
-    display: block;
-    margin: 10px 30px;
-    -webkit-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-  }
-  }
-
-  .hamburger:hover {
-    cursor: pointer;
-   
-  
-  }
-
-
-  #hamburger-1.is-active {
+button{
+  opacity: 0;
+  @media (max-width: 821px) {
+    color: #4a4a4a;
     background-color: #e5f0ed;
-    top: 3.7rem;
-    left: 232px;
-    margin-top: 1rem;
-    position: absolute;
-    
-  
-  }
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    position: relative;
+    line-height: 25px;
+    padding: 3px auto;
+    border-radius: 8px;
+    top: 1rem;
+    left: 13rem;
+    opacity: 1;
+ 
+}
+@media (min-width: 821px) {
+display: none;
+}
+ 
 
-  #hamburger-1.is-active .line:nth-child(2) {
-    opacity: 0;
-  }
-
-  #hamburger-1.is-active .line:nth-child(1) {
-    -webkit-transform: translateY(13px) rotate(45deg);
-    -ms-transform: translateY(13px) rotate(45deg);
-    -o-transform: translateY(13px) rotate(45deg);
-    transform: translateY(13px) rotate(45deg);
-  }
-
-  #hamburger-1.is-active .line:nth-child(3) {
-    -webkit-transform: translateY(-13px) rotate(-45deg);
-    -ms-transform: translateY(-13px) rotate(-45deg);
-    -o-transform: translateY(-13px) rotate(-45deg);
-    transform: translateY(-13px) rotate(-45deg);
-  }
-  @media (min-width: 767px) {
-    display: none;
-  }
 `;

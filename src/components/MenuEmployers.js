@@ -120,8 +120,7 @@ function MenuEmployers() {
           <BurgerButton clicked={clicked} handleClick={handleClick} />
         </div>
         <nav className={`Menulinks ${clicked ? "active" : ""}`}>
-          <div className="burger-container">
-            
+          <div>
             <BurgerButton clicked={clicked} handleClick={handleClick} />
           </div>
           <div className="icon"> </div>
@@ -170,71 +169,68 @@ function MenuEmployers() {
 export default MenuEmployers;
 
 const MenuContainer = styled.div`
-
-  .Menu-a {
-    padding-top: 3rem;
-    font-size: 1.2rem;
-    color: #4a4a4a;
-    background-color: #e5f0ed;
-    text-decoration: none;
-    display: block;
-    list-style-type: disc;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 30px;
-    
-    
-  }
-.icon{
-  margin-right: 15px;
-  font-size: 23px;
+.Menu-a {
+  padding-top: 3rem;
+  font-size: 1.3rem;
+  color: #4a4a4a;
+  background-color: #e5f0ed;
+  text-decoration: none;
+  display: block;
+  list-style-type: disc;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 25px;
+  
+  
 }
-    
-  .Menulinks {
-    padding-top: 5rem;
-    position: absolute;
-      left: 0px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: left;
-      background-color: #e5f0ed;
-      width: 20rem;
-      height: 100%; 
-      transition: all .6s ease-in-out;
-      
-      
-    @media (max-width: 767px) {
-     position: relative;
-      left: -700px;
-      background-color: #e5f0ed;
-      width: 8%;
-      height: 100vh; 
-      transition: all .6s ease-in-out;
-      display: none;
+.icon{
+margin-right: 18px;
+font-size: 23px;
+}
   
-    }}
+.Menulinks {
+  padding-top: 0.4em;
+  position: absolute;
+    left: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    background-color: #e5f0ed;
+    width: 22rem;
+    height: 100%; 
+   
     
-    .Menulinks.active{
-      padding-top: 1rem;
-      background-color: #e5f0ed;
-      width: 20rem;
-      height: 100vh;
-      display: block;
-      margin-left: 0;
-      margin-right: auto;
-      top: -9px;
-      left: 0;
-      rigth: 0;
-      text-align: left;
-      position: absolute;
-      transition: all .6s ease-in-out;
-    }
-  .burger-container{
-   margin-top: 15%;
-   transition: all .6s ease-in-out;
-    @media (min-width: 768px) {
-      display: none;
+    
+  @media (max-width: 821px) {
+   position: relative;
+    left: -700px;
+    background-color: #e5f0ed;
+    width: 8%;
+    height: 100vh; 
+    display: none;
+
+
+  }}
+  
+  .Menulinks.active{
+    background-color: #e5f0ed;
+    width: 21rem;
+    height: 100vh;
+    display: block;
+    margin-left: 0;
+    margin-right: auto;
+    top: -4rem;
+    left: 0;
+    rigth: 0;
+    text-align: left;
+    position: relative;
+    border-radius: 0 40px 0 0;
   }
- 
+.burger-container{
+margin-top: 1rem;
+margin-left: -10rem;
+  @media (min-width: 821px) {
+    display: none;
   
+
 `;

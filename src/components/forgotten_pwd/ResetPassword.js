@@ -94,7 +94,7 @@ const ResetPassword = () => {
     }
   };
   return (
-    <div className={classes["main-container"]}>
+    <div className={classes["reset-pwd-main-container"]}>
       {success &&
         ReactDOM.createPortal(
           <Modal openModal={success} setOpenModal={setSuccess}>
