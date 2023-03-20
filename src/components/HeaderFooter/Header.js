@@ -26,7 +26,6 @@ function Header() {
     setOnLogin(true);
   };
   return (
-    
     <header className={classes.header}>
       {ReactDOM.createPortal(
         <Modal openModal={openLoginModal} setOpenModal={setOpenLoginModal}>
@@ -35,15 +34,14 @@ function Header() {
         </Modal>,
         document.querySelector("#modal")
       )}
-
-      <img className={classes.logo} src={logo} alt='' />
+      <img className={classes.logo} src={logo} alt="" />
       <div className={classes.btns}>
         <button className={classes.btn} onClick={handleClick}>
           Login / Register
         </button>
 
         <div className={classes.icon}>
-          <FontAwesomeIcon icon={faUser} role='button' onClick={handleClick} />
+          <FontAwesomeIcon icon={faUser} role="button" onClick={handleClick} />
         </div>
       </div>
     </header>
