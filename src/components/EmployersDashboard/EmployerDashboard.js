@@ -56,6 +56,10 @@ function EmployerDashboard() {
     );
   }
 
+  const getCandidatePhoto = (photo) => {
+    return photo ? "http://localhost:8000/candidate/photo/" + photo : undefined;
+  };
+
   return (
     <>
       <section className={classes.DivCardsApp}>
@@ -81,7 +85,7 @@ function EmployerDashboard() {
                       <img
                         alt="Candidate"
                         className={classes.imgCardCand}
-                        src={uca.photo}
+                        src={getCandidatePhoto(uca.photo)}
                       />
                     </div>
                     <div>
