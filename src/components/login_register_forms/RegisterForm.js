@@ -29,11 +29,13 @@ import InfoAlert from "../UI/InfoAlert";
 import Loader from "../UI/Spinner/Loader";
 import { useNavigate } from "react-router";
 
+
 const RegisterForm = () => {
-  //access context
-  const { setOnRegister, setOnLogin, openLoginModal, setOpenLoginModal } =
+  //access modal context
+  const { setOnRegister, setOnLogin, openLoginModal, setOpenLoginModal, setIsAuthenticated } =
     useContext(LoginModalContext);
 
+  
   //access reducer
   const [state, dispatch] = useReducer(registerReducer, initialRegisterState);
 
@@ -115,6 +117,7 @@ const RegisterForm = () => {
       setSuccess(true);
       setPending(false);
       setOpenLoginModal(false);
+      setIsAuthenticated(true);
       if (response.newUser.role === "candidate") {
         navigate(`candidates-dashboard/profile/${response.newUser.id}}`);
       } else if (response.newUser.role === "employer") {

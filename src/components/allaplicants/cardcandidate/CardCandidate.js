@@ -1,3 +1,8 @@
+/**
+ * @fileoverview This is the cards component, where the cards of the users signed up for the job offer are loaded
+ * @author Daniel Sánchez Gonzalez
+ */
+
 import Styles from './CardCandidate.module.css';
 import { FaRegMoneyBillAlt } from 'react-icons/fa';
 import { AiOutlineEye, AiOutlineCheck, AiOutlineCloseCircle } from 'react-icons/ai';
@@ -9,6 +14,7 @@ import { Link } from 'react-router-dom';
 
 function CardCandidate(props) {
 
+    // funcion que envia el email al candidato con la respuesta de la oferta
     const sendMail = async (dataAction) => {
         const mailType = dataAction === 'aceptada' ? props.accepted : props.refused;
         let sended = await FetchMail(props.email, props.username, mailType, props.job);
@@ -34,19 +40,26 @@ function CardCandidate(props) {
         }
       };
       
+      // funcion que envia el email al candidato con la respuesta de la oferta con respuesta "aceptada"
       const sendMailHandlerAccepted = async () => {
         await sendMail('aceptada');
       };
-      
+
+      // funcion que envia el email al candidato con la respuesta de la oferta con respuesta "rechazada"
       const sendMailHandlerRefused = () => {
         sendMail('rechazada');
+      };
+
+    // funcion que devuelve la foto del usuario
+      const getPhotoUser = (photo) => {
+        return photo ? "http://localhost:8000/candidate/photo/" + photo: undefined;
       };
 
     return (
         <>
             <div className={Styles.card}>
                 <div className={Styles['user-img']}>
-                    <img src={props.photo} alt="user-profile-img" />
+                    <img src={getPhotoUser(props.photo)} alt="user-profile-img" />
                 </div>
                 <div className={Styles['user-data']}>
                 <div className={Styles['user-name']}>{props.username}</div>

@@ -1,6 +1,6 @@
 /**
  * @fileoverview DetailEmployer component
- * @author Juan Dominguez 
+ * @author Juan Dominguez
  * @author David Calero
  * @modified
  */
@@ -15,36 +15,44 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import GetEmployerData from "../../services/detailEmployerService/GetEmployerData";
-
+import { formatearFecha } from "../../utils/formateadorFecha";
+import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 
 function DetailEmployer() {
   const [infoEmployer, setInfoEmployer] = useState({});
+  const params = useParams();
+  const loginId = params.id;
 
   useEffect(() => {
-    let infoEmployerTmp = GetEmployerData();
+    let infoEmployerTmp = GetEmployerData(loginId);
     infoEmployerTmp.then((data) => {
-      console.log(data);
       setInfoEmployer(data);
     });
   }, []);
-  console.log(infoEmployer);
+
+  const getCompanyLogo = (logo) => {
+    return logo
+      ? "http://localhost:8000/employer/logo/" + encodeURIComponent(logo)
+      : undefined;
+  };
+
   return (
-    <>
+    <div className={classesDetails.container}>
       <div className={classesDetails["col-lg-8"]}>
         <div className={classesDetails["content-employer"]}>
           <div>
             <img
-              src={infoEmployer.logo}
+              src={getCompanyLogo(infoEmployer?.logo)}
               alt="imagen"
               className={classesDetails["img-employer"]}
             />
             <h4 className={classesDetails["name-employer"]}>
-              {infoEmployer.companyName}
+              {infoEmployer?.companyName}
             </h4>
             <ul className={classesDetails["info-employer"]}>
               <li className={classesDetails["job"]}>
-                {infoEmployer.location?.country}
+                {/* {infoEmployer?.location?.country} */}
               </li>
               <li>
                 <span className={classesDetails["date"]}>
@@ -52,14 +60,15 @@ function DetailEmployer() {
                     icon={faClock}
                     className={classesDetails["icon-fa-clock"]}
                   />
-                  Member Since, {infoEmployer.registerAt}
+                  Member Since,{" "}
+                  {formatearFecha(infoEmployer?.loginId?.registerAt)}
                 </span>
               </li>
             </ul>
           </div>
           <div className={classesDetails["description"]}>
             <h4>About Company</h4>
-            <p>{infoEmployer.description}</p>
+            <p>{infoEmployer?.description}</p>
           </div>
         </div>
       </div>
@@ -73,7 +82,9 @@ function DetailEmployer() {
               />
 
               <h5>Email:</h5>
-              <a href={`mailto:${infoEmployer.email}`}>{infoEmployer.email}</a>
+              <a href={`mailto:${infoEmployer?.loginId?.email}`}>
+                {infoEmployer?.loginId?.email}
+              </a>
             </li>
             <li>
               <FontAwesomeIcon
@@ -81,7 +92,7 @@ function DetailEmployer() {
                 className={classesDetails["icons-job"]}
               />
               <h5>Phone:</h5>
-              <span>{infoEmployer.phone}</span>
+              <span>{infoEmployer?.phone}</span>
             </li>
             <li>
               <FontAwesomeIcon
@@ -89,8 +100,8 @@ function DetailEmployer() {
                 className={classesDetails["icons-job"]}
               />
               <h5>Website:</h5>
-              <a target="_blank" href={infoEmployer.website}>
-                {infoEmployer.website}
+              <a target="_blank" href={infoEmployer?.website}>
+                {infoEmployer?.website}
               </a>
             </li>
             <li>
@@ -100,13 +111,13 @@ function DetailEmployer() {
               />
               <h5>Location:</h5>
               <span>
-                {infoEmployer.location?.country},{infoEmployer.location?.city}
+                {/* {infoEmployer?.location?.country},{infoEmployer?.location?.city} */}
               </span>
             </li>
           </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

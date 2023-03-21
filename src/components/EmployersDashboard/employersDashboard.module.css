@@ -3,6 +3,7 @@
   position: relative;
   display: block;
   width: 100%;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
   border-radius: 8px;
   box-shadow: 0 6px 15px rgb(64 79 104 / 5%);
   background-color: var(--light-green);
@@ -77,6 +78,9 @@
   border: 1px solid var(--light-green);
   border-radius: 8px;
   margin-bottom: 30px;
+}
+.CardCand:hover{
+  box-shadow: 10px 25px 35px rgb(64 79 104 / 5%);
 }
 .DivCardsApp > div > div:last-child > div > div > div {
   margin-right: 10px;

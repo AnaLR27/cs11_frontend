@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import FetchEmployerJobs from "../../services/employersDashService/FetchEmployerJobs";
 import Loader from "../UI/Spinner/Loader";
 import PageLayout from "../../components/sidemenu/PageLayout";
+import mokcSkills from "../../utils/mokcSkills";
 
 function EmployerDashboard() {
   //Controlador del fetch
@@ -57,6 +58,10 @@ function EmployerDashboard() {
     );
   }
 
+  const getCandidatePhoto = (photo) => {
+    return photo ? "http://localhost:8000/candidate/photo/" + photo : undefined;
+  };
+
   return (
     <>
       <section className={classes.DivCardsApp}>
@@ -78,7 +83,7 @@ function EmployerDashboard() {
                       <img
                         alt="Candidate"
                         className={classes.imgCardCand}
-                        src={uca.photo}
+                        src={getCandidatePhoto(uca.photo)}
                       />
                     </div>
                     <div>
@@ -103,9 +108,9 @@ function EmployerDashboard() {
                         </div>
                       </div>
                       <div>
-                        <p>{uca.professionalSkills[0]}</p>
-                        <p>{uca.professionalSkills[1]}</p>
-                        <p>{uca.professionalSkills[2]}</p>
+                        <p>{mokcSkills(1)}</p>
+                        <p>{mokcSkills(1)}</p>
+                        <p>{mokcSkills(1)}</p>
                       </div>
                       <div>
                         <a href={uca.socialNetworks.github}>

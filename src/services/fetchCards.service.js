@@ -20,5 +20,6 @@ export const fetchCards = async (url) => {
     };
   } catch (error) {
     console.log(error);
+    return error;
   }
 };

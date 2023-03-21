@@ -63,8 +63,7 @@ const ResetPassword = () => {
 
   //Function to handle submit
   const handleSubmitNewPwd = async () => {
-    console.log(state, "state");
-    if (
+       if (
       !state.newPwd ||
       !state.matchPwd ||
       !state.validPwd ||

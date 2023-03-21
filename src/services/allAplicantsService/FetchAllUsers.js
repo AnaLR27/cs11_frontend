@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Asynchronous function to get all candidates
+ * @author Daniel Sánchez Gonzalez
+ */
+
 import { CANDIDATES_URL } from '../../config/urls';
 
 async function FetchAllUsers () {
