@@ -49,16 +49,16 @@ function DetailCandidate(props) {
             </h4>
             <ul className={classesDetails["info-candidate"]}>
               <li className={classesDetails["job"]}>
-                {infoCandidate.specialty}
+                {infoCandidate.bootcamp}
               </li>
               <li>
-                <span className={classesDetails["date"]}>
+                <div className={classesDetails["date"]}>
                   <FontAwesomeIcon
                     icon={faClock}
                     className={classesDetails["icon-fa-clock"]}
                   />
                   Miembro desde {reformatDate(infoCandidate.loginId.registerAt)}
-                </span>
+                </div>
               </li>
             </ul>
           </div>

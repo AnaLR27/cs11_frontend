@@ -53,9 +53,9 @@ const Routing = () => {
           <Route path='candidate/:loginId' element={<CandidateSinglePage />} />
           <Route path='employer/:id' element={<EmployerSinglePage />} />
 
-          {/*  importacion desde componentes repetiendo la ruta de arriba*/}
+          {/* //importacion desde componentes repetiendo la ruta de arriba */}
           {/* <Route path='candidate/:loginId' element={<DetailCandidate />} /> */}
-          {/*  <Route
+           {/* <Route
                         path="job/job-single/:jobId"
                         element={<JobDetails />}
                     /> */}

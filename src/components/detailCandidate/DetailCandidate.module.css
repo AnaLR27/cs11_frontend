@@ -1,7 +1,7 @@
 .container {
-  padding: 3rem;
+  padding: 2rem;
   margin-top: 2rem;
-  min-height: calc(100vh - var(--header-height)- var(--footer-height));
+  
 }
 .col-lg-8 {
   width: 60%;
@@ -23,6 +23,7 @@
   overflow: hidden;
   border-radius: 50%;
   margin: 0 auto 20px;
+  object-fit: cover;
 }
 
 .name-candidate {
