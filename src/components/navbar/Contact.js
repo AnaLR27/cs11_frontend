@@ -6,6 +6,7 @@ import {
   faPhone,
   faLocationDot,
   faMobileScreen,
+  faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Contact = () => {
@@ -25,6 +26,12 @@ const Contact = () => {
             <FontAwesomeIcon icon={faLocationDot} />
             <span className={`${styles["contact-text"]}`}>
               C. Compositor Lehmberg Ruiz, 13, 29007 Málaga
+            </span>
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faEnvelope} />
+            <span className={`${styles["contact-text"]}`}>
+              info@codespaceacademy.com
             </span>
           </li>
           <li>

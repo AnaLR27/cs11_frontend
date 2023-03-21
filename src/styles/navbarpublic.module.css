@@ -48,6 +48,7 @@
 .contact-text {
   color: var(--black);
   line-height: 20px;
+  margin-left: 16px;
 }
 
 .h1Tit {
