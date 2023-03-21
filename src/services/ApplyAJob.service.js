@@ -5,9 +5,13 @@ export const applyJob = async (jobIdParam) => {
   const loginId =
     sessionStorage.getItem("userId") || localStorage.getItem("userId");
 
+    console.log(loginId);
+    console.log(jobIdParam);
+
   try {
     const request = await fetch(
       `http://localhost:8000/job/job-single/${loginId}/${jobIdParam}`,
+      // `http://localhost:8000/job/job-single/${loginId}/64184cad978feefea3580326`,
       {
         method: "POST",
         headers: {

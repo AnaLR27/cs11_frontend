@@ -8,6 +8,7 @@ import {
   faClock,
   faIndustry,
 } from "@fortawesome/free-solid-svg-icons";
+import formateadorFecha from "../../utils/formateadorFecha";
 import { Link } from "react-router-dom";
 
 function JobSingleDetail({ jobData }) {
@@ -17,7 +18,7 @@ function JobSingleDetail({ jobData }) {
       <span className={classes["offer-detail"]}>
         <FontAwesomeIcon className={classes["icon"]} icon={faCalendarCheck} />
         <strong>Fecha: </strong>
-        {jobData?.createdAt}
+        {formateadorFecha(jobData?.createdAt)}
       </span>
       <span className={classes["offer-detail"]}>
         <FontAwesomeIcon className={classes["icon"]} icon={faLocationDot} />

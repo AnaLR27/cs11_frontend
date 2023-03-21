@@ -9,7 +9,7 @@ import {
 import Badge from "../Badge.component";
 import { applyJob } from "../../services/ApplyAJob.service";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router";
 
 function JobInfo({
   jobIdParams,
@@ -22,14 +22,18 @@ function JobInfo({
   workDay,
   jobType,
 }) {
-  const [id, setId] = useState();
+  // const [id, setId] = useState();
+  const { jobId } = useParams();
+
   useEffect(() => {
-    console.log(jobIdParams);
-    setId(jobIdParams);
-  });
+    console.log("jobid jobinfo " + jobId);
+    // setId(jobIdParams);
+  }, []);
+
+  // console.log(id);
 
   const applyForJob = async () => {
-    const result = await applyJob(id);
+    const result = await applyJob(jobId);
   };
 
   // TODO : Terminarlo
@@ -59,12 +63,12 @@ function JobInfo({
                   {location?.city},{location?.country}
                 </span>
               </li>
-              <li>
+              {/* <li>
                 <span>
                   <FontAwesomeIcon icon={faClock} />
                   {registerAt}
                 </span>
-              </li>
+              </li> */}
               <li>
                 <span>
                   <FontAwesomeIcon icon={faSackDollar} />
@@ -79,14 +83,14 @@ function JobInfo({
             </div>
           </div>
         </div>
-          <div className={style["btn-box"]}>
-            <button
-              onClick={applyForJob}
-              className={`${style["theme-btn"]} ${style["btn-style"]}`}
-            >
-              Aplicar Trabajo
-            </button>
-          </div>
+        <div className={style["btn-box"]}>
+          <button
+            onClick={applyForJob}
+            className={`${style["theme-btn"]} ${style["btn-style"]}`}
+          >
+            Aplicar Trabajo
+          </button>
+        </div>
       </div>
     </div>
   );

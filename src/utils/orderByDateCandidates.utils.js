@@ -8,16 +8,14 @@
  */
 
 export const orderByDate = (info, order) => {
-     //console.log(info);
-    // console.log("orden " + order);
   let newOrder;
   if (order === "desc" ) {
     newOrder = info.data.sort((a, b) => {
-      return new Date(b.registerAt) - new Date(a.registerAt);
+      return new Date(b.loginId.registerAt) - new Date(a.loginId.registerAt);
     });
   } else if (order === "asc") {
     newOrder = info.data.sort((a, b) => {
-      return new Date(a.registerAt) - new Date(b.registerAt);
+      return new Date(a.loginId.registerAt) - new Date(b.loginId.registerAt);
     });
   } else {
     newOrder = info.data;

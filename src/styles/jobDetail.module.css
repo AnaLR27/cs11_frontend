@@ -8,20 +8,18 @@ section.job-detail-section div.upper-box {
   position: relative;
   background-color: var(--light-green);
   background-size: cover;
-  padding: 5rem 0rem 1.5rem;
+  padding: 5rem 1.5rem 1.5rem;
 }
 
 /* outer box */
 div.job-detail-outer {
   position: relative;
-  padding: 50px 0;
+  padding: 15px;
 }
 
-.title-h3{
+.title-h3 {
   padding-bottom: 1em;
 }
-
-
 
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @media (min-width: 768px) {

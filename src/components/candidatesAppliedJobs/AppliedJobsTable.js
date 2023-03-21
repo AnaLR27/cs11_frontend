@@ -36,6 +36,10 @@ function AppliedJobsTable({ data, candidateId, setLoadData, loginId }) {
     handleVisibility();
   };
 
+  const getCompanyLogo = (logo)=>{
+    return logo ? 'http://localhost:8000/employer/logo/' + logo : undefined;
+  }
+
   return (
     <>
       {ReactDOM.createPortal(
@@ -63,16 +67,19 @@ function AppliedJobsTable({ data, candidateId, setLoadData, loginId }) {
                   <td>
                     <div className={classes["job-block"]}>
                       <span className={classes["company-logo"]}>
-                        <img src={job.logo || job.company.logo} alt={`${job.companyName || job.company.companyName} logo`} />
+                        <img
+                          src={getCompanyLogo(job.company?.logo)}
+                          alt={"Logo"}
+                        />
                       </span>
-                      {/* <Link to="job/job-single/:job._id"> Aquí tendrá que ir el enlace a la página single job con el id del trabajo seleccionado*/}
+                      {/* <Link to="api/job/job-single/:job._id"> Aquí tendrá que ir el enlace a la página single job con el id del trabajo seleccionado*/}
                       <h4>{job.title}</h4>
                       {/* </Link> */}
                       <ul className={classes["job-info"]}>
                         <li>
                           <FontAwesomeIcon icon={faBriefcase} />
                           <span className={classes["job-block-icon"]}>
-                            {job.companyName || job.company.companyName}
+                            {job.company.companyName}
                           </span>
                         </li>
                         <li>
@@ -100,7 +107,7 @@ function AppliedJobsTable({ data, candidateId, setLoadData, loginId }) {
                   <td>
                     <ul className={classes["action-list"]}>
                       <li>
-                        {/* <Link to="/job/job-single/:job._id"> Aquí tendrá que ir el enlace a la página single job con el id del trabajo seleccionado*/}
+                        {/* <Link to="/api/job/job-single/:job._id"> Aquí tendrá que ir el enlace a la página single job con el id del trabajo seleccionado*/}
                         <button className={classes["icon-button"]}>
                           <FontAwesomeIcon icon={faEye} />
                         </button>

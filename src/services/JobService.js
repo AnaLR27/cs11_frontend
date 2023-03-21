@@ -6,7 +6,7 @@ export class JobService {
 		const token =
 			sessionStorage.getItem('accessToken') ||
 			localStorage.getItem('accessToken');
-		console.log(token);
+		// console.log(token);
 		if (!token) {
 			return false;
 			console.log('no token');

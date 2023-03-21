@@ -11,19 +11,24 @@ import JobOverview from "../components/jobDetail/JobOverview.component";
 function JobDetail() {
   const [loading, setLoading] = useState(true);
   const [jobData, setJobData] = useState();
+  const [id, setId] = useState();
 
   const params = useParams();
+  const { jobId } = useParams();
+
+  console.log("jobid " + jobId);
 
   useEffect(() => {
     jobInfo();
-  }, []);
+  }, [jobId]);
 
   const jobInfo = async () => {
     try {
       const data = await JobService.getById(params.jobId);
       setJobData(data);
+      setId(data._id);
       setLoading(false);
-      //   console.log(data);
+      console.log(data);
     } catch (error) {
       return error;
     }
@@ -33,7 +38,7 @@ function JobDetail() {
     <section className={style["job-detail-section"]}>
       <div className={style["upper-box"]}>
         <JobInfo
-          jobIdParam={params.jobId}
+          jobIdParam={jobId}
           refLogo={jobData?.getCompanyLogo()}
           title={jobData?.title}
           specialty={jobData?.specialtyJob}
@@ -46,11 +51,11 @@ function JobDetail() {
       </div>
       <div className={style["job-detail-outer"]}>
         <div className={style["row"]}>
-          <JobSingleDetail jobData={jobData} />
           <div className={style["description"]}>
             <h3 className={style["title-h3"]}>Descripción</h3>
             <p>{jobData?.description}</p>
           </div>
+          <JobSingleDetail jobData={jobData} />
         </div>
       </div>
     </section>
