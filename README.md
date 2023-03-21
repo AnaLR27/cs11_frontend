@@ -162,6 +162,8 @@ Home page, fully responsive where animations controlled by states (useState hook
 | Juan Domínguez Ortega |    [**&check;**](https://github.com/JuaniniDO)    | [**&check;**](https://www.linkedin.com/in/juan-dominguez-ortega-a2685a1a1/) | [Contact me](mailto:juandominortega92@gmail.com) |
 | David Miró |  [**&check;**](https://github.com/davidbonora)  | [**&check;**](https://www.linkedin.com/in/davidbonora/)  | [Contact me](mailto:davidbonora23@gmail.com)|
 | Sebastian Gonzalez | [**&check;**](https://github.com/Codezeb) | [**&check;**](https://www.linkedin.com/in/seb-gonzalez)| [Contact me](mailto:sebgonzilla@gmail.com)  |
+| Benjamin Mancera     |  [**&check;**](https://github.com/Benja022)  | [**&check;**](https://github.com/Benja022) | [Contact me](mailto:bemanji@gmail.com)|
+
 
 
 <a href="#code-space-jobs-portal---frontend"><span> &uArr; Table of contents</span></a>

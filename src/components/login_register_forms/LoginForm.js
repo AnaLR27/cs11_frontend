@@ -106,6 +106,7 @@ const navigate = useNavigate();
       sessionStorage.setItem("refreshToken", response.refreshToken);
       sessionStorage.setItem("userId", response.id);
       sessionStorage.setItem("role", response.role);
+      
     }
   };
 

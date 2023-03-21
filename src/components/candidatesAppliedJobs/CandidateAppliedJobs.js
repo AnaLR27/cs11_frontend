@@ -1,5 +1,5 @@
 /**
- * @fileoverview This file contains the TableContainer component. It includes the select that allows the candidate to filter the job applications by date. It gets the data from the backend using a custom hook. The component uses two useEffects, one to make the request to the backend and the other set the data filtered by date.
+ * @fileoverview This file contains the main logic for the candidate apllied jobs page. It includes the select that allows the candidate to filter the job applications by date. It gets the data from the backend using a custom hook. The component uses useEffects, one to get the candidate id when the component is rendered for the first time and another one to get the data from the backend when the component is rendered for the first time or when the user deletes an application from the table. After getting the data from the backend it filters it by date and displays it in the table, a separate component, through a useEffect.
  * @author Alice Marchi
  */
 
@@ -56,7 +56,6 @@ function CandidateAppliedJobs() {
       setLoadData(false);
     }
   }, [loadData]);
-
   
   useEffect(() => {
     // if loadData is false it means that the request to the backend has been made and the data is loaded
