@@ -19,7 +19,7 @@ import {
   initialRegisterState,
   REGISTER,
   registerReducer,
-} from "../../reducers/register.reducer";
+} from "../../models/reducers/register.reducer";
 
 import { EMAIL_REGEX, USER_REGEX, PWD_REGEX } from "../../utils/regExp";
 import ApiRequest from "../../services/apiRequest";

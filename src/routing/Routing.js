@@ -23,7 +23,8 @@ import CandidateProfile from "../views/CandidateProfile.component";
 import CompanyProfile from "../views/CompanyProfile.component";
 import EmployersDashboard from "../views/EmployersDashboard";
 import AppliedJobsPage from "../views/AppliedJobsPage";
-
+import AboutUs from "../components/navbar/AboutUs"
+import Contact from "../components/navbar/Contact"
 // Revisar esta importación, es el componente que esta haciendo Rafa
 /* import { JobDetails } from '../views/JobDetail'; */
 
@@ -33,13 +34,18 @@ const Routing = () => {
       <LoginModalProvider>
         <Header />
       </LoginModalProvider>
+
       <Routes>
         {/* Rutas no protegidas */}
-        <Route path='/' element={<HomePage />} />
-        <Route path='forgottenpassword' element={<ForgottenPasswordPage />} />
-        <Route path='reset-password/:token' element={<ResetPasswordPage />} />
-        <Route path='unauthorized' element={<UnauthorizedPage />} />
-        <Route path='*' element={<ErrorPage />} />
+
+        <Route path="/" element={<HomePage />} />
+        <Route path="aboutus" element={<AboutUs /> } />
+        <Route path="contact" element={<Contact /> } />
+        <Route path="forgottenpassword" element={<ForgottenPasswordPage />} />
+        <Route path="reset-password/:token" element={<ResetPasswordPage />} />
+        <Route path="unauthorized" element={<UnauthorizedPage />} />
+        <Route path="*" element={<ErrorPage />} />
+
 
         {/* Ruta con authenticacion con acceso tanto para candidatos como para empleadores */}
         <Route element={<RequireAuth allowedRole='both' />}>

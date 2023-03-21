@@ -107,11 +107,12 @@ const LoginForm = () => {
       setSuccesfullLogin(false);
 
       //save tokens in sessionStorage to keep user logged in
-      //only for development purposes, in production, token shoul be saved in state and passed to context
+      //only for development purposes, in production, token should be saved in state and passed to context
       sessionStorage.setItem("accessToken", response.accessToken);
       sessionStorage.setItem("refreshToken", response.refreshToken);
       sessionStorage.setItem("userId", response.id);
       sessionStorage.setItem("role", response.role);
+
 
       //reset loggedUser state after succesfull login
       setLoggedUser({
@@ -123,6 +124,7 @@ const LoginForm = () => {
       //redirect
       redirect(response.accessToken);
       if (error) setErrMsg(error);
+
     }
   };
 
