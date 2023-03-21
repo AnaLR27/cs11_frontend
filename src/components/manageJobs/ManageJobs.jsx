@@ -39,12 +39,16 @@ function ManageJobs() {
   const [fetchError, setFetchError] = useState(false);
 
   // Obteniendo el token del sessionStorage
-  const token = sessionStorage.getItem("accessToken");
+  const token = sessionStorage.getItem("accessToken") || localStorage.getItem("accessToken");
 
   // Obtenemos el id del usuario a partir del token para poder obtener sus empleos publicados
   const tokenParts = token.split(".");
   const payload = JSON.parse(atob(tokenParts[1]));
   const userId = payload.UserInfo.id;
+
+  const getCompanyLogo = (logo)=>{
+    return logo ? 'http://localhost:8000/employer/logo/' + logo : undefined;
+  }
 
   // Funcion fetch para obtener los empleos publicados por el usuario
   const fetchGetPublishedJobs = async () => {
@@ -243,7 +247,7 @@ function ManageJobs() {
                         <td className={classes["td-title"]}>
                           <div>
                             <div className={classes.logo}>
-                              <img src={job.company.logo} />
+                              <img src={getCompanyLogo(job.company?.logo)} />
                             </div>
                             <div className={classes.job}>
                               <div>

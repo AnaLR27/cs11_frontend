@@ -22,7 +22,7 @@ import { useEffect, useState } from "react";
 function DetailEmployer() {
   const [infoEmployer, setInfoEmployer] = useState({});
   const params = useParams();
-  const loginId = params.loginId;
+  const loginId = params.id;
 
   useEffect(() => {
     let infoEmployerTmp = GetEmployerData(loginId);

@@ -13,10 +13,8 @@ function Curriculum() {
 
   const selectedHandler = (e) => {
     setFile(e.target.files[0]);
-    console.log(e.target.files[0]);
     if (!e.target.files[0]) {
       eliminarArchivo()
-      console.log("no hay archivo");
     } else {
       let fileName = e.target.files[0].name;
       const splitName = fileName.split(".");

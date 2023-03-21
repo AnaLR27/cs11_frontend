@@ -6,7 +6,6 @@ export class JobService {
 		const token =
 			sessionStorage.getItem('accessToken') ||
 			localStorage.getItem('accessToken');
-		console.log(token);
 		if (!token) {
 			return false;
 		}
@@ -38,7 +37,6 @@ export class JobService {
 		if (!token) {
 			return false;
 		}
-		console.log(token);
 		// Peticion al backend
 		try {
 			const request = await fetch(
@@ -55,7 +53,6 @@ export class JobService {
 			const data = await request.json();
 			return new Job(data.data);
 		} catch (error) {
-			console.log(error.message);
 		}
 	}
 

@@ -16,6 +16,7 @@ import ReactDOM from "react-dom";
 import Modal from "../UI/Modal";
 import LoginForm from "../login_register_forms/LoginForm";
 import RegisterForm from "../login_register_forms/RegisterForm";
+import Navbar from "../navbar/Navbar";
 
 function Header() {
   const { onLogin, setOnLogin, onRegister, setOpenLoginModal, openLoginModal } =
@@ -26,24 +27,24 @@ function Header() {
     setOnLogin(true);
   };
   return (
-    
     <header className={classes.header}>
       {ReactDOM.createPortal(
         <Modal openModal={openLoginModal} setOpenModal={setOpenLoginModal}>
-          {onLogin && <LoginForm />}
+          {onLogin && <LoginForm  />}
           {onRegister && <RegisterForm />}
         </Modal>,
         document.querySelector("#modal")
       )}
 
       <img className={classes.logo} src={logo} alt='' />
+      <Navbar/>
       <div className={classes.btns}>
         <button className={classes.btn} onClick={handleClick}>
           Login / Register
         </button>
 
         <div className={classes.icon}>
-          <FontAwesomeIcon icon={faUser} role='button' onClick={handleClick} />
+          <FontAwesomeIcon icon={faUser} role="button" onClick={handleClick} />
         </div>
       </div>
     </header>

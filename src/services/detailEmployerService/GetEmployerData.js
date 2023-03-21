@@ -22,8 +22,9 @@ async function GetEmployerData(loginId) {
         "auth-token": token,
       },
     });
-    
+
     const responseJson = await response.json();
+
     return responseJson.data;
 
     // Aquí se puede manipular los datos obtenidos

@@ -9,8 +9,9 @@
   margin-right: 10px;
   width: fit-content;
   background: var(--light-green);
-  color: #34a853;
+  color: var(--green);
   cursor: default;
+  font-weight: bold;
 }
 
 /* working pill */
@@ -36,7 +37,8 @@
 .img-container img {
   border-radius: 50%;
   max-width: 100%;
-  height: auto;
+  height: 100px;
   min-width: 100px;
   min-height: 100px;
+  object-fit: scale-down;
 }
