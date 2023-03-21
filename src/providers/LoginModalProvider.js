@@ -11,12 +11,14 @@ const LoginModalProvider = ({ children }) => {
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [onRegister, setOnRegister] = useState(false);
   const [onLogin, setOnLogin] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem("accessToken"));
 
   const handleClose = () => {
     setOpenLoginModal(false);
     setOnRegister(false);
     setOnLogin(false);
   };
+  
   return (
     <LoginModalContext.Provider
       value={{
@@ -27,6 +29,8 @@ const LoginModalProvider = ({ children }) => {
         onLogin,
         setOnLogin,
         handleClose,
+        isAuthenticated,
+        setIsAuthenticated,
       }}
     >
       {children}
