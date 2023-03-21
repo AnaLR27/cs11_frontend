@@ -15,7 +15,6 @@ import ErrorPage from "../views/ErrorPage";
 import UnauthorizedPage from "../views/UnauthorizedPage";
 import { JobList } from "../views/JobList";
 import CandidateList from "../views/CandidateList";
-
 import PostAJobComponents from "../views/PostAJob.components";
 import CandidateProfile from "../views/CandidateProfile.component";
 import CompanyProfile from "../views/CompanyProfile.component";

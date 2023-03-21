@@ -31,6 +31,7 @@ function Header() {
     setIsAuthenticated,
   } = useContext(LoginModalContext);
 
+  //PERSISTANT LOGIN
   //ckeck if there is a remembered user and log him in if there is, using refresh token for authentication and recieve new access token
   useEffect(() => {
     const handleRememberedUser = async () => {
@@ -58,7 +59,6 @@ function Header() {
   useEffect(() => {
     isAuthenticated ? setRole(sessionStorage.getItem("role")) : setRole("");
   }, [isAuthenticated]);
-
 
   const handleClick = () => {
     setOpenLoginModal(true);
@@ -93,7 +93,14 @@ function Header() {
         </div>
       )}
       {isAuthenticated && (
-        <button className={classes["dashboard-btn"]} onClick={()=>{navigate(`${role}s-dashboard`)}}>Mi Dashboard</button>
+        <button
+          className={classes["dashboard-btn"]}
+          onClick={() => {
+            navigate(`${role}s-dashboard`);
+          }}
+        >
+          Mi Dashboard
+        </button>
       )}
     </header>
   );

@@ -6,17 +6,15 @@ import { IconContext } from "react-icons";
 // ROUTING
 import { Link } from "react-router-dom";
 // DATA FILE
- import { SidebarData } from "./SlidebarData";
+import { SidebarData } from "./SlidebarData";
 // STYLES
 import styles from "../../styles/navbar.module.css";
 //Logo
 import logo from "../../assets/img/logo-negro.png";
 
-
 export default function Navbar() {
   const [sidebar, setSidebar] = useState(false);
-  // const role = sessionStorage.getItem("role") || localStorage.getItem("role");
-  
+
   const showSidebar = () => setSidebar(!sidebar);
   return (
     <>
