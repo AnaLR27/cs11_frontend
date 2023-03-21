@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Asynchronous function to send an email
+ * @author Daniel Sánchez Gonzalez
+ */
+
 import { EMPLOYER_JOBS } from "../../config/urls";
 
 async function FetchMail (email, name, refused, job, acepted) {
