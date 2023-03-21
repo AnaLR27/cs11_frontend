@@ -1,9 +1,18 @@
 /**
- * @fileoverview This file contains the functions that make the requests to the backend for login,register and refresh token
+ * @fileoverview This file contains the functions that make the requests to the backend
+ * to auth route:  login,register and refresh token
+ * to forgotten password route: send email and reset password
+ * to employer route: get employer profile
+ * to candidate route: get candidate profile
  * @author Alina Dorosh
  */
-
-import { USERS_API, FORGOTTEN_PASSWORD_API } from "../config/urls";
+import jwt_decode from "jwt-decode";
+import {
+  USERS_API,
+  FORGOTTEN_PASSWORD_API,
+  EMPLOYERS_API,
+  CANDIDATES_API,
+} from "../config/urls";
 
 export default class ApiRequest {
   static async register(body) {
@@ -82,6 +91,42 @@ export default class ApiRequest {
           body: JSON.stringify(body),
         }
       );
+      let data = await response.json();
+      return data;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  static async getEmployerProfile(token) {
+    const decoded = jwt_decode(token);
+    const decodedId = decoded?.UserInfo?.id;
+    try {
+      const response = await fetch(`${EMPLOYERS_API}/${decodedId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+        },
+      });
+      let data = await response.json();
+      return data;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  static async getCandidateProfile(token) {
+    const decoded = jwt_decode(token);
+    const decodedId = decoded?.UserInfo?.id;
+    try {
+      const response = await fetch(`${CANDIDATES_API}/${decodedId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+        },
+      });
       let data = await response.json();
       return data;
     } catch (error) {
