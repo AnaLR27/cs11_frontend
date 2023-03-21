@@ -15,7 +15,7 @@
 /* header class containing title and a paragraph */
 
 .main-container .header {
-  margin-bottom: 40px;
+  margin-bottom: 3.7rem;
 }
 
 .main-container .header h3 {
@@ -33,11 +33,11 @@
 /* temporary css for the button, it will be replaced by a button component */
 /* the button disappers in the desktop view */
 
-.main-container button {
+/* .main-container button {
   padding: 0.5em;
   border: 1px solid black;
   border-radius: 5px;
-}
+} */
 
 /* container for the table title, select filter and the table */
 

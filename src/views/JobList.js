@@ -20,6 +20,7 @@ import { fetchCards } from "../services/fetchCards.service";
 import { orderByDate } from "../utils/orderByDate.utils";
 import { EMPLOYER_JOBS } from "../config/urls";
 import Loader from "../components/UI/Spinner/Loader";
+import PageLayoutC from "../components/sidemenu/PageLayoutC";
 
 let PageSize = 12; //to fix the number of offers per page
 export const JobList = () => {
@@ -81,20 +82,7 @@ export const JobList = () => {
             <div className={classes.switcher}>
               <div className={classes["showing-result"]}></div>
               <div className={classes["sort-by"]}>
-                <button
-                  className={
-                    order === "oldest" || order === "newest"
-                      ? classes["btn-clear"]
-                      : classes["btn-clear-disabled"]
-                  }
-                  onClick={() => {
-                    setCurrentPage(1); //to send the user back to the first page
-                    setSelectedOrder("default");
-                    setOrder("default");
-                  }}
-                >
-                  Borrar filtros
-                </button>
+               <PageLayoutC/>
                 <Switcher
                   value={selectedOrder}
                   handlerSelect={handlerSelect}

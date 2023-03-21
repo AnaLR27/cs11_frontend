@@ -1,16 +1,15 @@
-
 export const SidebarData = [
   {
-    title: "Home",
+    title: "Inicio",
     path: "/",
   },
   {
-    title: "Sobre Nosotros",
+    title: "Nosotros",
     path: "/aboutus",
   },
   {
-   title: "Contacto",
-   path:"/contact"
-  },
-  
+    title: "Contacto",
+    path: "/contact",
+  }
+ 
 ];

@@ -13,6 +13,7 @@ import Card from "../components/allaplicants/cardcandidate/CardCandidate";
 import { Link, Navigate } from "react-router-dom";
 import Spinner from "../components/UI/Spinner/Loader";
 import Unauthorized from "../components/Unauthorized";
+import PageLayout from "../components/sidemenu/PageLayout";
 import mokcSkills from "../utils/mokcSkills";
 
 function Allaplicants() {
@@ -126,10 +127,11 @@ function Allaplicants() {
           <div className={Styles["main-title"]}>
             <h3>Candidatos</h3>
             <p className={Styles["subtittle"]}>Encuentra a la persona adecuada</p>
-            <button className={Styles["menu-button"]}>
+            {/* <button className={Styles["menu-button"]}>
               <HiOutlineMenuAlt3 className={Styles["menu-icon"]} />
               Menu
-            </button>
+            </button> */}
+            <PageLayout/>
           </div>
           <div className={Styles["main-applicants"]}>
             <h4 className={Styles["your-candidates"]}>Ofertas publicadas</h4>

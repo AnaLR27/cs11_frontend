@@ -3,6 +3,7 @@ import jwt_decode from "jwt-decode";
 import classes from "../../styles/Curriculum.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import PageLayoutC from "../sidemenu/PageLayoutC";
 
 function Curriculum() {
   const [file, setFile] = useState(null);
@@ -105,60 +106,58 @@ function Curriculum() {
             </div>
             {/* Aquí va el boton de Menú de Helena */}
           </div>
-          <div className={classes["contenedor-inferior"]}>
-            <h4 className={classes["titulo-inferior-h4"]}>
-              Gestor de Curriculum.
-            </h4>
-            <form
-              className={classes["contenedor-cv"]}
-              action="/files"
-              method="post"
-              encType="multipart/form-data"
-            >
-              <input
-                type="file"
-                name="avatar"
-                id="upload"
-                onChange={selectedHandler}
-                className={classes["upload-input"]}
-                accept=".doc,.docx,application/pdf"
-              />
-              <label className={classes["cv-uploadButton"]} htmlFor="upload">
-                <p className={classes["p-blue"]}>Inserta aquí tu archivo.</p>
-                <p className={classes["p2"]}>
-                  Tamaño máximo de archivo: 5MB. Tipos de archivos permitidos:
-                  (.doc, .docx, .pdf)
-                </p>
-                <button
-                  onClick={handleFunctions}
-                  type="button"
-                  className={classes["upload-button"]}
-                >
-                  Subir Archivo
-                </button>
-                <div ref={RefRedAlert} className={classes["red-alert"]}>
-                  {texto}
-                </div>
-                <div ref={RefGreenAlert} className={classes["green-alert"]}>
-                  {texto2}
-                </div>
-              </label>
-            </form>
-            <div id="caja-archivo" className={classes["caja-archivo"]}>
-              <span
-                id="fileName"
-                className={classes["titulo-documento"]}
-              ></span>
-              <div className={classes["edit-btns"]}>
-                <div
-                  className={classes["contenedor-trash"]}
-                  onClick={eliminarArchivo}
-                >
-                  <FontAwesomeIcon
-                    icon={faTrashCan}
-                    className={classes["icono-trash"]}
-                  />
-                </div>
+        </div>
+        <PageLayoutC />
+        <div className={classes["contenedor-inferior"]}>
+          <h4 className={classes["titulo-inferior-h4"]}>
+            Gestor de Curriculum.
+          </h4>
+          <form
+            className={classes["contenedor-cv"]}
+            action="/files"
+            method="post"
+            encType="multipart/form-data"
+          >
+            <input
+              type="file"
+              name="avatar"
+              id="upload"
+              onChange={selectedHandler}
+              className={classes["upload-input"]}
+              accept=".doc,.docx,application/pdf"
+            />
+            <label className={classes["cv-uploadButton"]} htmlFor="upload">
+              <p className={classes["p-blue"]}>Inserta aquí tu archivo.</p>
+              <p className={classes["p2"]}>
+                Tamaño máximo de archivo: 5MB. Tipos de archivos permitidos:
+                (.doc, .docx, .pdf)
+              </p>
+              <button
+                onClick={handleFunctions}
+                type="button"
+                className={classes["upload-button"]}
+              >
+                Subir Archivo
+              </button>
+              <div ref={RefRedAlert} className={classes["red-alert"]}>
+                {texto}
+              </div>
+              <div ref={RefGreenAlert} className={classes["green-alert"]}>
+                {texto2}
+              </div>
+            </label>
+          </form>
+          <div id="caja-archivo" className={classes["caja-archivo"]}>
+            <span id="fileName" className={classes["titulo-documento"]}></span>
+            <div className={classes["edit-btns"]}>
+              <div
+                className={classes["contenedor-trash"]}
+                onClick={eliminarArchivo}
+              >
+                <FontAwesomeIcon
+                  icon={faTrashCan}
+                  className={classes["icono-trash"]}
+                />
               </div>
             </div>
           </div>

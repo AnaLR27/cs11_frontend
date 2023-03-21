@@ -76,7 +76,7 @@ function CardCandidate(props) {
                 </div>
                 <div className={Styles['user-actions']}>
                     <div className={Styles['user-profile']}>
-                        <Link className={Styles['profile-user-link']} to={`/employers-dashboard/candidate/${props.linkid}`}>
+                        <Link className={Styles['profile-user-link']} to={`/candidate/${props.linkid}`}>
                             <AiOutlineEye/>
                         </Link>
                     </div>

@@ -4,18 +4,63 @@ import styles from "../../styles/navbarpublic.module.css";
 const AboutUs = () => {
   return (
     <>
-      <h1 className={`${styles.h1Tit}`}>About Us</h1>
-      <div className={`${styles.pall}`}>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut turpis
-        at risus pharetra convallis vel eu sapien. Sed in consequat dolor. Proin
-        aliquam convallis quam, a vulputate risus malesuada at. Praesent rutrum
-        arcu quis leo bibendum, non dictum eros ornare. Nullam feugiat lorem non
-        odio commodo, ut pulvinar dolor bibendum. Fusce laoreet felis a dolor
-        interdum, eget imperdiet magna malesuada. Sed viverra, arcu eu fermentum
-        dignissim, velit velit pharetra lorem, a egestas nibh nulla quis nulla.
-      </p>
-    
+      <div className={`${styles.marginContainer}`}>
+        <div className={`${styles.usContainer}`}>
+          <h1 className={`${styles.h1Us}`}>Sobre Nosotros</h1>
+          <div className={`${styles.pall}`}>
+            <q className={`${styles.q}`}>
+              Ser un CODESPACER es ser uno de los nuestros, es formar parte de
+              nuestra pequeña gran familia, es crecer profesionalmente junto a
+              nosotros
+            </q>
+            <p className={`${styles.p}`}>
+              El lema de Code Space Academy define a la perfección nuestra
+              edición formada por más 20 personas. Dicha edición es la número
+              11, la cual ha sido la encargada del desarrollo de esta web. Este
+              grupo está formado por los siguientes profesionales:
+            </p>
+            <div className={`${styles.developers}`}>
+              <ul className={`${styles.developersName}`}>
+                <li>Alice Marchi</li>
+                <li>Alina Dorosh</li>
+                <li>Ana Lorenzo</li>
+                <li>Armiche Ramos</li>
+                <li>Benjamín Mancera</li>
+              </ul>
+              <ul className={`${styles.developersName}`}>
+                <li>Daniel Sánchez</li>
+                <li>Daniel Vallejo</li>
+                <li>Daniel Villalba</li>
+                <li>David Bonora</li>
+                <li>David Calero</li>
+              </ul>
+              <ul className={`${styles.developersName}`}>
+                <li>Elena López</li>
+                <li>Ismael Boumhir</li>
+                <li>Juan Domínguez</li>
+                <li>Laura Carqué</li>
+                <li>Naiara Cuevas</li>
+              </ul>
+              <ul className={`${styles.developersName}`}>
+                <li>Nelson González</li>
+                <li>Pablo Muñoz</li>
+                <li>Rafael Fernandez</li>
+                <li>Sebastian Gonzalez</li>
+                <li>Verónica Sanchez</li>
+              </ul>
+            </div>
+            <p className={`${styles.p}`}>
+              Este es el
+              <a
+                className={`${styles.c}`}
+                href="https://github.com/GhostDevs3/cs11_frontend"
+              >
+                Código
+              </a>
+              de la web
+            </p>
+          </div>
+        </div>
       </div>
     </>
   );

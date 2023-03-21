@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "../views/HomePage";
 import CandidateSinglePage from "../views/CandidateSinglePage";
 import ManageJobsPage from "../views/ManageJobsPage";
-import LoginModalProvider from "../providers/LoginModalProvider";
 import Header from "../components/HeaderFooter/Header";
 import Footer from "../components/HeaderFooter/Footer";
 import ForgottenPasswordPage from "../views/ForgottenPasswordPage";
@@ -16,17 +15,17 @@ import ErrorPage from "../views/ErrorPage";
 import UnauthorizedPage from "../views/UnauthorizedPage";
 import { JobList } from "../views/JobList";
 import CandidateList from "../views/CandidateList";
-import RequireAuth from "../auth/RequireAuth";
 import PostAJobComponents from "../views/PostAJob.components";
-import DetailCandidate from "../components/detailCandidate/DetailCandidate";
 import CandidateProfile from "../views/CandidateProfile.component";
 import CompanyProfile from "../views/CompanyProfile.component";
 import EmployersDashboard from "../views/EmployersDashboard";
 import AppliedJobsPage from "../views/AppliedJobsPage";
 import AboutUs from "../components/navbar/AboutUs";
 import Contact from "../components/navbar/Contact";
-// Revisar esta importación, es el componente que esta haciendo Rafa
-/* import { JobDetails } from '../views/JobDetail'; */
+import JobDetails from "../views/JobDetail.component";
+
+import LoginModalProvider from "../providers/LoginModalProvider";
+import RequireAuth from "../auth/RequireAuth";
 
 const Routing = () => {
   return (
@@ -37,14 +36,13 @@ const Routing = () => {
 
       <Routes>
         {/* Rutas no protegidas */}
-
-        <Route path="/" element={<HomePage />} />
-        <Route path="aboutus" element={<AboutUs />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="forgottenpassword" element={<ForgottenPasswordPage />} />
-        <Route path="reset-password/:token" element={<ResetPasswordPage />} />
-        <Route path="unauthorized" element={<UnauthorizedPage />} />
-        <Route path="*" element={<ErrorPage />} />
+        <Route path='/' element={<HomePage />} />
+        <Route path='aboutus' element={<AboutUs />} />
+        <Route path='contact' element={<Contact />} />
+        <Route path='forgottenpassword' element={<ForgottenPasswordPage />} />
+        <Route path='reset-password/:token' element={<ResetPasswordPage />} />
+        <Route path='unauthorized' element={<UnauthorizedPage />} />
+        <Route path='*' element={<ErrorPage />} />
 
         {/* Ruta con authenticacion con acceso tanto para candidatos como para empleadores */}
 
@@ -52,15 +50,8 @@ const Routing = () => {
           <Route path="auth/change-password" element={<ChangePassword />} />
           <Route path="candidate/:loginId" element={<CandidateSinglePage />} />
           <Route path="employer/:id" element={<EmployerSinglePage />} />
+          <Route path="job/job-single/:jobId" element={<JobDetails />} />
 
-          {/* //importacion desde componentes repetiendo la ruta de arriba */}
-          {/* <Route path='candidate/:loginId' element={<DetailCandidate />} /> */}
-          {/* <Route
-
-
-         {/*  <Route   path="job/job-single/:jobId"
-                        element={<JobDetails />}
-                    /> */}
         </Route>
 
         {/* Rutas de candidatos */}
@@ -93,6 +84,7 @@ const Routing = () => {
           <Route path="post-a-job/:jobId" element={<PostAJobComponents />} />
         </Route>
       </Routes>
+
       <Footer />
     </Router>
   );
