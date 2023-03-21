@@ -40,9 +40,8 @@ const ForgottenPassword = () => {
       setErrMsg("Error de conexión, inténtalo de nuevo más tarde");
       return;
     }
-    console.log(response);
+
     if (response.message === "Email sent successfully") {
-      console.log("email enviado");
       setEmail("");
       setSuccess(true);
     }

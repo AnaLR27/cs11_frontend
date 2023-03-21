@@ -13,7 +13,6 @@
 .logo {
   display: flex;
   align-items: center;
-
   width: 100px;
 }
 
@@ -23,7 +22,29 @@
 .icon {
   display: flex;
   align-items: center;
-  font-size: 1rem;
+  font-size: 1.6rem;
+}
+
+.dashboard-btn{
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  color: var(--white);
+  background: var(--dark-green);
+  white-space: nowrap;
+  transition: 0.3s;
+  cursor: pointer;
+  display: block;
+  margin: 0 0.5rem;
+}
+
+.dashboard-btn :hover {
+  background-color: #8ec9ca;
+  color: var(--dark-green);
+  font-weight: 500;
+  box-shadow: -2px -2px 5px 0px #3a3939bf;
 }
 
 @media (min-width: 820px) {
@@ -47,7 +68,7 @@
     display: flex;
     align-items: center;
     margin-right: 1em;
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 }
 @media (min-width: 1280px) {

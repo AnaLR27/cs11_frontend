@@ -15,15 +15,18 @@ import { EMAIL_REGEX } from "../../utils/regExp";
 import { Link } from "react-router-dom";
 import useRedirect from "../../hooks/useRedirect";
 
+
 const LoginForm = () => {
-  //access to context
+  //access to modal context
   const {
     setOnLogin,
     setOnRegister,
     openLoginModal,
     setOpenLoginModal,
     handleClose,
+    setIsAuthenticated
   } = useContext(LoginModalContext);
+
 
   //custom hook to redirect user after succesfull login
   const [redirect, error, loading] = useRedirect();
@@ -120,6 +123,9 @@ const LoginForm = () => {
         password: "",
         rememberMe: false,
       });
+
+      //set isAuthenticated to true to access private navbar
+      setIsAuthenticated(true);
 
       //redirect
       redirect(response.accessToken);

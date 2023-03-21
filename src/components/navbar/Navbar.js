@@ -10,21 +10,19 @@ import { SidebarData } from "./SlidebarData";
 // STYLES
 import styles from "../../styles/navbar.module.css";
 //Logo
-import logo from "../../assets/img/logo-negro.png"
+import logo from "../../assets/img/logo-negro.png";
 
 export default function Navbar() {
   const [sidebar, setSidebar] = useState(false);
-  // const role = sessionStorage.getItem("role") || localStorage.getItem("role");
+
   const showSidebar = () => setSidebar(!sidebar);
   return (
     <>
-      <IconContext.Provider value={{ }}>
+      <IconContext.Provider value={{}}>
         {/* All the icons now are white */}
-        
+
         <div className={`${styles.navbar}`}>
-         
-          <Link to="#" className={`${styles["menu-bars"]}`}>
-          
+          <Link to='#' className={`${styles["menu-bars"]}`}>
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
         </div>
@@ -38,20 +36,20 @@ export default function Navbar() {
         >
           <ul className={`${styles["nav-menu-items"]}`} onClick={showSidebar}>
             <li className={`${styles["navbar-toggle"]}`}>
-            <img className={styles.logo} src={logo} alt='' />
+              <img className={styles.logo} src={logo} alt='' />
               <Link className={`${styles["menu-bars"]}`}></Link>
               <AiIcons.AiOutlineClose />
             </li>
-           <div className={`${styles["nav-text1"]}`}>
-            {SidebarData.map(({ path, title }, index) => {
-              return (
-                <li key={index} className={`${styles["nav-text"]}`}>
-                  <Link to={path}>
-                    <span>{title}</span>
-                  </Link>
-                </li>
-              );
-            })}
+            <div className={`${styles["nav-text1"]}`}>
+              {SidebarData.map(({ path, title }, index) => {
+                return (
+                  <li key={index} className={`${styles["nav-text"]}`}>
+                    <Link to={path}>
+                      <span className={styles.title}>{title}</span>
+                    </Link>
+                  </li>
+                );
+              })}
             </div>
           </ul>
         </nav>
