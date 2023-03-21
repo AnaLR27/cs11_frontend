@@ -40,10 +40,11 @@ const Routing = () => {
         <Route path="reset-password/:token" element={<ResetPasswordPage />} />
         <Route path="unauthorized" element={<UnauthorizedPage />} />
         <Route path="*" element={<ErrorPage />} />
+        
 
         {/* Ruta con authenticacion con acceso tanto para candidatos como para empleadores */}
         <Route path="api" element={<RequireAuth allowedRole="both" />}>
-          <Route path="change-password" element={<ChangePassword />} />
+        <Route path="change-password" element={<ChangePassword />} />
           {/*  <Route
                         path="job/job-single/:jobId"
                         element={<JobDetails />}
