@@ -1,8 +1,15 @@
+.main-wrapper {
+  background-color: var(--light-green);
+  padding: 40px 15px;
+  width: 100vw;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
+
 .main {
-  background-color: #e5f0ed;
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 1.25em;
   font-family: "Montserrat", sans-serif;
-  padding-top: 6em;
 }
 
 .title {
@@ -22,6 +29,7 @@
   padding: 1em;
   border-radius: 0.5em;
   margin-bottom: 1em;
+  margin-top: 3em;
 }
 
 .job-listing-container h4 {
@@ -125,7 +133,7 @@
 }
 
 .td-applications a:hover {
- color: #47d7ac;
+  color: #47d7ac;
 }
 
 .table .td-title .logo {
@@ -247,7 +255,7 @@
     width: 2%;
   }
 
-  .table .td-title .job{
+  .table .td-title .job {
     padding-left: 5.2em;
   }
 

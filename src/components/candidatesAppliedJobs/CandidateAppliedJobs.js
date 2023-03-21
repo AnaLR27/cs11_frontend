@@ -45,8 +45,8 @@ function CandidateAppliedJobs() {
     setFilteredData(filterDate(event.target.value, data, candidateId));
   };
 
-   // get the candidate id when the component is rendered for the first time
-   useEffect(() => {
+  // get the candidate id when the component is rendered for the first time
+  useEffect(() => {
     getCandidateId(loginId);
   }, [loginId]);
 
@@ -57,7 +57,7 @@ function CandidateAppliedJobs() {
       setLoadData(false);
     }
   }, [loadData]);
-  
+
   useEffect(() => {
     // if loadData is false it means that the request to the backend has been made and the data is loaded
     if (!loadData && candidateId.length > 0) {
@@ -66,8 +66,8 @@ function CandidateAppliedJobs() {
   }, [data]);
 
   return (
-    <>
-      <div className={classes["main-container"]}>
+    <div className={classes["main-wrapper"]}>
+      <section className={classes["main-container"]}>
         <div className={classes.header}>
           <h3>Mis Candidaturas</h3>
           <p>¡Revisa todas tus ofertas de empleo!</p>
@@ -108,8 +108,8 @@ function CandidateAppliedJobs() {
         {!pending && error !== null && (
           <p className={classes["fetch-error"]}>{error}</p>
         )}
-      </div>
-    </>
+      </section>
+    </div>
   );
 }
 

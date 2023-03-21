@@ -1,11 +1,15 @@
 /* main container of the page */
 
-.main-container {
+.main-wrapper {
   background-color: var(--light-green);
   padding: 40px 15px;
   width: 100vw;
   min-height: calc(100vh - var(--header-height) - var(--footer-height));
-  
+}
+
+.main-container {
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 /* header class containing title and a paragraph */
@@ -16,14 +20,14 @@
 
 .main-container .header h3 {
   margin-bottom: 5px;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   line-height: 1.3em;
 }
 
 .main-container .header p {
   color: var(--darkgrey);
   line-height: 24px;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 /* temporary css for the button, it will be replaced by a button component */
@@ -121,7 +125,4 @@
 
 /* XXL devices */
 @media (min-width: 1400px) {
-  .main-container {
-    padding: 40px 60px;
-  }
 }
