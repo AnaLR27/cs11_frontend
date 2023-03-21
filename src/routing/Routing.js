@@ -60,32 +60,32 @@ const Routing = () => {
 
         {/* Rutas de candidatos */}
         <Route
-          path='candidates-dashboard'
-          element={<RequireAuth allowedRole='candidate' />}
+          path="candidates-dashboard"
+          element={<RequireAuth allowedRole="candidate" />}
         >
           <Route index element={<CandidatesDashboard />} />
-          <Route path='profile/:id' element={<CandidateProfile />} />
-          <Route path='curriculum' element={<Curriculum />} />
-          <Route path='job/job-list' element={<JobList />} />
-          <Route path='applied-jobs' element={<AppliedJobsPage />} />
+          <Route path="profile/:id" element={<CandidateProfile />} />
+          <Route path="curriculum" element={<Curriculum />} />
+          <Route path="job/job-list" element={<JobList />} />
+          <Route path="applied-jobs" element={<AppliedJobsPage />} />
         </Route>
 
         {/* Rutas de empleadores */}
         <Route
-          path='employers-dashboard'
-          element={<RequireAuth allowedRole='employer' />}
+          path="employers-dashboard"
+          element={<RequireAuth allowedRole="employer" />}
         >
           <Route index element={<EmployersDashboard />} />
-          <Route path='candidate/all-candidates' element={<CandidateList />} />
+          <Route path="candidate/all-candidates" element={<CandidateList />} />
 
-          <Route path='profile/:id' element={<CompanyProfile />} />
+          <Route path="profile/:id" element={<CompanyProfile />} />
 
           {/* Entiendo que la ruta all-applicants deberia de ir concatenado con job  !!!CONFIRMAR */}
 
-          <Route path='all-applicants' element={<Allaplicants />} />
-          <Route path='job/employer-jobs' element={<ManageJobsPage />} />
-          <Route path='post-a-job' element={<PostAJobComponents />} />
-          <Route path='post-a-job/:jobId' element={<PostAJobComponents />} />
+          <Route path="all-applicants" element={<Allaplicants />} />
+          <Route path="job/employer-jobs" element={<ManageJobsPage />} />
+          <Route path="post-a-job" element={<PostAJobComponents />} />
+          <Route path="post-a-job/:jobId" element={<PostAJobComponents />} />
         </Route>
       </Routes>
 
