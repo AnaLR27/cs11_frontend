@@ -23,20 +23,25 @@ export default BurgerButton;
 
 const StyledBurger = styled.button`
 #hamburger-1 {
-  background-color: #e5f0ed;}
-
-div#hamburger-1.hamburger.is-active{
   background-color: #e5f0ed;
+// @media (min-width: 992px) {
+// background-color: #000;
+}
 
+div#hamburger-1.hamburger{
+  top: -30px;
+
+  // @media (min-width: 992px) {
+  //   margin-left: -300px;
+  // }
 }
-}
-  .row .three {
-    padding: 80px 30px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    color: black;
-  }
+  // .row .three {
+  //   padding: 80px 30px;
+  //   -webkit-box-sizing: border-box;
+  //   -moz-box-sizing: border-box;
+  //   box-sizing: border-box;
+  //   color: black;
+  // }
 
   .hamburger .line {
     width: 30px;
@@ -50,7 +55,13 @@ div#hamburger-1.hamburger.is-active{
     position: relative;
     left: 315px;
     top: 30px;
-  }
+
+    // @media (min-width: 992px) {
+    // color: #fff;
+    // font-size: 1.5rem;
+    
+    
+    }
 
 
   #hamburger-1.is-active .line:nth-child(2) {

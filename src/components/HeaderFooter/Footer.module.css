@@ -2,7 +2,7 @@
   background-color: rgb(242, 238, 238);
   padding: 0.8rem;
   text-align: center;
-  font-size: 0.7rem;
+  font-size: .9rem;
   width: 100vw;
   overflow: hidden;
   height: var(--footer-height);
@@ -27,18 +27,16 @@
 @media (min-width: 820px) {
   .footer {
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     padding: 1.1rem;
-
     width: 100%;
   }
 }
 @media (min-width: 1280px) {
   .footer {
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.5rem;
     padding: 1.2rem;
-
     width: 100%;
   }
 }

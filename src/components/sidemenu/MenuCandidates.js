@@ -3,7 +3,8 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 //BURGERMENU
-import BurgerButton from "./BurgerButton";
+import ButtonComponent from "./ButtonComponent";
+import ClosedButton from "./ClosedButton";
 // STYLED
 import styled from "styled-components";
 import Swal from "sweetalert2";
@@ -110,11 +111,11 @@ function MenuCandidates() {
     <>
       <MenuContainer>
         <div className="burger-container">
-          <BurgerButton clicked={clicked} handleClick={handleClick} />
+          <ButtonComponent clicked={clicked} handleClick={handleClick} />
         </div>
         <nav className={`Menulinks ${clicked ? "active" : ""}`}>
           <div >
-          <BurgerButton clicked={clicked} handleClick={handleClick} />
+          <ClosedButton clicked={clicked} handleClick={handleClick}/>
           </div>
           <Link className="Menu-a" to="#">
             <span className="icon">

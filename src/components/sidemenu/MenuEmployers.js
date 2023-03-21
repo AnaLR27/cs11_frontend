@@ -3,10 +3,12 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 //BURGERMENU
-import BurgerButton from "./BurgerButton";
+import ButtonComponent from "./ButtonComponent";
+import ClosedButton from "./ClosedButton";
 // STYLED
 import styled from "styled-components";
 import swal from "sweetalert2";
+import Styles from "./MenuEmployers.module.css";
 // ICONS
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -16,13 +18,8 @@ import {
   faRightFromBracket,
   faTrashCan,
   faUser,
+  faUsers,
 } from "@fortawesome/free-solid-svg-icons";
-//RUTES
-import CompanyProfile from "../../views/CompanyProfile.component";
-import ManageJobsPage from "../../views/ManageJobsPage";
-import ChangePassword from "../../views/ChangePassword";
-
-
 
 function MenuEmployers() {
   //BURGERMENU
@@ -114,62 +111,73 @@ function MenuEmployers() {
           }
           DeleteCandidateData();
         } else {
-          window.location.href = "/menu";
+          window.location.href = "/";
         }
       });
   };
 
   return (
     <>
-      <MenuContainer>
-        <div className="burger-container">
-          <BurgerButton clicked={clicked} handleClick={handleClick} />
-        </div>
-        <nav className={`Menulinks ${clicked ? "active" : ""}`}>
-          <div>
-            <BurgerButton clicked={clicked} handleClick={handleClick} />
-          </div>
-          <div className="icon"> </div>
-          <Link className="Menu-a" to={CompanyProfile}>
-            <span className="icon">
-              <FontAwesomeIcon icon={faUser} />
-            </span>
-            Perfil
-          </Link>
-          <Link className="Menu-a" to="#">
-            <span className="icon">
-              <FontAwesomeIcon icon={faBriefcase} />
-            </span>
-            Publicar nuevo empleo
-          </Link>
-          <Link className="Menu-a" to={ManageJobsPage}>
-            <span className="icon">
-              <FontAwesomeIcon icon={faListCheck} />
-            </span>
-            Administrar Trabajos
-          </Link>
-          <Link className="Menu-a" to={ChangePassword}>
-            <span className="icon">
-              <FontAwesomeIcon icon={faLock} />
-            </span>
-            Cambiar contraseña
-          </Link>
-          <Link onClick={handleLogout} className="Menu-a" to="/">
-            <span className="icon">
-              <FontAwesomeIcon icon={faRightFromBracket} />
-            </span>
-            Logout
-          </Link>
-          <Link onClick={handleDelete} className="Menu-a" to="/">
-            <span className="icon">
-              <FontAwesomeIcon icon={faTrashCan} />
-            </span>
-            Eliminar Perfil
-          </Link>
-        </nav>
-      
-    
-      </MenuContainer>
+      <div className={Styles.prueba}>
+        <MenuContainer>
+          <ButtonComponent clicked={clicked} handleClick={handleClick} />
+          <nav className={`Menulinks ${clicked ? "active" : ""}`}>
+            <div>
+              {/* <BurgerButton clicked={clicked} handleClick={handleClick} /> */}
+              <ClosedButton clicked={clicked} handleClick={handleClick}/>
+            </div>
+            <div className="icon"> </div>
+            <Link className="Menu-a" to={"/employers-dashboard/profile/:id"}>
+              <span className="icon">
+                <FontAwesomeIcon icon={faUser} />
+              </span>
+              Perfil
+            </Link>
+            <Link className="Menu-a" to="/employers-dashboard/post-a-job/:jobId">
+              <span className="icon">
+                <FontAwesomeIcon icon={faBriefcase} />
+              </span>
+              Publicar nuevo empleo
+            </Link>
+            <Link className="Menu-a" to="/employers-dashboard/candidate/all-candidates">
+              <span className="icon">
+                <FontAwesomeIcon icon={faUsers} />
+              </span>
+              Ver Candidatos
+            </Link>
+            {/* <Link className="Menu-a" to="/employers-dashboard/all-applicants">
+              <span className="icon">
+                <FontAwesomeIcon icon={faBriefcase} />
+              </span>
+              Mis Candidatos
+            </Link> */}
+            <Link className="Menu-a" to="/employers-dashboard/job/employer-jobs">
+              <span className="icon">
+                <FontAwesomeIcon icon={faListCheck} />
+              </span>
+              Administrar Trabajos
+            </Link>
+            <Link className="Menu-a" to="/employers-dashboard/auth/change-password">
+              <span className="icon">
+                <FontAwesomeIcon icon={faLock} />
+              </span>
+              Cambiar contraseña
+            </Link>
+            <Link onClick={handleLogout} className="Menu-a" to="/">
+              <span className="icon">
+                <FontAwesomeIcon icon={faRightFromBracket} />
+              </span>
+              Logout
+            </Link>
+            <Link onClick={handleDelete} className="Menu-a" to="/">
+              <span className="icon">
+                <FontAwesomeIcon icon={faTrashCan} />
+              </span>
+              Eliminar Perfil
+            </Link>
+          </nav>
+        </MenuContainer>
+      </div>
     </>
   );
 }
@@ -177,6 +185,7 @@ function MenuEmployers() {
 export default MenuEmployers;
 
 const MenuContainer = styled.div`
+
 .Menu-a {
   padding-top: 3rem;
   font-size: 1.3rem;
@@ -188,7 +197,6 @@ const MenuContainer = styled.div`
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   padding-inline-start: 25px;
-  
   
 }
 .icon{
@@ -206,9 +214,8 @@ font-size: 23px;
     background-color: #e5f0ed;
     width: 23rem;
     height: 100%; 
-   
-    
-    
+    opacity: 0;
+
   @media (max-width: 821px) {
    position: relative;
     left: -700px;
@@ -227,13 +234,24 @@ font-size: 23px;
     display: block;
     margin-left: 0;
     margin-right: auto;
-    top: -6rem;
+    top: -20rem;
     left: 0;
     rigth: 0;
     text-align: left;
     position: relative;
+  opacity: 1;
+
     @media (max-width: 821px) {
+      position: relative;
       width: 30rem;
+      height: 3000vh;}
+      
+      @media (min-width: 992px) {
+        position: relative;
+        width: 30rem;
+        height: 3000vh;
+      top: -20rem
+    }
     
   }
 .burger-container{
@@ -241,7 +259,9 @@ margin-top: -2rem;
 margin-left: 0rem;
   @media (min-width: 821px) {
     display: none;
- 
+  }
+
+
   
 
 `;

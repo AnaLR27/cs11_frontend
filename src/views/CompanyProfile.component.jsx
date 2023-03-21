@@ -14,6 +14,7 @@ import { Employer } from "../models/employer model";
 import BurgerButton from "../components/sidemenu/BurgerButton";
 import MenuEmployers from "../components/sidemenu/MenuEmployers";
 import PageLayout from "../components/sidemenu/PageLayout";
+import ButtonComponent from "../components/sidemenu/ButtonComponent";
 
 function CompanyProfile() {
   //const [loading, setLoading] = useState(true);
@@ -120,25 +121,17 @@ function CompanyProfile() {
   return (
     <div className={`${styles["page-wrapper"]}`}>
       <section className={`${styles["dashboard"]}`}>
+        <div className={`${styles["dash-title"]}`}>
+          <Title
+            title="Perfil de la empresa!"
+            altText="¿Listo para saltar de nuevo?"
+            size="l"
+          />
+        </div>
         <PageLayout>
-          <div className={`${styles["dash-title"]}`}>
-            <Title
-              title="Perfil de la empresa!"
-              altText="¿Listo para saltar de nuevo?"
-              size="l"
-            />
-          </div>
           <div
             className={`${styles["mb-4"]} ${styles["ms-0"]} ${styles["show-1023"]}`}
-          >
-            {/* <button
-              type="button"
-              className={`${styles["btn"]} ${styles["toggle-filters"]}`}
-            >
-              <span className={`${styles["flaticon-menu-1"]}`}></span>
-              Menu
-            </button> */}
-          </div>
+          ></div>
           <div className={`${styles["container"]}`}>
             <div className={`${styles["container-title"]}`}>
               <Title title="Mi Perfil" size="s" />
