@@ -145,19 +145,19 @@ function MenuEmployers() {
               </span>
               Ver Candidatos
             </Link>
-            {/* <Link className="Menu-a" to="/employers-dashboard/all-applicants">
+            <Link className="Menu-a" to="/employers-dashboard/all-applicants">
               <span className="icon">
                 <FontAwesomeIcon icon={faBriefcase} />
               </span>
               Mis Candidatos
-            </Link> */}
+            </Link>
             <Link className="Menu-a" to="/employers-dashboard/job/employer-jobs">
               <span className="icon">
                 <FontAwesomeIcon icon={faListCheck} />
               </span>
               Administrar Trabajos
             </Link>
-            <Link className="Menu-a" to="/employers-dashboard/auth/change-password">
+            <Link className="Menu-a" to="/auth/change-password">
               <span className="icon">
                 <FontAwesomeIcon icon={faLock} />
               </span>

@@ -25,6 +25,7 @@ import { useState, useEffect, useMemo } from "react";
 import { orderByDate } from "../utils/orderByDateCandidates.utils";
 import { fetchCards } from "../services/fetchCards.service";
 import { CANDIDATES_URL} from "../config/urls";
+import PageLayoutC from "../components/sidemenu/PageLayoutC";
 
 let PageSize = 12; //to fix the number of candidates per page
 
@@ -86,7 +87,7 @@ function CandidateList() {
               <div className={classes.switcher}>
                 <div className={classes["showing-result"]}></div>
                 <div className={classes["sort-by"]}>
-                  <button
+                  {/* <button
                     className={
                       order === "desc" || order === "asc"
                         ? classes["btn-clear"]
@@ -99,7 +100,8 @@ function CandidateList() {
                     }}
                   >
                     Clear All
-                  </button>
+                  </button> */}
+                  <PageLayoutC/>
                   <Switcher
                     value={selectedOrder}
                     handlerSelect={handlerSelect}

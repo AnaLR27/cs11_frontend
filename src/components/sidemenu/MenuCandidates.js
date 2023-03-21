@@ -8,10 +8,14 @@ import ClosedButton from "./ClosedButton";
 // STYLED
 import styled from "styled-components";
 import Swal from "sweetalert2";
+import Styles from "./MenuCandidates.module.css";
+// ICONS
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFileLines,
+  faList,
   faLock,
+  faRectangleList,
   faRightFromBracket,
   faTrashCan,
   faUser,
@@ -46,13 +50,13 @@ function MenuCandidates() {
               confirmButtonColor: "#2c7a7b",
             })
             .then(function () {
-              window.location.href = "/#";
+              window.location.href = "/";
             });
           sessionStorage.removeItem("userToken");
           sessionStorage.clear();
           setIsLogged(!isLogged);
         } else {
-          window.location.href = "/menu";
+          window.location.href = "/";
         }
       });
   };
@@ -109,27 +113,38 @@ function MenuCandidates() {
   };
   return (
     <>
+      <div className={Styles.prueba}>
       <MenuContainer>
-        <div className="burger-container">
           <ButtonComponent clicked={clicked} handleClick={handleClick} />
-        </div>
         <nav className={`Menulinks ${clicked ? "active" : ""}`}>
           <div >
           <ClosedButton clicked={clicked} handleClick={handleClick}/>
           </div>
-          <Link className="Menu-a" to="#">
+          <Link className="Menu-a" to="/candidates-dashboard/profile/:id">
             <span className="icon">
               <FontAwesomeIcon icon={faUser} />
             </span>
             Mi Perfil
           </Link>
-          <Link className="Menu-a" to="/CVmanager">
+          <Link className="Menu-a" to="/candidates-dashboard/curriculum">
             <span className="icon">
               <FontAwesomeIcon icon={faFileLines} />
             </span>
             Gestor de CV
           </Link>
-          <Link className="Menu-a" to="change-password">
+          <Link className="Menu-a" to="/candidates-dashboard/job/job-list">
+            <span className="icon">
+              <FontAwesomeIcon icon={faList} />
+            </span>
+            Ofertas de Empleo
+          </Link>
+          <Link className="Menu-a" to="/candidates-dashboard/applied-jobs">
+            <span className="icon">
+              <FontAwesomeIcon icon={faRectangleList} />
+            </span>
+            Mis candidaturas
+          </Link>
+          <Link className="Menu-a" to="/auth/change-password"> 
             <span className="icon">
               <FontAwesomeIcon icon={faLock} />
             </span>
@@ -149,6 +164,7 @@ function MenuCandidates() {
           </Link>
         </nav>
       </MenuContainer>
+      </div>
     </>
   );
 }
@@ -167,57 +183,72 @@ const MenuContainer = styled.div`
   list-style-type: disc;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-  padding-inline-start: 30px;
+  padding-inline-start: 25px;
+  
 }
-
 .icon{
 margin-right: 18px;
 font-size: 23px;
 }
   
 .Menulinks {
-  padding-top: 0rem;
+  padding-top: 0.4em;
   position: absolute;
     left: 0px;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
     background-color: #e5f0ed;
-    width: 21rem;
+    width: 23rem;
     height: 100%; 
-    
+    opacity: 0;
+
   @media (max-width: 821px) {
    position: relative;
-   text-align: center;
     left: -700px;
     background-color: #e5f0ed;
     width: 8%;
-    height: 50vh; 
+    height: 100vh; 
     display: none;
-   
+
+
   }}
   
   .Menulinks.active{
     background-color: #e5f0ed;
-    width: 20rem;
+    width: 10rem;
     height: 100vh;
     display: block;
     margin-left: 0;
     margin-right: auto;
-    top: -6.65rem;
+    top: -20rem;
     left: 0;
     rigth: 0;
     text-align: left;
     position: relative;
-   
+  opacity: 1;
+
+    @media (max-width: 821px) {
+      position: relative;
+      width: 30rem;
+      height: 3000vh;}
+      
+      @media (min-width: 992px) {
+        position: relative;
+        width: 30rem;
+        height: 3000vh;
+      top: -20rem
+    }
+    
   }
 .burger-container{
-  margin-top: 3rem;
-  margin-left: -9rem;
-
+margin-top: -2rem;
+margin-left: 0rem;
   @media (min-width: 821px) {
     display: none;
-
   }
+
+
+  
 
 `;

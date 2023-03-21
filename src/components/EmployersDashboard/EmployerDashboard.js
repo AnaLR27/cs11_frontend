@@ -11,6 +11,7 @@ import classes from "./employersDashboard.module.css";
 import { Link } from "react-router-dom";
 import FetchEmployerJobs from "../../services/employersDashService/FetchEmployerJobs";
 import Loader from "../UI/Spinner/Loader";
+import PageLayout from "../../components/sidemenu/PageLayout";
 
 function EmployerDashboard() {
   //Controlador del fetch
@@ -63,12 +64,8 @@ function EmployerDashboard() {
           <div>
             <h3>Encuentra el candidato perfecto!</h3>
             <p>¿Listo para entrar de nuevo?</p>
-            <div>
-              <button>
-                <FontAwesomeIcon icon={faBars} /> Menu
-              </button>
-            </div>
           </div>
+              <PageLayout/>
           <div>
             <div>
               <h4>Candidatos Recientes</h4>

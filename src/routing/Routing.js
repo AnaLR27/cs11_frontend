@@ -25,8 +25,6 @@ import EmployersDashboard from "../views/EmployersDashboard";
 import AppliedJobsPage from "../views/AppliedJobsPage";
 import AboutUs from "../components/navbar/AboutUs"
 import Contact from "../components/navbar/Contact"
-import MenuCandidates from "../components/sidemenu/MenuCandidates";
-import MenuEmployers from "../components/sidemenu/MenuEmployers";
 // Revisar esta importación, es el componente que esta haciendo Rafa
 /* import { JobDetails } from '../views/JobDetail'; */
 
@@ -47,8 +45,7 @@ const Routing = () => {
         <Route path="reset-password/:token" element={<ResetPasswordPage />} />
         <Route path="unauthorized" element={<UnauthorizedPage />} />
         <Route path="*" element={<ErrorPage />} />
-        <Route path="candidatesmenu" element={<MenuCandidates />} />
-        <Route path="employersmenu" element={<MenuEmployers />} />
+      
 
 
         {/* Ruta con authenticacion con acceso tanto para candidatos como para empleadores */}
