@@ -1,56 +1,115 @@
 /* contacto */
-.containerall{
-    padding: 100px;
-}
-.public {
+.containerall {
+  width: 100vw;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  padding: 40px 20px;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.map-container {
+  display: flex;
+  justify-content: center;
   align-items: center;
   margin: 0 auto;
-  flex-direction: column;
-  line-height:2.5em;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: 2px solid var(--green);
 }
+
+.map-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: var(--green);
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 0;
+  margin: 0;
+  padding-right: 15px;
+  list-style-type: none;
+  font-size: 1.3rem;
+  line-height: 30px;
+}
+
+.contact-text {
+  color: var(--black);
+  line-height: 20px;
+}
+
 .h1Tit {
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height:2.5em;
+  line-height: 2.5em;
   color: var(--green);
 }
-.ullist{
-    list-style: none;
-}
-.ullist strong{
- color: var(--dark-green);
-}
-.link a{
- text-decoration: none;
- color: var(--dark-green);
- font-size: 1.5rem;
-}
-.mapsCode {
+
+.codespace-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 60%;
-  max-height: 60%;
-  margin: 0 auto;
+  line-height: 2.5em;
+  color: var(--green);
+  margin-top: 30px;
 }
-/* sobre nosotros*/
-.pall{
-display: flex;
-justify-content: center;
-font-size: 1rem;
-margin:3rem;
+.codespace-link a {
+  text-decoration: none;
+  color: var(--dark-green);
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 @media (min-width: 768px) {
-  .mapsCode {
-    padding: 2px;
+  .contact-info {
+    justify-content: center;
+    align-items: center;
   }
-
 }
 @media (min-width: 992px) {
-  .mapsCode {
-    padding: 2px;
+  .containerall {
+    background-color: var(--light-green);
+  }
+
+  .map-container {
+    width: 80%;
+  }
+
+  .h1Tit {
+    line-height: normal;
+    margin-bottom: 10px;
+  }
+  .public {
+    background-color: var(--white);
+    padding: 40px 20px;
+    margin-top: 30px;
+    border-radius: 1rem;
+    width: 80%;
   }
 }
+
+@media (min-width: 1400px) {
+  .map-container {
+    width: 60%;
+  }
+
+  .public {
+    width: 60%;
+  }
+}
+
+
+

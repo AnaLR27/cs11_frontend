@@ -1,29 +1,44 @@
 import React from "react";
 import mapsCodespace from "../../assets/Logo/mapsCodespace.png";
 import styles from "../../styles/navbarpublic.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPhone,
+  faLocationDot,
+  faMobileScreen,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Contact = () => {
   return (
     <div className={`${styles.containerall}`}>
-      <img className={`${styles.mapsCode}`} src={mapsCodespace} alt="" />
+      <div className={`${styles["map-container"]}`}>
+        <img
+          className={`${styles.mapsCode}`}
+          src={mapsCodespace}
+          alt="CodeSpace Map"
+        />
+      </div>
       <div className={`${styles.public}`}>
         <h1 className={`${styles.h1Tit}`}>Contacto</h1>
-        <ul className={`${styles.ullist}`}>
+        <ul className={`${styles["contact-info"]}`}>
           <li>
-            <strong>Dirección:</strong> C. Compositor Lehmberg Ruiz, 13, 29007
-            Málaga
+            <FontAwesomeIcon icon={faLocationDot} />
+            <span className={`${styles["contact-text"]}`}>
+              C. Compositor Lehmberg Ruiz, 13, 29007 Málaga
+            </span>
           </li>
           <li>
-            <strong>Télefono:</strong> 952 300 426 / 682 827 017
+            <FontAwesomeIcon icon={faPhone} />
+            <span className={`${styles["contact-text"]}`}>952 300 426</span>
           </li>
           <li>
-            <strong className={`${styles.link}`}>
-              <a href="https://codespaceacademy.com/">
-                www.codesaceacademy.com
-              </a>
-            </strong>
+            <FontAwesomeIcon icon={faMobileScreen} />
+            <span className={`${styles["contact-text"]}`}>682 827 017</span>
           </li>
         </ul>
+        <div className={`${styles["codespace-link"]}`}>
+          <a href="https://codespaceacademy.com/">www.codesaceacademy.com</a>
+        </div>
       </div>
     </div>
   );
