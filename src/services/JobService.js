@@ -8,6 +8,7 @@ export class JobService {
 			localStorage.getItem('accessToken');
 		if (!token) {
 			return false;
+			console.log('no token');
 		}
 
 		// Cambiar URL y en userid poner jobId
@@ -25,6 +26,8 @@ export class JobService {
 		);
 		const data = await request.json();
 		return new Job(data.data);
+		console.log("fetch");
+		console.log(data);
 	}
 	//PATCH: Update->JobId || loginID
 	static async editjob(jobId, body) {

@@ -22,8 +22,7 @@ import EmployersDashboard from "../views/EmployersDashboard";
 import AppliedJobsPage from "../views/AppliedJobsPage";
 import AboutUs from "../components/navbar/AboutUs";
 import Contact from "../components/navbar/Contact";
-// Revisar esta importación, es el componente que esta haciendo Rafa
-/* import { JobDetails } from '../views/JobDetail'; */
+import JobDetails from "../views/JobDetail.component";
 
 import LoginModalProvider from "../providers/LoginModalProvider";
 import RequireAuth from "../auth/RequireAuth";
@@ -47,15 +46,12 @@ const Routing = () => {
 
         {/* Ruta con authenticacion con acceso tanto para candidatos como para empleadores */}
 
-        <Route element={<RequireAuth allowedRole='both' />}>
-          <Route path='auth/change-password' element={<ChangePassword />} />
-          <Route path='candidate/:loginId' element={<CandidateSinglePage />} />
-          <Route path='employer/:id' element={<EmployerSinglePage />} />
+        <Route element={<RequireAuth allowedRole="both" />}>
+          <Route path="auth/change-password" element={<ChangePassword />} />
+          <Route path="candidate/:loginId" element={<CandidateSinglePage />} />
+          <Route path="employer/:id" element={<EmployerSinglePage />} />
+          <Route path="job/job-single/:jobId" element={<JobDetails />} />
 
-          {/*  <Route
-                        path="job/job-single/:jobId"
-                        element={<JobDetails />}
-                    /> */}
         </Route>
 
         {/* Rutas de candidatos */}

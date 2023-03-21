@@ -1,31 +1,31 @@
 /* contacto */
-.containerall{
-    padding: 100px;
+.containerall {
+  padding: 100px;
 }
 .public {
   display: flex;
   align-items: center;
   margin: 0 auto;
   flex-direction: column;
-  line-height:2.5em;
+  line-height: 2.5em;
 }
 .h1Tit {
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height:2.5em;
+  line-height: 2.5em;
   color: var(--green);
 }
-.ullist{
-    list-style: none;
+.ullist {
+  list-style: none;
 }
-.ullist strong{
- color: var(--dark-green);
+.ullist strong {
+  color: var(--dark-green);
 }
-.link a{
- text-decoration: none;
- color: var(--dark-green);
- font-size: 1.5rem;
+.link a {
+  text-decoration: none;
+  color: var(--dark-green);
+  font-size: 1.5rem;
 }
 .mapsCode {
   display: flex;
@@ -36,21 +36,91 @@
   margin: 0 auto;
 }
 /* sobre nosotros*/
-.pall{
-display: flex;
-justify-content: center;
-font-size: 1rem;
-margin:3rem;
+.marginContainer {
+  width: 100vw;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  padding: 20px;
+  background-color: var(--light-green);
+  max-width: 1400px;
+}
+.usContainer {
+  background-color: var(--white);
+  border-radius: 1rem;
+  min-height: calc(90vh - var(--header-height) - var(--footer-height));
 }
 
+.pall {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin: 3rem 5rem;
+}
+.h1Us {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 2.5em;
+  color: var(--green);
+}
+.developers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 8rem;
+  margin-bottom: 6rem;
+}
+.developersName {
+  display: flex;
+  flex-direction: column;
+}
+.p {
+  margin: 4rem 0 3rem;
+}
+.q {
+  font-style: italic;
+  font-weight: 700;
+}
+.c {
+  font-weight: 700;
+  margin: 0 5px;
+  color: var(--black);
+}
+.developers > ul > li {
+  list-style: none;
+  margin-bottom: 0.5rem;
+}
+@media (max-width: 576px) {
+  .developersName {
+    font-size: 1rem;
+  }
+  .p {
+    margin: 4rem 0 3rem;
+    font-size: 1.6rem;
+  }
+  .q {
+    font-size: 1.6rem;
+  }
+  .pall {
+    margin: 3rem;
+  }
+}
 @media (min-width: 768px) {
   .mapsCode {
     padding: 2px;
   }
-
 }
 @media (min-width: 992px) {
   .mapsCode {
     padding: 2px;
+  }
+  .pall {
+    font-size: 1.7rem;
+  }
+}
+@media (min-width: 1400px) {
+  .pall {
+    font-size: 2rem;
   }
 }
