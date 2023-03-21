@@ -26,6 +26,8 @@ function DetailCandidate(props) {
   useEffect(() => {
     let infoCandidateTmp = GetCandidateData(loginId);
     infoCandidateTmp.then((data) => {
+      console.log(data);
+      
       setInfoCandidate(data);
     });
   }, []);
@@ -33,6 +35,9 @@ function DetailCandidate(props) {
   const getCandidatePhoto = (photo) => {
     return photo ? "http://localhost:8000/candidate/photo/" + photo : undefined;
   };
+  const downloadResume = (resume) => {
+    return resume ? "http://localhost:8000/candidate/file/" + encodeURIComponent(resume) : undefined;
+  }
   if(infoCandidate.length === 0) return (<div>Loading...</div>)
   return (
     <div className={classesDetails.container}>
@@ -49,16 +54,16 @@ function DetailCandidate(props) {
             </h4>
             <ul className={classesDetails["info-candidate"]}>
               <li className={classesDetails["job"]}>
-                {infoCandidate.specialty}
+                {infoCandidate.bootcamp}
               </li>
               <li>
-                <span className={classesDetails["date"]}>
+                <div className={classesDetails["date"]}>
                   <FontAwesomeIcon
                     icon={faClock}
                     className={classesDetails["icon-fa-clock"]}
                   />
                   Miembro desde {reformatDate(infoCandidate.loginId.registerAt)}
-                </span>
+                </div>
               </li>
             </ul>
           </div>
@@ -71,7 +76,7 @@ function DetailCandidate(props) {
         <div className={classesDetails["button-container"]}>
           <a
             className={classesDetails["button-cv"]}
-            href={infoCandidate.resume}
+            href={downloadResume(infoCandidate.resume)}
             download
           >
             Descargar CV
