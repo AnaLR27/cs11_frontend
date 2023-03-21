@@ -17,6 +17,11 @@ import {
   faTrashCan,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
+//RUTES
+import CompanyProfile from "../../views/CompanyProfile.component";
+import ManageJobsPage from "../../views/ManageJobsPage";
+import ChangePassword from "../../views/ChangePassword";
+
 
 
 function MenuEmployers() {
@@ -125,25 +130,25 @@ function MenuEmployers() {
             <BurgerButton clicked={clicked} handleClick={handleClick} />
           </div>
           <div className="icon"> </div>
-          <Link className="Menu-a" to={"/Profile"}>
+          <Link className="Menu-a" to={CompanyProfile}>
             <span className="icon">
               <FontAwesomeIcon icon={faUser} />
             </span>
             Perfil
           </Link>
-          <Link className="Menu-a" to="/Postanewjob">
+          <Link className="Menu-a" to="#">
             <span className="icon">
               <FontAwesomeIcon icon={faBriefcase} />
             </span>
             Publicar nuevo empleo
           </Link>
-          <Link className="Menu-a" to="/Managejobs">
+          <Link className="Menu-a" to={ManageJobsPage}>
             <span className="icon">
               <FontAwesomeIcon icon={faListCheck} />
             </span>
             Administrar Trabajos
           </Link>
-          <Link className="Menu-a" to="change-password">
+          <Link className="Menu-a" to={ChangePassword}>
             <span className="icon">
               <FontAwesomeIcon icon={faLock} />
             </span>
@@ -229,6 +234,7 @@ font-size: 23px;
     position: relative;
     @media (max-width: 821px) {
       width: 30rem;
+    
   }
 .burger-container{
 margin-top: -2rem;
