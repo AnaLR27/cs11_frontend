@@ -24,7 +24,7 @@ import { useState, useEffect, useMemo } from "react";
 //utils and services
 import { orderByDate } from "../utils/orderByDateCandidates.utils";
 import { fetchCards } from "../services/fetchCards.service";
-import { CANDIDATES_API } from "../config/urls";
+import { CANDIDATES_URL} from "../config/urls";
 
 let PageSize = 12; //to fix the number of candidates per page
 
@@ -46,7 +46,7 @@ function CandidateList() {
   //sorting the candidates by register date
   const candidatesList = async () => {
     setLoading(true);
-    const { datos } = await fetchCards(`${CANDIDATES_API}/all-candidates`);
+    const { datos } = await fetchCards(`${CANDIDATES_URL}`);
     const sortedCandidates = orderByDate(datos, order);
     setCandidates(sortedCandidates);
     // setCandidates([]);

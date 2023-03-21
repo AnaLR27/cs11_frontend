@@ -183,6 +183,10 @@
   text-decoration: none;
   color: var(--dark-green);
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8f8e3ad635ee068ec2f80987223b6e02fa67d1e8
 
 /* Small devices (landscape phones, 576px and up) */
 @media (max-width: 390px) {
@@ -227,8 +231,13 @@
 /* // Medium devices (tablets, 768px and up) */
 @media (max-width: 820px) {
   .col-lg-4 {
+<<<<<<< HEAD
     width: 40%;
     margin-top: 4em;
+=======
+        width: 40%;
+        margin-top: 4em;
+>>>>>>> 8f8e3ad635ee068ec2f80987223b6e02fa67d1e8
   }
   .button-container {
     width: 100%;
@@ -254,7 +263,11 @@
     max-width: 1300px;
     min-height: 100vh;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 8f8e3ad635ee068ec2f80987223b6e02fa67d1e8
   .button-container {
     width: 100%;
   }
@@ -264,7 +277,11 @@
   .content {
     width: 100%;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 8f8e3ad635ee068ec2f80987223b6e02fa67d1e8
   .description p {
     margin-top: 30px;
     font-size: 1.3em;
