@@ -16,9 +16,11 @@ import {
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import { useState } from "react";
-const Home = () => {
+import { useState, useEffect } from "react";
 
+
+const Home = () => {
+  
   //states for animation
   const [apearNotification, setApearNotification] = useState("");
   const [apearCandidates, setApearCandidates] = useState("");
@@ -55,7 +57,8 @@ const Home = () => {
                 <FontAwesomeIcon
                   icon={faLocationDot}
                   className={classes["icon-location"]}
-                /> Talento esta aqui!
+                />{" "}
+                Talento esta aqui!
               </p>
               <div className={classes["typing-box"]}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} />

@@ -47,7 +47,7 @@ function JobSingleDetail({ jobData }) {
       <button className={classes["button-empresa"]}>
         {/* poner la ruta correcta */}
         <Link
-          to={`/candidate-dashboard/job/job-list`}
+          to={`/employer/${jobData?.company?._id}}`}
           className={classes["link"]}
         >
           Empresa

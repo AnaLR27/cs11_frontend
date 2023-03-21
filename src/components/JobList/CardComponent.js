@@ -30,7 +30,7 @@ export const CardComponent = ({ offers }) => {
                 <p>{offer.company.companyName}</p>
               </span>
               <h4 className={classes["job-title"]}>
-                <Link to={`/api/job/job-single/${offer._id}`}>
+                <Link to={`/job/job-single/${offer._id}`}>
                   {offer.title}
                 </Link>
               </h4>

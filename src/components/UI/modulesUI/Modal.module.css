@@ -82,7 +82,20 @@
 @media (min-width: 768px) {  }
 
  /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {  }
+@media (min-width: 992px) {  
+  .md-content{
+    padding: 2.5rem
+    
+  }
+  .md-content .close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 2rem;
+    
+  }
+  
+}
 
  /* X-Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {  }
