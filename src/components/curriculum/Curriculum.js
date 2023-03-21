@@ -3,6 +3,7 @@ import jwt_decode from "jwt-decode";
 import classes from "../../styles/Curriculum.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import PageLayoutC from "../sidemenu/PageLayoutC";
 
 function Curriculum() {
   const [file, setFile] = useState(null);
@@ -14,7 +15,7 @@ function Curriculum() {
   const selectedHandler = (e) => {
     setFile(e.target.files[0]);
     if (!e.target.files[0]) {
-      eliminarArchivo()
+      eliminarArchivo();
     } else {
       let fileName = e.target.files[0].name;
       const splitName = fileName.split(".");
@@ -102,8 +103,8 @@ function Curriculum() {
             </h3>
             <div className={classes.texto}>Vamos allá!</div>
           </div>
-          {/* Aquí va el boton de Menú de Helena */}
         </div>
+        <PageLayoutC />
         <div className={classes["contenedor-inferior"]}>
           <h4 className={classes["titulo-inferior-h4"]}>
             Gestor de Curriculum.

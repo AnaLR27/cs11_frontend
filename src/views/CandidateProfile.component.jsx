@@ -11,6 +11,8 @@ import { ImageBrowser } from '../components/Form/inputs/ImageInput.component';
 import { Title } from '../components/Form/Title.component';
 import { CandidateService } from '../services/candidate.service';
 import { Candidate } from '../models/candidate.model';
+import PageLayoutC from '../components/sidemenu/PageLayoutC';
+
 //import Loader from '../components/UI/Spinner/Loader';
 
 function CandidateProfile() {
@@ -131,13 +133,14 @@ function CandidateProfile() {
                 <div
                     className={`${styles['mb-4']} ${styles['ms-0']} ${styles['show-1023']}`}
                 >
-                    <button
+                   <PageLayoutC/>
+                    {/* <button
                         type="button"
                         className={`${styles['btn']} ${styles['toggle-filters']}`}
                     >
                         <span className={`${styles['flaticon-menu-1']}`}></span>
                         Menu
-                    </button>
+                    </button> */}
                 </div>
                 <div className={`${styles['container']}`}>
                     <div className={`${styles['container-title']}`}>

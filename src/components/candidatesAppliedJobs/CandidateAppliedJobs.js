@@ -10,6 +10,7 @@ import useFetchAppliedJobs from "../../hooks/useFetchAppliedJobs";
 import { filterDate } from "../../utils/filterDate";
 import AppliedJobsTable from "./AppliedJobsTable";
 import Loader from "../UI/Spinner/Loader";
+import PageLayoutC from "../sidemenu/PageLayoutC";
 
 function CandidateAppliedJobs() {
   // Label is the text that is displayed in the select and value is used to filter the data
@@ -72,8 +73,7 @@ function CandidateAppliedJobs() {
           <p>¡Revisa todas tus ofertas de empleo!</p>
         </div>
         <div>
-          {/* Aquí va el componente del menu lateral */}
-          <button>Menu</button>
+         <PageLayoutC/>
         </div>
         {pending && <Loader />}
         <div className={classes["applied-jobs-container"]}>
