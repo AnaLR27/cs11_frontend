@@ -63,12 +63,14 @@
   padding-left: 25px;
   margin-bottom: 5px;
   margin-right: 30px;
+  display: contents;
 }
 .icon-fa-clock {
   background-color: white;
   color: dimgray;
   font-size: 20px;
   margin-right: 10px;
+  
 }
 .description {
   margin-top: 25px;
@@ -215,6 +217,9 @@
   .info-candidate .date {
     margin-right: 0px;
     position: absolute;
+  }
+  .icon-fa-clock {
+    margin-top: 1em;
   }
 }
 
