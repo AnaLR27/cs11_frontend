@@ -11,6 +11,7 @@ import classes from "./employersDashboard.module.css";
 import { Link } from "react-router-dom";
 import FetchEmployerJobs from "../../services/employersDashService/FetchEmployerJobs";
 import Loader from "../UI/Spinner/Loader";
+import mokcSkills from "../../utils/mokcSkills";
 
 function EmployerDashboard() {
   //Controlador del fetch
@@ -110,9 +111,9 @@ function EmployerDashboard() {
                         </div>
                       </div>
                       <div>
-                        <p>{uca.professionalSkills[0]}</p>
-                        <p>{uca.professionalSkills[1]}</p>
-                        <p>{uca.professionalSkills[2]}</p>
+                        <p>{mokcSkills(1)}</p>
+                        <p>{mokcSkills(1)}</p>
+                        <p>{mokcSkills(1)}</p>
                       </div>
                       <div>
                         <a href={uca.socialNetworks.github}>
