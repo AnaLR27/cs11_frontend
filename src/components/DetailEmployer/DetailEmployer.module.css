@@ -7,12 +7,13 @@
   padding: 3%;
   margin-bottom: 40px;
 }
+
 .jobs-information {
   background: #f5f7fc;
   position: relative;
   list-style: none;
   display: block;
-  padding: 2%;
+  padding: 3em;
   padding-top: 2em;
   border-radius: 0.6em;
   padding-bottom: 0;
@@ -66,8 +67,8 @@
 }
 .content-employer div:first-of-type {
   padding: 3%;
+  background: #f5f7fc;
 
-  background: linear-gradient(to top, #f9f9fa, #fcf9f9);
   padding-bottom: 2em;
 }
 .img-employer {
@@ -176,6 +177,7 @@
 
 /* // Medium devices (tablets, 768px and up) */
 @media (min-width: 820px) {
+  
   .col-lg-4 {
     width: 100%;
     margin-top: 4em;
@@ -190,19 +192,24 @@
   .description p {
     margin-top: 30px;
   }
-  .info-employer {
+  /* .info-employer {
     display: flex;
     flex-direction: row;
-  }
+  } */
   .info-employer .date {
-    margin-left: 1em;
-    position: absolute;
+    margin-bottom: 1em;
   }
 }
 /* X-Large devices (large desktops, 1024px and up)   */
 @media (min-width: 1024px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+  }
+
   .col-lg-4 {
     width: 100%;
+    padding: 1%;
   }
 
   .content {
@@ -213,5 +220,12 @@
   }
   .description p {
     margin-top: 30px;
+  }
+  .content-employer div:first-of-type {
+    margin-top: 3em;
+    background: white;
+  }
+  .icon-fa-clock {
+    background-color: white;
   }
 }
