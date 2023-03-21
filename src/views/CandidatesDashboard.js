@@ -67,7 +67,7 @@ function CandidatesDashboard() {
       <section className={classes.DivCardsApp}>
         <div>
           <div>
-            <h3>Bienvenido, {userData.firstName}!!</h3>
+            <h3>Bienvenido, {userData.fullName}!!</h3>
             <p>¿Listo para seguir donde lo dejaste?</p>
             <div>
             </div>
@@ -96,7 +96,7 @@ function CandidatesDashboard() {
                             className={classes.IconsCards}
                             icon={faBriefcase}
                           />
-                          <p>{uca.companyName}</p>
+                          <p>{uca.company}</p>
                         </div>
                         <div>
                           <FontAwesomeIcon
