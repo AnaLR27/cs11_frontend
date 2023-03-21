@@ -51,6 +51,9 @@ nav > ul > li > a.menu-bars {
 .menu-bars > {
   color: black;
 }
+.menu-bars svg{
+  font-size: 1.7rem;
+}
 
 .nav-menu {
   background-color: #e5f0ed;
@@ -137,6 +140,11 @@ nav > ul > li > a.menu-bars {
   .nav-text a {
     font-size: 1.8rem;
     margin: 2px;
+  }
+
+  .menu-bars svg{
+    font-size: 2rem;
+    margin-left: 10rem;
   }
   /* .nav-text:first-child {
     margin-top: 100px;
