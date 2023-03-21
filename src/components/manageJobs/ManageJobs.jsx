@@ -46,6 +46,10 @@ function ManageJobs() {
   const payload = JSON.parse(atob(tokenParts[1]));
   const userId = payload.UserInfo.id;
 
+  const getCompanyLogo = (logo)=>{
+    return logo ? 'http://localhost:8000/employer/logo/' + logo : undefined;
+  }
+
   // Funcion fetch para obtener los empleos publicados por el usuario
   const fetchGetPublishedJobs = async () => {
     setIsLoading(true);
@@ -243,7 +247,7 @@ function ManageJobs() {
                         <td className={classes["td-title"]}>
                           <div>
                             <div className={classes.logo}>
-                              <img src={job.logo} />
+                              <img src={getCompanyLogo(job.company?.logo)} />
                             </div>
                             <div className={classes.job}>
                               <div>
@@ -269,7 +273,7 @@ function ManageJobs() {
                           </div>
                         </td>
                         <td className={classes["td-applications"]}>
-                          <Link to="employers-dashboard/all-applicants"> 
+                          <Link to="/employers-dashboard/all-applicants"> 
                           {job.applicants.length <= 3
                             ? `${job.applicants.length} Candidatos`
                             : "3+ Candidatos"}
@@ -282,23 +286,23 @@ function ManageJobs() {
                           <span>{formatearFecha(job.createdAt)}</span>
                         </td>
                         <td className={classes["td-action"]}>
-                          {/* <Link to=`employers-dashboard/job/job-single/${job.id}`> */}
+                            <Link to={`/api/job/job-single/${job._id}`}> 
                           <button>
                             <FontAwesomeIcon
                               icon={faEye}
                               className={classes.icon}
                             />
                           </button>
-                          {/* </Link> */}
+                            </Link>  
 
-                          {/* <Link to=`employers-dashboard/job/edit-job/${job.id}`> */}
+                           <Link to={`/employers-dashboard/post-a-job/${job._id}`}>
                           <button>
                             <FontAwesomeIcon
                               icon={faPencil}
                               className={classes.icon}
                             />
                           </button>
-                          {/* </Link> */}
+                           </Link>
 
                           <button>
                             <FontAwesomeIcon

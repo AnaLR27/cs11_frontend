@@ -1,5 +1,5 @@
 /**
- * @fileoverview This file contains the TableContainer component. It includes the select that allows the candidate to filter the job applications by date. It gets the data from the backend using a custom hook. The component uses two useEffects, one to make the request to the backend and the other set the data filtered by date.
+ * @fileoverview This file contains the main logic for the candidate apllied jobs page. It includes the select that allows the candidate to filter the job applications by date. It gets the data from the backend using a custom hook. The component uses useEffects, one to get the candidate id when the component is rendered for the first time and another one to get the data from the backend when the component is rendered for the first time or when the user deletes an application from the table. After getting the data from the backend it filters it by date and displays it in the table, a separate component, through a useEffect.
  * @author Alice Marchi
  */
 
@@ -9,7 +9,7 @@ import jwt_decode from "jwt-decode";
 import useFetchAppliedJobs from "../../hooks/useFetchAppliedJobs";
 import { filterDate } from "../../utils/filterDate";
 import AppliedJobsTable from "./AppliedJobsTable";
-import Loader from "../UI/Spinners/Loader";
+import Loader from "../UI/Spinner/Loader";
 
 function CandidateAppliedJobs() {
   // Label is the text that is displayed in the select and value is used to filter the data
@@ -23,14 +23,14 @@ function CandidateAppliedJobs() {
   // Value of the selected option, it's used to filter the data and it's updated when the user selects a new option
   const [selectValue, setSelectValue] = useState(options[0].value);
 
-  // mocked candidateId
-  //const candidateId = "63f476530a02e452e18c32ae";
-
-  const token = sessionStorage.getItem("accessToken");
+  const token =
+    sessionStorage.getItem("accessToken") ||
+    localStorage.getItem("accessToken");
   const decoded = jwt_decode(token);
-  const candidateId = decoded.UserInfo.id;
+  const loginId = decoded.UserInfo.id;
 
-  const { pending, error, getAppliedJobs, data } = useFetchAppliedJobs();
+  const { pending, error, getAppliedJobs, data, getCandidateId, candidateId } =
+    useFetchAppliedJobs();
 
   // loadData is a boolean that is used to control when the component makes the request to the backend, it's set to true when the component is rendered for the first time and to false when the request is made, it's set to true again when the user deletes an application from the table
   const [loadData, setLoadData] = useState(true);
@@ -44,17 +44,22 @@ function CandidateAppliedJobs() {
     setFilteredData(filterDate(event.target.value, data, candidateId));
   };
 
+   // get the candidate id when the component is rendered for the first time
+   useEffect(() => {
+    getCandidateId(loginId);
+  }, [loginId]);
+
   // executed when the component is rendered for the first time, or when the user deletes an application from the table
   useEffect(() => {
     if (loadData) {
-      getAppliedJobs(candidateId);
+      getAppliedJobs(loginId);
       setLoadData(false);
     }
   }, [loadData]);
-
+  
   useEffect(() => {
     // if loadData is false it means that the request to the backend has been made and the data is loaded
-    if (!loadData) {
+    if (!loadData && candidateId.length > 0) {
       setFilteredData(filterDate(selectValue, data, candidateId));
     }
   }, [data]);
@@ -93,6 +98,7 @@ function CandidateAppliedJobs() {
               <AppliedJobsTable
                 data={filteredData}
                 candidateId={candidateId}
+                loginId={loginId}
                 setLoadData={setLoadData}
               />
             </>
