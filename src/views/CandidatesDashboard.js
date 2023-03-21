@@ -65,14 +65,13 @@ function CandidatesDashboard() {
   return (
     <>
       <section className={classes.DivCardsApp}>
-        <div>
+        <div className={classes.DivContainer}>
           <div>
             <h3>Bienvenido, {userData.fullName}!!</h3>
             <p>¿Listo para seguir donde lo dejaste?</p>
-            <div>
-            </div>
+            <div></div>
           </div>
-              <PageLayoutC/>
+          <PageLayoutC />
           <div>
             <div>
               <h4>Empleos Solicitados Recientemente</h4>

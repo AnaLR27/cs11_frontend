@@ -12,12 +12,6 @@
   margin: 0 auto;
 }
 
-.curriculum-section {
-  background-color: #e5f0ed;
-  height: calc(100vh - var(--header-height) - var(--footer-height));
-  max-height: calc(100vh - var(--header-height) - var(--footer-height));
-  width: 100vw;
-}
 /* Titulos */
 .titulo-principal-h3,
 .titulo-inferior-h4 {
