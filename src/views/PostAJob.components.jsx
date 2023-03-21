@@ -41,10 +41,11 @@ function PostAJobComponents() {
 		//Hacemos la llamada que devuelva los datos del job (si es que existe)
 		//y si lo encontramos lo metemos en el useffect
 		const data = await JobService.getById(job);
-		console.log(data);
-
+         console.log(data)
 		//Seteamos los datos del usuario
-		setJobData(data);
+		// setJobData(data);
+		// console.log("jobData", jobData);
+		setJob(data);
 	};
 
 	const saveUpdateJob = async (formData) => {
@@ -63,14 +64,12 @@ function PostAJobComponents() {
 		newJob.location = {};
 		newJob.location.city = formData.fields.city.value;
 		newJob.location.country = formData.fields.country.value;
-		console.log(newJob);
 		//comprobamos si existe la oferta
 		if (!newJob._id) {
 			try {
 				//Creamos el job en la ddbb
-				console.log(newJob);
 				let jobData = await JobService.newjob(newJob);
-
+console.log(jobData)
 				//Seteamos estado y datos
 				setJob(jobData);
 				setSaved('success');
@@ -81,7 +80,6 @@ function PostAJobComponents() {
 		} else {
 			try {
 				//Actualizamos el usuario en la ddbb
-				console.log(newJob);
 				let jobData = await JobService.editjob(newJob._id, newJob);
 				console.log(jobData);
 
