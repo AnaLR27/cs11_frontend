@@ -6,6 +6,8 @@ import JobSelector from "../components/allaplicants/jobselector/JobSelector";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import Card from "../components/allaplicants/cardcandidate/CardCandidate";
 import { Link, Navigate } from "react-router-dom";
+import Spinner from "../components/UI/Spinner/Loader";
+import Unauthorized from "../components/Unauthorized";
 
 function Allaplicants() {
 
@@ -52,12 +54,13 @@ function Allaplicants() {
       Object.keys(jobs.data).map((key) => {
         if (jobs.data[key].title === selectedJob) {
           Object.keys(jobs.data[key].applicants).map((key2) => {
-            jApplicants.push(jobs.data[key].applicants[key2]._id);
+            jApplicants.push(jobs.data[key].applicants[key2].applicantId.loginId);
           });
         }
       });
     }
     setJobApplicants(jApplicants);
+    // console.log(jApplicants);
     return jApplicants;
   }
 
@@ -67,17 +70,17 @@ function Allaplicants() {
     let jobApplicants =  await getJobApplicants();
     if (userReady && jobReady) {
       Object.keys(users.data).map((key) => {
-        if (jobApplicants.includes(users.data[key]._id)) {
+        if (jobApplicants.includes(users.data[key].loginId)) {
           jap.push(users.data[key]);
         }
       });
     }
     setJobApplicantsData(jap);
+    console.log(jap);
     return jap;
   }
   
   useEffect(() => {
-
     if (
     (localStorage.getItem("role") !== "employer" && sessionStorage.getItem("role") !== "employer") &&
     (localStorage.getItem("role") !== "admin" && sessionStorage.getItem("role") !== "admin") &&
@@ -92,7 +95,7 @@ function Allaplicants() {
 
     }
 
-    setJobs(FetchJobs(localStorage.getItem("user") ? localStorage.getItem("user") : sessionStorage.getItem("user"))
+    setJobs(FetchJobs(localStorage.getItem("userId") ? localStorage.getItem("userId") : sessionStorage.getItem("userId"))
     .then((data) => {
       setJobs(data);
       setJobReady(true);
@@ -118,8 +121,8 @@ function Allaplicants() {
      {role && userReady && jobReady && (
         <div className={Styles["main-container"]}>
           <div className={Styles["main-title"]}>
-            <h3>Estos son los candidatos</h3>
-            <h4>esto solo es un subtitulo de prueba</h4>
+            <h3>Candidatos</h3>
+            <p className={Styles["subtittle"]}>Encuentra a la persona adecuada</p>
             <button className={Styles["menu-button"]}>
               <HiOutlineMenuAlt3 className={Styles["menu-icon"]} />
               Menu
@@ -144,15 +147,14 @@ function Allaplicants() {
                     <Card
                       key={key}
                       className={Styles["applicant"]}
+                      linkid={jobApplicantsData[key].loginId}
                       photo={jobApplicantsData[key].photo}
-                      username={jobApplicantsData[key].fullName}
+                      username={jobApplicantsData[key].fullName + " " + jobApplicantsData[key].secondLastName}
                       especiality={jobApplicantsData[key].speciality}
-                      location={"Málaga, España"}
-                      hourate={"€ 20"}
-                      // skills={jobApplicantsData[key].skills}
+                      edition={jobApplicantsData[key].bootcamp + " " + jobApplicantsData[key].edition}
+                      skills={jobApplicantsData[key].professionalSkills}
                       // email={users.data[key].email}
                       email={"the.d00m.666@gmail.com"}
-                      // name={`${users.data[key].firstName} ${users.data[key].lastName}`}
                       job={selectedJob}
                       accepted={"aceptada"}
                       refused={"rechazada"}
@@ -164,17 +166,15 @@ function Allaplicants() {
         </div>
       )}
       {!role && (
-        <div className={Styles["access-denied"]}>
-          <h1>Acceso denegado</h1>
-          <h2>Parece que no tienes permisos para acceder aquí...</h2>
-          <h3>serás redirigido en {countDown} segundos</h3>
-          <div className={Styles["go-back"]}>
-            <Link to="/login"> Volver atras </Link>
-          </div>
-        </div>
+        <Unauthorized />
       )
       }
-      {countDown === 0 && <Navigate to="/login" />}
+      {!userReady && !jobReady && (
+        <div className={Styles["spinner"]}>
+          <Spinner/>
+        </div>
+      )}
+      {countDown === 0 && <Navigate to="/" />}
     </>
   );
 }

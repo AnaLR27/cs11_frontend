@@ -7,7 +7,7 @@
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    background-color: #fff;
+    background-color: var(--white);
     transition: all 0.3s ease-in-out;
     /* position: relative; */
     overflow: hidden;
@@ -25,7 +25,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     /* position: relative; */
     overflow: hidden;
     margin-bottom: 2em;
@@ -43,6 +43,15 @@
     font-weight: 600;
     color: #000;
     margin-top: 1em;
+}
+
+.user-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1em;
 }
 
 .user-datas{
@@ -75,9 +84,9 @@
 .user-skills{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 70%;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     flex-wrap: wrap;
 }
 
@@ -93,25 +102,30 @@
 .user-actions{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
     width: 100%;
     margin-top: 1.5em;
 }
 
 .user-profile, .user-accept, .user-reject, .user-delete{
-    background-color: #eff4fc;
+    background-color: var(--green);
     padding: .5em .6em;
     margin-right: .5em;
-    color: #1967d2;
+    color: var(--white);
     border-radius: .5em;
     margin-top: .6em;
 }
 
 .user-profile:hover, .user-accept:hover, .user-reject:hover, .user-delete:hover{
-    background-color: #1967d2;
-    color: #fff;
+    background-color: var(--dark-green);
+    color: var(--white);
     cursor: pointer;
+}
+
+.profile-user-link{
+    text-decoration: none;
+    color: var(--white);
 }
 
 @media (min-width: 820px) {

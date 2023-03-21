@@ -84,7 +84,7 @@
 /* Columnas */
 .table .th-title,
 .table .td-title {
-  width: 25%;
+  width: 20%;
 }
 .table .th-applications,
 .table .td-applications {
@@ -116,7 +116,7 @@
 
 .td-title div {
   padding: 0.5em 0;
-  margin-left: 0.5em;
+  margin-left: 1em;
 }
 
 .td-applications a {
@@ -141,11 +141,11 @@
 
 .table .td-title .job {
   width: 50%;
-  padding-left: 2.2em;
-  display: flex;
+  padding-left: 4.5em;
+  /* display: flex;
   flex-direction: column;
   align-items: initial;
-  justify-content: initial;
+  justify-content: initial; */
 }
 
 .job h4 {
@@ -176,11 +176,14 @@
 .td-action button:hover .icon {
   color: white;
 }
+.td-action button:hover {
+  background-color: #47d7ac;
+}
 
 .type,
 .location {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 
@@ -240,6 +243,14 @@
     margin-top: 1.5em;
   }
 
+  .table .td-title .logo {
+    width: 2%;
+  }
+
+  .table .td-title .job{
+    padding-left: 5.2em;
+  }
+
   .type,
   .location {
     display: flex !important;
@@ -270,7 +281,7 @@
 
   .td-title div {
     padding: 0.5em 0;
-    margin-left: 0.5em;
+    margin-left: 2em;
     text-align: left;
   }
 

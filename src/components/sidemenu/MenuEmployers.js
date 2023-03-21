@@ -1,4 +1,4 @@
-import { CANDIDATES_API } from "../config/urls";
+import { EMPLOYERS_API } from "../../config/urls";
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -47,7 +47,7 @@ function MenuEmployers() {
               confirmButtonColor: "#2c7a7b",
             })
             .then(function () {
-              window.location.href = "/#";
+              window.location.href = "/";
             });
           sessionStorage.removeItem("userToken");
           sessionStorage.clear();
@@ -82,7 +82,7 @@ function MenuEmployers() {
               confirmButtonColor: "#2c7a7b",
             })
             .then(function () {
-              window.location.href = "/#";
+              window.location.href = "/";
             });
 
           async function DeleteCandidateData() {
@@ -90,7 +90,7 @@ function MenuEmployers() {
             let loginId = sessionStorage.getItem("userId");
             // Realizamos la petición a la API para que nos devuelva los datos del candidato descargando el pdf
             try {
-              const response = await fetch(` ${CANDIDATES_API}/${loginId}`, {
+              const response = await fetch(` ${EMPLOYERS_API}/${loginId}`, {
                 method: "DELETE",
                 headers: {
                   "Content-Type": "application/json",
@@ -142,7 +142,7 @@ function MenuEmployers() {
             </span>
             Administrar Trabajos
           </Link>
-          <Link className="Menu-a" to="/Changepassword">
+          <Link className="Menu-a" to="change-password">
             <span className="icon">
               <FontAwesomeIcon icon={faLock} />
             </span>
@@ -196,7 +196,7 @@ font-size: 23px;
     margin-right: auto;
     text-align: left;
     background-color: #e5f0ed;
-    width: 22rem;
+    width: 23rem;
     height: 100%; 
    
     
@@ -219,12 +219,11 @@ font-size: 23px;
     display: block;
     margin-left: 0;
     margin-right: auto;
-    top: -4rem;
+    top: -4.5rem;
     left: 0;
     rigth: 0;
     text-align: left;
     position: relative;
-    border-radius: 0 40px 0 0;
   }
 .burger-container{
 margin-top: 1rem;

@@ -1,4 +1,4 @@
-import { CANDIDATES_API } from "../config/urls";
+import { CANDIDATES_API } from "../../config/urls";
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -113,10 +113,10 @@ function MenuCandidates() {
           <BurgerButton clicked={clicked} handleClick={handleClick} />
         </div>
         <nav className={`Menulinks ${clicked ? "active" : ""}`}>
-          <div className="burger-container2">
+          <div >
           <BurgerButton clicked={clicked} handleClick={handleClick} />
           </div>
-          <Link className="Menu-a" to="/Myprofile">
+          <Link className="Menu-a" to="#">
             <span className="icon">
               <FontAwesomeIcon icon={faUser} />
             </span>
@@ -128,7 +128,7 @@ function MenuCandidates() {
             </span>
             Gestor de CV
           </Link>
-          <Link className="Menu-a" to="/Changepassword">
+          <Link className="Menu-a" to="change-password">
             <span className="icon">
               <FontAwesomeIcon icon={faLock} />
             </span>
@@ -140,7 +140,7 @@ function MenuCandidates() {
             </span>
             Logout
           </Link>
-          <Link onClick={handleDelete} className="Menu-a" to="/#">
+          <Link onClick={handleDelete} className="Menu-a" to="/">
             <span className="icon">
               <FontAwesomeIcon icon={faTrashCan} />
             </span>
@@ -155,6 +155,7 @@ function MenuCandidates() {
 export default MenuCandidates;
 
 const MenuContainer = styled.div`
+
 .Menu-a {
   padding-top: 3rem;
   font-size: 1.3rem;
@@ -166,9 +167,8 @@ const MenuContainer = styled.div`
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   padding-inline-start: 30px;
-  
-  
 }
+
 .icon{
 margin-right: 18px;
 font-size: 23px;
@@ -184,18 +184,16 @@ font-size: 23px;
     background-color: #e5f0ed;
     width: 21rem;
     height: 100%; 
-   
-    
     
   @media (max-width: 821px) {
    position: relative;
+   text-align: center;
     left: -700px;
     background-color: #e5f0ed;
     width: 8%;
-    height: 80vh; 
+    height: 50vh; 
     display: none;
-
-
+   
   }}
   
   .Menulinks.active{
@@ -205,20 +203,20 @@ font-size: 23px;
     display: block;
     margin-left: 0;
     margin-right: auto;
-    top: -6rem;
+    top: -6.65rem;
     left: 0;
     rigth: 0;
     text-align: left;
     position: relative;
-    border-radius: 0 40px 0 0;
-  
+   
   }
 .burger-container{
   margin-top: 3rem;
   margin-left: -9rem;
-  @media (min-width: 821px) {
-    display: none;}
-  
 
+  @media (min-width: 821px) {
+    display: none;
+
+  }
 
 `;

@@ -21,9 +21,10 @@
 
 .menu-button{
     padding: 1.1em 3em;
-    background-color: #e5edf9;
+    background-color: var(--green);
     margin-top: 3em;
-    color: #2f7dd8;
+    /* color: #2f7dd8; */
+    color: white;
     border-radius: .6em;
     display: flex;
     flex-direction: row;
@@ -36,7 +37,7 @@
 }
 
 .menu-button:hover{
-    background-color: #d0dff6;
+    background-color: var(--dark-green);
     cursor: pointer;
 }
 
@@ -121,6 +122,19 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+}
+
+.subtittle{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.spinner{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
 
 
