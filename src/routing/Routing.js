@@ -59,7 +59,7 @@ const Routing = () => {
                     <Route path=":id" element={<CandidateSinglePage />} />
                     <Route path="curriculum" element={<Curriculum />} />
                     <Route
-                        path="employer/:id"
+                        path="employer/:loginId"
                         element={<EmployerSinglePage />}
                     />
                     <Route path="job/job-list" element={<JobList />} />

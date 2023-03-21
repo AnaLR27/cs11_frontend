@@ -8,9 +8,11 @@
  */
 import { EMPLOYERS_API } from "../../config/urls";
 
-async function GetEmployerData() {
-  let token = sessionStorage.getItem("accessToken");
-  let loginId = sessionStorage.getItem("userId");
+async function GetEmployerData(loginId) {
+  let token =
+    sessionStorage.getItem("accessToken") ||
+    localStorage.getItem("accessToken");
+  // let loginId = sessionStorage.getItem("userId");
   // Realizamos la petición a la API para que nos devuelva los datos del candidato descargando el pdf
   try {
     const response = await fetch(` ${EMPLOYERS_API}/${loginId}`, {
@@ -20,8 +22,10 @@ async function GetEmployerData() {
         "auth-token": token,
       },
     });
+    
     const responseJson = await response.json();
     return responseJson.data;
+
     // Aquí se puede manipular los datos obtenidos
   } catch (error) {
     console.error(error);
