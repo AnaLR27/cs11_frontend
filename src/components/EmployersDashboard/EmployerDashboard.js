@@ -70,7 +70,7 @@ function EmployerDashboard() {
     return (
         <>
             <section className={classes.DivCardsApp}>
-                <div>
+                <div className={classes.DivContainer}>
                     <div>
                         <h3>Encuentra el candidato perfecto!</h3>
                         <p>¿Listo para entrar de nuevo?</p>
@@ -167,88 +167,5 @@ function EmployerDashboard() {
             </section>
         </>
     );
-<<<<<<< HEAD
-  }
-
-  const getCandidatePhoto = (photo) => {
-    return photo ? "http://localhost:8000/candidate/photo/" + photo : undefined;
-  };
-
-  return (
-    <>
-      <section className={classes.DivCardsApp}>
-        <div className={classes.DivContainer}>
-          <div>
-            <h3>Encuentra el candidato perfecto!</h3>
-            <p>¿Listo para entrar de nuevo?</p>
-          </div>
-              <PageLayout/>
-          <div>
-            <div>
-              <h4>Candidatos Recientes</h4>
-            </div>
-            <div>
-              {useJobs.map((uca, i) => {
-                return (
-                  <div className={classes.CardCand} key={i}>
-                    <div>
-                      <img
-                        alt="Candidate"
-                        className={classes.imgCardCand}
-                        src={getCandidatePhoto(uca.photo)}
-                      />
-                    </div>
-                    <div>
-                      <h4>{uca.fullName}</h4>
-                      <div>
-                        <div>
-                          <p className={classes.blueP}>{uca.specialty}</p>
-                        </div>
-                        <div>
-                          <FontAwesomeIcon
-                            className={classes.IconsCards}
-                            icon={faLocationDot}
-                          />
-                          <p>Málaga</p>
-                        </div>
-                        <div>
-                          <FontAwesomeIcon
-                            className={classes.IconsCards}
-                            icon={faMoneyBills}
-                          />
-                          <p>50 $/hora</p>
-                        </div>
-                      </div>
-                      <div>
-                        <p>{mokcSkills(1)}</p>
-                        <p>{mokcSkills(1)}</p>
-                        <p>{mokcSkills(1)}</p>
-                      </div>
-                      <div>
-                        <a href={uca.socialNetworks.github}>
-                          <FontAwesomeIcon
-                            className={classes.ButtonCardsCand}
-                            icon={faGithub}
-                          />
-                        </a>
-                        <a href={uca.socialNetworks.linkedin}>
-                          <FontAwesomeIcon
-                            className={classes.ButtonCardsCand}
-                            icon={faLinkedin}
-                          />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-=======
->>>>>>> dc420b2027e1c46506da7d0db167491a80fe2b95
 }
 export default EmployerDashboard;
