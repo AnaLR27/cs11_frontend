@@ -25,8 +25,7 @@ import EmployersDashboard from "../views/EmployersDashboard";
 import AppliedJobsPage from "../views/AppliedJobsPage";
 import AboutUs from "../components/navbar/AboutUs";
 import Contact from "../components/navbar/Contact";
-// Revisar esta importación, es el componente que esta haciendo Rafa
-/* import { JobDetails } from '../views/JobDetail'; */
+import JobDetails from "../views/JobDetail.component";
 
 const Routing = () => {
   return (
@@ -52,15 +51,7 @@ const Routing = () => {
           <Route path="auth/change-password" element={<ChangePassword />} />
           <Route path="candidate/:loginId" element={<CandidateSinglePage />} />
           <Route path="employer/:id" element={<EmployerSinglePage />} />
-
-          {/* //importacion desde componentes repetiendo la ruta de arriba */}
-          {/* <Route path='candidate/:loginId' element={<DetailCandidate />} /> */}
-          {/* <Route
-
-
-         {/*  <Route   path="job/job-single/:jobId"
-                        element={<JobDetails />}
-                    /> */}
+          <Route path="job/job-single/:jobId" element={<JobDetails />} />
         </Route>
 
         {/* Rutas de candidatos */}
