@@ -45,9 +45,13 @@ const Routing = () => {
         <Route path="reset-password/:token" element={<ResetPasswordPage />} />
         <Route path="unauthorized" element={<UnauthorizedPage />} />
         <Route path="*" element={<ErrorPage />} />
+        
 
 
         {/* Ruta con authenticacion con acceso tanto para candidatos como para empleadores */}
+
+   
+
         <Route element={<RequireAuth allowedRole='both' />}>
           <Route path='auth/change-password' element={<ChangePassword />} />
           <Route path='candidate/:loginId' element={<CandidateSinglePage />} />
@@ -55,7 +59,8 @@ const Routing = () => {
 
           {/*  importacion desde componentes repetiendo la ruta de arriba*/}
           {/* <Route path='candidate/:loginId' element={<DetailCandidate />} /> */}
-          {/*  <Route
+
+         {/*  <Route
                         path="job/job-single/:jobId"
                         element={<JobDetails />}
                     /> */}

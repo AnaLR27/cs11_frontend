@@ -16,7 +16,6 @@ const ChangePassword = () => {
 
   const userID = sessionStorage.getItem("userId");
   const accessToken = sessionStorage.getItem("accessToken");
-  console.log(accessToken);
 
   const URL = `http://localhost:8000/auth/changePassword/${userID}`;
   const handleChange = (e) => {
@@ -39,7 +38,7 @@ const ChangePassword = () => {
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,24}$/;
     if (!regex.test(newPassword)) {
       setErrorMessage(
-        "La nueva contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número, un carácter especial y tener entre 8 y 24 caracteres de longitud."
+        "La nueva contraseña requiere una letra mayúscula, una minúscula, un número, un carácter especial y tener de 8 a 24 caracteres."
       );
       return;
     }
@@ -117,11 +116,7 @@ const ChangePassword = () => {
                 </div>
 
                 <div className={styles["ch-password-input"]}>
-                  <label htmlFor="newPassword">Nueva contraseña &nbsp;</label>
-                  <FontAwesomeIcon
-                    icon={showPassword ? faEyeSlash : faEye}
-                    onClick={toggleShowPassword}
-                  />
+                  <label htmlFor="newPassword">Nueva contraseña</label>
                   <input
                     type={showPassword ? "text" : "password"}
                     id="newPassword"
@@ -133,15 +128,22 @@ const ChangePassword = () => {
                     autoCorrect="off"
                     required
                   />
-                </div>
-                <div className={styles["ch-password-input"]}>
-                  <label htmlFor="confirmPassword">
-                    Confirmar contraseña &nbsp;
-                  </label>
                   <FontAwesomeIcon
                     icon={showPassword ? faEyeSlash : faEye}
                     onClick={toggleShowPassword}
+                    style={{
+                        float: 'right',
+                        marginRight: '11px',
+                        marginTop: '-37px',
+                        position: 'relative',
+                        zIndex: 2,
+                        color:'#2c7a7b',
+                      }}
                   />
+                </div>
+                <div className={styles["ch-password-input"]}>
+                  <label htmlFor="confirmPassword">
+                    Confirmar contraseña</label>
                   <input
                     type={showPassword ? "text" : "password"}
                     id="confirmPassword"
@@ -153,13 +155,25 @@ const ChangePassword = () => {
                     autoCorrect="off"
                     required
                   />
+                  <FontAwesomeIcon
+                    icon={showPassword ? faEyeSlash : faEye}
+                    onClick={toggleShowPassword}
+                    style={{
+                        float:'right',
+                        marginRight:'11px',
+                        marginTop:'-37px',
+                        position:'relative',
+                        zIndex: 2,
+                        color:'#2c7a7b',
+                      }}
+                  />
                 </div>
                 <div className={styles["ch-password-btn"]}>
                   <button
                     type="submit"
                     className={styles["ch-password-btn-style"]}
                   >
-                    Update
+                    Actualizar
                   </button>
                   {errorMessage && <p>{errorMessage}</p>}
                   {successMessage && <p>{successMessage}</p>}
