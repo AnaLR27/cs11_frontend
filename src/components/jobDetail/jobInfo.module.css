@@ -1,6 +1,6 @@
 div.job-block {
   position: relative;
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
 }
 div.job-block > div.inner-box {
   position: relative;
@@ -81,6 +81,11 @@ div.content div.btn-box {
 }
 .btn-style {
   cursor: pointer;
+  transition: all 0.5s ease;
+}
+.btn-style:hover {
+  background-color: var(--green);
+  color: #fff;
 }
 
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */

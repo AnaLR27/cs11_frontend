@@ -45,7 +45,7 @@ function JobInfo({
             />
           </span>
           <div>
-            <h4 className={style["job-title"]}>{title}</h4>
+            <h3 className={style["job-title"]}>{title}</h3>
             <ul className={style["job-info"]}>
               <li>
                 <span>

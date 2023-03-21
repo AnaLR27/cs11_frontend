@@ -48,7 +48,7 @@ function JobDetail() {
         <div className={style["row"]}>
           <JobSingleDetail jobData={jobData} />
           <div className={style["description"]}>
-            <h4 className={style["title-h4"]}>Descripción</h4>
+            <h3 className={style["title-h3"]}>Descripción</h3>
             <p>{jobData?.description}</p>
           </div>
         </div>
