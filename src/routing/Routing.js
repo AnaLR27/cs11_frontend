@@ -7,7 +7,7 @@ import Header from "../components/HeaderFooter/Header";
 import Footer from "../components/HeaderFooter/Footer";
 import ForgottenPasswordPage from "../views/ForgottenPasswordPage";
 import ResetPasswordPage from "../views/ResetPasswordPage";
-import CandidatesDashboard from "../views/CandidatesDashboard";
+// import CandidatesDashboard from "../views/CandidatesDashboard";
 import Allaplicants from "../views/AllAplicants";
 import EmployerSinglePage from "../views/EmployerSinglePage";
 import ChangePassword from "../views/ChangePassword";
@@ -19,17 +19,24 @@ import CandidateList from "../views/CandidateList";
 import RequireAuth from "../auth/RequireAuth";
 import PostAJobComponents from "../views/PostAJob.components";
 import DetailCandidate from "../components/detailCandidate/DetailCandidate";
+import AboutUs from "../components/navbar/AboutUs"
+import Contact from "../components/navbar/Contact"
 
-
+// import Navbar from "../components/navbar/Navbar";
+// import Navbar from "../components/navbar/Navbar";
+// import HeaderNav from "../components/HeaderNav";
 const Routing = () => {
   return (
     <Router>
       <LoginModalProvider>
         <Header />
       </LoginModalProvider>
+
       <Routes>
         {/* Rutas no protegidas */}
         <Route path="/" element={<HomePage />} />
+        <Route path="aboutus" element={<AboutUs /> } />
+        <Route path="contact" element={<Contact /> } />
         <Route path="forgottenpassword" element={<ForgottenPasswordPage />} />
         <Route path="reset-password/:token" element={<ResetPasswordPage />} />
         <Route path="unauthorized" element={<UnauthorizedPage />} />
@@ -61,11 +68,10 @@ const Routing = () => {
 
           {/* Entiendo que la ruta all-applicants deberia de ir concatenado con job  !!!CONFIRMAR */}
 
-          <Route path='all-applicants' element={<Allaplicants />} />
-          <Route path='job/employer-jobs' element={<ManageJobsPage />} />
-          <Route path='post-a-job' element={<PostAJobComponents />} />
-          <Route path='post-a-job/:jobId' element={<PostAJobComponents />} />
-
+          <Route path="all-applicants" element={<Allaplicants />} />
+          <Route path="job/employer-jobs" element={<ManageJobsPage />} />
+          <Route path="post-a-job" element={<PostAJobComponents />} />
+          <Route path="post-a-job/:jobId" element={<PostAJobComponents />} />
         </Route>
       </Routes>
       <Footer />
