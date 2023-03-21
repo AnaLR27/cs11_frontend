@@ -1,6 +1,7 @@
 section.job-detail-section {
   display: block;
   position: relative;
+  min-height: calc(100vh - var(--header-height)- var(--footer-height));
 }
 
 section.job-detail-section div.upper-box {
