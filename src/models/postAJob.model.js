@@ -83,8 +83,6 @@ const categoryItems = [
   { value: "Otros", label: "Otros" },
 ];
 
-
-
 const jodData = {
   modalityItems: modalityItems,
   countryItems: countryItems,
@@ -92,9 +90,6 @@ const jodData = {
   categoryItems: categoryItems,
   workdayItems: workdayItems,
 };
-
-
-
 
 export class Job {
   constructor(data) {
@@ -110,14 +105,17 @@ export class Job {
       this.description = data.description;
       this.workDay = data.workDay;
       this.applicants = data.applicants;
+      this.company = data.company;
+      this.createdAt = data.createdAt;
     }
   }
   static getJobData() {
-  return jodData;
+    return jodData;
+  }
+  getCompanyLogo() {
+    return this.company && this.company.logo
+      ? "http://localhost:8000/employer/logo/" +
+          encodeURIComponent(this.company.logo)
+      : undefined;
   }
 }
-
-
-
-
-module.export = jodData;

@@ -1,4 +1,4 @@
-import style from './badge.component.css';
+import style from './badge.module.css';
 
 function Badge({ type, text }) {
 	return (
@@ -40,6 +40,11 @@ function Badge({ type, text }) {
 			)}
 			{type === 'dark' && (
 				<span className={`${style['badge']} ${style['badge-dark']}`}>
+					{text}
+				</span>
+			)}
+			{type === 'code' && (
+				<span className={`${style['badge']} ${style['badge-code']}`}>
 					{text}
 				</span>
 			)}

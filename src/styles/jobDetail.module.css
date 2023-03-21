@@ -1,14 +1,45 @@
 section.job-detail-section {
-	display: block;
-	position: relative;
+  display: block;
+  position: relative;
 }
 
-section.job-detail-section div.header-section {
-	position: relative;
-	background-color: var(--light-green);
-	background-size: cover;
-	padding: 80px 0 70px;
+section.job-detail-section div.upper-box {
+  display: flex;
+  position: relative;
+  background-color: var(--light-green);
+  background-size: cover;
+  padding: 5rem 0rem 1.5rem;
 }
 
+/* outer box */
+div.job-detail-outer {
+  position: relative;
+  padding: 50px 0;
+}
 
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+  section.job-detail-section div.upper-box {
+    padding-bottom: 2em;
+  }
+  .row {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+  }
+  .description {
+    width: 60%;
+  }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+}
 
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
+
+/* Extra extra large devices (extra large desktops, 1400px and up) */
+@media (min-width: 1400px) {
+}
