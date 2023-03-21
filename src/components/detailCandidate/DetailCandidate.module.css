@@ -1,7 +1,7 @@
 .container {
-  padding: 3rem;
+  padding: 2rem;
   margin-top: 2rem;
-  min-height: calc(100vh - var(--header-height)- var(--footer-height));
+  
 }
 .col-lg-8 {
   width: 60%;
@@ -23,6 +23,7 @@
   overflow: hidden;
   border-radius: 50%;
   margin: 0 auto 20px;
+  object-fit: cover;
 }
 
 .name-candidate {
@@ -62,12 +63,14 @@
   padding-left: 25px;
   margin-bottom: 5px;
   margin-right: 30px;
+  display: contents;
 }
 .icon-fa-clock {
   background-color: white;
   color: dimgray;
   font-size: 20px;
   margin-right: 10px;
+  
 }
 .description {
   margin-top: 25px;
@@ -113,7 +116,7 @@
 .button-cv:hover {
   background-color: var(--dark-green);
 }
-.button-mark {
+/* .button-mark {
   display: flex;
   height: 50px;
   width: 5%;
@@ -137,7 +140,7 @@
   width: 15px;
   height: 15px;
   margin-top: 1em;
-}
+} */
 .content {
   width: 80%;
   padding: 30px;
@@ -189,12 +192,6 @@
     width: 100%;
   }
 
-  .button-container {
-    width: 100%;
-  }
-  .button-cv {
-    width: 90%;
-  }
   .content {
     width: 100%;
   }
@@ -221,14 +218,17 @@
     margin-right: 0px;
     position: absolute;
   }
+  .icon-fa-clock {
+    margin-top: 1em;
+  }
 }
 
 /* // Medium devices (tablets, 768px and up) */
 @media (max-width: 820px) {
   .col-lg-4 {
-
     width: 100%;
     margin-top: 4em;
+
   }
   .button-container {
     width: 100%;
