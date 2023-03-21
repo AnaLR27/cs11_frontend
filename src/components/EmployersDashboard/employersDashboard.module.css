@@ -3,6 +3,7 @@
   position: relative;
   display: block;
   width: 100%;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
   border-radius: 8px;
   box-shadow: 0 6px 15px rgb(64 79 104 / 5%);
   background-color: var(--light-green);
