@@ -37,7 +37,7 @@ function AppliedJobsTable({ data, candidateId, setLoadData, loginId }) {
   };
 
   const getCompanyLogo = (logo)=>{
-    return logo ? 'http://localhost:8000/employer/logo/' + logo : undefined;
+    return logo ? 'http://localhost:8000/employer/logo/' + encodeURIComponent(logo) : undefined;
   }
 
   return (
