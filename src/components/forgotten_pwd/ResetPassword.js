@@ -19,7 +19,7 @@ import {
   RESET_PWD,
   initialResetPwdState,
   resetPwdReducer,
-} from "../../reducers/resetPassword.reducer";
+} from "../../models/reducers/resetPassword.reducer";
 import ApiRequest from "../../services/apiRequest";
 import { PWD_REGEX } from "../../utils/regExp";
 
