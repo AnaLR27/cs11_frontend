@@ -26,18 +26,16 @@ import Contact from "../components/navbar/Contact";
 // Revisar esta importación, es el componente que esta haciendo Rafa
 /* import { JobDetails } from '../views/JobDetail'; */
 
-
 import LoginModalProvider from "../providers/LoginModalProvider";
 import RequireAuth from "../auth/RequireAuth";
 
 const Routing = () => {
   return (
     <Router>
-      
-        <LoginModalProvider>
-          <Header />
-        </LoginModalProvider>
-   
+      <LoginModalProvider>
+        <Header />
+      </LoginModalProvider>
+
       <Routes>
         {/* Rutas no protegidas */}
         <Route path='/' element={<HomePage />} />

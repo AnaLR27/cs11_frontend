@@ -17,6 +17,7 @@ import Modal from "../UI/Modal";
 import LoginForm from "../login_register_forms/LoginForm";
 import RegisterForm from "../login_register_forms/RegisterForm";
 import Navbar from "../navbar/Navbar";
+import ApiRequest from "../../services/apiRequest";
 
 function Header() {
   //access to modal context
@@ -27,7 +28,29 @@ function Header() {
     setOpenLoginModal,
     openLoginModal,
     isAuthenticated,
+    setIsAuthenticated,
   } = useContext(LoginModalContext);
+
+  //ckeck if there is a remembered user and log him in if there is, using refresh token for authentication and recieve new access token
+  useEffect(() => {
+    const handleRememberedUser = async () => {
+      if (!localStorage.getItem("refreshToken")) return;
+
+      const response = await ApiRequest.refresh(
+        localStorage.getItem("refreshToken")
+      );
+      if (!response.accessToken) return;
+
+      if (response.accessToken) {
+        //save tokens in sessionStorage to keep user logged in only for development purposes, in production, token should be saved in state and passed to context
+        sessionStorage.setItem("accessToken", response.accessToken);
+        sessionStorage.setItem("userId", response.id);
+        sessionStorage.setItem("role", response.role);
+        setIsAuthenticated(true);
+      }
+    };
+    (async () => handleRememberedUser())();
+  });
 
   const navigate = useNavigate();
   const [role, setRole] = useState("");
@@ -35,6 +58,7 @@ function Header() {
   useEffect(() => {
     isAuthenticated ? setRole(sessionStorage.getItem("role")) : setRole("");
   }, [isAuthenticated]);
+
 
   const handleClick = () => {
     setOpenLoginModal(true);
