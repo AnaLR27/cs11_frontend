@@ -18,6 +18,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
+
 function MenuEmployers() {
   //BURGERMENU
   const [clicked, setClicked] = useState(false);
@@ -161,6 +162,8 @@ function MenuEmployers() {
             Eliminar Perfil
           </Link>
         </nav>
+      
+    
       </MenuContainer>
     </>
   );
@@ -214,22 +217,25 @@ font-size: 23px;
   
   .Menulinks.active{
     background-color: #e5f0ed;
-    width: 21rem;
+    width: 10rem;
     height: 100vh;
     display: block;
     margin-left: 0;
     margin-right: auto;
-    top: -4.5rem;
+    top: -6rem;
     left: 0;
     rigth: 0;
     text-align: left;
     position: relative;
+    @media (max-width: 821px) {
+      width: 30rem;
   }
 .burger-container{
-margin-top: 1rem;
-margin-left: -10rem;
+margin-top: -2rem;
+margin-left: 0rem;
   @media (min-width: 821px) {
     display: none;
+ 
   
 
 `;

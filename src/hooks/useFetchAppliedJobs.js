@@ -4,7 +4,7 @@
  */
 
 import { useState } from "react";
-import { EMPLOYER_JOBS } from "../config/urls";
+import { EMPLOYER_JOBS, CANDIDATES_API } from "../config/urls";
 
 const URL = `${EMPLOYER_JOBS}/candidate-applied-jobs/`
 const token = sessionStorage.getItem("accessToken") || localStorage.getItem("accessToken");
@@ -15,13 +15,12 @@ const useFetchAppliedJobs = () => {
   const [error, setError] = useState(null);
   // message is a string that contains the message that is displayed when the user deletes an application from the table successfully
   const [message, setMessage] = useState("");
-
   const [candidateId, setCandidateId] = useState("");
 
   const getCandidateId = async (loginId) => {
     try {
       setPending(true);
-      const response = await fetch(`http://localhost:8000/candidate/${loginId}`, {
+      const response = await fetch(`${CANDIDATES_API}/${loginId}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -29,10 +28,11 @@ const useFetchAppliedJobs = () => {
         },
       });
       const data = await response.json();
-      if (data.status === "Succeeded") {
+      if (data.success) {
         setCandidateId(data.data._id);
       } else {
-        setCandidateId(null);
+        setCandidateId("");
+        setError("Ha ocurrido un error, por favor inténtelo de nuevo más tarde.");
       }
     } catch (error) {
     setError("Ha ocurrido un error, por favor inténtelo de nuevo más tarde.");
@@ -61,6 +61,7 @@ const useFetchAppliedJobs = () => {
         setData(data.data);
       } else {
         setData([]);
+        setError("Ha ocurrido un error, por favor inténtelo de nuevo más tarde.");
       }
     } catch (error) {
       setError("Ha ocurrido un error, por favor inténtelo de nuevo más tarde.");

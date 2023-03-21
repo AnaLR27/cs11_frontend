@@ -15,7 +15,7 @@ function BurgerButton(props) {
         <span className="line"></span>
       </div>
     </StyledBurger>
-    
+
   );
 }
 
@@ -24,8 +24,8 @@ export default BurgerButton;
 const StyledBurger = styled.button`
 #hamburger-1 {
   background-color: #e5f0ed;}
+
 div#hamburger-1.hamburger.is-active{
-  height: ;
   background-color: #e5f0ed;
 
 }
@@ -48,18 +48,14 @@ div#hamburger-1.hamburger.is-active{
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     position: relative;
-    left: 190px;
-    top: 20px;
+    left: 315px;
+    top: 30px;
   }
 
 
-  div#hambuger-1.hamburger{
-    // background-color: #e5f0ed;
-  } {
-
   #hamburger-1.is-active .line:nth-child(2) {
     opacity: 0;
-  
+
   }
 
   #hamburger-1.is-active .line:nth-child(1) {
@@ -67,7 +63,7 @@ div#hamburger-1.hamburger.is-active{
     -ms-transform: translateY(13px) rotate(45deg);
     -o-transform: translateY(13px) rotate(45deg);
     transform: translateY(13px) rotate(45deg);
-  
+
   }
 
   #hamburger-1.is-active .line:nth-child(3) {
@@ -78,7 +74,9 @@ div#hamburger-1.hamburger.is-active{
   }
   @media (min-width: 821px) {
     background-color: #e5f0ed;
-    display: none;}
+    display: none;
+  }
+
     background-color: #e5f0ed;
 
 `;

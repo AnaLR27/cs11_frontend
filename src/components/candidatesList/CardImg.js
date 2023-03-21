@@ -7,6 +7,10 @@ import classes from "./CardImg.module.css";
 
 function CardImg(props) {
 
+  const getCandidatePhoto = (photo) => {
+    return photo ? "http://localhost:8000/candidate/photo/" + photo : undefined;
+  };
+
   return (
     <>
       {props.candidate.isLookingForJob ? (
@@ -16,7 +20,8 @@ function CardImg(props) {
       )}
       <div className={classes["img-container"]}>
         <div className={classes["img-wrapper"]}>
-          <img src={props.candidate.photo} alt={props.candidate.photo} />
+          {/* {console.log(photo)} */}
+          <img src={getCandidatePhoto(props.candidate.photo)} alt={props.candidate.fullName} />
         </div>
       </div>
     </>
