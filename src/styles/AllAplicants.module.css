@@ -137,6 +137,11 @@
     align-items: center;
 }
 
+.your-candidates{
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
 
 @media (min-width: 820px) {
     .applicants-list{

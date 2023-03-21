@@ -39,7 +39,7 @@ function ManageJobs() {
   const [fetchError, setFetchError] = useState(false);
 
   // Obteniendo el token del sessionStorage
-  const token = sessionStorage.getItem("accessToken");
+  const token = sessionStorage.getItem("accessToken") || localStorage.getItem("accessToken");
 
   // Obtenemos el id del usuario a partir del token para poder obtener sus empleos publicados
   const tokenParts = token.split(".");

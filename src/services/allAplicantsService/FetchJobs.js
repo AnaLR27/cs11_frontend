@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Asynchronous function to get all jobs associated with an employer
+ * @author Daniel Sánchez Gonzalez
+ */
+
 import { EMPLOYER_JOBS } from "../../config/urls";
 
 async function FetchJobs(id) {

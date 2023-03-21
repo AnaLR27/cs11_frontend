@@ -120,3 +120,53 @@
 .register-form .login:hover{
   color: var(--green);
 }
+
+@media (min-width: 992px) {
+.register-form{
+  font-size: 1.5rem;
+}
+  
+  .register-form  h5{
+   font-size: 1.3rem;
+   line-height: 1.8rem;
+  }
+
+  .register-form .role-btn{
+    font-size: 1.2rem;
+    margin-top: 1rem ;
+    margin-bottom: 1rem;
+  }
+
+  .register-form label {
+    font-size: 1.1rem;
+  }
+
+  .register-form input{
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+  }
+
+
+  .register-form button{
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    padding: 1.1rem;
+  }
+
+  .register-form .have-account{
+    font-size: 1rem;
+   
+  }
+  .register-form .login{
+    font-size: 1.2rem;
+   
+  }
+
+
+
+  .register-form .instructions {
+    font-size: 1rem;
+  }
+  
+}

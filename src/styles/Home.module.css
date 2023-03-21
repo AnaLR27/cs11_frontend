@@ -64,8 +64,8 @@
   position: absolute;
   top: -30px;
   left: -60px;
-  width: 180px;
-  font-size: 0.7rem;
+  width: 210px;
+  font-size: 14px;
   font-weight: 500;
   padding: 0.6rem;
   border-radius: 5px;
@@ -76,7 +76,7 @@
   z-index: 100;
 }
 .main-home .icon {
-  font-size: 2rem;
+  font-size: 36px;
   display: block;
 }
 .main-home .icon-bg {
@@ -87,7 +87,7 @@
 }
 .main-home .notification p {
   display: block;
-  line-height: 1rem;
+  line-height: 1.4;
 }
 .main-home .apear {
   animation-name: apear;
@@ -101,12 +101,12 @@
 .main-home .candidates {
   position: absolute;
   padding: 1rem;
-  z-index: 2000;
+  z-index: 2;
   right: 150px;
   bottom: 40px;
   background-color: #fff;
   width: 180px;
-  font-size: 0.7rem;
+  font-size: 14px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -172,21 +172,24 @@
 
 .main-home .text {
   padding: 1.5rem;
-  font-size: 2rem;
   width: 100%;
-  margin: 0 auto;
+  margin: 1rem auto;
+  font-size: 2.5rem;
+  text-align: center;
+
 }
 .main-home .text .icon-location {
   color: var(--green);
   margin-right: 0.5rem;
+  font-size: 30px;
 }
 
 .main-home .typing-box {
   background-color: var(--white);
   padding: 1.5rem 1rem;
-  font-size: 1.2rem;
+  font-size: 20px;
   width: 100%;
-  margin: 1rem auto;
+  margin: 2rem auto;
   border-radius: 5px;
   overflow: hidden;
   height: 70px;
@@ -201,17 +204,17 @@
 
 .main-home .info-box {
   text-align: center;
-  font-size: 1.2rem;
-  /* background-color: #2c7a7b98; */
+  font-size: 1.8rem;
+
   background-color: var(--green);
   border-radius: 5px;
   width: 60%;
   margin: 1.5rem auto 0.5rem auto;
-  padding: 0.5rem;
+  padding: 1rem;
 }
 
 .main-home .number {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: var(--white);
 }
@@ -228,7 +231,7 @@
   }
   .main-home .text {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 
   .main-home .images-container {
@@ -272,7 +275,7 @@
   .main-home .text {
     width: 100%;
     text-align: center;
-    font-size: 2rem;
+    font-size: 3rem;
   }
   .main-home .typing-box {
     width: 80%;
@@ -307,7 +310,7 @@
   .main-home .text {
     width: 100%;
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
   .typing-box {
     width: 80%;
@@ -322,12 +325,34 @@
 @media (min-width: 1400px) {
   .main-home .content-container {
     position: absolute;
-    top: 30px;
+    top: 80px;
   }
 
   .main-home .images-container {
     position: absolute;
-    top: 30px;
-    right: 190px;
+    top: 80px;
+    right: 250px;
+  }
+
+  .main-home .figure-image img {
+    height: 300px;
+  }
+  .main-home .image-one-box img {
+    height: 450px;
+  }
+
+  .main-home .candidates {
+    width: 250px;
+  }
+
+  .main-home .notification {
+    width: 250px;
+  }
+  .main-home .candidates img {
+    height: 50px;
+  }
+
+  .main-home .images-box {
+    padding-left: 0;
   }
 }
