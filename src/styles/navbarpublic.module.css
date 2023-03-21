@@ -103,12 +103,17 @@
 }
 
 @media (min-width: 1400px) {
+  .containerall {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+  }
   .map-container {
     width: 60%;
   }
 
   .public {
     width: 60%;
+    margin-bottom: 50px;
   }
 }
 

@@ -61,13 +61,13 @@ function CandidatesDashboard() {
         );
     }
 
-    console.log(userData);
-    console.log(offerData);
+    // console.log(userData);
+    // console.log(offerData);
 
     return (
         <>
             <section className={classes.DivCardsApp}>
-                <div>
+                <div className={classes.DivContainer}>
                     <div>
                         <h3>Bienvenido, {userData.firstName}!!</h3>
                         <p>¿Listo para seguir donde lo dejaste?</p>

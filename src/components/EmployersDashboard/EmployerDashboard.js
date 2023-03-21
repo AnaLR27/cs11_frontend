@@ -64,7 +64,7 @@ function EmployerDashboard() {
   return (
     <>
       <section className={classes.DivCardsApp}>
-        <div>
+        <div className={classes.DivContainer}>
           <div>
             <h3>Encuentra el candidato perfecto!</h3>
             <p>¿Listo para entrar de nuevo?</p>

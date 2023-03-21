@@ -44,7 +44,7 @@ const Contact = () => {
           </li>
         </ul>
         <div className={`${styles["codespace-link"]}`}>
-          <a href="https://codespaceacademy.com/">www.codesaceacademy.com</a>
+          <a href="https://codespaceacademy.com/">www.codespaceacademy.com</a>
         </div>
       </div>
     </div>

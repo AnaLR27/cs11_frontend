@@ -36,9 +36,9 @@ function AppliedJobsTable({ data, candidateId, setLoadData, loginId }) {
     handleVisibility();
   };
 
-  const getCompanyLogo = (logo)=>{
-    return logo ? 'http://localhost:8000/employer/logo/' + logo : undefined;
-  }
+  const getCompanyLogo = (logo) => {
+    return logo ? "http://localhost:8000/employer/logo/" + logo : undefined;
+  };
 
   return (
     <>
@@ -72,9 +72,9 @@ function AppliedJobsTable({ data, candidateId, setLoadData, loginId }) {
                           alt={"Logo"}
                         />
                       </span>
-                      {/* <Link to="api/job/job-single/:job._id"> Aquí tendrá que ir el enlace a la página single job con el id del trabajo seleccionado*/}
-                      <h4>{job.title}</h4>
-                      {/* </Link> */}
+                      <Link to={`/job/job-single/${job._id}`}>
+                        <h4>{job.title}</h4>
+                      </Link>
                       <ul className={classes["job-info"]}>
                         <li>
                           <FontAwesomeIcon icon={faBriefcase} />
@@ -107,11 +107,11 @@ function AppliedJobsTable({ data, candidateId, setLoadData, loginId }) {
                   <td>
                     <ul className={classes["action-list"]}>
                       <li>
-                        {/* <Link to="/api/job/job-single/:job._id"> Aquí tendrá que ir el enlace a la página single job con el id del trabajo seleccionado*/}
-                        <button className={classes["icon-button"]}>
-                          <FontAwesomeIcon icon={faEye} />
-                        </button>
-                        {/* </Link> */}
+                        <Link to={`/job/job-single/${job._id}`}>
+                          <button className={classes["icon-button"]}>
+                            <FontAwesomeIcon icon={faEye} />
+                          </button>
+                        </Link>
                       </li>
                       <li>
                         <button
