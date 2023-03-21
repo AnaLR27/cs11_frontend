@@ -133,7 +133,7 @@ function CandidateProfile() {
                 <div
                     className={`${styles['mb-4']} ${styles['ms-0']} ${styles['show-1023']}`}
                 >
-                   <PageLayoutC/>
+                    <PageLayoutC />
                     {/* <button
                         type="button"
                         className={`${styles['btn']} ${styles['toggle-filters']}`}
@@ -149,7 +149,7 @@ function CandidateProfile() {
                     <div className={`${styles['container-content']}`}>
                         <ImageBrowser
                             src={user.getPhoto()}
-                            label="Buscar Logo"
+                            label="Buscar Foto"
                             onChange={(e) => setPhoto(e.target.files[0])}
                         />
 
