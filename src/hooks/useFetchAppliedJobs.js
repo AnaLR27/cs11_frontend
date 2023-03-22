@@ -7,7 +7,6 @@ import { useState } from "react";
 import { EMPLOYER_JOBS, CANDIDATES_API } from "../config/urls";
 
 const URL = `${EMPLOYER_JOBS}/candidate-applied-jobs/`
-const token = sessionStorage.getItem("accessToken") || localStorage.getItem("accessToken");
 
 const useFetchAppliedJobs = () => {
   const [data, setData] = useState([]);
@@ -24,7 +23,7 @@ const useFetchAppliedJobs = () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": token,
+          "auth-token": sessionStorage.getItem("accessToken") || localStorage.getItem("accessToken"),
         },
       });
       const data = await response.json();
@@ -53,7 +52,7 @@ const useFetchAppliedJobs = () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": token,
+          "auth-token": sessionStorage.getItem("accessToken") || localStorage.getItem("accessToken"),
         },
       });
       const data = await response.json();
@@ -83,7 +82,7 @@ const useFetchAppliedJobs = () => {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          "auth-token": token,
+          "auth-token": sessionStorage.getItem("accessToken") || localStorage.getItem("accessToken"),
         },
       });
       const data = await response.json();
