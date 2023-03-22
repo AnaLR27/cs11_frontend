@@ -20,10 +20,13 @@
 .offer-detail {
   padding: 1rem;
   font-weight: normal;
+  font-size: 1.2rem;
 }
 
 .offer-detail .icon {
   margin-right: 1rem;
+  color: var(--darkgrey);
+  font-size: 1.5rem;
 }
 
 .button-empresa {
@@ -37,6 +40,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-size: 1.2rem;
 }
 .button-empresa:hover {
   background-color: var(--green);

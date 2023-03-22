@@ -201,7 +201,8 @@ font-size: 23px;
     background-color: #e5f0ed;
     width: 23rem;
     height: 100%; 
-    opacity: 0;
+    // opacity: 0;
+    visibility: hidden;
 
   @media (max-width: 821px) {
    position: relative;
@@ -227,16 +228,17 @@ font-size: 23px;
     text-align: left;
     position: relative;
   opacity: 1;
+  visibility: visible;
 
     @media (max-width: 821px) {
       position: relative;
       width: 30rem;
-      height: 3000vh;}
+      height: calc(100vh - var(--header-height) - var(--footer-height));}
       
       @media (min-width: 992px) {
         position: relative;
         width: 30rem;
-        height: 3000vh;
+        height: calc(100vh - var(--header-height) - var(--footer-height));
       top: -20rem
     }
     

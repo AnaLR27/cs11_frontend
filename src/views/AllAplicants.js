@@ -32,6 +32,7 @@ function Allaplicants() {
     const getJobList = () => {
         let jobList = [];
         if (userReady && jobReady) {
+            console.log(jobs);
             Object.keys(jobs.data).map((key) => {
                 let obj = {
                     value: jobs.data[key].title,
