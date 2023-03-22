@@ -83,20 +83,6 @@ export const JobList = () => {
               <div className={classes["showing-result"]}></div>
               <div className={classes["sort-by"]}>
                 <PageLayoutC />
-                <button
-                  className={
-                    order === "oldest" || order === "newest"
-                      ? classes["btn-clear"]
-                      : classes["btn-clear-disabled"]
-                  }
-                  onClick={() => {
-                    setCurrentPage(1); //to send the user back to the first page
-                    setSelectedOrder("default");
-                    setOrder("default");
-                  }}
-                >
-                  Borrar filtros
-                </button>
                 <Switcher
                   value={selectedOrder}
                   handlerSelect={handlerSelect}
