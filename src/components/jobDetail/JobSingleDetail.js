@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 function JobSingleDetail({ jobData }) {
   return (
     <div className={classes["info-details"]}>
-      <u>Descripción</u>
+      {/* <u>Descripción</u> */}
       <span className={classes["offer-detail"]}>
         <FontAwesomeIcon className={classes["icon"]} icon={faCalendarCheck} />
         <strong>Fecha: </strong>
