@@ -44,7 +44,7 @@ export const JobList = () => {
 
     const orderOffers = orderByDate(datos, order);
     setOffers(orderOffers);
-    
+
     setLoading(false);
     console.log(orderOffers);
     // setOffers([]);
@@ -82,7 +82,7 @@ export const JobList = () => {
             <div className={classes.switcher}>
               <div className={classes["showing-result"]}></div>
               <div className={classes["sort-by"]}>
-               <PageLayoutC/>
+                <PageLayoutC />
                 <Switcher
                   value={selectedOrder}
                   handlerSelect={handlerSelect}
