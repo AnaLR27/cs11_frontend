@@ -1,7 +1,10 @@
 section.job-detail-section {
   display: block;
   position: relative;
-  min-height: calc(100vh - var(--header-height)- var(--footer-height));
+  width: 100vw;
+  max-width: 100vw;
+  /* height: calc(100vh - var(--header-height) - var(--footer-height)); */
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
 }
 
 section.job-detail-section div.upper-box {
@@ -27,6 +30,12 @@ div.job-detail-outer {
 .description {
   text-align: justify;
   margin-bottom: 20px;
+}
+
+.description p{
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--darkgrey);
 }
 
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */

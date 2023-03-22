@@ -9,7 +9,11 @@ import {
 import Badge from "../Badge.component";
 import { applyJob } from "../../services/ApplyAJob.service";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+
+import { useParams, useNavigate } from "react-router";
+import ReactDOM from "react-dom";
+import Modal from "../UI/Modal";
+import Button from "../UI/Button";
 
 function JobInfo({
   jobIdParams,
@@ -24,27 +28,53 @@ function JobInfo({
 }) {
   // const [id, setId] = useState();
   const { jobId } = useParams();
-
+  const navigate = useNavigate();
   useEffect(() => {
     console.log("jobid jobinfo " + jobId);
     // setId(jobIdParams);
   }, []);
 
-  // console.log(id);
+  const [applyMsg, setApplyMsg] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const applyForJob = async () => {
     const result = await applyJob(jobId);
+    if (result.status === "Succeeded") {
+      setApplyMsg("Se ha aplicado exitosamente");
+      setSuccess(true);
+    } else {
+      setApplyMsg("No se ha podido aplicar, intentalo de nuevo mas tarde");
+    }
   };
 
   // TODO : Terminarlo
   return (
     <div className={style["job-block"]}>
+      {success &&
+        ReactDOM.createPortal(
+          <Modal openModal={success} setOpenModal={setSuccess}>
+            <div className={style["md-content-container"]}>
+              <h3>{applyMsg}</h3>
+              <Button
+                type='submit'
+                className='submit'
+                buttonTxt='OK'
+                onClick={() => {
+                  setSuccess(false);
+                  navigate("/candidates-dashboard/job/job-list");
+                }}
+              />
+            </div>
+          </Modal>,
+          document.querySelector("#modal")
+        )}
+
       <div className={style["inner-box"]}>
         <div className={style["content"]}>
           <span className={style["job-logo"]}>
             <img
               src={`${refLogo}`}
-              alt="Company Logo"
+              alt='Company Logo'
               className={style["company-img"]}
             />
           </span>
@@ -77,9 +107,9 @@ function JobInfo({
               </li>
             </ul>
             <div className={style["job-other-info"]}>
-              <Badge type="code" text={workDay} />
+              <Badge type='code' text={workDay} />
               &nbsp;
-              <Badge type="code" text={jobType} />
+              <Badge type='code' text={jobType} />
             </div>
           </div>
         </div>
