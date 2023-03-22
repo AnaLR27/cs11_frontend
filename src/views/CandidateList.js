@@ -82,58 +82,66 @@ function CandidateList() {
                 <NoCards valor={'candidatos'} />
             ) : (
                 <>
-                    <div className={classes['top-filters']}>
-                        <CardsContainer />
-                        <div className={classes.switcher}>
-                            <div className={classes['showing-result']}></div>
-                            <div className={classes['sort-by']}>
-                                {/* <button
-                    className={
-                      order === "desc" || order === "asc"
-                        ? classes["btn-clear"]
-                        : classes["btn-clear-disabled"]
-                    }
-                    onClick={(e) => {
-                      setCurrentPage(1); //to send the user back to the first page
-                      setSelectedOrder("default");
-                      setOrder("default");
-                    }}
-                  >
-                    Clear All
-                  </button> */}
+                    <CardsContainer>
+                        <div className={classes['top-filters']}>
+                            <div className={classes.switcher}>
+                                <div
+                                    className={classes['showing-result']}
+                                ></div>
+                                <div className={classes['sort-by']}>
+                                    <button
+                                        className={
+                                            order === 'desc' || order === 'asc'
+                                                ? classes['btn-clear']
+                                                : classes['btn-clear-disabled']
+                                        }
+                                        onClick={(e) => {
+                                            setCurrentPage(1); //to send the user back to the first page
+                                            setSelectedOrder('default');
+                                            setOrder('default');
+                                        }}
+                                    >
+                                        Clear All
+                                    </button>
+                                    <Switcher
+                                        value={selectedOrder}
+                                        handlerSelect={handlerSelect}
+                                        selectedOrder={selectedOrder}
+                                        order={order}
+                                    />
+                                </div>
+                            </div>
+                            <div className={classes['div-menu-hamburguer']}>
+                                {' '}
                                 <PageLayout />
-                                <Switcher
-                                    value={selectedOrder}
-                                    handlerSelect={handlerSelect}
-                                    selectedOrder={selectedOrder}
-                                    order={order}
-                                />
                             </div>
                         </div>
-                    </div>
-                    {loading ? (
-                        <DualRing />
-                    ) : (
-                        <>
-                            {currentCards.map((candidate, key) => {
-                                return (
-                                    <CardWrapper
-                                        key={key}
-                                        candidates={candidate}
-                                    >
-                                        <CardImg candidate={candidate} />
-                                        <CardInfo candidate={candidate} />
-                                    </CardWrapper>
-                                );
-                            })}
-                            <Pagination
-                                currentPage={currentPage}
-                                totalCount={candidates.length}
-                                pageSize={PageSize}
-                                onPageChange={(page) => setCurrentPage(page)}
-                            />
-                        </>
-                    )}
+                        {loading ? (
+                            <DualRing />
+                        ) : (
+                            <>
+                                {currentCards.map((candidate, key) => {
+                                    return (
+                                        <CardWrapper
+                                            key={key}
+                                            candidates={candidate}
+                                        >
+                                            <CardImg candidate={candidate} />
+                                            <CardInfo candidate={candidate} />
+                                        </CardWrapper>
+                                    );
+                                })}
+                                <Pagination
+                                    currentPage={currentPage}
+                                    totalCount={candidates.length}
+                                    pageSize={PageSize}
+                                    onPageChange={(page) =>
+                                        setCurrentPage(page)
+                                    }
+                                />
+                            </>
+                        )}
+                    </CardsContainer>
                 </>
             )}
         </>

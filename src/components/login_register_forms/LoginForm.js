@@ -56,10 +56,10 @@ const LoginForm = () => {
         setValidEmail(result);
     }, [loggedUser.email]);
 
-    useEffect(() => {
+    /*   useEffect(() => {
         if (errMsg) errRef.current?.focus(); //focus on error message for accesibility
     }, [errMsg]);
-
+ */
     //if login modal is closed, reset states
     useEffect(() => {
         if (!openLoginModal) {
@@ -85,13 +85,13 @@ const LoginForm = () => {
         const response = await ApiRequest.login(loggedUser);
         if (response.message === 'Failed to fetch') {
             setErrMsg('Conection error. Please reload the app');
-            succesfullLogin(false);
+            setSuccesfullLogin(false);
             setPending(false);
             return;
         }
         if (response.error === 'Wrong email or password') {
             setErrMsg(response.error);
-            succesfullLogin(false);
+            setSuccesfullLogin(false);
             setPending(false);
             return;
         }

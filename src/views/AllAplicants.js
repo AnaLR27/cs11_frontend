@@ -76,7 +76,7 @@ function Allaplicants() {
         let jobApplicants = await getJobApplicants();
         if (userReady && jobReady) {
             Object.keys(users.data).map((key) => {
-                if (jobApplicants.includes(users.data[key].loginId)) {
+                if (jobApplicants.includes(users.data[key].loginId._id)) {
                     jap.push(users.data[key]);
                 }
             });
@@ -127,95 +127,82 @@ function Allaplicants() {
 
     return (
         <>
-            <PageLayout>
-                {role && userReady && jobReady && (
-                    <div className={Styles['main-container']}>
-                        <div className={Styles['main-title']}>
-                            <h3>Candidatos</h3>
-                            <p className={Styles['subtittle']}>
-                                Encuentra a la persona adecuada
-                            </p>
-                        </div>
-                        <div className={Styles['posicion-boton']}>
-                            <PageLayout />
-                        </div>
-                        <div className={Styles['main-applicants']}>
-                            <h4 className={Styles['your-candidates']}>
-                                Ofertas publicadas
-                            </h4>
-                            <JobSelector
-                                options={jobList}
-                                onChange={handleJobChange}
-                            />
-                        </div>
-                        <div className={Styles['main-jobs']}>
-                            <div className={Styles['jobs-title']}>
-                                <div className={Styles['job-candidates']}>
-                                    Candidatos
-                                </div>
-                                <div className={Styles['applicants-count']}>
-                                    Total(s): {jobApplicantsData.length}
-                                </div>
+            {role && userReady && jobReady && (
+                <div className={Styles['main-container']}>
+                    <div className={Styles['main-title']}>
+                        <h3>Candidatos</h3>
+                        <p className={Styles['subtittle']}>
+                            Encuentra a la persona adecuada
+                        </p>
+                    </div>
+
+                    <div className={Styles['posicion-boton']}>
+                        <PageLayout />
+                    </div>
+                    <div className={Styles['main-applicants']}>
+                        <h4 className={Styles['your-candidates']}>
+                            Ofertas publicadas
+                        </h4>
+                        <JobSelector
+                            options={jobList}
+                            onChange={handleJobChange}
+                        />
+                    </div>
+                    <div className={Styles['main-jobs']}>
+                        <div className={Styles['jobs-title']}>
+                            <div className={Styles['job-candidates']}>
+                                Candidatos
                             </div>
-                            <div className={Styles['applicants-list']}>
-                                {userReady &&
-                                    jobReady &&
-                                    selectedJob &&
-                                    Object.keys(jobApplicantsData).map(
-                                        (key) => {
-                                            return (
-                                                <Card
-                                                    key={key}
-                                                    className={
-                                                        Styles['applicant']
-                                                    }
-                                                    linkid={
-                                                        jobApplicantsData[key]
-                                                            .loginId
-                                                    }
-                                                    photo={
-                                                        jobApplicantsData[key]
-                                                            .photo
-                                                    }
-                                                    username={
-                                                        jobApplicantsData[key]
-                                                            .fullName
-                                                    }
-                                                    especiality={
-                                                        jobApplicantsData[key]
-                                                            .speciality
-                                                    }
-                                                    edition={
-                                                        jobApplicantsData[key]
-                                                            .bootcamp +
-                                                        ' ' +
-                                                        jobApplicantsData[key]
-                                                            .edition
-                                                    }
-                                                    skills={mokcSkills(3)}
-                                                    // email={users.data[key].email}
-                                                    email={
-                                                        'the.d00m.666@gmail.com'
-                                                    }
-                                                    job={selectedJob}
-                                                    accepted={'aceptada'}
-                                                    refused={'rechazada'}
-                                                />
-                                            );
-                                        },
-                                    )}
+                            <div className={Styles['applicants-count']}>
+                                Total(s): {jobApplicantsData.length}
                             </div>
                         </div>
+                        <div className={Styles['applicants-list']}>
+                            {userReady &&
+                                jobReady &&
+                                selectedJob &&
+                                Object.keys(jobApplicantsData).map((key) => {
+                                    return (
+                                        <Card
+                                            key={key}
+                                            className={Styles['applicant']}
+                                            linkid={
+                                                jobApplicantsData[key].loginId
+                                            }
+                                            photo={jobApplicantsData[key].photo}
+                                            username={
+                                                jobApplicantsData[key].fullName
+                                            }
+                                            especiality={
+                                                jobApplicantsData[key]
+                                                    .speciality
+                                            }
+                                            edition={
+                                                jobApplicantsData[key]
+                                                    .bootcamp +
+                                                ' ' +
+                                                jobApplicantsData[key].edition
+                                            }
+                                            skills={mokcSkills(3)}
+                                            // email={users.data[key].email}
+                                            email={'the.d00m.666@gmail.com'}
+                                            job={selectedJob}
+                                            accepted={'aceptada'}
+                                            refused={'rechazada'}
+                                        />
+                                    );
+                                })}
+                        </div>
                     </div>
-                )}
-                {!role && <Unauthorized />}
-                {!userReady && !jobReady && (
-                    <div className={Styles['spinner']}>
-                        <Spinner />
-                    </div>
-                )}
-                {countDown === 0 && <Navigate to="/" />}
-            </PageLayout>
+                </div>
+            )}
+            {!role && <Unauthorized />}
+            {!userReady && !jobReady && (
+                <div className={Styles['spinner']}>
+                    <Spinner />
+                </div>
+            )}
+            {countDown === 0 && <Navigate to="/" />}
         </>
     );
 }

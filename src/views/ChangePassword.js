@@ -6,6 +6,7 @@ import styles from '../styles/ChangePassword.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import PageLayoutC from '../components/sidemenu/PageLayoutC';
+import PageLayout from '../components/sidemenu/PageLayout';
 
 const ChangePassword = () => {
     const [oldPassword, setOldPassword] = useState('');
@@ -89,6 +90,7 @@ const ChangePassword = () => {
                 </div>
 
                 <PageLayoutC />
+                <PageLayout />
                 {/* <Button /> */}
 
                 <div className={styles['ch-password-container']}>
