@@ -16,7 +16,7 @@ function JobDetail() {
   const params = useParams();
   const { jobId } = useParams();
 
-  console.log("jobid " + jobId);
+  // console.log("jobid " + jobId);
 
   useEffect(() => {
     jobInfo();

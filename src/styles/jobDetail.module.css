@@ -20,6 +20,13 @@ div.job-detail-outer {
 
 .title-h3 {
   padding-bottom: 1em;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--dark-green);
+}
+.description {
+  text-align: justify;
+  margin-bottom: 20px;
 }
 
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */

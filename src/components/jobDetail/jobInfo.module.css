@@ -11,7 +11,7 @@ div.job-block div.content {
 }
 
 div.content span.job-logo > img {
-  max-width: 60px;
+  max-width: 100px;
   display: block;
   width: auto;
   object-fit: contain;
@@ -20,10 +20,10 @@ div.content span.job-logo > img {
   border-radius: 50%;
 }
 
-div.content h4.job-title {
+div.content h3.job-title {
   position: relative;
   font-weight: 600;
-  font-size: 1.4rem;
+  font-size: 26px;
   line-height: 1.3em;
   color: #202124;
   top: -3px;
@@ -46,6 +46,7 @@ div.content ul.job-info > li > span {
 
 div.content ul.job-info > li > span > * {
   padding-right: 0.4rem;
+  font-size: 14px;
 }
 
 .job-block-seven .btn-box .theme-btn {
