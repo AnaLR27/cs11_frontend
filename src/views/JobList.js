@@ -82,6 +82,20 @@ export const JobList = () => {
                         <div className={classes.switcher}>
                             <div className={classes['showing-result']}></div>
                             <div className={classes['sort-by']}>
+                                <button
+                                    className={
+                                        order === 'newest' || order === 'oldest'
+                                            ? classes['btn-clear']
+                                            : classes['btn-clear-disabled']
+                                    }
+                                    onClick={(e) => {
+                                        setCurrentPage(1); //to send the user back to the first page
+                                        setSelectedOrder('default');
+                                        setOrder('default');
+                                    }}
+                                >
+                                    Clear All
+                                </button>
                                 <Switcher
                                     value={selectedOrder}
                                     handlerSelect={handlerSelect}
