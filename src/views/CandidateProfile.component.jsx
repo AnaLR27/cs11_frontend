@@ -134,13 +134,6 @@ function CandidateProfile() {
                     className={`${styles['mb-4']} ${styles['ms-0']} ${styles['show-1023']}`}
                 >
                     <PageLayoutC />
-                    {/* <button
-                        type="button"
-                        className={`${styles['btn']} ${styles['toggle-filters']}`}
-                    >
-                        <span className={`${styles['flaticon-menu-1']}`}></span>
-                        Menu
-                    </button> */}
                 </div>
                 <div className={`${styles['container']}`}>
                     <div className={`${styles['container-title']}`}>
@@ -180,7 +173,7 @@ function CandidateProfile() {
                                         label="Email"
                                         placeholder="jerome@gmail.com"
                                         disabled={user.loginId?.email}
-                                        pattern="^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$"
+                                        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
                                         messageWhenWrongPattern="El email no es válido"
                                         value={user.loginId?.email}
                                     />

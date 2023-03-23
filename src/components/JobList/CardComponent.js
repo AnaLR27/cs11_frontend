@@ -28,11 +28,11 @@ export const CardComponent = ({ offers }) => {
                             <span className={classes['company-logo']}>
                                 <img
                                     src={getCompanyLogo(offer.company?.logo)}
-                                    alt={offer.company.companyName}
+                                    alt={offer.company?.companyName}
                                 />
                             </span>
                             <span className={classes['company-name']}>
-                                <p>{offer.company.companyName}</p>
+                                <p>{offer.company?.companyName}</p>
                             </span>
                             <h4 className={classes['job-title']}>
                                 <Link to={`/job/job-single/${offer._id}`}>
