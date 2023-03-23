@@ -1,13 +1,9 @@
-.div-envoltorio {
-    width: 100%;
+body {
     background-color: #e5f0ed;
 }
-
 .curriculum-section {
     background-color: #e5f0ed;
-    height: calc(100vh - var(--header-height) - var(--footer-height));
-    max-height: calc(100vh - var(--header-height) - var(--footer-height));
-    max-width: 1400px;
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
     width: 100vw;
     margin: 0 auto;
 }
@@ -182,5 +178,11 @@
         margin-top: 30px;
         line-height: 24px;
         margin-bottom: 12px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .curriculum-section {
+        max-width: 1200px;
     }
 }
