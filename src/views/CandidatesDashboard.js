@@ -62,8 +62,7 @@ function CandidatesDashboard() {
 
     const getEmployerLogo = (logo) => {
         return logo
-            ? 'http://localhost:8000http://localhost:8000/employer/logo/' +
-                  encodeURIComponent(logo)
+            ? 'http://localhost:8000/employer/logo/' + encodeURIComponent(logo)
             : undefined;
     };
 
