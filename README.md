@@ -163,6 +163,7 @@ Home page, fully responsive where animations controlled by states (useState hook
 | David Miró |  [**&check;**](https://github.com/davidbonora)  | [**&check;**](https://www.linkedin.com/in/davidbonora/)  | [Contact me](mailto:davidbonora23@gmail.com)|
 | Sebastian Gonzalez | [**&check;**](https://github.com/Codezeb) | [**&check;**](https://www.linkedin.com/in/seb-gonzalez)| [Contact me](mailto:sebgonzilla@gmail.com)  |
 | Benjamin Mancera     |  [**&check;**](https://github.com/Benja022)  | [**&check;**](https://github.com/Benja022) | [Contact me](mailto:bemanji@gmail.com)|
+| Ana Lorenzo     |  [**&check;**](https://github.com/AnaLR27)  | [**&check;**](https://www.linkedin.com/in/analorenzorivero/) | [Contact me](mailto:analorenzo.2@hotmail.com)|
 
 
 
